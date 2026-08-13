@@ -18,8 +18,8 @@ from pathlib import Path
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
-from . import (config, fetch, gate, ledger, moments,  # noqa: E402
-               probe, render, screen, transcript)
+from . import (config, fetch, gate, ledger, metadata, moments,  # noqa: E402
+               probe, render, screen, transcript, upload)
 
 
 def cmd_run(args):
@@ -141,6 +141,34 @@ def cmd_status(args):
     return 0
 
 
+def cmd_auth(args):
+    return upload.cmd_auth(args)
+
+
+def cmd_upload(args):
+    try:
+        info = upload.upload_private(args.video_id, args.clip_id, args.title)
+    except (upload.UploadBlocked, metadata.InvalidTitle) as e:
+        print(f"× {e}", file=sys.stderr)
+        return 1
+    print(f"✓ 非公開でアップロードしました: {info['url']}")
+    print(f"  チャンネル: {info['channel_title']}（{info['channel_id']}）")
+    print("  公開するには許諾の回答を待ち、permission.yaml を granted にしてから")
+    print(f"  python -m clipper publish {args.video_id} {args.clip_id}")
+    return 0
+
+
+def cmd_publish(args):
+    segments = fetch.fetch_transcript(args.video_id)
+    try:
+        info = upload.publish(args.video_id, args.clip_id, segments=segments)
+    except upload.UploadBlocked as e:
+        print(f"× {e}", file=sys.stderr)
+        return 1
+    print(f"✓ 公開しました: {info['url']}")
+    return 0
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(prog="clipper")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -156,6 +184,18 @@ def main(argv=None):
 
     sub.add_parser("held").set_defaults(func=cmd_held)
     sub.add_parser("status").set_defaults(func=cmd_status)
+    sub.add_parser("auth").set_defaults(func=cmd_auth)
+
+    p = sub.add_parser("upload", help="非公開でアップロードする")
+    p.add_argument("video_id")
+    p.add_argument("clip_id")
+    p.add_argument("--title", required=True)
+    p.set_defaults(func=cmd_upload)
+
+    p = sub.add_parser("publish", help="非公開の動画を公開に切り替える（ゲート必須）")
+    p.add_argument("video_id")
+    p.add_argument("clip_id")
+    p.set_defaults(func=cmd_publish)
 
     args = ap.parse_args(argv)
     return args.func(args)

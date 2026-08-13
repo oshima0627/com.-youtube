@@ -8,3 +8,7 @@ Thumbs.db
 # 中間生成物と完成動画。台帳だけを追跡する。
 work/
 out/
+
+# 認証情報。絶対にコミットしない（このリポジトリは公開）
+client_secret.json
+token.json

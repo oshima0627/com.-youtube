@@ -1,5 +1,11 @@
 source_channel: https://www.youtube.com/@comdot
 
+channel:
+  # 投稿先。同じアカウントに複数チャンネルがあると取り違えるため、
+  # 一致しない限りアップロードしない。`python -m clipper auth` で確認して書く。
+  handle: "@com.-meibamen"
+  expected_channel_id: null
+
 formats:
   short:
     width: 1080
