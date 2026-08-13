@@ -12,6 +12,25 @@
   },
   "clips": [
     {
+      "clip_id": "clip02",
+      "start": 1088.8,
+      "end": 1128.0,
+      "duration": 39.2,
+      "formats": [
+        "short"
+      ],
+      "summary": "ひゅうがが「喋れない」と暗示をかけられて実際に声が出なくなる場面",
+      "heat_value": 1.0,
+      "heat_rank": 1,
+      "gate": {
+        "result": "held",
+        "reasons": [
+          "permission.yaml の status が pending"
+        ]
+      },
+      "published": null
+    },
+    {
       "clip_id": "clip01",
       "start": 1421.0,
       "end": 1478.0,
@@ -26,7 +45,9 @@
           "permission.yaml の status が pending"
         ]
       },
-      "published": null
+      "published": null,
+      "heat_value": 0.175,
+      "heat_rank": 22
     }
   ],
   "notes": []
