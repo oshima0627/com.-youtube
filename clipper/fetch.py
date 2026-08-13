@@ -107,6 +107,39 @@ def fetch_transcript(video_id, lang="ja-orig"):
     return segments
 
 
+def download_audio(video_id, dest: Path = None):
+    """音量測定用に音声だけを落とす。映像は要らないので全編でも軽い。"""
+    dest = dest or (config.work_dir(video_id) / "audio.m4a")
+    if dest.exists():
+        return dest
+    _run(["-f", "ba[ext=m4a]/ba", "-o", str(dest.with_suffix("")) + ".%(ext)s",
+          url(video_id)])
+    if not dest.exists():
+        found = list(dest.parent.glob(f"{dest.stem}.*"))
+        if not found:
+            raise RuntimeError(f"音声の取得に失敗しました: {dest}")
+        return found[0]
+    return dest
+
+
+def fetch_comments(video_id, limit=400):
+    """コメント本文を取る。タイムスタンプ言及の集計に使う。"""
+    from yt_dlp import YoutubeDL
+
+    opts = {
+        "quiet": True, "no_warnings": True, "skip_download": True,
+        "getcomments": True,
+        "extractor_args": {"youtube": {
+            "lang": ["ja"],
+            "max_comments": [str(limit), "all", "0"],
+            "comment_sort": ["top"],
+        }},
+    }
+    with YoutubeDL(opts) as ydl:
+        info = ydl.extract_info(url(video_id), download=False)
+    return [c.get("text") or "" for c in (info.get("comments") or [])]
+
+
 def download_section(video_id, start, end, dest: Path):
     """指定区間だけを落とす。全編は保存しない。"""
     if dest.exists():
