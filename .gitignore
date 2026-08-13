@@ -4,3 +4,7 @@ __pycache__/
 venv/
 .DS_Store
 Thumbs.db
+
+# 中間生成物と完成動画。台帳だけを追跡する。
+work/
+out/

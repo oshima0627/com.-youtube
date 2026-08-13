@@ -1,0 +1,15 @@
+# 切り抜きの許諾ステータス。
+# publish ステージは status が granted 以外のとき一切動かない。
+# 詳細と依頼文は docs/permission-request.md を参照。
+
+status: pending          # pending | granted | denied
+requested_to: 株式会社BRDOCK
+requested_at: 2026-08-14
+responded_at: null
+
+# 回答で条件が付いた場合、ここへ書き写す。gate はこの内容を読んで判定する。
+conditions:
+  monetization: unknown        # allowed | not_allowed | unknown
+  credit_required: unknown     # 概要欄への出典表記の要否
+  member_images_allowed: unknown  # アイコン・サムネへの本人画像使用
+  excluded_video_types: []     # 先方から指定された対象外の種別
