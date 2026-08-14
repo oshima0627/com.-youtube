@@ -19,7 +19,8 @@ if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 from . import (config, fetch, gate, ledger, metadata, moments,  # noqa: E402
-               probe, render, screen, transcript, upload)
+               probe, render, schedule as schedule_mod, screen, transcript,
+               upload)
 
 
 def cmd_run(args):
@@ -169,6 +170,34 @@ def cmd_publish(args):
     return 0
 
 
+def cmd_schedule(args):
+    plan = schedule_mod.load_plan()
+    if args.rebuild or not plan["slots"]:
+        from datetime import date, timedelta
+        plan = schedule_mod.build_plan(date.today() + timedelta(days=1), args.days)
+        schedule_mod.save_plan(plan)
+
+    print(f"予約計画  {len(plan['slots'])}枠")
+    print()
+    for s in plan["slots"]:
+        print(f"  {s['publish_at_jst']}  {s['video_id']}/{s['clip_id']}")
+        print(f"      {s.get('title', '')}")
+
+    if not args.arm:
+        print()
+        print("実際の予約は入っていません。--arm で発動します。")
+        return 0
+
+    done, blocked = schedule_mod.arm(plan)
+    print()
+    print(f"予約した: {len(done)}件")
+    for s, reasons in blocked:
+        print(f"× {s['video_id']}/{s['clip_id']}")
+        for r in reasons:
+            print(f"    - {r}")
+    return 0 if not blocked else 1
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(prog="clipper")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -185,6 +214,12 @@ def main(argv=None):
     sub.add_parser("held").set_defaults(func=cmd_held)
     sub.add_parser("status").set_defaults(func=cmd_status)
     sub.add_parser("auth").set_defaults(func=cmd_auth)
+
+    p = sub.add_parser("schedule", help="予約投稿の計画と発動")
+    p.add_argument("--days", type=int, default=7)
+    p.add_argument("--rebuild", action="store_true", help="計画を組み直す")
+    p.add_argument("--arm", action="store_true", help="実際に予約を入れる")
+    p.set_defaults(func=cmd_schedule)
 
     p = sub.add_parser("upload", help="非公開でアップロードする")
     p.add_argument("video_id")

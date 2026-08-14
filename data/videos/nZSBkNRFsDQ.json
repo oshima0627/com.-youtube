@@ -1,0 +1,101 @@
+{
+  "video_id": "nZSBkNRFsDQ",
+  "state": "rendered",
+  "meta": {
+    "title": "【ヤバ検証】ゆうまいい奴すぎてメンバーが企画のルール破りまくっても注意できなくてヤバい動画になる説wwwwwww",
+    "description": "リョーマゆうまやまと編集\n\nゆうまが身内炎上したミッションドライブはこちらから\n→ https://youtu.be/5xMWWxmMBDI?si=svPIg_8vWYAAg3ir\n\nこんちゃ！あむぎりです！\n前回ミッションドライブという動画を出したのですがその動画でゆうまが身内炎上しました(n回目)\n僕たちも動画内でゆうまに言ってたのですがコメント欄で予想以上にぶっ叩かれていてちょっとびっくりしましたが怒られているのを見てみんなでこれは絶対にイジるしかないという雰囲気になってました笑\nそこでゆうま食堂をやって挽回してもらったのですがその後にもう一回ミッションドライブをやったらどんな立ち回りをするのか検証してみました笑\n生まれ変わっているのかそれとも前と変わっていないのか是非楽しみにしててください笑\n\n\n◾︎コムドット公式LINEはこちら\n→ https://liff.line.me/1645278921-kWRPP32q/?accountId=comforfan\n\n◾︎コムドットメンバーシップ登録はこちら\n→ https://www.youtube.com/@comdot/join\n\n◾︎コムドット公式グッズBB5の販売はこちら\n→ https://bb5.shop/\n\n◾︎アパレルブランドBIRDOGの販売はこちら\n→ https://birdog.shop/password\n\n\n◾︎コムドット各種SNS\n【Instagram】→ https://instagram.com/p/BoeJWOOhgfk/\n【Twitter】→ https://twitter.com/comyoutuber2\n【TikTok】→ https://www.tiktok.com/@com.youtuber2\n\n◾︎やまと個人アカウント\n【Instagram】→ https://www.instagram.com/com.yamato\n【Twitter】→ http://twitter.com/@comyamato0515\n【TikTok】→https://www.tiktok.com/@com.yamato0515\n\n◾︎ゆうた個人アカウント\n【Instagram】→ https://www.instagram.com/com.yuta\n【Twitter】→ http://twitter.com/@comyuta0305\n【TikTok】→ https://www.tiktok.com/@com.yuta0305\n\n◾︎ゆうま個人アカウント\n【Instagram】→ https://www.instagram.com/com.yuma\n【Twitter】→ http://twitter.com/@comyuma1214\n【TikTok】→ https://www.tiktok.com/@com.yuma1214\n\n◾︎ひゅうが個人アカウント\n【Instagram】→ https://instagram.com/com.hyuga\n【Twitter】→ http://twitter.com/comhyuga1117\n【TikTok】→ https://www.tiktok.com/@com.hyuga1117\n\n◾︎あむぎり個人アカウント\n【Instagram】→ https://www.instagram.com/com.amugiri\n【Twitter】→ https://twitter.com/comamugiri0123\n【TikTok】→ https://www.tiktok.com/@com.amugiri2",
+    "duration": 4499,
+    "upload_date": "20260504",
+    "availability": "public",
+    "channel": "コムドット",
+    "channel_id": "UCRxPrFmRHsXGWfAyE6oqrPQ"
+  },
+  "clips": [
+    {
+      "clip_id": "auto03",
+      "start": 2014.12,
+      "end": 2080.48,
+      "duration": 66.4,
+      "score": 32.073,
+      "position": 0.448,
+      "signals": {
+        "歓声": 0,
+        "驚き": 7,
+        "笑い": 2,
+        "いじり": 2,
+        "コメント": 10
+      },
+      "formats": [],
+      "published": null,
+      "gate": {
+        "result": "held",
+        "reasons": [
+          "許諾ステータスが pending（granted ではない）"
+        ]
+      }
+    },
+    {
+      "clip_id": "auto01",
+      "start": 2110.84,
+      "end": 2178.68,
+      "duration": 67.8,
+      "score": 38.859,
+      "position": 0.469,
+      "signals": {
+        "歓声": 0,
+        "驚き": 1,
+        "笑い": 2,
+        "いじり": 2,
+        "コメント": 14
+      },
+      "formats": [
+        "short"
+      ],
+      "published": null,
+      "gate": {
+        "result": "held",
+        "reasons": [
+          "許諾ステータスが pending（granted ではない）"
+        ]
+      },
+      "hook": "優しすぎて注意できず変な空気になる",
+      "footer": "ゆうまが企画のルール破りに注意できるかを検証する回。メンバーがわざとルールを破って様子を見ている場面",
+      "pending_title": "優しすぎて注意できず変な空気になるのが面白すぎる #コムドット #コムドット切り抜き",
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "2qCVUIB48as",
+        "url": "https://www.youtube.com/watch?v=2qCVUIB48as",
+        "privacy_status": "private",
+        "title": "優しすぎて注意できず変な空気になるのが面白すぎる #コムドット #コムドット切り抜き",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      }
+    },
+    {
+      "clip_id": "auto02",
+      "start": 2204.6,
+      "end": 2272.28,
+      "duration": 67.7,
+      "score": 33.037,
+      "position": 0.49,
+      "signals": {
+        "歓声": 0,
+        "驚き": 4,
+        "笑い": 0,
+        "いじり": 1,
+        "コメント": 11
+      },
+      "formats": [
+        "short"
+      ],
+      "published": null,
+      "gate": {
+        "result": "held",
+        "reasons": [
+          "許諾ステータスが pending（granted ではない）"
+        ]
+      }
+    }
+  ],
+  "notes": []
+}
