@@ -79,12 +79,12 @@ def main():
     for clip in entry["clips"]:
         if wanted and clip["clip_id"] not in wanted:
             continue
-        if not clip.get("hook"):
+        if not (config.work_dir(video_id) / f"{clip['clip_id']}_src.mp4").exists():
             continue
         print(f"\n[{clip['clip_id']}] "
               f"{transcript.hms(clip['start'])}-{transcript.hms(clip['end'])}")
-        print(f"  見出し: {clip['hook']}")
-        print(f"  補足  : {clip['footer']}")
+        print(f"  見出し: {clip.get('hook') or '(未設定)'}")
+        print(f"  補足  : {clip.get('footer') or '(未設定)'}")
         p = sheet_for(video_id, clip)
         if p:
             print(f"  確認   : {p}")

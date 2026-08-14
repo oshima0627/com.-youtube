@@ -104,18 +104,19 @@
       },
       "upload": {
         "thumbnail_set": false,
-        "youtube_video_id": "QO-4_XfiBAg",
-        "url": "https://www.youtube.com/watch?v=QO-4_XfiBAg",
+        "youtube_video_id": "iKxOFHrGeOI",
+        "url": "https://www.youtube.com/watch?v=iKxOFHrGeOI",
         "privacy_status": "private",
-        "title": "ネギトロ巻きを完璧に当てて自分たちで驚愕する場面【コムドット切り抜き】",
+        "title": "別々に選んだ品がまさかの一致で本人たちが驚愕【コムドット切り抜き】",
         "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
         "channel_title": "コムドット名場面ch【切り抜き】"
       },
       "hook": "別々に選んだ品がまさかの一致",
       "footer": "あむぎりの好きなものをコンビニで買ってこいという企画。相談せずに選んだ品を「せーの」で出し合う",
       "previous_upload": {
-        "youtube_video_id": "G77opuymSzo",
-        "url": "https://www.youtube.com/watch?v=G77opuymSzo",
+        "thumbnail_set": false,
+        "youtube_video_id": "QO-4_XfiBAg",
+        "url": "https://www.youtube.com/watch?v=QO-4_XfiBAg",
         "privacy_status": "private",
         "title": "ネギトロ巻きを完璧に当てて自分たちで驚愕する場面【コムドット切り抜き】",
         "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
@@ -148,7 +149,15 @@
           "許諾ステータスが pending（granted ではない）"
         ]
       },
-      "upload": null,
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "YI-cVkayHS8",
+        "url": "https://www.youtube.com/watch?v=YI-cVkayHS8",
+        "privacy_status": "private",
+        "title": "黒ひげのお菓子が飛び出す瞬間にビビりすぎる男【コムドット切り抜き】",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
       "hook": "黒ひげのお菓子が飛び出す瞬間にビビりすぎる",
       "footer": "黒ひげ危機一発の人形をお菓子に変え、飛び出したところを口でキャッチする企画。あむぎりが10年前に個人チャンネルでやっていた企画の再挑戦",
       "previous_upload": {
