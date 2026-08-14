@@ -5,6 +5,7 @@
 人物が落ちるため、背景にぼかした全体像を敷き、前景に原寸を重ねる方式を採る。
 """
 
+import re
 import subprocess
 from pathlib import Path
 
@@ -69,7 +70,8 @@ def _ffmpeg(args, cwd):
         raise RuntimeError(f"ffmpeg が失敗しました:\n{r.stderr.strip()[-2500:]}")
 
 
-def render_short(src: Path, dest: Path, srt: Path = None, overlay: Path = None):
+def render_short(src: Path, dest: Path, srt: Path = None, overlay: Path = None,
+                 duration=None):
     """9:16。背景はぼかした全体像、前景に原寸を中央配置する。
 
     srt は既定で焼き込まない。コムドットの本編は字幕が既に焼き込まれており、
@@ -91,10 +93,54 @@ def render_short(src: Path, dest: Path, srt: Path = None, overlay: Path = None):
         vf += f";{last}[1:v]overlay=0:0[out]"
         last = "[out]"
 
+    trim = ["-t", str(duration)] if duration else []
     _ffmpeg([*inputs, "-filter_complex", vf, "-map", last, "-map", "0:a",
+             *trim,
              "-c:v", "libx264", "-preset", "medium", "-crf", "20",
              "-c:a", "aac", "-b:a", "192k", dest.name], cwd=src.parent)
     return dest
+
+
+SCENE_THRESHOLD = 0.4      # これ以上の変化を場面転換とみなす
+TAIL_RATIO = 0.25          # 末尾のこの範囲に転換があれば切り詰める
+
+
+def find_scene_cuts(src: Path, threshold=SCENE_THRESHOLD):
+    """場面転換の時刻を返す。素材の先頭を0秒とする。"""
+    r = subprocess.run(
+        ["ffmpeg", "-hide_banner", "-nostats", "-loglevel", "error",
+         "-i", str(src), "-vf",
+         f"select='gt(scene,{threshold})',metadata=print:file=-",
+         "-an", "-f", "null", "-"],
+        capture_output=True, encoding="utf-8", errors="replace")
+    cuts = []
+    for line in r.stdout.splitlines():
+        m = re.search(r"pts_time:([\d.]+)", line)
+        if m:
+            cuts.append(float(m.group(1)))
+    return sorted(cuts)
+
+
+def tail_scene_cuts(src: Path, duration, tail_ratio=TAIL_RATIO,
+                    threshold=SCENE_THRESHOLD):
+    """末尾にある場面転換の時刻を返す。**自動では切らない。**
+
+    区間の終わりが別のカットに食い込むと、話が終わっていないのに関係ない
+    映像で終わる切り抜きになる。実際に2本がそうなっていた。
+
+    ただし**画素の変化だけでは「カメラの切り替え」と「話題の変わり目」を
+    区別できない。** 正解が分かっている4本で閾値を振って測った結果:
+
+        0.4 / 0.5   実際の問題2件を検出、誤検出1件
+        0.6         1件のみ検出、誤検出0件
+        0.7 以上    検出0件
+
+    どの値でも分離しない。コムドットは同じ場面内でカメラを頻繁に切り替える。
+    切り詰めは中身を捨てる操作なので、誤検出の害のほうが大きい。
+    ここは検出結果を出すだけにして、採否は文脈を持つ側が決める。
+    """
+    tail_start = duration * (1 - tail_ratio)
+    return [c for c in find_scene_cuts(src, threshold) if tail_start <= c < duration]
 
 
 class TooLong(RuntimeError):
