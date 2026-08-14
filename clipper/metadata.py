@@ -30,6 +30,23 @@ class InvalidTitle(ValueError):
     pass
 
 
+# ショートのタイトルの型。既存4チャンネルのショート120本を実測して決めた
+# （scripts/market_scan.py）。伸びている上位は例外なくこの形だった。
+#
+#   赤組のマシュマロキャッチがダサくて最高すぎるwwwwww #コムドット #赤組
+#   減量終わりにマックを食べるひゅうがが飯テロすぎた #コムドット #コムドット切り抜き
+#
+# 共通するのは3点。ハッシュタグを本文に入れる、メンバー名を入れる、
+# 「〜すぎる」で断定して終わる。【】は長尺の作法でショートでは使われていない。
+SHORT_TAGS = "#コムドット #コムドット切り抜き"
+
+
+def short_title(body, extra_tags=""):
+    """ショートのタイトルを組み立てる。本文＋ハッシュタグ。"""
+    tags = f"{SHORT_TAGS} {extra_tags}".strip()
+    return f"{body} {tags}"[:TITLE_MAX]
+
+
 def validate_title(title):
     """投稿前にタイトルを検査する。問題があれば InvalidTitle を投げる。"""
     if not title or not title.strip():

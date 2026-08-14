@@ -291,6 +291,45 @@ def replace_private(video_id, clip_id, title=None, service=None):
     return info
 
 
+def retitle(video_id, clip_id, title, service=None):
+    """公開設定を触らずにタイトルだけ差し替える。
+
+    **映像を作り直す必要が無いときは上げ直さない。** videos.update は50ユニットで
+    videos.insert の1,600に対して桁が違い、動画IDも再生数も維持される。
+    """
+    from googleapiclient.errors import HttpError
+
+    entry, clip = find_clip(video_id, clip_id)
+    up = clip.get("upload")
+    if not up:
+        raise UploadBlocked(f"{clip_id} はまだアップロードされていません")
+    metadata.validate_title(title)
+
+    service = service or get_service()
+    yt_id = up["youtube_video_id"]
+    try:
+        items = service.videos().list(
+            part="snippet", id=yt_id).execute().get("items", [])
+    except HttpError as e:
+        _raise_if_quota(e)
+        raise
+    if not items:
+        raise UploadBlocked(f"動画が見つかりません: {yt_id}")
+
+    snippet = items[0]["snippet"]
+    snippet["title"] = title[:metadata.TITLE_MAX]
+    # categoryId は update に必須。読み取り専用の項目は送り返さない
+    body = {"id": yt_id, "snippet": {
+        k: snippet[k] for k in
+        ("title", "description", "tags", "categoryId",
+         "defaultLanguage", "defaultAudioLanguage") if k in snippet}}
+    service.videos().update(part="snippet", body=body).execute()
+
+    up["title"] = title
+    ledger.put_clips(entry, [clip])
+    return up
+
+
 def publish(video_id, clip_id, service=None, segments=None):
     """非公開の動画を公開に切り替える。**gate を通ったものだけ。**
 
