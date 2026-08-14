@@ -1,0 +1,102 @@
+{
+  "video_id": "MgO0lCUtlx4",
+  "state": "rendered",
+  "meta": {
+    "title": "【矛盾検証】不眠症のゆうたvs絶対に寝れる1日過ごし方",
+    "description": "ひゅうがあむぎり編集\n\n未公開シーンはこちら(メンシプ限定公開)\n→https://youtu.be/mqdYBXaeCK4\n\n今日はなんと僕メイン企画となってます！\nあむぎりの舌手術オムニバスの動画で話した俺が夜眠れないみたいな話が今回の企画をやるきっかけになってるみたい🤔\nそもそも同じ人いる？！\nなんか無音の空間にいるとどんどん考えが連想で膨らんでいって寝付けないことない？笑\n今日はそれを解決すべくメンバーたちが立ち上がってくれました！\nゲストもいるけどそれはあまり気にせずに！\nじゃあ今日はこの辺で！おやすみ〜グンナイツ\n(概要欄ゆうた)\n\n◾︎コムドット公式LINEはこちら\n→ https://liff.line.me/1645278921-kWRPP32q/?accountId=comforfan\n\n◾︎コムドットメンバーシップ登録はこちら\n→ https://www.youtube.com/@comdot/join\n\n◾︎コムドット公式グッズBB5の販売はこちら\n→ https://bb5.shop/\n\n◾︎アパレルブランドBIRDOGの販売はこちら\n→ https://birdog.shop/password\n\n\n◾︎コムドット各種SNS\n【Instagram】→ https://instagram.com/p/BoeJWOOhgfk/\n【Twitter】→ https://twitter.com/comyoutuber2\n【TikTok】→ https://www.tiktok.com/@com.youtuber2\n\n◾︎やまと個人アカウント\n【Instagram】→ https://www.instagram.com/com.yamato\n【Twitter】→ http://twitter.com/@comyamato0515\n【TikTok】→https://www.tiktok.com/@com.yamato0515\n\n◾︎ゆうた個人アカウント\n【Instagram】→ https://www.instagram.com/com.yuta\n【Twitter】→ http://twitter.com/@comyuta0305\n【TikTok】→ https://www.tiktok.com/@com.yuta0305\n\n◾︎ゆうま個人アカウント\n【Instagram】→ https://www.instagram.com/com.yuma\n【Twitter】→ http://twitter.com/@comyuma1214\n【TikTok】→ https://www.tiktok.com/@com.yuma1214\n\n◾︎ひゅうが個人アカウント\n【Instagram】→ https://instagram.com/com.hyuga\n【Twitter】→ http://twitter.com/comhyuga1117\n【TikTok】→ https://www.tiktok.com/@com.hyuga1117\n\n◾︎あむぎり個人アカウント\n【Instagram】→ https://www.instagram.com/com.amugiri\n【Twitter】→ https://twitter.com/comamugiri0123\n【TikTok】→ https://www.tiktok.com/@com.amugiri2",
+    "duration": 5153,
+    "upload_date": "20260509",
+    "availability": "public",
+    "channel": "コムドット",
+    "channel_id": "UCRxPrFmRHsXGWfAyE6oqrPQ"
+  },
+  "clips": [
+    {
+      "clip_id": "auto03",
+      "start": 1217.16,
+      "end": 1277.64,
+      "duration": 60.5,
+      "score": 28.1,
+      "position": 0.236,
+      "signals": {
+        "歓声": 0,
+        "驚き": 2,
+        "笑い": 0,
+        "いじり": 0,
+        "コメント": 10
+      },
+      "formats": [],
+      "published": null,
+      "gate": {
+        "result": "held",
+        "reasons": [
+          "許諾ステータスが pending（granted ではない）"
+        ]
+      }
+    },
+    {
+      "clip_id": "auto01",
+      "start": 1324.72,
+      "end": 1387.31,
+      "duration": 62.6,
+      "score": 45.766,
+      "position": 0.257,
+      "signals": {
+        "歓声": 0,
+        "驚き": 1,
+        "笑い": 2,
+        "いじり": 0,
+        "コメント": 23
+      },
+      "formats": [
+        "short"
+      ],
+      "published": null,
+      "gate": {
+        "result": "held",
+        "reasons": [
+          "許諾ステータスが pending（granted ではない）"
+        ]
+      },
+      "excluded": "高校対中学のバスケの試合で第三者が多数映るため使用しない"
+    },
+    {
+      "clip_id": "auto02",
+      "start": 2820.08,
+      "end": 2885.96,
+      "duration": 65.9,
+      "score": 39.577,
+      "position": 0.547,
+      "signals": {
+        "歓声": 4,
+        "驚き": 8,
+        "笑い": 1,
+        "いじり": 2,
+        "コメント": 11
+      },
+      "formats": [
+        "short"
+      ],
+      "published": null,
+      "gate": {
+        "result": "held",
+        "reasons": [
+          "許諾ステータスが pending（granted ではない）"
+        ]
+      },
+      "hook": "前人未到の5分体幹をクリア",
+      "footer": "不眠症のゆうたが「絶対に寝れる1日」を過ごす検証企画。その中で行われた体幹対決で、誰も届いていなかった5分に到達した場面",
+      "pending_title": "前人未到の5分体幹をクリアした瞬間がヤバすぎる #コムドット #コムドット切り抜き",
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "Mo-y9bYqzFE",
+        "url": "https://www.youtube.com/watch?v=Mo-y9bYqzFE",
+        "privacy_status": "private",
+        "title": "前人未到の5分体幹をクリアした瞬間がヤバすぎる #コムドット #コムドット切り抜き",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      }
+    }
+  ],
+  "notes": []
+}
