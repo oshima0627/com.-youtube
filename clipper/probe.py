@@ -7,7 +7,7 @@
 import json
 import subprocess
 
-from . import config, fetch, heatmap as heatmap_mod, signals as sig
+from . import config, fetch, heatmap as heatmap_mod, moments, signals as sig
 
 # 8kHz モノラルに落としてから測る。音量の山を見るだけなので情報量は足りる
 ASTATS_FILTER = ("astats=metadata=1:reset=8000,"
@@ -25,20 +25,25 @@ def measure_loudness(audio_path):
     return sig.loudness_scores(sig.parse_astats(r.stdout))
 
 
-def probe(video_id, with_comments=True, refresh=False):
+def probe(video_id, with_comments=True, refresh=False, with_loudness=False):
     """4信号を集めて signals.json に書き、辞書を返す。"""
     wd = config.work_dir(video_id)
     dest = wd / "signals.json"
     if dest.exists() and not refresh:
         return json.loads(dest.read_text(encoding="utf-8"))
 
+    # 音量の重みが 0 のときは測らない。実測で効かないと分かって 0 にしたのに
+    # 全編の音声を落として測るのは純粋な無駄で、3時間の動画では特に重い。
+    # 再評価したいときは with_loudness=True を渡す。
+    #
     # 信号が1つ欠けても他で動かす。ヒートマップは公開24日未満で必ず欠け、
     # 音声取得も 403 で落ちることがある。全部揃うことを前提にしない。
     loud = []
-    try:
-        loud = measure_loudness(fetch.download_audio(video_id))
-    except Exception as e:                                      # noqa: BLE001
-        print(f"! 音量を測れませんでした（続行）: {str(e)[:90]}")
+    if with_loudness or moments.W_LOUD:
+        try:
+            loud = measure_loudness(fetch.download_audio(video_id))
+        except Exception as e:                                  # noqa: BLE001
+            print(f"! 音量を測れませんでした（続行）: {str(e)[:90]}")
 
     segments = fetch.fetch_transcript(video_id)
     lexical = sig.lexical_marks(segments)

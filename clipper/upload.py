@@ -65,9 +65,34 @@ def get_service():
     return build("youtube", "v3", credentials=creds)
 
 
+def _raise_if_quota(e):
+    """クォータ超過を UploadBlocked に翻訳する。
+
+    既定は 10,000ユニット/日で、videos.insert が1,600と重い。超過すると
+    channels.list の1ユニットすら通らず、状態の確認すらできなくなる。
+    回復は太平洋時間の0時（JSTの16〜17時）で、日本時間の日付が変わっても戻らない。
+
+    **OAuth クライアントを他プロジェクトと共有しているとクォータも共有される。**
+    切り離すには別の Google Cloud プロジェクトで OAuth クライアントを作り直す。
+    """
+    text = str(e)
+    if "quotaExceeded" in text or "exceeded your" in text:
+        raise UploadBlocked(
+            "YouTube Data API の1日あたりクォータを超過しています。\n"
+            "  回復は太平洋時間の0時（JSTの16〜17時ごろ）。日付が変わっても戻りません。\n"
+            "  このクライアントを他プロジェクトと共有している場合、"
+            "クォータも共有されます。")
+    raise
+
+
 def current_channel(service):
     """いま認証しているトークンがどのチャンネルに紐づくかを返す。"""
-    items = service.channels().list(part="snippet", mine=True).execute().get("items", [])
+    from googleapiclient.errors import HttpError
+    try:
+        items = service.channels().list(
+            part="snippet", mine=True).execute().get("items", [])
+    except HttpError as e:
+        _raise_if_quota(e)
     if not items:
         return None
     return {"id": items[0]["id"], "title": items[0]["snippet"]["title"]}
