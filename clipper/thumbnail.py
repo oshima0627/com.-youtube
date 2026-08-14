@@ -35,6 +35,27 @@ def grab_frame(src: Path, at: float, dest: Path):
     return dest
 
 
+BASE_SIZE = 72
+MIN_SIZE = 42
+
+
+def fit_lines(d, hook, max_width):
+    """動画と同じ位置で改行し、収まるようフォントサイズ側で調整する。
+
+    サムネイルは動画より横幅が広いため、同じ関数に幅を渡すと違う位置で折れる。
+    見出しは動画と同じ文言なので、割れ方まで揃っていないと別物に見える。
+    改行位置を先に決めて、文字の大きさで合わせる。
+    """
+    lines = overlay.wrap(d, hook, overlay.font(78), overlay.TEXT_MAX_WIDTH)
+    size = BASE_SIZE
+    while size > MIN_SIZE:
+        f = overlay.font(size)
+        if max(d.textlength(x, font=f) for x in lines) <= max_width:
+            return lines, f
+        size -= 2
+    return lines, overlay.font(MIN_SIZE)
+
+
 def compose(frame_path: Path, hook, dest: Path):
     """フレームの下側に帯を敷き、hook を大きく載せる。
 
@@ -47,8 +68,7 @@ def compose(frame_path: Path, hook, dest: Path):
         img.save(dest)
         return dest
 
-    f = overlay.font(72)
-    lines = overlay.wrap(d, hook, f, WIDTH - 110)
+    lines, f = fit_lines(d, hook, WIDTH - 110)
     block_h = len(lines) * f.size + (len(lines) - 1) * 16
 
     # 帯は不透明にする。半透明だと元動画の焼き込みテロップが透けて重なり、

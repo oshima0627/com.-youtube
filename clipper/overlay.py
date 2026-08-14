@@ -14,6 +14,8 @@ ffmpeg の drawtext は Windows でフォントパスのエスケープが壊れ
 字形と改行を完全に制御できる。
 """
 
+import math
+
 from PIL import Image, ImageDraw, ImageFont
 
 from . import config
@@ -47,7 +49,13 @@ PARTICLES = ("という", "について", "によって", "からは", "まで�
              "では", "には", "とは", "でも", "ても",
              "は", "が", "を", "に", "へ", "と", "で", "も", "や", "の", "て")
 
-MIN_LINE_RATIO = 0.45      # 1行の最短の目安。これを割る位置では折らない
+# 1行の最短の目安。これを割る位置では折らない。
+# 緩いと、点数の高い切れ目（閉じ括弧のあとなど）が行頭近くにあるときに
+# そこで採用され、極端に短い行と余分な行数が生まれる。実際に
+# 「「喋れない」／と言われて本当に声が／出なくなる」と3行に割れた。
+MIN_LINE_RATIO = 0.62
+MARGIN = 64
+TEXT_MAX_WIDTH = 1080 - MARGIN * 2      # 本番の折り返し幅。テストもこれを使う
 ORPHAN_MAX = 2             # 最終行がこの文字数以下なら詰め直す
 
 
@@ -108,7 +116,8 @@ def _wrap_one(draw, text, f, max_width):
         hi = 1
         while hi < len(rest) and _fits(draw, rest[:hi + 1], f, max_width):
             hi += 1
-        lo = max(1, int(hi * MIN_LINE_RATIO))
+        # 切り上げる。切り捨てると下限が緩み、短すぎる行を許してしまう
+        lo = max(1, math.ceil(hi * MIN_LINE_RATIO))
 
         best_i, best_s = hi, -1
         for i in range(hi, lo - 1, -1):
@@ -210,7 +219,7 @@ def build(hook, footer, dest, width=1080, height=1920, handle="@com.-meibamen"):
         img = _scrim(img, top_zone, bottom_zone, width, height)
     d = ImageDraw.Draw(img)
 
-    margin = 64
+    margin = MARGIN
     max_w = width - margin * 2
 
     if handle and (hook or footer):
