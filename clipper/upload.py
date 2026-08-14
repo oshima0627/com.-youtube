@@ -49,7 +49,18 @@ def get_service():
     if TOKEN.exists():
         creds = Credentials.from_authorized_user_file(str(TOKEN), SCOPES)
     if creds and creds.expired and creds.refresh_token:
-        creds.refresh(Request())
+        try:
+            creds.refresh(Request())
+        except Exception as e:                                  # noqa: BLE001
+            # OAuth 同意画面が「テスト中」のままだとリフレッシュトークンが
+            # 7日で失効する。無人運転の途中でここに落ちるので、症状と対処を出す
+            if "invalid_grant" in str(e):
+                raise UploadBlocked(
+                    "リフレッシュトークンが失効しています（invalid_grant）。\n"
+                    "  OAuth 同意画面が「テスト中」だと7日で失効します。\n"
+                    f"  {TOKEN.name} を削除し、python -m clipper auth をやり直してください。\n"
+                    "  詳細は docs/youtube-api-setup.md。")
+            raise
     if not creds or not creds.valid:
         if not CLIENT_SECRET.exists():
             raise UploadBlocked(
