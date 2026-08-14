@@ -111,8 +111,8 @@
         "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
         "channel_title": "コムドット名場面ch【切り抜き】"
       },
-      "hook": "ネギトロ巻きを完璧に言い当てて本人たちが驚愕",
-      "footer": "同じ企画の連想ゲーム。的中した直後、「全くやらせじゃない」と本人たちが念を押す",
+      "hook": "別々に選んだ品がまさかの一致",
+      "footer": "あむぎりの好きなものをコンビニで買ってこいという企画。相談せずに選んだ品を「せーの」で出し合う",
       "previous_upload": {
         "youtube_video_id": "G77opuymSzo",
         "url": "https://www.youtube.com/watch?v=G77opuymSzo",
@@ -120,7 +120,9 @@
         "title": "ネギトロ巻きを完璧に当てて自分たちで驚愕する場面【コムドット切り抜き】",
         "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
         "channel_title": "コムドット名場面ch【切り抜き】"
-      }
+      },
+      "pending_title": "別々に選んだ品がまさかの一致で本人たちが驚愕【コムドット切り抜き】",
+      "trimmed_to": 50.5
     },
     {
       "clip_id": "auto01",
@@ -146,7 +148,10 @@
           "許諾ステータスが pending（granted ではない）"
         ]
       },
-      "upload": {
+      "upload": null,
+      "hook": "黒ひげのお菓子が飛び出す瞬間にビビりすぎる",
+      "footer": "黒ひげ危機一発の人形をお菓子に変え、飛び出したところを口でキャッチする企画。あむぎりが10年前に個人チャンネルでやっていた企画の再挑戦",
+      "previous_upload": {
         "thumbnail_set": false,
         "youtube_video_id": "s4-bgaHd5Uc",
         "url": "https://www.youtube.com/watch?v=s4-bgaHd5Uc",
@@ -155,16 +160,7 @@
         "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
         "channel_title": "コムドット名場面ch【切り抜き】"
       },
-      "hook": "小さい音にビビりすぎて後ろに下がる",
-      "footer": "あむぎり考案の罰ゲーム企画。調子に乗った2人を懲らしめる回の一場面",
-      "previous_upload": {
-        "youtube_video_id": "51MsOlLL_c4",
-        "url": "https://www.youtube.com/watch?v=51MsOlLL_c4",
-        "privacy_status": "private",
-        "title": "小さい音にビビりすぎてイジられる場面【コムドット切り抜き】",
-        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
-        "channel_title": "コムドット名場面ch【切り抜き】"
-      }
+      "pending_title": "黒ひげのお菓子が飛び出す瞬間にビビりすぎる男【コムドット切り抜き】"
     }
   ],
   "notes": []
