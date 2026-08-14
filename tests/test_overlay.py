@@ -28,6 +28,90 @@ class TestWrap:
         assert overlay.wrap(_draw(), "", overlay.font(46), 900) == []
 
 
+class TestBreaksAtSentenceEnd:
+    def test_always_breaks_after_a_period(self):
+        """句点では必ず改行する。1行に収まる場合でも分ける。"""
+        d = _draw()
+        lines = overlay.wrap(d, "一文目。二文目。", overlay.font(46), 2000)
+        assert lines == ["一文目。", "二文目。"]
+
+    def test_question_and_exclamation_too(self):
+        d = _draw()
+        assert overlay.wrap(d, "本当？そうなる！", overlay.font(46), 2000) == \
+            ["本当？", "そうなる！"]
+
+
+class TestBreaksAtReadablePlaces:
+    def _lines(self, text, size=78, width=900):
+        return overlay.wrap(_draw(), text, overlay.font(size), width)
+
+    def test_prefers_breaking_after_a_comma(self):
+        # 読点が1行目に収まる範囲にあるときは、そこで折る
+        lines = self._lines("企画で、被験者は本人が選んだ")
+        assert lines[0].endswith("、"), lines
+
+    def test_falls_back_when_the_comma_is_out_of_reach(self):
+        """読点が1行目の幅を超えた先にある場合は、届く範囲で最良の位置を選ぶ。
+        語の途中では割らない。"""
+        lines = self._lines("プロの催眠術師を事務所に招いた企画で、被験者は本人が選んだ")
+        assert len(lines) > 1
+        assert lines[0][-1] not in overlay.FORBID_LINE_END
+        assert lines[1][0] not in overlay.FORBID_LINE_START
+
+    def test_prefers_breaking_after_a_particle(self):
+        lines = self._lines("カメラにアピールしたくてたまらなくなる暗示をかけられた")
+        assert lines[0][-1] in "はがをにへとでもやのりてえ" or lines[0].endswith("、")
+
+    def test_breaks_after_the_te_form_not_inside_the_word(self):
+        """実際にサムネイルで「たまらな／くなる」と割れた回帰。"""
+        lines = self._lines("カメラにアピールしたくてたまらなくなる暗示",
+                            size=72, width=1170)
+        assert len(lines) == 2
+        assert lines[0].endswith("て"), lines
+        assert lines[1] == "たまらなくなる暗示", lines
+
+    def test_prefers_a_script_boundary_over_the_middle_of_a_word(self):
+        """助詞が届かないときは文字種の変わり目で折る。"""
+        lines = self._lines("ドッキリ大成功おめでとうございました", size=78, width=700)
+        for a, b in zip(lines, lines[1:]):
+            assert overlay._break_score(a + b, len(a)) > 1, lines
+
+    def test_does_not_orphan_one_character(self):
+        """「〜下が / る」のように最終行へ1文字だけ落とさない。"""
+        for text in ("小さい音にビビりすぎて後ろに下がる",
+                     "ネギトロ巻きを完璧に言い当てて本人たちが驚愕する"):
+            lines = self._lines(text)
+            if len(lines) > 1:
+                assert len(lines[-1]) > overlay.ORPHAN_MAX, (text, lines)
+
+
+class TestKinsoku:
+    def _lines(self, text, width=900):
+        return overlay.wrap(_draw(), text, overlay.font(78), width)
+
+    def test_no_line_starts_with_punctuation(self):
+        text = "術者いわく、かかるかどうかは本人が楽しめているかで決まる、らしい"
+        for line in self._lines(text):
+            assert line[0] not in overlay.FORBID_LINE_START, line
+
+    def test_no_line_starts_with_a_small_kana(self):
+        text = "ちょっとだけ声が出にくくなってしまったっていう話をしていた"
+        for line in self._lines(text):
+            assert line[0] not in "ぁぃぅぇぉっゃゅょーァィゥェォッャュョ", line
+
+    def test_no_line_ends_with_an_opening_bracket(self):
+        text = "術者が「普段できない自分を楽しむ」という暗示をかけた直後の場面"
+        for line in self._lines(text):
+            assert line[-1] not in overlay.FORBID_LINE_END, line
+
+    def test_still_fits_the_width(self):
+        d = _draw()
+        f = overlay.font(78)
+        text = "プロの催眠術師を事務所に招いた企画。術者いわく、かかるかどうかは本人が楽しめているかで決まる"
+        for line in overlay.wrap(d, text, f, 900):
+            assert d.textlength(line, font=f) <= 900, line
+
+
 class TestBuild:
     def test_writes_a_transparent_png_of_the_right_size(self, tmp_path):
         p = overlay.build("見出し", "補足", tmp_path / "o.png")

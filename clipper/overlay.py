@@ -30,22 +30,133 @@ def font(size):
     return ImageFont.truetype(FONT_PATH, size, index=0)
 
 
-def wrap(draw, text, f, max_width):
-    """日本語は単語境界が無いので、実測幅で1文字ずつ折り返す。"""
-    lines, cur = [], ""
+# 行頭に来てはいけない文字（行頭禁則）。句読点・閉じ括弧・小書き仮名・長音符。
+FORBID_LINE_START = "。、，．！？!?」』）］｝〉》ぁぃぅぇぉっゃゅょゎァィゥェォッャュョヮーゝゞ・:;"
+# 行末に来てはいけない文字（行末禁則）。開き括弧。
+FORBID_LINE_END = "「『（［｛〈《"
+
+SENTENCE_END = "。！？!?"
+COMMA = "、，,"
+CLOSING = "」』）"
+OPENING = "「『（"
+
+# この語で終わる位置は文節の切れ目になりやすい。長いものから照合する。
+# テ形の「て」を入れてある。無いと「たまらな／くなる」のように語中で割れた。
+PARTICLES = ("という", "について", "によって", "からは", "までは", "ながら",
+             "から", "まで", "より", "って", "ので", "けど", "ため", "たり",
+             "では", "には", "とは", "でも", "ても",
+             "は", "が", "を", "に", "へ", "と", "で", "も", "や", "の", "て")
+
+MIN_LINE_RATIO = 0.45      # 1行の最短の目安。これを割る位置では折らない
+ORPHAN_MAX = 2             # 最終行がこの文字数以下なら詰め直す
+
+
+def _break_score(text, i):
+    """text[:i] と text[i:] に割るときの良さ。大きいほど良く、0 は禁止。"""
+    if i <= 0 or i >= len(text):
+        return 0
+    prev, nxt = text[i - 1], text[i]
+    if nxt in FORBID_LINE_START:
+        return 0
+    if prev in FORBID_LINE_END:
+        return 0
+    if prev in SENTENCE_END:
+        return 100
+    if prev in COMMA:
+        return 80
+    if prev in CLOSING:
+        return 60
+    if nxt in OPENING:
+        return 50
+    for p in PARTICLES:
+        if text[:i].endswith(p):
+            return 20 + len(p)
+    # 文字種が変わる位置（漢字↔かな、かな↔カタカナ など）は語の境目のことが多い。
+    # 助詞が見つからないときの次善手。これが無いと、どこでも1点になった結果
+    # 幅いっぱいの位置が選ばれ、語の途中で割れる
+    if _script(prev) != _script(nxt):
+        return 10
+    return 1                # どこでも割れるが最後の手段
+
+
+def _script(ch):
+    """文字種をざっくり分類する。語の境目の推定に使う。"""
+    o = ord(ch)
+    if 0x3040 <= o <= 0x309F:
+        return "hiragana"
+    if 0x30A0 <= o <= 0x30FF:
+        return "katakana"
+    if 0x4E00 <= o <= 0x9FFF:
+        return "kanji"
+    if ch.isascii() and ch.isalnum():
+        return "latin"
+    return "other"
+
+
+def _fits(draw, s, f, max_width):
+    return draw.textlength(s, font=f) <= max_width
+
+
+def _wrap_one(draw, text, f, max_width):
+    """1文を折り返す。切れ目の良さを優先し、語の途中で割らない。"""
+    lines, rest = [], text
+    while rest:
+        if _fits(draw, rest, f, max_width):
+            lines.append(rest)
+            break
+
+        hi = 1
+        while hi < len(rest) and _fits(draw, rest[:hi + 1], f, max_width):
+            hi += 1
+        lo = max(1, int(hi * MIN_LINE_RATIO))
+
+        best_i, best_s = hi, -1
+        for i in range(hi, lo - 1, -1):
+            s = _break_score(rest, i)
+            if s > best_s:
+                best_s, best_i = s, i
+            if best_s >= 60:            # 句読点・閉じ括弧なら十分good
+                break
+        lines.append(rest[:best_i])
+        rest = rest[best_i:]
+    return lines
+
+
+def _split_sentences(text):
+    """句点で区切る。**句点では必ず改行する**ため、文ごとに分けて折り返す。"""
+    out, cur = [], ""
     for ch in text:
-        if ch == "\n":
-            lines.append(cur)
+        cur += ch
+        if ch in SENTENCE_END:
+            out.append(cur)
             cur = ""
-            continue
-        trial = cur + ch
-        if draw.textlength(trial, font=f) > max_width and cur:
-            lines.append(cur)
-            cur = ch
-        else:
-            cur = trial
     if cur:
-        lines.append(cur)
+        out.append(cur)
+    return out
+
+
+def wrap(draw, text, f, max_width):
+    """日本語を読みやすい位置で折り返す。
+
+    句点で改行し、やむを得ず折るときは文節の切れ目（読点・括弧・助詞のあと）を
+    選ぶ。行頭に句読点や小書き仮名が来ないよう禁則処理もかける。
+    最終行が1〜2文字だけ残る場合は、幅を詰めて割り直す。
+    """
+    if not text:
+        return []
+    lines = []
+    for para in text.split("\n"):
+        if not para:
+            lines.append("")
+            continue
+        for sentence in _split_sentences(para):
+            got = _wrap_one(draw, sentence, f, max_width)
+            # 泣き別れ（最終行に1〜2文字だけ残る）を避ける
+            if len(got) > 1 and len(got[-1]) <= ORPHAN_MAX:
+                tighter = _wrap_one(draw, sentence, f, max_width * 0.88)
+                if not (len(tighter) > 1 and len(tighter[-1]) <= ORPHAN_MAX):
+                    got = tighter
+            lines.extend(got)
     return lines
 
 
