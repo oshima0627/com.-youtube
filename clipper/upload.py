@@ -133,6 +133,37 @@ def assert_expected_channel(service):
     return ch
 
 
+def set_thumbnail(service, yt_id, video_id, clip):
+    """サムネイルを設定する。失敗しても動画自体は上がっているので止めない。
+
+    thumbnails.set は短時間に何度も呼ぶと 429 で弾かれる。クォータ超過とは
+    別物で、時間を置けば通る。チャンネルの電話番号確認が未了でも 403 になる。
+    """
+    from googleapiclient.errors import HttpError
+    from googleapiclient.http import MediaFileUpload
+
+    from . import thumbnail as thumb_mod
+
+    try:
+        path = thumb_mod.build_for_clip(video_id, clip)
+    except Exception as e:                                      # noqa: BLE001
+        print(f"! サムネイルを作れませんでした（続行）: {str(e)[:90]}")
+        return False
+
+    try:
+        service.thumbnails().set(
+            videoId=yt_id, media_body=MediaFileUpload(str(path))).execute()
+        return True
+    except HttpError as e:
+        _raise_if_quota(e)
+        print(f"! サムネイルを設定できませんでした（続行）: {str(e)[:120]}")
+        if "429" in str(e):
+            print("  差し替えの頻度制限です。時間を置いて再実行してください")
+        else:
+            print("  チャンネルの電話番号確認が済んでいるか確認してください")
+        return False
+
+
 def find_clip(video_id, clip_id):
     entry = ledger.load(video_id)
     if not entry:
@@ -175,7 +206,9 @@ def upload_private(video_id, clip_id, title, service=None):
             print(f"  アップロード {int(status.progress() * 100)}%")
 
     yt_id = response["id"]
+    thumb_ok = set_thumbnail(service, yt_id, video_id, clip)
     clip["upload"] = {
+        "thumbnail_set": thumb_ok,
         "youtube_video_id": yt_id,
         "url": f"https://www.youtube.com/watch?v={yt_id}",
         "privacy_status": "private",

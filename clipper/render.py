@@ -69,20 +69,29 @@ def _ffmpeg(args, cwd):
         raise RuntimeError(f"ffmpeg が失敗しました:\n{r.stderr.strip()[-2500:]}")
 
 
-def render_short(src: Path, dest: Path, srt: Path = None):
+def render_short(src: Path, dest: Path, srt: Path = None, overlay: Path = None):
     """9:16。背景はぼかした全体像、前景に原寸を中央配置する。
 
     srt は既定で焼き込まない。コムドットの本編は字幕が既に焼き込まれており、
     重ねると二重字幕になる。素材側に字幕が無い場合だけ srt を渡す。
+
+    overlay に透過PNGを渡すと、上下のぼかし帯に情報を載せる。画面の約68%が
+    死角なので、ここに元動画に無い文脈を置くのが独自性の実体になる。
     """
     fmt = config.settings()["formats"]["short"]
     vf = SHORT_FILTER.format(w=fmt["width"], h=fmt["height"])
+    last = "[v]"
     if srt:
-        vf += f";[v]subtitles={srt.name}:force_style='{SUB_STYLE_SHORT}'[out]"
+        vf += f";{last}subtitles={srt.name}:force_style='{SUB_STYLE_SHORT}'[s]"
+        last = "[s]"
+
+    inputs = ["-i", src.name]
+    if overlay:
+        inputs += ["-i", overlay.name]
+        vf += f";{last}[1:v]overlay=0:0[out]"
         last = "[out]"
-    else:
-        last = "[v]"
-    _ffmpeg(["-i", src.name, "-filter_complex", vf, "-map", last, "-map", "0:a",
+
+    _ffmpeg([*inputs, "-filter_complex", vf, "-map", last, "-map", "0:a",
              "-c:v", "libx264", "-preset", "medium", "-crf", "20",
              "-c:a", "aac", "-b:a", "192k", dest.name], cwd=src.parent)
     return dest
