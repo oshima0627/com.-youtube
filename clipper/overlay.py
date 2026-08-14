@@ -250,3 +250,68 @@ def build(hook, footer, dest, width=1080, height=1920, handle="@com.-meibamen"):
 def build_for_clip(video_id, clip, dest=None):
     dest = dest or (config.work_dir(video_id) / f"{clip['clip_id']}_overlay.png")
     return build(clip.get("hook"), clip.get("footer"), dest)
+
+
+# ── 横型 ────────────────────────────────────────────────────────────
+#
+# 16:9 は全面が映像なので死角が無い。ショートのように帯を作れないため、
+# 冒頭の数秒だけ上部に情報を出す。**下部には置かない。** コムドットの本編は
+# 画面下に字幕を焼き込んでおり、必ずぶつかる。
+# 静止画のタイトルカードを頭に足す案は採らない。冒頭数秒で離脱が決まるので、
+# 本編が始まらない時間を作るほうが損になる。
+
+WIDE_BANNER_TOP = 48
+
+
+def build_wide(hook, footer, dest, width=1920, height=1080,
+               handle="@com.-meibamen"):
+    """横型の冒頭に重ねる帯。上部にだけ置く。"""
+    img = Image.new("RGBA", (width, height), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    if not hook:
+        img.save(dest)
+        return dest
+
+    margin = 72
+    max_w = width - margin * 2 - 220
+    f = font(58)
+    lines = wrap(d, hook, f, max_w)
+
+    sub_lines = []
+    if footer:
+        fs = font(34)
+        sub_lines = wrap(d, footer, fs, max_w)
+
+    body_h = len(lines) * f.size + (len(lines) - 1) * 12
+    sub_h = (len(sub_lines) * 34 + (len(sub_lines) - 1) * 8) if sub_lines else 0
+    band_h = body_h + sub_h + (28 if sub_lines else 0) + 76
+
+    d.rectangle([0, WIDE_BANNER_TOP, width, WIDE_BANNER_TOP + band_h],
+                fill=(0, 0, 0, 205))
+    d.rectangle([0, WIDE_BANNER_TOP, 10, WIDE_BANNER_TOP + band_h], fill=ACCENT)
+
+    y = WIDE_BANNER_TOP + 34
+    for line in lines:
+        d.text((margin, y), line, font=f, fill=PAPER, stroke_width=4, stroke_fill=INK)
+        y += f.size + 12
+    if sub_lines:
+        y += 16
+        fs = font(34)
+        for line in sub_lines:
+            d.text((margin, y), line, font=fs, fill=SUB)
+            y += 34 + 8
+
+    if handle:
+        fh = font(30)
+        w = d.textlength(handle, font=fh)
+        d.text((width - margin - w, WIDE_BANNER_TOP + 34), handle,
+               font=fh, fill=(150, 150, 158))
+
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    img.save(dest)
+    return dest
+
+
+def build_wide_for_clip(video_id, clip, dest=None):
+    dest = dest or (config.work_dir(video_id) / f"{clip['clip_id']}_wide_overlay.png")
+    return build_wide(clip.get("hook"), clip.get("footer"), dest)

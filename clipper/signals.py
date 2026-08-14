@@ -112,6 +112,37 @@ LEXICON = {
 }
 
 
+# 企画の区切り。コムドットの複数企画回は、各企画が必ずこの言い回しで始まる。
+# 実際に 51tyFgelkmQ では「今日は戦いということで、本日の企画…」
+# 「今日はチャレンジということで、本日の検証…」が並んでいた。
+#
+# 60秒のショートでは効かないが、**長尺では効く。** スコアの積分だけで13分の窓を
+# 取ると企画をまたぎ、話が途中で変わる切り抜きになる。
+SEGMENT_MARKERS = ("本日の企画", "本日の検証", "本日のチャレンジ",
+                   "今日の企画", "今日の検証")
+
+
+def find_segment_starts(segments, markers=None):
+    """企画の開始位置を返す。[{"seconds", "marker", "line"}, ...]
+
+    見つからなければ空。単独企画の回では区切りが無いのが正しい。
+    """
+    marks = markers or SEGMENT_MARKERS
+    out, last = [], -60.0
+    for s in segments:
+        line = s.get("text") or ""
+        hit = next((m for m in marks if m in line), None)
+        if not hit:
+            continue
+        t = float(s.get("start") or 0)
+        # 同じ告知が数秒に渡って字幕に出ることがあるので近接は1つにまとめる
+        if t - last < 30:
+            continue
+        last = t
+        out.append({"seconds": t, "marker": hit, "line": line})
+    return out
+
+
 def lexical_marks(segments, lexicon=None):
     """字幕から語彙・効果音タグを拾う。[{"seconds","kind","word","line"}, ...]
 

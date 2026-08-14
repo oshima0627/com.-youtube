@@ -140,14 +140,39 @@ def fetch_comments(video_id, limit=400):
     return [c.get("text") or "" for c in (info.get("comments") or [])]
 
 
-def download_section(video_id, start, end, dest: Path):
-    """指定区間だけを落とす。全編は保存しない。"""
+# googlevideo の CDN が断続的に 403 を返す。URL は一定時間で失効し、取り直せば
+# 通ることが多い。長尺ほど転送時間が長く当たりやすいので、黙って諦めない。
+TRANSIENT_MARKERS = ("403", "Forbidden", "timed out", "Connection reset",
+                     "Remote end closed")
+DOWNLOAD_ATTEMPTS = 4
+
+
+def download_section(video_id, start, end, dest: Path, attempts=DOWNLOAD_ATTEMPTS):
+    """指定区間だけを落とす。全編は保存しない。
+
+    一時エラーは取り直す。無人運転では、1回の 403 で止まると何も出なくなる。
+    """
     if dest.exists():
         return dest
-    _run(["--download-sections", f"*{start}-{end}", "--force-keyframes-at-cuts",
-          "-f", "bv*[height<=1080][ext=mp4]+ba[ext=m4a]/b[height<=1080]",
-          "--merge-output-format", "mp4",
-          "-o", str(dest.with_suffix("")) + ".%(ext)s", url(video_id)])
-    if not dest.exists():
-        raise RuntimeError(f"区間の取得に失敗しました: {dest}")
-    return dest
+
+    last = None
+    for attempt in range(1, attempts + 1):
+        try:
+            _run(["--download-sections", f"*{start}-{end}",
+                  "--force-keyframes-at-cuts",
+                  "-f", "bv*[height<=1080][ext=mp4]+ba[ext=m4a]/b[height<=1080]",
+                  "--merge-output-format", "mp4",
+                  "-o", str(dest.with_suffix("")) + ".%(ext)s", url(video_id)])
+        except RuntimeError as e:
+            last = e
+            if not any(m in str(e) for m in TRANSIENT_MARKERS):
+                raise
+            print(f"! 取得に失敗（{attempt}/{attempts}）。取り直します")
+            for leftover in dest.parent.glob(f"{dest.stem}.*"):
+                leftover.unlink(missing_ok=True)
+            continue
+        if dest.exists():
+            return dest
+        last = RuntimeError(f"区間の取得に失敗しました: {dest}")
+
+    raise last

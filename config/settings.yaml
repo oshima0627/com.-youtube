@@ -21,8 +21,13 @@ formats:
   wide:
     width: 1920
     height: 1080
-    min_seconds: 120
-    max_seconds: 600
+    # 電話番号確認ができないため15分を超える動画は投稿できない。
+    # 市場の主流は13〜20分（tora-kirinuki の実測）だが、その下限側に寄せる。
+    # 900秒ちょうどだと変換誤差で超える恐れがあるので余裕を持たせる。
+    min_seconds: 600
+    target_seconds: 780       # 13分
+    max_seconds: 870          # 14分30秒
+    hard_limit_seconds: 900   # これを超えたら投稿しない（YouTube側の制限）
 
 limits:
   max_publish_per_day: 2

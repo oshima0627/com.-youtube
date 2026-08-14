@@ -97,14 +97,51 @@ def render_short(src: Path, dest: Path, srt: Path = None, overlay: Path = None):
     return dest
 
 
-def render_wide(src: Path, dest: Path, srt: Path = None):
-    """16:9。既定では素材のまま。字幕の扱いは render_short と同じ。"""
+class TooLong(RuntimeError):
+    """15分の壁を超えたもの。チャンネルが未確認なので投稿できない。"""
+
+
+def assert_within_limit(seconds):
+    """15分を超えていないか。設定値ではなくここで機械的に止める。
+
+    電話番号確認ができないチャンネルは15分超の動画を投稿できない。
+    書き出してからアップロードで弾かれると、時間もクォータも無駄になる。
+    """
+    limit = config.settings()["formats"]["wide"]["hard_limit_seconds"]
+    if seconds >= limit:
+        raise TooLong(
+            f"{seconds:.0f}秒は上限 {limit}秒 以上です。"
+            "このチャンネルは電話番号確認ができておらず、15分を超える動画を"
+            "投稿できません（docs/youtube-api-setup.md）")
+    return seconds
+
+
+# 冒頭の何秒だけ帯を出すか。出しっぱなしにすると本編を隠し続ける
+WIDE_BANNER_SECONDS = 7
+
+
+def render_wide(src: Path, dest: Path, srt: Path = None, overlay: Path = None,
+                banner_seconds=WIDE_BANNER_SECONDS):
+    """16:9。素材のまま出し、冒頭だけ上部に帯を重ねる。
+
+    帯を出しっぱなしにしない。16:9 は全面が映像で死角が無いため、
+    ずっと出すと本編を隠し続けることになる。
+    """
     fmt = config.settings()["formats"]["wide"]
-    vf = (f"scale={fmt['width']}:{fmt['height']}:force_original_aspect_ratio=decrease,"
-          f"pad={fmt['width']}:{fmt['height']}:(ow-iw)/2:(oh-ih)/2")
+    vf = (f"[0:v]scale={fmt['width']}:{fmt['height']}:force_original_aspect_ratio=decrease,"
+          f"pad={fmt['width']}:{fmt['height']}:(ow-iw)/2:(oh-ih)/2[v]")
+    last = "[v]"
     if srt:
-        vf += f",subtitles={srt.name}:force_style='{SUB_STYLE_WIDE}'"
-    _ffmpeg(["-i", src.name, "-vf", vf,
+        vf += f";{last}subtitles={srt.name}:force_style='{SUB_STYLE_WIDE}'[s]"
+        last = "[s]"
+
+    inputs = ["-i", src.name]
+    if overlay:
+        inputs += ["-i", overlay.name]
+        vf += (f";{last}[1:v]overlay=0:0:enable='between(t,0,{banner_seconds})'[out]")
+        last = "[out]"
+
+    _ffmpeg([*inputs, "-filter_complex", vf, "-map", last, "-map", "0:a",
              "-c:v", "libx264", "-preset", "medium", "-crf", "20",
              "-c:a", "aac", "-b:a", "192k", dest.name], cwd=src.parent)
     return dest

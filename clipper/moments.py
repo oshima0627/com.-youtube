@@ -127,6 +127,52 @@ def signal_counts(signals, start, end):
     return counts
 
 
+def find_segment_candidates(signals, segments, duration, starts,
+                            min_len, max_len, count=3, prefer=None):
+    """企画の区切りに合わせた区間を返す。**話題をまたがない。**
+
+    長尺をスコアの積分だけで取ると、企画の途中から始まって別の企画の途中で
+    終わる切り抜きになる（実際に13分の窓が2つの企画をまたいだ）。
+    区切りが取れている動画では、連続する企画のまとまりを候補にする。
+
+    starts が空なら [] を返す。呼び出し側が窓方式へ落とす。
+    """
+    if not starts:
+        return []
+
+    bounds = [s["seconds"] for s in starts] + [float(duration)]
+    grid = score_grid(signals, duration, prefer)
+
+    runs = []
+    for i in range(len(bounds) - 1):
+        for j in range(i + 1, len(bounds)):
+            start, end = bounds[i], bounds[j]
+            if end - start < min_len:
+                continue
+            if end - start > max_len:
+                break
+            total = sum(grid.get(t, 0.0) for t in range(int(start), int(end)))
+            runs.append((total, start, end, j - i))
+    if not runs:
+        return []
+
+    runs.sort(key=lambda x: -x[0])
+    picked = []
+    for total, start, end, n in runs:
+        if any(start < p["end"] and p["start"] < end for p in picked):
+            continue
+        picked.append({
+            "start": start, "end": end,
+            "score": round(total, 3),
+            "position": round(start / duration, 3) if duration else 0.0,
+            "segments": n,
+            "signals": signal_counts(signals, start, end),
+        })
+        if len(picked) >= count:
+            break
+    return picked
+
+
 def find_candidates(signals, segments, duration, count=5, length=60.0, prefer=None):
     """スコアの積分が大きい区間を、重ならないように上から取る。
 
