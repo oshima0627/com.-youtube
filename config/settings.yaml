@@ -17,7 +17,10 @@ formats:
   short:
     width: 1080
     height: 1920
-    max_seconds: 58
+    # tora-kirinuki の実測では、伸びている競合ショートは67〜73秒で、
+    # 向こうの103秒・132秒版は0〜2再生だった。60秒手前に切り詰める理由が無い。
+    # 実際に65秒で上げたものが拒否されずに通っている。
+    max_seconds: 68
   wide:
     width: 1920
     height: 1080

@@ -109,6 +109,32 @@ class TestSnapToCues:
     def test_without_segments_returns_input(self):
         assert moments.snap_to_cues(3.0, 9.0, []) == (3.0, 9.0)
 
+    def test_snapping_may_extend_when_no_limit_is_given(self):
+        segs = [seg(0), seg(10), seg(70)]
+        assert moments.snap_to_cues(10.0, 65.0, segs) == (10.0, 70.0)
+
+    def test_does_not_exceed_the_limit(self):
+        """境界へ寄せた結果が上限を超えないこと。
+
+        これが無いと設定した尺を静かに超える。実際に上限58秒の設定で
+        65秒の動画が上がっていた。
+        """
+        segs = [seg(0), seg(10), seg(50), seg(70)]
+        start, end = moments.snap_to_cues(10.0, 65.0, segs, max_len=58)
+        assert end - start <= 58
+        assert end == 50.0          # 収まる範囲で最も後ろの境界
+
+    def test_falls_back_to_the_hard_edge_when_no_boundary_fits(self):
+        segs = [seg(0), seg(10), seg(200)]
+        start, end = moments.snap_to_cues(10.0, 190.0, segs, max_len=58)
+        assert (start, end) == (10.0, 68.0)
+
+    def test_candidates_respect_the_configured_length(self):
+        signals = {"comment_marks": [{"seconds": 300, "count": 3}]}
+        segs = [seg(t) for t in range(0, 600, 7)]      # 端数のある境界
+        for c in moments.find_candidates(signals, segs, 600, count=3, length=58):
+            assert c["end"] - c["start"] <= 58, c
+
 
 class TestFindCandidates:
     def test_no_signals_gives_no_candidates(self):

@@ -134,6 +134,23 @@ def assert_expected_channel(service):
     return ch
 
 
+def output_path(video_id, clip):
+    """書き出し済みファイルを探す。ショートと横型で接尾辞が違う。"""
+    out = config.out_dir()
+    for suffix in ("short", "wide"):
+        p = out / f"{video_id}_{clip['clip_id']}_{suffix}.mp4"
+        if p.exists():
+            return p
+    raise UploadBlocked(
+        f"{out / f'{video_id}_{clip['clip_id']}_*.mp4'} がありません。"
+        "先に書き出してください")
+
+
+def is_short(path):
+    """ショートかどうか。#Shorts タグの要否とサムネイルの扱いが変わる。"""
+    return path.name.endswith("_short.mp4")
+
+
 def set_thumbnail(service, yt_id, video_id, clip):
     """サムネイルを設定する。失敗しても動画自体は上がっているので止めない。
 
@@ -199,15 +216,13 @@ def upload_private(video_id, clip_id, title, service=None):
     from googleapiclient.http import MediaFileUpload
 
     entry, clip = find_clip(video_id, clip_id)
-    path = config.out_dir() / f"{video_id}_{clip_id}_short.mp4"
-    if not path.exists():
-        raise UploadBlocked(f"{path} がありません。先に書き出してください")
+    path = output_path(video_id, clip)
 
     service = service or get_service()
     ch = assert_expected_channel(service)
 
     body = {
-        "snippet": metadata.build_body(entry, clip, title),
+        "snippet": metadata.build_body(entry, clip, title, is_short(path)),
         "status": {"privacyStatus": "private", "selfDeclaredMadeForKids": False},
     }
     media = MediaFileUpload(str(path), chunksize=8 * 1024 * 1024,

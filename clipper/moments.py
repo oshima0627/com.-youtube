@@ -101,13 +101,24 @@ def score_grid(signals, duration, prefer=None):
     return grid
 
 
-def snap_to_cues(start, end, segments):
-    """区間の端を最寄りの字幕境界に寄せる。文の途中で切らないため。"""
+def snap_to_cues(start, end, segments, max_len=None):
+    """区間の端を最寄りの字幕境界に寄せる。文の途中で切らないため。
+
+    max_len を渡すと、寄せた結果が上限を超えないようにする。**これが無いと
+    設定した尺を静かに超える。** 実際に上限58秒の設定で65秒の動画が上がっていた。
+    """
     if not segments:
         return start, end
-    times = [s["start"] for s in segments]
+    times = sorted(s["start"] for s in segments)
     nearest = lambda x: min(times, key=lambda t: abs(t - x))  # noqa: E731
-    return nearest(start), nearest(end)
+
+    s, e = nearest(start), nearest(end)
+    if max_len is None or e - s <= max_len:
+        return s, e
+
+    # 上限を超えたら、収まる範囲で最も後ろの境界まで戻す
+    within = [t for t in times if s < t <= s + max_len]
+    return (s, within[-1]) if within else (s, s + max_len)
 
 
 def signal_counts(signals, start, end):
@@ -195,7 +206,8 @@ def find_candidates(signals, segments, duration, count=5, length=60.0, prefer=No
         if total <= 0:
             break
         start, end = snap_to_cues(max(0.0, center - length / 2),
-                                  min(float(duration), center + length / 2), segments)
+                                  min(float(duration), center + length / 2),
+                                  segments, max_len=length)
         if end <= start:
             continue
         if any(start < p["end"] and p["start"] < end for p in picked):
