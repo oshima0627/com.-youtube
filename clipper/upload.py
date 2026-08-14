@@ -145,6 +145,15 @@ def set_thumbnail(service, yt_id, video_id, clip):
 
     from . import thumbnail as thumb_mod
 
+    if not (config.settings().get("channel") or {}).get("custom_thumbnails"):
+        # 電話番号確認が済むまで通らない。毎回50ユニット捨てて403を出すより、
+        # 設定で切っておく。画像自体は作っておき、有効化したら設定できる状態にする
+        try:
+            thumb_mod.build_for_clip(video_id, clip)
+        except Exception:                                       # noqa: BLE001
+            pass
+        return False
+
     try:
         path = thumb_mod.build_for_clip(video_id, clip)
     except Exception as e:                                      # noqa: BLE001

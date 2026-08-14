@@ -6,6 +6,13 @@ channel:
   handle: "@com.-meibamen"
   expected_channel_id: UCoT2TYsxzH4t42C2oF-KrAw
 
+  # カスタムサムネイルはチャンネルの電話番号確認が前提。使える番号が別の
+  # アカウントで既に使われており確認できないため false。
+  # ショートはフィードで動画フレームが使われ、1フレーム目に見出しの
+  # オーバーレイが乗っているので実害は小さい。
+  # 確認できるようになったら true にすれば、生成済みの画像を設定できる。
+  custom_thumbnails: false
+
 formats:
   short:
     width: 1080
