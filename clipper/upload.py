@@ -93,7 +93,8 @@ def _raise_if_quota(e):
             "  回復は太平洋時間の0時（JSTの16〜17時ごろ）。日付が変わっても戻りません。\n"
             "  このクライアントを他プロジェクトと共有している場合、"
             "クォータも共有されます。")
-    raise
+    # クォータ以外は呼び出し元に判断を委ねる。ここで再送出すると
+    # 「サムネイル失敗でも動画は残す」といった扱いができなくなる
 
 
 def current_channel(service):
@@ -156,11 +157,16 @@ def set_thumbnail(service, yt_id, video_id, clip):
         return True
     except HttpError as e:
         _raise_if_quota(e)
-        print(f"! サムネイルを設定できませんでした（続行）: {str(e)[:120]}")
-        if "429" in str(e):
+        text = str(e)
+        print("! サムネイルを設定できませんでした（動画は残す）")
+        if "429" in text:
             print("  差し替えの頻度制限です。時間を置いて再実行してください")
+        elif "custom video thumbnails" in text or "forbidden" in text:
+            # カスタムサムネイルはチャンネルの電話番号確認が前提
+            print("  カスタムサムネイルにはチャンネルの確認が必要です。")
+            print("  https://www.youtube.com/verify_phone_number で確認してください")
         else:
-            print("  チャンネルの電話番号確認が済んでいるか確認してください")
+            print(f"  {text[:150]}")
         return False
 
 
@@ -218,6 +224,47 @@ def upload_private(video_id, clip_id, title, service=None):
     }
     ledger.put_clips(entry, [clip])
     return clip["upload"]
+
+
+def delete_video(video_id, clip_id, service=None):
+    """アップロード済みの動画を消す。
+
+    YouTube は動画ファイルの差し替えができないため、作り直したものを出すには
+    消して上げ直すしかない。動画IDが変わる点に注意（公開後にやると被リンクや
+    再生数を失う）。非公開のうちに済ませる。
+    """
+    from googleapiclient.errors import HttpError
+
+    entry, clip = find_clip(video_id, clip_id)
+    up = clip.get("upload")
+    if not up:
+        return None
+
+    service = service or get_service()
+    try:
+        service.videos().delete(id=up["youtube_video_id"]).execute()
+    except HttpError as e:
+        _raise_if_quota(e)
+        if "404" not in str(e):
+            raise
+    clip["previous_upload"] = up
+    clip["upload"] = None
+    ledger.put_clips(entry, [clip])
+    return up["youtube_video_id"]
+
+
+def replace_private(video_id, clip_id, title=None, service=None):
+    """作り直したものに差し替える。旧版を消してから上げ直す。"""
+    entry, clip = find_clip(video_id, clip_id)
+    title = title or (clip.get("upload") or {}).get("title")
+    if not title:
+        raise UploadBlocked(f"{clip_id} のタイトルが分かりません")
+
+    service = service or get_service()
+    old = delete_video(video_id, clip_id, service)
+    info = upload_private(video_id, clip_id, title, service)
+    info["replaced"] = old
+    return info
 
 
 def publish(video_id, clip_id, service=None, segments=None):

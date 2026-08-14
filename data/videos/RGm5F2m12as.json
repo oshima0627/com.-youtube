@@ -36,15 +36,24 @@
         ]
       },
       "upload": {
+        "youtube_video_id": "cTzbNUFi9Iw",
+        "url": "https://www.youtube.com/watch?v=cTzbNUFi9Iw",
+        "privacy_status": "private",
+        "title": "催眠術で本当に声が出なくなった瞬間【コムドット切り抜き】",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】",
+        "thumbnail_set": false
+      },
+      "hook": "「喋れない」と言われて本当に声が出なくなる",
+      "footer": "プロの催眠術師を事務所に招いた企画。術者いわく、かかるかどうかは本人が楽しめているかで決まる",
+      "previous_upload": {
         "youtube_video_id": "ucDHXQA26yU",
         "url": "https://www.youtube.com/watch?v=ucDHXQA26yU",
         "privacy_status": "private",
         "title": "催眠術で本当に声が出なくなった瞬間【コムドット切り抜き】",
         "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
         "channel_title": "コムドット名場面ch【切り抜き】"
-      },
-      "hook": "「喋れない」と言われて本当に声が出なくなる",
-      "footer": "プロの催眠術師を事務所に招いた企画。術者いわく、かかるかどうかは本人が楽しめているかで決まる"
+      }
     },
     {
       "clip_id": "clip02",
@@ -178,15 +187,24 @@
         ]
       },
       "upload": {
-        "youtube_video_id": "56mljav8i9E",
-        "url": "https://www.youtube.com/watch?v=56mljav8i9E",
+        "thumbnail_set": false,
+        "youtube_video_id": "ebOe3A1LQiU",
+        "url": "https://www.youtube.com/watch?v=ebOe3A1LQiU",
         "privacy_status": "private",
         "title": "催眠術でカメラにアピールしたくてたまらなくなった結果【コムドット切り抜き】",
         "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
         "channel_title": "コムドット名場面ch【切り抜き】"
       },
       "hook": "カメラにアピールしたくてたまらなくなる暗示",
-      "footer": "同じ企画の後半。術者が「普段できない自分を楽しむ」暗示をかけた直後の場面"
+      "footer": "同じ企画の後半。術者が「普段できない自分を楽しむ」暗示をかけた直後の場面",
+      "previous_upload": {
+        "youtube_video_id": "56mljav8i9E",
+        "url": "https://www.youtube.com/watch?v=56mljav8i9E",
+        "privacy_status": "private",
+        "title": "催眠術でカメラにアピールしたくてたまらなくなった結果【コムドット切り抜き】",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      }
     }
   ],
   "notes": []
