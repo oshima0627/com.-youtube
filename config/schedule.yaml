@@ -36,11 +36,14 @@ note: publish_at_jst は日本時間。arm するまで YouTube 側には何も�
 # **この2本は既に非公開でアップロード済み**（cTzbNUFi9Iw / hbRhnrvPk-k）。
 # YouTube 側から削除するのは手作業。残したまま arm すると公開されうる。
 #
-# 空いた枠を埋める在庫が無い。差し替え候補として nZSBkNRFsDQ auto02 を書き出したが
-# （out/nZSBkNRFsDQ_auto02_short.mp4）、非公開アップロードが済んでいないため
-# ここには載せていない。新しい素材の取得は yt-dlp が 403 で通らず止まっている。
+# 差し替え候補は書き出し済みだが、**非公開アップロードが未実施**なので
+# youtube_video_id が無く、slots には載せられない（arm が参照できない）。
+# `python -m clipper auth` の同意画面を通してから upload すれば枠に入る。
 vacancies:
 - publish_at_jst: 2026-08-19 19:00
-  reason: RGm5F2m12as auto01 を第三者の映り込みで撤去。差し替え未定
+  reason: RGm5F2m12as auto01 を第三者の映り込みで撤去
+  candidate: abW8zkEwEW4/auto02   # out/abW8zkEwEW4_auto02_short.mp4（書き出し済み）
 - publish_at_jst: 2026-08-20 19:00
-  reason: RGm5F2m12as auto02 を第三者の映り込みで撤去。差し替え未定
+  reason: RGm5F2m12as auto02 を第三者の映り込みで撤去
+  candidate: abW8zkEwEW4/auto01   # out/abW8zkEwEW4_auto01_short.mp4（書き出し済み）
+# 予備: nZSBkNRFsDQ/auto02（out/nZSBkNRFsDQ_auto02_short.mp4）

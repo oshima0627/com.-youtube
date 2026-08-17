@@ -1,6 +1,6 @@
 {
   "video_id": "abW8zkEwEW4",
-  "state": "gated",
+  "state": "rendered",
   "meta": {
     "title": "【アイデア命】ペアに分かれてアレンジトースト料理対決したら革命的バズレシピが完成しました...",
     "description": "ゆうた編集\n\n過去のペア料理対決再生リストはこちら\n→ https://youtube.com/playlist?list=PLyJqt6BfGzwke1t1i_ZojeGmV1hTO9kmr&si=38Mplk_iqQMoF8RV\n\n今日は久々のペア料理対決🍳\nトースト編ということで今回はわりとアレンジが効かせられて面白い料理になった気がします^_^\n初期メンVSヤニヤニの組み合わせは久しぶりだと思うので是非是非楽しんだってください^_^\nヤニヤニ画角がただのパパ友みたいな画角になってたことは勘弁したくだせぇ、笑\nいつかどこかの夜へヤニヤニで解き放たれる時をお楽しみに🍻\nそれでは今日はこの辺でバイビ〜\nウラジミール大ズレ伯爵\n(概要欄ゆうま)\n\n◾︎コムドット公式LINEはこちら\n→ https://liff.line.me/1645278921-kWRPP32q/?accountId=comforfan\n\n◾︎コムドットメンバーシップ登録はこちら\n→ https://www.youtube.com/@comdot/join\n\n◾︎コムドット公式グッズBB5の販売はこちら\n→ https://bb5.shop/\n\n◾︎アパレルブランドBIRDOGの販売はこちら\n→ https://birdog.shop/password\n\n\n◾︎コムドット各種SNS\n【Instagram】→ https://instagram.com/p/BoeJWOOhgfk/\n【Twitter】→ https://twitter.com/comyoutuber2\n【TikTok】→ https://www.tiktok.com/@com.youtuber2\n\n◾︎やまと個人アカウント\n【Instagram】→ https://www.instagram.com/com.yamato\n【Twitter】→ http://twitter.com/@comyamato0515\n【TikTok】→https://www.tiktok.com/@com.yamato0515\n\n◾︎ゆうた個人アカウント\n【Instagram】→ https://www.instagram.com/com.yuta\n【Twitter】→ http://twitter.com/@comyuta0305\n【TikTok】→ https://www.tiktok.com/@com.yuta0305\n\n◾︎ゆうま個人アカウント\n【Instagram】→ https://www.instagram.com/com.yuma\n【Twitter】→ http://twitter.com/@comyuma1214\n【TikTok】→ https://www.tiktok.com/@com.yuma1214\n\n◾︎ひゅうが個人アカウント\n【Instagram】→ https://instagram.com/com.hyuga\n【Twitter】→ http://twitter.com/comhyuga1117\n【TikTok】→ https://www.tiktok.com/@com.hyuga1117\n\n◾︎あむぎり個人アカウント\n【Instagram】→ https://www.instagram.com/com.amugiri\n【Twitter】→ https://twitter.com/comamugiri0123\n【TikTok】→ https://www.tiktok.com/@com.amugiri2",
@@ -36,9 +36,9 @@
     },
     {
       "clip_id": "auto01",
-      "start": 1840.24,
+      "start": 1847.5,
       "end": 1906.88,
-      "duration": 66.6,
+      "duration": 59.4,
       "score": 47.225,
       "position": 0.344,
       "signals": {
@@ -48,14 +48,19 @@
         "いじり": 4,
         "コメント": 15
       },
-      "formats": [],
+      "formats": [
+        "short"
+      ],
       "published": null,
       "gate": {
         "result": "held",
         "reasons": [
           "許諾ステータスが pending（granted ではない）"
         ]
-      }
+      },
+      "hook": "料理の相談が主導権の話にすり替わる",
+      "footer": "ペアに分かれてアレンジ料理で対決する企画。車内での初期メンコンビの作戦会議だが、どちらが主導権を握るかの話にずれていく",
+      "pending_title": "料理の相談がいつのまにか主導権争いになるのが面白すぎる #コムドット #コムドット切り抜き"
     },
     {
       "clip_id": "auto04",
@@ -117,14 +122,19 @@
         "いじり": 0,
         "コメント": 10
       },
-      "formats": [],
+      "formats": [
+        "short"
+      ],
       "published": null,
       "gate": {
         "result": "held",
         "reasons": [
           "許諾ステータスが pending（granted ではない）"
         ]
-      }
+      },
+      "hook": "自炊なら1食40円という話が現実的すぎる",
+      "footer": "ペアに分かれてアレンジ料理で対決する企画。この2人のお題は「ごちゃ混ぜ焼きそばサンド」。洗わずに使えるカット野菜を炒めながら、自炊と Uber の1食の値段を比べている",
+      "pending_title": "自炊なら1食40円という話が現実的すぎる #コムドット #コムドット切り抜き"
     },
     {
       "clip_id": "auto05",

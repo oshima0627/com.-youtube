@@ -20,6 +20,7 @@
 | --- | --- |
 | ffmpeg / ffprobe | `winget install Gyan.FFmpeg` |
 | yt-dlp | `pip install yt-dlp`（JSランタイムに Node.js が要る） |
+| yt-dlp-ejs | `pip install yt-dlp-ejs` — **無いとフォーマット一覧が空になる** |
 | Python パッケージ | `pip install pillow pyyaml` |
 
 ## 使い方

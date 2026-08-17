@@ -18,6 +18,19 @@ from . import config
 # yt-dlp が YouTube の抽出に必要とする JS ランタイム
 YTDLP = [sys.executable, "-m", "yt_dlp", "--js-runtimes", "node"]
 
+# 区間取得で使うプレイヤークライアント。**既定のままでは 403 で落ちる。**
+# 2026-08-17 に実測した挙動:
+#
+#   既定（android_vr）  ffmpeg が googlevideo を叩く段で 403
+#   web / tv            フォーマットが取れない（DRM / images only）
+#   ios                 GVS PO Token を要求され https フォーマットが落ちる
+#   mweb                通るが 640x360 しか無い
+#   web_embedded        通る。1920x1080。これを使う
+#
+# 加えて、JS チャレンジの解決に yt-dlp-ejs が必要（`pip install yt-dlp-ejs`）。
+# 入っていないとフォーマット一覧そのものが空になる。
+SECTION_CLIENT = ["--extractor-args", "youtube:player_client=web_embedded"]
+
 # 公開動画以外は扱わない。特に subscriber_only（メンバーシップ限定）は
 # 有料コンテンツであり、切り抜きの対象にしてはならない。
 ALLOWED_AVAILABILITY = {"public"}
@@ -158,7 +171,8 @@ def download_section(video_id, start, end, dest: Path, attempts=DOWNLOAD_ATTEMPT
     last = None
     for attempt in range(1, attempts + 1):
         try:
-            _run(["--download-sections", f"*{start}-{end}",
+            _run([*SECTION_CLIENT,
+                  "--download-sections", f"*{start}-{end}",
                   "--force-keyframes-at-cuts",
                   "-f", "bv*[height<=1080][ext=mp4]+ba[ext=m4a]/b[height<=1080]",
                   "--merge-output-format", "mp4",
