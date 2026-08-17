@@ -53,7 +53,8 @@
         "title": "催眠術で本当に声が出なくなった瞬間【コムドット切り抜き】",
         "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
         "channel_title": "コムドット名場面ch【切り抜き】"
-      }
+      },
+      "excluded": "外部の催眠術師が終始映り、clip01/clip02 では画面の主役になっている。許諾依頼は BRDOCK のみに送っており、この方の肖像・実演は射程外のため使用しない"
     },
     {
       "clip_id": "clip02",
@@ -72,7 +73,8 @@
           "permission.yaml の status が pending"
         ]
       },
-      "published": null
+      "published": null,
+      "excluded": "外部の催眠術師が終始映り、clip01/clip02 では画面の主役になっている。許諾依頼は BRDOCK のみに送っており、この方の肖像・実演は射程外のため使用しない"
     },
     {
       "clip_id": "auto05",
@@ -95,7 +97,8 @@
         "reasons": [
           "許諾ステータスが pending（granted ではない）"
         ]
-      }
+      },
+      "excluded": "外部の催眠術師が終始映り、clip01/clip02 では画面の主役になっている。許諾依頼は BRDOCK のみに送っており、この方の肖像・実演は射程外のため使用しない"
     },
     {
       "clip_id": "clip01",
@@ -114,7 +117,8 @@
       },
       "published": null,
       "heat_value": 0.175,
-      "heat_rank": 22
+      "heat_rank": 22,
+      "excluded": "外部の催眠術師が終始映り、clip01/clip02 では画面の主役になっている。許諾依頼は BRDOCK のみに送っており、この方の肖像・実演は射程外のため使用しない"
     },
     {
       "clip_id": "auto04",
@@ -137,7 +141,8 @@
         "reasons": [
           "許諾ステータスが pending（granted ではない）"
         ]
-      }
+      },
+      "excluded": "外部の催眠術師が終始映り、clip01/clip02 では画面の主役になっている。許諾依頼は BRDOCK のみに送っており、この方の肖像・実演は射程外のため使用しない"
     },
     {
       "clip_id": "auto03",
@@ -160,7 +165,8 @@
         "reasons": [
           "許諾ステータスが pending（granted ではない）"
         ]
-      }
+      },
+      "excluded": "外部の催眠術師が終始映り、clip01/clip02 では画面の主役になっている。許諾依頼は BRDOCK のみに送っており、この方の肖像・実演は射程外のため使用しない"
     },
     {
       "clip_id": "auto02",
@@ -207,8 +213,11 @@
         "channel_title": "コムドット名場面ch【切り抜き】"
       },
       "pending_title": "催眠術で「めっちゃ楽しい」状態にされた結果【コムドット切り抜き】",
-      "trimmed_to": 48.9
+      "trimmed_to": 48.9,
+      "excluded": "外部の催眠術師が終始映り、clip01/clip02 では画面の主役になっている。許諾依頼は BRDOCK のみに送っており、この方の肖像・実演は射程外のため使用しない"
     }
   ],
-  "notes": []
+  "notes": [
+    "第三者（外部の催眠術師）の映り込みにより動画ごと対象外にした（2026-08-17）"
+  ]
 }

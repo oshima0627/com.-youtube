@@ -24,19 +24,23 @@ slots:
   youtube_video_id: XPx2y_vDWV8
   title: 音を立てたら即ハリセン 極悪の食事を1本まるごと【コムドット切り抜き】
   publish_at_jst: 2026-08-18 20:00
-- video_id: RGm5F2m12as
-  clip_id: auto01
-  youtube_video_id: cTzbNUFi9Iw
-  title: '催眠術でひゅうがが本当に喋れなくなった瞬間がヤバすぎる #コムドット #コムドット切り抜き'
-  publish_at_jst: 2026-08-19 19:00
-- video_id: RGm5F2m12as
-  clip_id: auto02
-  youtube_video_id: hbRhnrvPk-k
-  title: '催眠術で「めっちゃ楽しい」状態にされた顔が面白すぎる #コムドット #コムドット切り抜き'
-  publish_at_jst: 2026-08-20 19:00
 - video_id: wKuTNfA6Xhg
   clip_id: auto02
   youtube_video_id: tn6iwirQhho
   title: 'アバターの髪型に全力を出したのに伝わらなさすぎる #コムドット #コムドット切り抜き'
   publish_at_jst: 2026-08-21 19:00
 note: publish_at_jst は日本時間。arm するまで YouTube 側には何も入らない
+
+# 2026-08-17 に 08-19 / 08-20 の枠を空けた。埋まっていた RGm5F2m12as の2本は
+# 外部の催眠術師が映っているため対象外にした（config/exclusions.yaml）。
+# **この2本は既に非公開でアップロード済み**（cTzbNUFi9Iw / hbRhnrvPk-k）。
+# YouTube 側から削除するのは手作業。残したまま arm すると公開されうる。
+#
+# 空いた枠を埋める在庫が無い。差し替え候補として nZSBkNRFsDQ auto02 を書き出したが
+# （out/nZSBkNRFsDQ_auto02_short.mp4）、非公開アップロードが済んでいないため
+# ここには載せていない。新しい素材の取得は yt-dlp が 403 で通らず止まっている。
+vacancies:
+- publish_at_jst: 2026-08-19 19:00
+  reason: RGm5F2m12as auto01 を第三者の映り込みで撤去。差し替え未定
+- publish_at_jst: 2026-08-20 19:00
+  reason: RGm5F2m12as auto02 を第三者の映り込みで撤去。差し替え未定
