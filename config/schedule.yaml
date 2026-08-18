@@ -74,3 +74,17 @@ orphans:
 # 4. config/permission.yaml は pending のまま。BRDOCK からの返信は届いていない。
 #    依頼文の「ご許諾をいただけた場合にのみ公開いたします」とは異なる状態で
 #    予約が入っている。運営者の判断による。
+
+# アップロード済みだが YouTube 側に予約が入っていないもの。
+# 予約は Studio で手動で入っているため、ここに載せても自動では入らない。
+not_scheduled:
+- video_id: 8DDHTuwdbyQ
+  clip_id: auto01
+  youtube_video_id: XT01mLljg6Y
+  title: あむぎりがビールの言い方だけで1杯追加されるのが面白すぎる #コムドット #コムドット切り抜き
+  suggested_at_jst: 2026-08-22 12:00   # この日は07:00の1本だけなので、入れても1日2本の上限内
+- video_id: 51tyFgelkmQ
+  clip_id: wide01
+  youtube_video_id: XPx2y_vDWV8
+  title: 音を立てたら即ハリセン 極悪の食事を1本まるごと【コムドット切り抜き】
+  suggested_at_jst: null   # 横型。08-18 の一括予約から漏れている
