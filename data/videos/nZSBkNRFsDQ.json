@@ -97,7 +97,16 @@
       },
       "hook": "制限時間3分のお題を1分残して完食",
       "footer": "車内でくじを引き、出たお題を制限時間内に食べ切る企画。この回のお題は制限時間3分で、2人がハンバーガーとポテトを約2分で食べ切った",
-      "pending_title": "制限時間3分のお題を1分残して食べ切るのが余裕すぎる #コムドット #コムドット切り抜き"
+      "pending_title": "制限時間3分のお題を1分残して食べ切るのが余裕すぎる #コムドット #コムドット切り抜き",
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "BWnDVQJdgWs",
+        "url": "https://www.youtube.com/watch?v=BWnDVQJdgWs",
+        "privacy_status": "private",
+        "title": "制限時間3分のお題を1分残して食べ切るのが余裕すぎる #コムドット #コムドット切り抜き",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      }
     }
   ],
   "notes": []
