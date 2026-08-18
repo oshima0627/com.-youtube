@@ -1,68 +1,55 @@
 slots:
 - video_id: 51tyFgelkmQ
-  clip_id: auto02
-  youtube_video_id: iKxOFHrGeOI
-  title: '別々に選んだ品がまさかの一致で驚愕しすぎる #コムドット #コムドット切り抜き'
-  publish_at_jst: 2026-08-19 19:00
-- video_id: 51tyFgelkmQ
   clip_id: auto01
   youtube_video_id: YI-cVkayHS8
   title: '黒ひげのお菓子が飛び出す瞬間にビビりすぎるのが最高 #コムドット #コムドット切り抜き'
-  publish_at_jst: 2026-08-20 19:00
-- video_id: abW8zkEwEW4
-  clip_id: auto01
-  youtube_video_id: BF5Y7s_qDc8
-  title: '料理の相談がいつのまにか主導権争いになるのが面白すぎる #コムドット #コムドット切り抜き'
-  publish_at_jst: 2026-08-21 19:00
-- video_id: abW8zkEwEW4
-  clip_id: auto02
-  youtube_video_id: 84Ks4Tbq7Uk
-  title: '自炊なら1食40円という話が現実的すぎる #コムドット #コムドット切り抜き'
-  publish_at_jst: 2026-08-22 19:00
-- video_id: bCKjVkvfJIM
-  clip_id: auto02
-  youtube_video_id: tgdHD0B2lfA
-  title: '絶対1位と言っていた組が3位で表彰台の一番下なのが面白すぎる #コムドット #コムドット切り抜き'
-  publish_at_jst: 2026-08-23 19:00
-- video_id: bCKjVkvfJIM
-  clip_id: auto01
-  youtube_video_id: _efY1rfqqUE
-  title: '魔人のいない組ほど人気という説になるのが面白すぎる #コムドット #コムドット切り抜き'
-  publish_at_jst: 2026-08-24 19:00
+  publish_at_jst: 2026-08-19 07:00
 - video_id: 51tyFgelkmQ
-  clip_id: wide01
-  youtube_video_id: XPx2y_vDWV8
-  title: 音を立てたら即ハリセン 極悪の食事を1本まるごと【コムドット切り抜き】
-  publish_at_jst: 2026-08-24 20:00
-- video_id: MgO0lCUtlx4
   clip_id: auto02
-  youtube_video_id: Mo-y9bYqzFE
-  title: '前人未到の5分体幹をクリアした瞬間がヤバすぎる #コムドット #コムドット切り抜き'
-  publish_at_jst: 2026-08-25 19:00
-- video_id: nZSBkNRFsDQ
-  clip_id: auto01
-  youtube_video_id: 2qCVUIB48as
-  title: '優しすぎて注意できず変な空気になるのが面白すぎる #コムドット #コムドット切り抜き'
-  publish_at_jst: 2026-08-26 19:00
-- video_id: nZSBkNRFsDQ
-  clip_id: auto02
-  youtube_video_id: BWnDVQJdgWs
-  title: '制限時間3分のお題を1分残して食べ切るのが余裕すぎる #コムドット #コムドット切り抜き'
-  publish_at_jst: 2026-08-27 19:00
+  youtube_video_id: iKxOFHrGeOI
+  title: '別々に選んだ品がまさかの一致で驚愕しすぎる #コムドット #コムドット切り抜き'
+  publish_at_jst: 2026-08-19 12:00
 - video_id: wKuTNfA6Xhg
   clip_id: auto02
   youtube_video_id: tn6iwirQhho
   title: 'アバターの髪型に全力を出したのに伝わらなさすぎる #コムドット #コムドット切り抜き'
-  publish_at_jst: 2026-08-28 19:00
-note: publish_at_jst は日本時間。arm するまで YouTube 側には何も入らない
-
-# 2026-08-18 に在庫5本を非公開アップロードし、全在庫を枠に入れた（08-19〜08-28）。
-# **arm はしていない。** 許諾が pending の間は gate が全枠を held にする。
-#
-# 撤去済みだが YouTube 側に非公開のまま残っているもの。**手作業で消す。**
-# 枠には入っていないので arm では公開されないが、残っている限り取り違えの種になる。
-#   python -c "from clipper import upload; s=upload.get_service(); \
-#     [upload.delete_video('RGm5F2m12as', c, s) for c in ('auto01','auto02')]"
+  publish_at_jst: 2026-08-19 18:00
+- video_id: MgO0lCUtlx4
+  clip_id: auto02
+  youtube_video_id: Mo-y9bYqzFE
+  title: '前人未到の5分体幹をクリアした瞬間がヤバすぎる #コムドット #コムドット切り抜き'
+  publish_at_jst: 2026-08-20 07:00
+- video_id: nZSBkNRFsDQ
+  clip_id: auto01
+  youtube_video_id: 2qCVUIB48as
+  title: '優しすぎて注意できず変な空気になるのが面白すぎる #コムドット #コムドット切り抜き'
+  publish_at_jst: 2026-08-20 12:00
+- video_id: bCKjVkvfJIM
+  clip_id: auto01
+  youtube_video_id: _efY1rfqqUE
+  title: '魔人のいない組ほど人気という説になるのが面白すぎる #コムドット #コムドット切り抜き'
+  publish_at_jst: 2026-08-20 18:00
+- video_id: bCKjVkvfJIM
+  clip_id: auto02
+  youtube_video_id: tgdHD0B2lfA
+  title: '絶対1位と言っていた組が3位で表彰台の一番下なのが面白すぎる #コムドット #コムドット切り抜き'
+  publish_at_jst: 2026-08-21 07:00
+- video_id: abW8zkEwEW4
+  clip_id: auto01
+  youtube_video_id: BF5Y7s_qDc8
+  title: '料理の相談がいつのまにか主導権争いになるのが面白すぎる #コムドット #コムドット切り抜き'
+  publish_at_jst: 2026-08-21 12:00
+- video_id: abW8zkEwEW4
+  clip_id: auto02
+  youtube_video_id: 84Ks4Tbq7Uk
+  title: '自炊なら1食40円という話が現実的すぎる #コムドット #コムドット切り抜き'
+  publish_at_jst: 2026-08-21 18:00
+- video_id: nZSBkNRFsDQ
+  clip_id: auto02
+  youtube_video_id: BWnDVQJdgWs
+  title: '制限時間3分のお題を1分残して食べ切るのが余裕すぎる #コムドット #コムドット切り抜き'
+  publish_at_jst: 2026-08-22 07:00
+note: YouTube 側の実際の予約をそのまま写したもの（2026-08-18 実測）。clipper の arm ではなく YouTube Studio で直接入れられている
 orphans:
 - video_id: RGm5F2m12as
   clip_id: auto01
@@ -72,3 +59,18 @@ orphans:
   clip_id: auto02
   youtube_video_id: hbRhnrvPk-k
   reason: 外部の催眠術師が映っているため対象外（config/exclusions.yaml）
+
+# 2026-08-18 の経緯。**この予約は clipper の arm ではなく YouTube Studio で直接入った。**
+# gate を通っていないので、以下は機械では止まらなかった。実測して分かったこと：
+#
+# 1. **除外済みの RGm5F2m12as 2本にも予約が入っていた**（08-18 12:00 / 18:00）。
+#    外部の催眠術師が画面の主役の回で、BRDOCK への依頼の射程外。公開1時間前に
+#    気づき、publishAt を明示的に null にして外した（private のまま）。
+#    **status に publishAt を入れずに update しても消えない。null を送る必要がある。**
+#    非公開のまま残っている限り、次の一括操作でまた巻き込まれる。削除が要る。
+# 2. 横型 51tyFgelkmQ/wide01（XPx2y_vDWV8）には予約が入っていない。
+# 3. 1日3本（07:00 / 12:00 / 18:00）で、settings.yaml の
+#    limits.max_publish_per_day: 2 を超えている。gate を通していれば止まっていた。
+# 4. config/permission.yaml は pending のまま。BRDOCK からの返信は届いていない。
+#    依頼文の「ご許諾をいただけた場合にのみ公開いたします」とは異なる状態で
+#    予約が入っている。運営者の判断による。

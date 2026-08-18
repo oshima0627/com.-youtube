@@ -30,7 +30,8 @@
         "title": "音を立てたら即ハリセン 極悪の食事を1本まるごと【コムドット切り抜き】",
         "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
         "channel_title": "コムドット名場面ch【切り抜き】"
-      }
+      },
+      "scheduled_at": null
     },
     {
       "clip_id": "auto03",
@@ -123,7 +124,8 @@
         "channel_title": "コムドット名場面ch【切り抜き】"
       },
       "pending_title": "別々に選んだ品がまさかの一致で本人たちが驚愕【コムドット切り抜き】",
-      "trimmed_to": 50.5
+      "trimmed_to": 50.5,
+      "scheduled_at": "2026-08-19 12:00"
     },
     {
       "clip_id": "auto01",
@@ -169,7 +171,8 @@
         "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
         "channel_title": "コムドット名場面ch【切り抜き】"
       },
-      "pending_title": "黒ひげのお菓子が飛び出す瞬間にビビりすぎる男【コムドット切り抜き】"
+      "pending_title": "黒ひげのお菓子が飛び出す瞬間にビビりすぎる男【コムドット切り抜き】",
+      "scheduled_at": "2026-08-19 07:00"
     }
   ],
   "notes": []
