@@ -25,13 +25,26 @@
         "いじり": 2,
         "コメント": 10
       },
-      "formats": [],
+      "formats": [
+        "short"
+      ],
       "published": null,
       "gate": {
         "result": "held",
         "reasons": [
           "許諾ステータスが pending（granted ではない）"
         ]
+      },
+      "hook": "お題の食べ物をフライングで食べてしまう",
+      "footer": "車内でくじを引き、出たお題を制限時間内に食べ切る企画。ゆうまがルール破りに注意できるかの検証で、挑戦用の食べ物に開始前から手をつけている場面",
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "MDPhcHIYOL8",
+        "url": "https://www.youtube.com/watch?v=MDPhcHIYOL8",
+        "privacy_status": "private",
+        "title": "お題の食べ物をフライングで食べちゃうのが自由すぎる #コムドット #コムドット切り抜き",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
       }
     },
     {

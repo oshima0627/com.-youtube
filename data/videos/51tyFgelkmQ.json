@@ -47,13 +47,26 @@
         "いじり": 0,
         "コメント": 9
       },
-      "formats": [],
+      "formats": [
+        "short"
+      ],
       "published": null,
       "gate": {
         "result": "held",
         "reasons": [
           "許諾ステータスが pending（granted ではない）"
         ]
+      },
+      "hook": "罰ゲーム級の企画中にまさかの神お菓子を発見",
+      "footer": "音を立てたら即ハリセンの食事企画。音を立てずに食べ続ける中で、二度づけ本わさび醤油だれ味のお菓子に当たった場面",
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "CCb0ZcuhoZA",
+        "url": "https://www.youtube.com/watch?v=CCb0ZcuhoZA",
+        "privacy_status": "private",
+        "title": "罰ゲーム級の企画中にまさかの神お菓子を発見して盛り上がりすぎる #コムドット #コムドット切り抜き",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
       }
     },
     {
@@ -70,13 +83,26 @@
         "いじり": 0,
         "コメント": 9
       },
-      "formats": [],
+      "formats": [
+        "short"
+      ],
       "published": null,
       "gate": {
         "result": "held",
         "reasons": [
           "許諾ステータスが pending（granted ではない）"
         ]
+      },
+      "hook": "企画用に分厚くカットされたお菓子が無理ゲー",
+      "footer": "音を立てたら即ハリセンの食事企画。企画用にだいぶ分厚くカットされたお菓子を、音を立てずに食べようとしている場面",
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "tUyrCoVoPCM",
+        "url": "https://www.youtube.com/watch?v=tUyrCoVoPCM",
+        "privacy_status": "private",
+        "title": "企画用に分厚くカットされたお菓子が無理ゲーすぎる #コムドット #コムドット切り抜き",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
       }
     },
     {

@@ -101,13 +101,26 @@
         "いじり": 3,
         "コメント": 13
       },
-      "formats": [],
+      "formats": [
+        "short"
+      ],
       "published": null,
       "gate": {
         "result": "held",
         "reasons": [
           "許諾ステータスが pending（granted ではない）"
         ]
+      },
+      "hook": "全部の組に入った男にお荷物説が浮上",
+      "footer": "コムドット初のトリオ人気投票。5人から3人の組を作り、視聴者の投票で順位を決める企画。結果発表が進み、全部の組に入っているメンバーの話になった場面",
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "0gWpS9XyIEs",
+        "url": "https://www.youtube.com/watch?v=0gWpS9XyIEs",
+        "privacy_status": "private",
+        "title": "全部の組に入ってるのにお荷物説が浮上するのが面白すぎる #コムドット #コムドット切り抜き",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
       }
     },
     {
@@ -124,13 +137,26 @@
         "いじり": 1,
         "コメント": 13
       },
-      "formats": [],
+      "formats": [
+        "short"
+      ],
       "published": null,
       "gate": {
         "result": "held",
         "reasons": [
           "許諾ステータスが pending（granted ではない）"
         ]
+      },
+      "hook": "9位の組の票数が道端の木と同等といじられる",
+      "footer": "コムドット初のトリオ人気投票。5人から3人の組を作り、視聴者の投票で順位を決める企画。下位から発表していて、ここは第9位の発表",
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "TjovR5KnSu4",
+        "url": "https://www.youtube.com/watch?v=TjovR5KnSu4",
+        "privacy_status": "private",
+        "title": "9位の組の票数が道端の木と同等といじられるのが面白すぎる #コムドット #コムドット切り抜き",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
       }
     },
     {
@@ -147,13 +173,26 @@
         "いじり": 4,
         "コメント": 8
       },
-      "formats": [],
+      "formats": [
+        "short"
+      ],
       "published": null,
       "gate": {
         "result": "held",
         "reasons": [
           "許諾ステータスが pending（granted ではない）"
         ]
+      },
+      "hook": "いじられてキレた直後に順位を心配される",
+      "footer": "コムドット初のトリオ人気投票の結果発表後。普段のキャラの話でいじられている場面",
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "jr9NXY7P8dk",
+        "url": "https://www.youtube.com/watch?v=jr9NXY7P8dk",
+        "privacy_status": "private",
+        "title": "キレた直後に次の人気投票の心配をされるのが面白すぎる #コムドット #コムドット切り抜き",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
       }
     }
   ],

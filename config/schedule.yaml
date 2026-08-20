@@ -77,14 +77,45 @@ orphans:
 
 # アップロード済みだが YouTube 側に予約が入っていないもの。
 # 予約は Studio で手動で入っているため、ここに載せても自動では入らない。
+# suggested_at_jst は limits.max_publish_per_day: 2 を守る配置（07:00 / 12:00）。
 not_scheduled:
 - video_id: 8DDHTuwdbyQ
   clip_id: auto01
   youtube_video_id: XT01mLljg6Y
   title: あむぎりがビールの言い方だけで1杯追加されるのが面白すぎる #コムドット #コムドット切り抜き
   suggested_at_jst: 2026-08-22 12:00   # この日は07:00の1本だけなので、入れても1日2本の上限内
+- video_id: bCKjVkvfJIM
+  clip_id: auto03
+  youtube_video_id: 0gWpS9XyIEs
+  title: 全部の組に入ってるのにお荷物説が浮上するのが面白すぎる #コムドット #コムドット切り抜き
+  suggested_at_jst: 2026-08-23 07:00
+- video_id: 51tyFgelkmQ
+  clip_id: auto03
+  youtube_video_id: CCb0ZcuhoZA
+  title: 罰ゲーム級の企画中にまさかの神お菓子を発見して盛り上がりすぎる #コムドット #コムドット切り抜き
+  suggested_at_jst: 2026-08-23 12:00
+- video_id: nZSBkNRFsDQ
+  clip_id: auto03
+  youtube_video_id: MDPhcHIYOL8
+  title: お題の食べ物をフライングで食べちゃうのが自由すぎる #コムドット #コムドット切り抜き
+  suggested_at_jst: 2026-08-24 07:00
+- video_id: bCKjVkvfJIM
+  clip_id: auto05
+  youtube_video_id: TjovR5KnSu4
+  title: 9位の組の票数が道端の木と同等といじられるのが面白すぎる #コムドット #コムドット切り抜き
+  suggested_at_jst: 2026-08-24 12:00
+- video_id: 51tyFgelkmQ
+  clip_id: auto04
+  youtube_video_id: tUyrCoVoPCM
+  title: 企画用に分厚くカットされたお菓子が無理ゲーすぎる #コムドット #コムドット切り抜き
+  suggested_at_jst: 2026-08-25 07:00
+- video_id: bCKjVkvfJIM
+  clip_id: auto04
+  youtube_video_id: jr9NXY7P8dk
+  title: キレた直後に次の人気投票の心配をされるのが面白すぎる #コムドット #コムドット切り抜き
+  suggested_at_jst: 2026-08-25 12:00
 - video_id: 51tyFgelkmQ
   clip_id: wide01
   youtube_video_id: XPx2y_vDWV8
   title: 音を立てたら即ハリセン 極悪の食事を1本まるごと【コムドット切り抜き】
-  suggested_at_jst: null   # 横型。08-18 の一括予約から漏れている
+  suggested_at_jst: 2026-08-26 20:00   # 横型。08-18 の一括予約から漏れていたもの。ショートの後に置く
