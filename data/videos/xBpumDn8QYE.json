@@ -1,6 +1,6 @@
 {
   "video_id": "xBpumDn8QYE",
-  "state": "gated",
+  "state": "rendered",
   "meta": {
     "title": "【乾杯バニー再来】2泊3日無限にお酒飲み続ける旅行で最高すぎる男の思い出できたwwwwww",
     "description": "ひゅうが編集\n\nヤニヤニコンビ旅行前編はこちらから\n→ https://youtu.be/G2gXaVSnOQY?si=gNUou2g9fhncuV3O\n\nどうも！ひゅうがです！\n今日はヤニヤニ旅行後編です🔥\n前編からかなり2人ならではの空気感をお届けして沢山の愛溢れるコメントが殺到していてどちらの編集も担当した僕としては大満足です😏\n今回の旅行で改めて色んな大事なことを思い出せてコムドットはこれからもどんどん大きくなって更に仲良くなってくる集団だなと確信しました！\n北海道で出会って友達になったみんなも自分の人生思いっきり楽しんでてリスペクトに値する人達ばかりでこらからも何かあるたび北海道に返り咲こうと思ってます😏\n撮影も全力で楽しんで編集も全力で楽しんで届けてるのでこの時代にこんなにコメントくるんかコムドットは！と世間を圧倒してしまうようなコメ欄に今日はなることを願いながらみんなのコメントを楽しみに待ってます👍\nそれでは後編スタート🔥\n\n◾︎コムドット公式LINEはこちら\n→ https://liff.line.me/1645278921-kWRPP32q/?accountId=comforfan\n\n◾︎コムドットメンバーシップ登録はこちら\n→ https://www.youtube.com/@comdot/join\n\n◾︎コムドット公式グッズBB5の販売はこちら\n→ https://bb5.shop/\n\n◾︎アパレルブランドBIRDOGの販売はこちら\n→ https://birdog.shop/password\n\n\n◾︎コムドット各種SNS\n【Instagram】→ https://instagram.com/p/BoeJWOOhgfk/\n【Twitter】→ https://twitter.com/comyoutuber2\n【TikTok】→ https://www.tiktok.com/@com.youtuber2\n\n◾︎やまと個人アカウント\n【Instagram】→ https://www.instagram.com/com.yamato\n【Twitter】→ http://twitter.com/@comyamato0515\n【TikTok】→https://www.tiktok.com/@com.yamato0515\n【ヤマトノウナイ】→https://www.youtube.com/@ヤマトノウナイ\n【コムドットやまと公式LINE】→https://x.gd/DktIO\n\n◾︎ゆうた個人アカウント\n【Instagram】→ https://www.instagram.com/com.yuta\n【Twitter】→ http://twitter.com/@comyuta0305\n【TikTok】→ https://www.tiktok.com/@com.yuta0305\n\n◾︎ゆうま個人アカウント\n【Instagram】→ https://www.instagram.com/com.yuma\n【Twitter】→ http://twitter.com/@comyuma1214\n【TikTok】→ https://www.tiktok.com/@com.yuma1214\n\n◾︎ひゅうが個人アカウント\n【Instagram】→ https://instagram.com/com.hyuga\n【Twitter】→ http://twitter.com/comhyuga1117\n【TikTok】→ https://www.tiktok.com/@com.hyuga1117\n\n◾︎あむぎり個人アカウント\n【Instagram】→ https://www.instagram.com/com.amugiri\n【Twitter】→ https://twitter.com/comamugiri0123\n【TikTok】→ https://www.tiktok.com/@com.amugiri2",
@@ -12,143 +12,47 @@
   },
   "clips": [
     {
-      "clip_id": "auto04",
-      "start": 659.76,
-      "end": 723.13,
-      "duration": 63.4,
-      "score": 16.504,
-      "position": 0.11,
+      "clip_id": "man01",
+      "start": 1044.0,
+      "end": 1101.0,
+      "duration": 57.0,
+      "score": null,
+      "position": 0.175,
       "signals": {
+        "コメント": 4,
         "歓声": 0,
-        "驚き": 4,
-        "笑い": 3,
-        "いじり": 0,
-        "コメント": 5
+        "驚き": 0,
+        "笑い": 0
       },
-      "formats": [],
+      "hook": "潰れた相方を抱え上げたら完成した図",
+      "footer": "コムドットのひゅうが（金髪）とゆうまによる2泊3日の北海道旅行の後編。すすきので飲み歩いた道中、酔って動けなくなったゆうまをひゅうがが抱え上げた場面",
+      "formats": [
+        "short"
+      ],
       "published": null,
       "gate": {
         "result": "held",
         "reasons": [
           "許諾ステータスが pending（granted ではない）"
         ]
-      }
-    },
-    {
-      "clip_id": "auto05",
-      "start": 833.84,
-      "end": 897.84,
-      "duration": 64.0,
-      "score": 12.862,
-      "position": 0.14,
-      "signals": {
-        "歓声": 0,
-        "驚き": 2,
-        "笑い": 4,
-        "いじり": 5,
-        "コメント": 3
       },
-      "formats": [],
-      "published": null,
-      "gate": {
-        "result": "held",
-        "reasons": [
-          "許諾ステータスが pending（granted ではない）"
-        ]
-      }
-    },
-    {
-      "clip_id": "auto06",
-      "start": 949.4,
-      "end": 1013.0,
-      "duration": 63.6,
-      "score": 10.22,
-      "position": 0.159,
-      "signals": {
-        "歓声": 0,
-        "驚き": 2,
-        "笑い": 2,
-        "いじり": 2,
-        "コメント": 3
-      },
-      "formats": [],
-      "published": null,
-      "gate": {
-        "result": "held",
-        "reasons": [
-          "許諾ステータスが pending（granted ではない）"
-        ]
-      }
-    },
-    {
-      "clip_id": "auto02",
-      "start": 1020.12,
-      "end": 1087.48,
-      "duration": 67.4,
-      "score": 24.619,
-      "position": 0.171,
-      "signals": {
-        "歓声": 1,
-        "驚き": 3,
-        "笑い": 2,
-        "いじり": 2,
-        "コメント": 8
-      },
-      "formats": [],
-      "published": null,
-      "gate": {
-        "result": "held",
-        "reasons": [
-          "許諾ステータスが pending（granted ではない）"
-        ]
-      }
-    },
-    {
-      "clip_id": "auto01",
-      "start": 1385.36,
-      "end": 1451.68,
-      "duration": 66.3,
-      "score": 29.853,
-      "position": 0.232,
-      "signals": {
-        "歓声": 0,
-        "驚き": 4,
-        "笑い": 1,
-        "いじり": 3,
-        "コメント": 10
-      },
-      "formats": [],
-      "published": null,
-      "gate": {
-        "result": "held",
-        "reasons": [
-          "許諾ステータスが pending（granted ではない）"
-        ]
-      }
-    },
-    {
-      "clip_id": "auto03",
-      "start": 1463.88,
-      "end": 1529.96,
-      "duration": 66.1,
-      "score": 23.302,
-      "position": 0.245,
-      "signals": {
-        "歓声": 0,
-        "驚き": 1,
-        "笑い": 1,
-        "いじり": 5,
-        "コメント": 8
-      },
-      "formats": [],
-      "published": null,
-      "gate": {
-        "result": "held",
-        "reasons": [
-          "許諾ステータスが pending（granted ではない）"
-        ]
+      "planned_title": "酔い潰れた相方を抱え上げたら完成した画が面白すぎる #コムドット #コムドット切り抜き",
+      "third_party_check": {
+        "checked_at": "2026-08-27",
+        "frames": [
+          "17:26",
+          "17:36",
+          "17:46",
+          "17:57",
+          "18:06",
+          "18:16"
+        ],
+        "result": "区間内にメンバー2人以外の特定できる第三者は映っていない。遠景の通行人のみ"
       }
     }
   ],
-  "notes": []
+  "notes": [
+    "この素材は全編が飲酒（すすきの飲み歩き）。上位候補 auto01/02/03/06 は一般の方との路上でのやり取りが中心だったため採らず、メンバー2人だけの区間を手で選び直した（17:24-18:21）。",
+    "許諾が pending のため gate は held。書き出しのみで、アップロード・予約は行っていない。"
+  ]
 }
