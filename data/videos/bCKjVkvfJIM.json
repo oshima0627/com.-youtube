@@ -28,7 +28,7 @@
       "formats": [
         "short"
       ],
-      "published": null,
+      "published": true,
       "gate": {
         "result": "held",
         "reasons": [
@@ -42,7 +42,7 @@
         "thumbnail_set": false,
         "youtube_video_id": "tgdHD0B2lfA",
         "url": "https://www.youtube.com/watch?v=tgdHD0B2lfA",
-        "privacy_status": "private",
+        "privacy_status": "public",
         "title": "絶対1位と言っていた組が3位で表彰台の一番下なのが面白すぎる #コムドット #コムドット切り抜き",
         "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
         "channel_title": "コムドット名場面ch【切り抜き】"
@@ -66,7 +66,7 @@
       "formats": [
         "short"
       ],
-      "published": null,
+      "published": true,
       "gate": {
         "result": "held",
         "reasons": [
@@ -80,7 +80,7 @@
         "thumbnail_set": false,
         "youtube_video_id": "_efY1rfqqUE",
         "url": "https://www.youtube.com/watch?v=_efY1rfqqUE",
-        "privacy_status": "private",
+        "privacy_status": "public",
         "title": "魔人のいない組ほど人気という説になるのが面白すぎる #コムドット #コムドット切り抜き",
         "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
         "channel_title": "コムドット名場面ch【切り抜き】"

@@ -25,14 +25,19 @@
         "いじり": 1,
         "コメント": 5
       },
-      "formats": [],
+      "formats": [
+        "short"
+      ],
       "published": null,
       "gate": {
         "result": "held",
         "reasons": [
           "許諾ステータスが pending（granted ではない）"
         ]
-      }
+      },
+      "hook": "5人のLINEグループで2人しか喋っていない",
+      "footer": "ペアに分かれてアレンジ料理で対決する企画の冒頭。メンバー5人のLINEグループを開いたら、実際に喋っているのが2人だけだと分かる場面",
+      "planned_title": "5人のLINEグループで2人しか喋っていないことが発覚するのが面白すぎる #コムドット #コムドット切り抜き #shorts #ひゅうが #ゆうた"
     },
     {
       "clip_id": "auto01",
@@ -51,7 +56,7 @@
       "formats": [
         "short"
       ],
-      "published": null,
+      "published": true,
       "gate": {
         "result": "held",
         "reasons": [
@@ -65,7 +70,7 @@
         "thumbnail_set": false,
         "youtube_video_id": "BF5Y7s_qDc8",
         "url": "https://www.youtube.com/watch?v=BF5Y7s_qDc8",
-        "privacy_status": "private",
+        "privacy_status": "public",
         "title": "料理の相談がいつのまにか主導権争いになるのが面白すぎる #コムドット #コムドット切り抜き",
         "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
         "channel_title": "コムドット名場面ch【切り抜き】"
@@ -86,14 +91,19 @@
         "いじり": 0,
         "コメント": 7
       },
-      "formats": [],
+      "formats": [
+        "short"
+      ],
       "published": null,
       "gate": {
         "result": "held",
         "reasons": [
           "許諾ステータスが pending（granted ではない）"
         ]
-      }
+      },
+      "hook": "自信作を出す直前にじゃんけんが始まる",
+      "footer": "ペアに分かれてアレンジ料理で対決する企画。車内でお題を相談していた2人が、自信作を出す順番をじゃんけんで決め始めた場面",
+      "planned_title": "自信作を出す直前にじゃんけんで順番を決めだすのが面白すぎる #コムドット #コムドット切り抜き #shorts #ゆうた"
     },
     {
       "clip_id": "auto03",
@@ -135,7 +145,7 @@
       "formats": [
         "short"
       ],
-      "published": null,
+      "published": true,
       "gate": {
         "result": "held",
         "reasons": [
@@ -149,7 +159,7 @@
         "thumbnail_set": false,
         "youtube_video_id": "84Ks4Tbq7Uk",
         "url": "https://www.youtube.com/watch?v=84Ks4Tbq7Uk",
-        "privacy_status": "private",
+        "privacy_status": "public",
         "title": "自炊なら1食40円という話が現実的すぎる #コムドット #コムドット切り抜き",
         "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
         "channel_title": "コムドット名場面ch【切り抜き】"
@@ -170,14 +180,19 @@
         "いじり": 0,
         "コメント": 5
       },
-      "formats": [],
+      "formats": [
+        "short"
+      ],
       "published": null,
       "gate": {
         "result": "held",
         "reasons": [
           "許諾ステータスが pending（granted ではない）"
         ]
-      }
+      },
+      "hook": "食べた瞬間「うまい」しか言えなくなる",
+      "footer": "ペアに分かれてアレンジ料理で対決する企画の試食。何が入っているかを伏せたまま食べ、中身を当てられるかを試している場面",
+      "planned_title": "食べた瞬間『何これ美味い』しか言えなくなるのが面白すぎる #コムドット #コムドット切り抜き #shorts #ゆうま #ひゅうが"
     }
   ],
   "notes": []

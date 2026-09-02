@@ -21,12 +21,12 @@
       ],
       "hook": "音を立てたら即ハリセンの食事企画",
       "footer": "あむぎり考案の企画集より。お菓子を音を立てずに食べきれるかを競う「極悪の食事」。1本の企画をまるごと収録",
-      "published": null,
+      "published": true,
       "upload": {
         "thumbnail_set": false,
         "youtube_video_id": "XPx2y_vDWV8",
         "url": "https://www.youtube.com/watch?v=XPx2y_vDWV8",
-        "privacy_status": "private",
+        "privacy_status": "public",
         "title": "音を立てたら即ハリセン 極悪の食事を1本まるごと【コムドット切り抜き】",
         "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
         "channel_title": "コムドット名場面ch【切り抜き】"
@@ -122,7 +122,7 @@
       "formats": [
         "short"
       ],
-      "published": null,
+      "published": true,
       "gate": {
         "result": "held",
         "reasons": [
@@ -133,7 +133,7 @@
         "thumbnail_set": false,
         "youtube_video_id": "iKxOFHrGeOI",
         "url": "https://www.youtube.com/watch?v=iKxOFHrGeOI",
-        "privacy_status": "private",
+        "privacy_status": "public",
         "title": "別々に選んだ品がまさかの一致で驚愕しすぎる #コムドット #コムドット切り抜き",
         "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
         "channel_title": "コムドット名場面ch【切り抜き】"
@@ -170,7 +170,7 @@
       "formats": [
         "short"
       ],
-      "published": null,
+      "published": true,
       "gate": {
         "result": "held",
         "reasons": [
@@ -181,7 +181,7 @@
         "thumbnail_set": false,
         "youtube_video_id": "YI-cVkayHS8",
         "url": "https://www.youtube.com/watch?v=YI-cVkayHS8",
-        "privacy_status": "private",
+        "privacy_status": "public",
         "title": "黒ひげのお菓子が飛び出す瞬間にビビりすぎるのが最高 #コムドット #コムドット切り抜き",
         "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
         "channel_title": "コムドット名場面ch【切り抜き】"

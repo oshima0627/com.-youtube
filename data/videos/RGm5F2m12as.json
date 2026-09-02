@@ -28,7 +28,7 @@
       "formats": [
         "short"
       ],
-      "published": null,
+      "published": true,
       "gate": {
         "result": "held",
         "reasons": [
@@ -38,7 +38,7 @@
       "upload": {
         "youtube_video_id": "cTzbNUFi9Iw",
         "url": "https://www.youtube.com/watch?v=cTzbNUFi9Iw",
-        "privacy_status": "private",
+        "privacy_status": "public",
         "title": "催眠術でひゅうがが本当に喋れなくなった瞬間がヤバすぎる #コムドット #コムドット切り抜き",
         "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
         "channel_title": "コムドット名場面ch【切り抜き】",
@@ -186,7 +186,7 @@
       "formats": [
         "short"
       ],
-      "published": null,
+      "published": true,
       "gate": {
         "result": "held",
         "reasons": [
@@ -197,7 +197,7 @@
         "thumbnail_set": false,
         "youtube_video_id": "hbRhnrvPk-k",
         "url": "https://www.youtube.com/watch?v=hbRhnrvPk-k",
-        "privacy_status": "private",
+        "privacy_status": "public",
         "title": "催眠術で「めっちゃ楽しい」状態にされた顔が面白すぎる #コムドット #コムドット切り抜き",
         "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
         "channel_title": "コムドット名場面ch【切り抜き】"

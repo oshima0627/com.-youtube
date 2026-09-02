@@ -51,7 +51,7 @@
       "formats": [
         "short"
       ],
-      "published": null,
+      "published": true,
       "gate": {
         "result": "held",
         "reasons": [
@@ -65,7 +65,7 @@
         "thumbnail_set": false,
         "youtube_video_id": "tn6iwirQhho",
         "url": "https://www.youtube.com/watch?v=tn6iwirQhho",
-        "privacy_status": "private",
+        "privacy_status": "public",
         "title": "アバターの髪型に全力を出したのに伝わらなさすぎる #コムドット #コムドット切り抜き",
         "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
         "channel_title": "コムドット名場面ch【切り抜き】"

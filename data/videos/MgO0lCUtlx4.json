@@ -78,7 +78,7 @@
       "formats": [
         "short"
       ],
-      "published": null,
+      "published": true,
       "gate": {
         "result": "held",
         "reasons": [
@@ -92,7 +92,7 @@
         "thumbnail_set": false,
         "youtube_video_id": "Mo-y9bYqzFE",
         "url": "https://www.youtube.com/watch?v=Mo-y9bYqzFE",
-        "privacy_status": "private",
+        "privacy_status": "public",
         "title": "前人未到の5分体幹をクリアした瞬間がヤバすぎる #コムドット #コムドット切り抜き",
         "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
         "channel_title": "コムドット名場面ch【切り抜き】"

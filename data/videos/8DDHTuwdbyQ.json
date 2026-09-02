@@ -28,7 +28,7 @@
       "formats": [
         "short"
       ],
-      "published": null,
+      "published": true,
       "gate": {
         "result": "held",
         "reasons": [
@@ -42,7 +42,7 @@
         "thumbnail_set": false,
         "youtube_video_id": "XT01mLljg6Y",
         "url": "https://www.youtube.com/watch?v=XT01mLljg6Y",
-        "privacy_status": "private",
+        "privacy_status": "public",
         "title": "あむぎりがビールの言い方だけで1杯追加されるのが面白すぎる #コムドット #コムドット切り抜き",
         "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
         "channel_title": "コムドット名場面ch【切り抜き】"
@@ -62,14 +62,19 @@
         "いじり": 0,
         "コメント": 7
       },
-      "formats": [],
+      "formats": [
+        "short"
+      ],
       "published": null,
       "gate": {
         "result": "held",
         "reasons": [
           "許諾ステータスが pending（granted ではない）"
         ]
-      }
+      },
+      "hook": "渾身のパンチラインを一番気持ちよく喰らうのがやまと",
+      "footer": "やまとの誕生日に本人抜きで飲む企画。話しているのは残りの4人で、あむぎりが作った曲を聴かせたときのやまとの反応の話になった場面",
+      "planned_title": "渾身のパンチラインを一番気持ちよく喰らってくれるのがやまとなのが良すぎる #コムドット #コムドット切り抜き #shorts #あむぎり #ゆうた"
     },
     {
       "clip_id": "auto05",
@@ -85,14 +90,19 @@
         "いじり": 0,
         "コメント": 4
       },
-      "formats": [],
+      "formats": [
+        "short"
+      ],
       "published": null,
       "gate": {
         "result": "held",
         "reasons": [
           "許諾ステータスが pending（granted ではない）"
         ]
-      }
+      },
+      "hook": "売れても戻ってきたら前のままなのがやまと",
+      "footer": "やまとの誕生日に本人抜きで飲む企画。残りの4人が、やまとの変わらなさと物怖じのなさを褒めている場面",
+      "planned_title": "売れても戻ってきたら前のままなやまとの話が良すぎる #コムドット #コムドット切り抜き #shorts #ゆうた #あむぎり"
     },
     {
       "clip_id": "auto04",
@@ -115,7 +125,36 @@
         "reasons": [
           "許諾ステータスが pending（granted ではない）"
         ]
-      }
+      },
+      "excluded": "区間の冒頭が別チャンネルの話（雷獣チャンネル）で、見出しと合わないため man01 に切り直した"
+    },
+    {
+      "clip_id": "man01",
+      "start": 3971.2,
+      "end": 4039.1,
+      "duration": 67.9,
+      "score": null,
+      "position": 0.827,
+      "signals": {
+        "歓声": 0,
+        "驚き": 0,
+        "笑い": 0,
+        "いじり": 0,
+        "コメント": 0
+      },
+      "formats": [
+        "short"
+      ],
+      "published": null,
+      "hook": "最後のお題は「28歳のやまとに期待すること」",
+      "footer": "やまとの誕生日に本人抜きで飲む企画。最後のトークテーマが発表され、「遊ぶこと・休むことの楽しさを覚えてほしい」という話になる場面",
+      "gate": {
+        "result": "held",
+        "reasons": [
+          "許諾ステータスが pending（granted ではない）"
+        ]
+      },
+      "planned_title": "最後のトークテーマが『28歳のやまとに期待すること』なのが良すぎる #コムドット #コムドット切り抜き #shorts #ゆうた #あむぎり"
     },
     {
       "clip_id": "auto02",

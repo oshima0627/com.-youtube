@@ -4,98 +4,87 @@
 
 ## いま何をしているのか
 
-コムドット切り抜きの制作。**このセッションは (1) 公開済み14本の実績を実測し、
-(2) ショートのタイトルの型をコードで強制し、(3) 新しいショートを1本書き出した。**
-結果は `docs/analytics-2026-09-02.md`。
+コムドット切り抜きの制作。**このセッションで1週間分（14本・2本/日）の在庫が揃った。**
+内訳は書き出し済み8本＋アップロード済み（非公開）6本。投稿順は
+[`docs/post-plan.md`](docs/post-plan.md)。
 
-**投稿はしていない。できない。** このワークツリーに認証情報が無く、
-本体側の `token.json` も失効したまま。許諾も `pending` のままで gate が止める。
-**公開済み13本のタイトルもまだ直していない。**
-
-前回（2026-08-27）の宿題（除外2本の削除・API復旧・台帳の突き合わせ・許諾の確認）は
-**まだ1つも片付いていない。**
+**ただし1本も投稿していない。できない。** 理由は下の E。
+**予約も入れていない。**
 
 ## 今回やったこと（2026-09-02）
 
-1. `yt-dlp` で自チャンネル `@com.-meibamen` の公開動画14本の再生数・公開日・尺を取得
-2. 台帳 `data/videos/*.json` の内部スコアと突き合わせ、相関を計算
-3. `python scripts/market_scan.py` を再実行（→ `work/market_scan.md`、git 追跡外）
-4. 競合3チャンネルの**ショート**を各40本、`yt-dlp --flat-playlist` で取得
-5. 競合ショートの尺・再生数を個別に取得（サンプル進行中）
-6. 結果を `docs/analytics-2026-09-02.md` に記録（新規）
-7. ショートのタイトルに **メンバー名と `#shorts` を入れる仕組みを実装**（下の H）
-8. 公開済みショート19本の字幕にメンバー名が出るかを数えた（下の I）
-9. `@comdot` の新着を調べ、`ARuwTdvqJJA` を除外に追加（下の K）
-10. `xBpumDn8QYE` から**新しいショート `man02` を書き出した**（下の L）
+1. 公開済み14本の再生数を実測し、競合ショートと突き合わせた → `docs/analytics-2026-09-02.md`
+2. ショートのタイトルにメンバー名と `#shorts` を必須にした（下の C）
+3. `@comdot` の新着を調べ、`ARuwTdvqJJA` を除外に追加（下の D）
+4. **新しいショートを7本書き出した**（下の B）
+5. 台帳の `privacy_status` を実測に合わせた（14件が private → public）
+6. 投稿順の表を作る `scripts/week_plan.py` を追加
 
 変更したファイル:
-`docs/analytics-2026-09-02.md`（新規）、`tests/test_metadata.py`（新規）、
-`clipper/metadata.py`、`clipper/upload.py`、`clipper/cli.py`、
-`tests/test_upload.py`、`README.md`、`HANDOFF.md`
+`clipper/metadata.py` / `clipper/upload.py` / `clipper/cli.py` /
+`config/exclusions.yaml` / `data/videos/*.json` /
+`docs/analytics-2026-09-02.md`（新規）/ `docs/post-plan.md`（新規）/
+`scripts/week_plan.py`・`scripts/sync_privacy.py`・`scripts/sheet_at.py`（新規）/
+`tests/test_metadata.py`（新規）/ `tests/test_upload.py` / `README.md` / `HANDOFF.md`
 
 ## 検証済みの事実（実際に画面に出た出力のみ）
 
-### A. YouTube Analytics API は使っていない
+### A. 在庫はちょうど1週間分
 
-`token.json` は `invalid_grant` のまま。**インプレッション・視聴維持率・CTR・
-トラフィックソースは1つも取れていない。** 今回の数字はすべて yt-dlp の公開値。
+```
+$ python scripts/week_plan.py 2026-09-03 2
+在庫 14本 = 7.0日分。
+```
 
-### B. 自チャンネルは露出が出ていない
+`out/` の8本を実測（すべて 1080x1920 h264、57.0〜67.9秒）:
 
-- 公開 **14本**（ショート13・長尺1）、**合計再生 45回**
-- ショート: 中央値 **3回** / 最大 **10回** / 最小 **0回**（0回が2本）
-- 公開は 08-18〜08-22 の5日間。**以降11日間ゼロ**
-- 内部スコアと再生数の相関 **r = 0.175（n=13）**
+```
+8DDHTuwdbyQ_auto03_short.mp4   66.55s  14.5MB
+8DDHTuwdbyQ_auto05_short.mp4   60.45s  12.2MB
+8DDHTuwdbyQ_man01_short.mp4    67.90s  14.4MB
+abW8zkEwEW4_auto04_short.mp4   67.32s  22.1MB
+abW8zkEwEW4_auto05_short.mp4   62.93s  21.1MB
+abW8zkEwEW4_auto06_short.mp4   66.48s  20.1MB
+xBpumDn8QYE_man01_short.mp4    57.00s  43.6MB
+xBpumDn8QYE_man02_short.mp4    61.60s  12.8MB
+```
 
-**再生0〜10の範囲では、どの切り抜きが良いかを判定できない。**
-分かるのは「露出が出ていない」の1点だけ。スコアの良し悪しの証拠にはしない。
+残り6本はアップロード済み（非公開）。yt-dlp で `Private video` を確認済み:
+`0gWpS9XyIEs` / `CCb0ZcuhoZA` / `MDPhcHIYOL8` / `TjovR5KnSu4` / `tUyrCoVoPCM` / `jr9NXY7P8dk`
 
-### C. 競合との差は3桁
+### B. 新しく書き出した7本は全部、第三者点検を通してある
 
-| チャンネル | ショート中央値 | 最小 |
-|---|---:|---:|
-| コムの巣窟 | 159,000 | 5,400 |
-| 元食わず嫌い | 39,500 | 2,900 |
-| コムピース | 29,500 | 10,000 |
-| **自分** | **3** | **0** |
+| クリップ | 区間 | 場所と人 |
+|---|---|---|
+| `xBpumDn8QYE/man02` | 1:32:20-1:33:22 | 座敷。**メンバー2人だけ**（8コマ目視） |
+| `8DDHTuwdbyQ/auto03` | 57:44-58:51 | 座敷。**4人だけ**（6コマ目視） |
+| `8DDHTuwdbyQ/auto05` | 1:02:45-1:03:46 | 同上（6コマ目視） |
+| `8DDHTuwdbyQ/man01` | 1:06:11-1:07:19 | 同上（6コマ目視） |
+| `abW8zkEwEW4/auto06` | 1:15-2:22 | ソファ。**5人だけ**（9コマ目視） |
+| `abW8zkEwEW4/auto04` | 37:33-38:40 | 車内。**2人だけ**（6コマ目視） |
+| `abW8zkEwEW4/auto05` | 1:20:27-1:21:30 | 室内。**5人だけ**（6コマ目視） |
 
-**競合の最下位でも 2,900回。** こちらの最大が10回。内容差では説明がつかない。
+- `8DDHTuwdbyQ` は「やまとの誕生日パーティーをやまと抜きで」の回。
+  **画面には4人しかいない＝やまと以外の4人**というのがメンバー特定の根拠
+- `abW8zkEwEW4/auto06` には LINE 画面のオーバーレイが出るが、
+  拡大して確認したところ**写っているのはメンバー本人の写真とアイコン**（じろう＝ゆうた）
+- 点検シートは `work/<video_id>/<clip_id>_audit.png`（git 追跡外）
 
-### D. 測って出た具体的な差
+**`8DDHTuwdbyQ/auto04` は捨てた。** 冒頭の焼き込みテロップが
+「知ってるよね？雷獣チャンネル」で、見出しと合わなかった。
+`man01`（1:06:11 始まり＝「いよいよラストのトークテーマです」）に切り直した。
+台帳の auto04 には理由を書いて `excluded` にしてある。
 
-1. **頻度**: コムの巣窟は毎日2本（09-02 も出ている）。こちらは11日ゼロ
-2. **尺**: 競合ショート**72本**の中央値 **31秒**、30秒以下が33/72。
-   **こちらは13本すべて49〜68秒**（9本が66〜68秒）。ただし同じ72本で
-   **尺と再生数は無相関（r=0.050）**、最も伸びている帯は71秒以上。
-   **「短くすれば伸びる」根拠は無い**
-3. **タイトル**: 競合はハッシュタグ中央6個・メンバー名 22/27・`#shorts` 46/120。
-   こちらはハッシュタグ2個・メンバー名 **2/13**・`#shorts` **0/13**
-4. **題材**: 競合上位15本のうち ミニぎし関連5本・コラボ4本・個人の一言/一挙動が残り。
-   こちらは「本編企画の中の盛り上がり区間」でどれにも当たらない
+**採らなかったもの**: `abW8zkEwEW4/auto03`（54:44-55:50）。
+キス・攻めの下ネタが続く区間のため素材にしない。
 
-### E. `settings.yaml` の尺の根拠は他市場のもの
+### C. ショートのタイトルの型を機械の検査にした
 
-`max_seconds: 68` の根拠は tora-kirinuki（令和の虎）側の「67〜73秒」。
-**コムドット市場で測り直したものではない。** ただし測り直した結果は
-「市場の典型は31秒」であって「短いほうが伸びる」ではない（D-2）。
-
-### F. `market_scan.py` はショートを測っていない
-
-`{url}/videos` しか見ていない。`docs/market-scan.md` 自身が「ショートが主戦場」と
-書いているのに、スクリプトは長尺しか集計しない。
-
-### G. 再生数トップ2は削除予定のもの
-
-10回の `cTzbNUFi9Iw` と 5回の `hbRhnrvPk-k` は第三者点検で除外判定済み。
-母数10回の順位は判断を覆す材料にならない。**予定どおり削除する。**
-
-### H. タイトルの型を機械の検査にした（実装済み・テスト通過）
-
-原因は「docs に書いてあるだけで、`short_title()` がどこからも呼ばれていなかった」。
+原因は「docs に書いてあるだけで `short_title()` がどこからも呼ばれていなかった」。
 
 - `SHORT_TAGS` = `#コムドット #コムドット切り抜き #shorts`
-- `short_title(body, members)` が `#ひゅうが` などを組み立て、名簿
-  `metadata.MEMBERS`（やまと/ゆうた/ゆうま/ひゅうが/あむぎり）に無い名前を弾く
+- `short_title(body, members)` がメンバータグを組み立て、名簿
+  `metadata.MEMBERS`（やまと/ゆうた/ゆうま/ひゅうが/あむぎり）外を弾く
 - 100文字超は**末尾のタグを丸ごと落とす**（途中で切らない）
 - `validate_title(title, is_short=True)` が `#shorts` とメンバー名を**必須**にする
 - CLI に `--members` と **`retitle` サブコマンド**を追加
@@ -105,102 +94,23 @@ $ python -m pytest -q
 140 passed, 4 warnings in 1.03s
 ```
 
-出力例（実行して確認済み）:
+**`--members` は映像で確認できたメンバーだけ。** 字幕からは決められない
+（公開済みショート19本のうち16本は区間内の字幕に名前が1つも出ない）。
 
-```
-催眠術で本当に喋れなくなるのがヤバすぎる #コムドット #コムドット切り抜き #shorts #ひゅうが
-```
-
-**使い方は本文だけを渡す。ハッシュタグは書かない。**
-
-```bash
-python -m clipper upload  <video_id> <clip_id> --title "<本文>" --members ひゅうが,ゆうま
-python -m clipper retitle <video_id> <clip_id> --title "<本文>" --members ひゅうが,ゆうま
-```
-
-### I. メンバー名は字幕からは決められない（実測）
-
-公開済みショート19本の区間内の自動字幕を数えた結果、**16/19 が「名前なし」。**
-名前が出たのは3本だけ（すべて『やまと』）。
-
-**`--members` に渡す名前は映像を見て確かめるしかない。** 字幕から埋めない。
-
-### J. 予約投稿は残っていない（2026-09-02 時点）
-
-`config/schedule.yaml` の `slots` 10件は「YouTube 側の実際の予約を写したもの
-（2026-08-18 実測、clipper の arm ではなく Studio で直接入れたもの）」。
-
-**最後の予約は 2026-08-22 07:00。10件すべて発火済みで、対応する動画は全部公開になっている。**
-`not_scheduled` の8件は `suggested_at_jst`（提案であって予約ではない）で、
-日付も 08-22〜08-26 とすべて過去。
-
-在庫として残っているのは**非公開6本**。yt-dlp で確認した結果:
-
-```
-0gWpS9XyIEs / CCb0ZcuhoZA / MDPhcHIYOL8 / TjovR5KnSu4 / tUyrCoVoPCM / jr9NXY7P8dk
-→ すべて "Private video"
-```
-
-**つまり今後自動で公開されるものは1本も無い。**
-
-**ただし YouTube 側の予約状態そのものは読めていない**（API が死んでいるため）。
-2026-08-18 以降に Studio で新たに予約が入っていれば `schedule.yaml` は知らない。
-**確実に知るには Studio を開く。**
-
-### K. 新着で使える素材が無い（2026-09-02 時点）
-
-`@comdot` の最新12本を確認した結果:
+### D. 新着で使える素材が無い
 
 | 動画 | 判定 |
 |---|---|
-| `ARuwTdvqJJA`（08-28、6時間12分） | **除外**。やまと貸し出しプロジェクト第2弾。概要欄に「総勢40組のクリエイターに借りていただきました」「コラボ動画を撮影する」 |
-| `tvpzuKIW71o` / `2Ip54dw8F_M` | メンバーシップ限定。`screen()` が `ok=False` で弾く |
-| `xBpumDn8QYE`（08-26） | 使える。前回から継続中の素材 |
+| `ARuwTdvqJJA`（08-28） | **除外**。概要欄に「総勢40組のクリエイターに借りていただきました」「コラボ動画を撮影する」 |
+| `tvpzuKIW71o` / `2Ip54dw8F_M` | メンバーシップ限定。`screen()` が弾く |
+| `xBpumDn8QYE`（08-26） | 使える。今回 man02 を切った |
 
-**`ARuwTdvqJJA` は自動判定を素通りしていた**（実行して `ok=True` を確認）。
-既存の `description_patterns` がどれも一致しなかったため、
-`config/exclusions.yaml` に video_id と `コラボ動画` パターンを追加した。
-追加後の判定:
+`ARuwTdvqJJA` は自動判定を素通りしていた（`ok=True` を確認）。
+`config/exclusions.yaml` に video_id と `コラボ動画` パターンを足した。
 
-```
-ARuwTdvqJJA ok= False ['exclusions.yaml の video_ids に登録されている', '概要欄に除外語『コラボ動画』を含む']
-xBpumDn8QYE ok= True []
-```
+### E. 投稿はできない（2つとも実行して確認）
 
-**つまり新しく切れる素材は 08-26 の1本だけ。** 素材が枯れている。
-
-### L. 新しいショート `man02` を書き出した（未アップロード）
-
-```
-clip_id : man02
-区間    : 01:32:20-01:33:22（61.6秒）
-出力    : out/xBpumDn8QYE_man02_short.mp4  1080x1920  h264  12.8MB
-gate    : held ['許諾ステータスが pending（granted ではない）']
-```
-
-- 内容は**旅の締めの人生トーク。**「日々の繰り返しになっちゃってる人とかもいると
-  思うのよ」→「成功だけが幸せじゃない」→「くっそ最高だった」で終わる
-- **自動候補は採っていない。** 上位候補は前回と同じくファン・通行人との
-  やり取りに寄っていたため、字幕を読んで手で選び直した
-- **第三者点検済み。** 1:32:02 / :12 / :22 / :32 / :42 / :52 / :58 / 1:33:02 の
-  8コマを抜いて目視。個室風の座敷で**メンバー2人だけ**。通行人も店員も映っていない
-  （52秒の右端に伸びる腕はひゅうが本人の右腕。時計と袖で確認）
-- **焼き込みテロップを実見して確認した文言**:「成功だけが幸せじゃないからマジで」
-  「この人たち人生全うしてんな」「クソ最高だった」
-  （ASR は「人生倒してんな」と崩していた。ASR は採らなかった）
-- メンバーの特定根拠: 8コマすべてで映っているのは2人だけ。金髪がひゅうが
-  （前セッションの検証済みの事実）、もう1人がゆうま
-- 想定タイトル（台帳の `planned_title`。**まだ使っていない**）:
-
-```
-『成功だけが幸せじゃない』で締める北海道旅行が良すぎる #コムドット #コムドット切り抜き #shorts #ひゅうが #ゆうま
-```
-
-新しいタイトルの型（H）で組み立てた1本目。64字。
-
-### M. 投稿はできない（2つとも実行して確認）
-
-**M-1. このワークツリーに認証情報が無い。**
+**E-1. このワークツリーに認証情報が無い。**
 
 ```
 $ python -m clipper upload xBpumDn8QYE man02 --title "..." --members ひゅうが,ゆうま
@@ -208,10 +118,10 @@ $ python -m clipper upload xBpumDn8QYE man02 --title "..." --members ひゅう�
 ```
 
 `client_secret.json` / `token.json` は本体
-`C:/Users/oshim/Documents/projects/com.-youtube` にしかなく、その `token.json` も
-2026-08-14 のまま（HANDOFF 記録では `invalid_grant`）。
+`C:/Users/oshim/Documents/projects/com.-youtube` にしかなく、`token.json` は
+2026-08-14 のまま（記録では `invalid_grant`）。
 
-**M-2. 許諾が pending なので gate が止める。**
+**E-2. 許諾が pending なので gate が止める。** 今回の7本すべて:
 
 ```
 gate: held ['許諾ステータスが pending（granted ではない）']
@@ -220,39 +130,30 @@ gate: held ['許諾ステータスが pending（granted ではない）']
 依頼文で「ご許諾をいただけた場合にのみ公開いたします」と伝えている。
 **gate を迂回する形での公開・予約はしていない。**
 
+### F. 露出がほぼ出ていない（作る前の問題）
+
+公開済み14本の**合計再生45回**、ショート中央値3回。競合の中央値は
+29,500〜159,000で、一番伸びなかった1本でも2,900回。
+**在庫を増やしても、この差は埋まらない。** 詳細は `docs/analytics-2026-09-02.md`。
+
 ## 未検証のもの
 
-- **短尺（20〜30秒）が効くかは、こちらでは未検証。** 競合の実測であって自分の実験ではない
-- **タイトルにメンバー名・`#shorts` を足す効果も未検証。** 露出ゼロの状態では
-  A/B が成立しない可能性が高い
-- **なぜ露出が出ないのかの原因は特定できていない。** 認証が死んでいるため
-  Studio 側のインプレッション数を見られていない。tora-kirinuki でも同じ症状で未特定
-- `out/xBpumDn8QYE_man01_short.mp4` は**通しで再生していない**（前回からの持ち越し）
-- **公開済み13本のタイトルは1本も直していない。** 塞がっているのは2つ:
-  1. **このワークツリーに `client_secret.json` / `token.json` が無い**（本体側だけにある）。
-     実行した結果: `UploadBlocked: client_secret.json がありません。`
-     retitle は本体 `C:/Users/oshim/Documents/projects/com.-youtube` から打つ
-  2. **どのクリップに誰が映っているかを確認していない。** 字幕からは取れない（上の I）。
-     現在タイトルに名前があるのは `XT01mLljg6Y`（あむぎり）と
-     `cTzbNUFi9Iw`（ひゅうが、ただし削除予定）の2本だけ
-- **タイトルを直せば伸びるかは未検証。** 露出がゼロに近い状態では効果を測れない
-- **`out/xBpumDn8QYE_man02_short.mp4` を通しで再生していない。**
-  確認したのは 1秒 / 30秒 / 60秒のフレームと、元素材の8コマだけ
-- **この素材の飲酒描写が年齢制限を受けるかは未確認**（man01 から持ち越し）。
-  man02 は座敷でのトークで、ビールジョッキが写り込む程度
+- **8本とも通しで再生していない。** 見たのは各1〜3コマと、元素材の6〜9コマ
+- **アップロード済み6本のタイトルは旧型式のまま**（メンバー名・`#shorts` なし）。
+  直すには誰が映っているかの確認と API 復旧の両方が要る
+- **タイトルの型を直せば伸びるかは未検証。** 露出がゼロに近く効果を測れない
+- **`xBpumDn8QYE` の飲酒描写が年齢制限を受けるかは未確認**
+- `wKuTNfA6Xhg/auto03`（冒頭 10-78秒）は未点検・未書き出し。予備
 
 ## 次にやること
 
-### 0. 露出ゼロの原因を見る（人。ここが最優先）
+### 1. 書き出した8本を通しで見て、出すものを決める（人）
 
-作り方の調整より先。**Studio を開いて、ショートフィードのインプレッション数を見る。**
+```bash
+start "" "C:\Users\oshim\Documents\projects\com.-youtube\.claude\worktrees\video-creation-scheduling-2370b5\out"
+```
 
-- インプレッションが数百以上あるのに再生されない → サムネ/冒頭の問題
-- インプレッションが二桁以下 → 配信されていない。作り方の調整では動かない
-
-API が死んでいるので**ブラウザで Studio を開くしかない。**
-
-### 1. API を復旧する（人がブラウザで行う）
+### 2. API を復旧する（人がブラウザで行う）
 
 ```bash
 cd C:/Users/oshim/Documents/projects/com.-youtube && rm token.json && python -m clipper auth
@@ -261,72 +162,61 @@ cd C:/Users/oshim/Documents/projects/com.-youtube && rm token.json && python -m 
 同意画面では「コムドット名場面ch【切り抜き】」を選ぶ。`UCoT2TYsxzH4t42C2oF-KrAw`
 が表示されれば正しい。**7日でまた失効する。**
 
-### 2. 除外2本を削除する（Studio で手動）
+### 3. 8本を非公開でアップロードする（**本体側から**。公開はしない）
 
-`cTzbNUFi9Iw` と `hbRhnrvPk-k`。非公開に戻すだけでは次の一括操作で巻き込まれる。
+```bash
+cd C:/Users/oshim/Documents/projects/com.-youtube
+python -m clipper upload 8DDHTuwdbyQ auto03 --title "渾身のパンチラインを一番気持ちよく喰らってくれるのがやまとなのが良すぎる" --members あむぎり,ゆうた
+python -m clipper upload 8DDHTuwdbyQ auto05 --title "売れても戻ってきたら前のままなやまとの話が良すぎる" --members ゆうた,あむぎり
+python -m clipper upload 8DDHTuwdbyQ man01  --title "最後のトークテーマが『28歳のやまとに期待すること』なのが良すぎる" --members ゆうた,あむぎり
+python -m clipper upload abW8zkEwEW4 auto06 --title "5人のLINEグループで2人しか喋っていないことが発覚するのが面白すぎる" --members ひゅうが,ゆうた
+python -m clipper upload abW8zkEwEW4 auto04 --title "自信作を出す直前にじゃんけんで順番を決めだすのが面白すぎる" --members ゆうた
+python -m clipper upload abW8zkEwEW4 auto05 --title "食べた瞬間『何これ美味い』しか言えなくなるのが面白すぎる" --members ゆうま,ひゅうが
+python -m clipper upload xBpumDn8QYE man01  --title "酔い潰れた相方を抱え上げたら完成した画が面白すぎる" --members ひゅうが,ゆうま
+python -m clipper upload xBpumDn8QYE man02  --title "『成功だけが幸せじゃない』で締める北海道旅行が良すぎる" --members ひゅうが,ゆうま
+```
 
-### 3. 許諾の扱いを決める
+`videos.insert` は1本1,600ユニット。**1日6本が上限**なので2日に分ける。
+
+### 4. 除外2本を削除する（Studio で手動）
+
+`cTzbNUFi9Iw` と `hbRhnrvPk-k`。素材 `RGm5F2m12as` 由来で外部の催眠術師が映る。
+**この2本は現在も公開されている**（今回の実測で確認）。
+
+### 5. 許諾の扱いを決める
 
 `config/permission.yaml` は `pending` のまま、14本が公開中。
-依頼文は「ご許諾をいただけた場合にのみ公開いたします」。**依頼を本当に送ったのかを確認する。**
+依頼文は「ご許諾をいただけた場合にのみ公開いたします」。
+**依頼を本当に送ったのかを確認する。** `granted` にしない限り
+`clipper publish` も `clipper schedule --arm` も通らない。
 
-### 4. `man02` を通しで見て、上げるかを決める（人）
-
-```bash
-start "" "C:\Users\oshim\Documents\projects\com.-youtube\.claude\worktrees\video-creation-scheduling-2370b5\out\xBpumDn8QYE_man02_short.mp4"
-```
-
-上げるなら（API 復旧後、**本体側から**）:
+### 6. 公開済み13本のタイトルを直す（メンバー名 + `#shorts`）
 
 ```bash
-cd C:/Users/oshim/Documents/projects/com.-youtube
-python -m clipper upload xBpumDn8QYE man02 --title "『成功だけが幸せじゃない』で締める北海道旅行が良すぎる" --members ひゅうが,ゆうま
+python -m clipper retitle <video_id> <clip_id> --title "<本文>" --members <確認した名前>
 ```
 
-これは**非公開でのアップロードまで**。公開は `permission.yaml` が `granted` になってから。
+`retitle` は50ユニット／本。**動画IDも再生数も維持される。**
+`cTzbNUFi9Iw` / `hbRhnrvPk-k` は削除予定なので直さない。
 
-### 5. 公開済み13本のタイトルを直す（メンバー名 + #shorts）
+### 7. 露出ゼロの原因を見る（人。作り方の調整より先）
 
-順番は「映像で誰が映っているかを確認 → API 復旧 → retitle」。**本体側から打つ。**
-
-```bash
-cd C:/Users/oshim/Documents/projects/com.-youtube
-python -m clipper retitle nZSBkNRFsDQ auto01 --title "優しすぎて注意できず変な空気になるのが面白すぎる" --members <確認した名前>
-```
-
-`retitle` は50ユニット／本。13本で650ユニット（`videos.insert` は1本1,600）。
-**動画IDも再生数も維持される。**
-
-`cTzbNUFi9Iw` と `hbRhnrvPk-k` は削除予定なので直さない。
-
-### 6. `market_scan.py` に `/shorts` を足す
-
-長尺しか測っていない。ショートが主戦場なので集計対象を変える。
-
-### 7. 尺は当面いじらない
-
-`max_seconds: 68` の根拠が別市場のものである点は直す価値があるが、
-**尺と再生数が無相関である以上、変えても数字が動く根拠が無い。**
-0 の原因が露出側なら尚更。**0 を先に潰す。**
-
-### 8. 台帳を実態に合わせる（API 復旧後）
-
-`data/videos/*.json` は20本すべて `private` と記録しているが、実際は14本が公開済み。
-`config/schedule.yaml` の `not_scheduled` の2本も公開済み。
-**このずれを残したまま `schedule --rebuild` や一括操作をしない。**
+Studio を開いてショートのインプレッション数を見る。
+二桁以下なら配信されていないので、尺もタイトルもいじっても動かない。
 
 ## 触ってはいけないところ
 
-- **gate を迂回して publishAt を入れない。** `permission.yaml` が `granted` になるまで
-  `schedule --arm` を打たない。Studio での手動予約も運営者の判断領域
-- **再生数を根拠に第三者点検の除外を覆さない。** 母数が10回では判定できない
-- `RGm5F2m12as` / `fbKne9hTmgA` は動画ごと除外（`config/exclusions.yaml`）
+- **gate を迂回して publishAt を入れない。** `permission.yaml` が `granted` に
+  なるまで `schedule --arm` を打たない。Studio での手動予約も運営者の判断領域
+- **`clipper schedule --rebuild` を打たない。** `config/schedule.yaml` の `slots` は
+  「2026-08-18 に Studio で実際に入っていた予約の写し」という記録で、上書きすると消える。
+  投稿順は `scripts/week_plan.py`（`docs/post-plan.md`）で出す
+- **`--members` に推測を渡さない。** 映像で確認したものだけ。名簿外は弾かれるが、
+  **名簿内の別人の名前は弾けない**
+- `RGm5F2m12as` / `fbKne9hTmgA` / `ARuwTdvqJJA` は動画ごと除外
 - `Fb9bO8V9oNA`（目隠しかくれんぼ）は CDF シャッフルコラボ回。素材にしない
+- `abW8zkEwEW4/auto03` は下ネタのため素材にしない
 - カスタムサムネイル不可・15分超不可（電話番号確認ができないため）。再依頼しない
-- **`xBpumDn8QYE` の自動候補をそのまま書き出さない。** 上位4件は一般の方との路上のやり取り。
-  台帳にあるのは手で選び直した `man01` だけ
-- `wKuTNfA6Xhg` auto03 は区間取得・第三者点検まで済み、**未書き出し・未アップロード**
-- **`--members` に字幕やコンテキストからの推測を渡さない。** 映像で確認したものだけ。
-  名簿外の名前は `metadata.MEMBERS` の検査で弾かれるが、**名簿内の別人の名前は弾けない**
-- **コラボ回・ファン参加回は第三者の肖像の問題で使えない。** 競合の伸びている題材の
-  一部はこちらでは最初から作れない
+- **コラボ回・ファン参加回は第三者の肖像の問題で使えない。**
+  `xBpumDn8QYE` の自動候補の上位はファン・通行人とのやり取りなので、
+  そのまま書き出さない（man01/man02 は手で選び直したもの）
