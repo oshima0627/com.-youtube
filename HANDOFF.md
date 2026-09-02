@@ -12,6 +12,8 @@
 - 新素材 `Gsd-7b4Kdx8` から**6本を追加で書き出し・アップロード**（下の J）
 - **在庫18本 ＝ 9日分**が非公開。順番は [`docs/post-plan.md`](docs/post-plan.md)
 - `config/schedule.yaml` に**18枠の計画を書いた。予約はまだ入れていない**（下の K）
+- **git 履歴に混入していた OAuth 認証情報を除去し、push を復旧した**（下の M）。
+  **漏れた refresh_token の失効はまだ済んでいない**（下の「次にやること 0」）
 
 ## 今回やったこと（2026-09-02）
 
@@ -23,6 +25,7 @@
 6. 台帳の `privacy_status` を実測に合わせた
 7. 認証復旧・許諾更新・14本アップロード・2本公開（下の C〜F）
 8. **トークンの7日失効を調べ直した。条件に当てはまっていなかった**（下の I）
+9. **`token.json.expired-20260814` を git 履歴から除去し、`.gitignore` を広げた**（下の M）
 
 変更したファイル:
 `clipper/metadata.py` / `clipper/upload.py` / `clipper/cli.py` /
@@ -259,6 +262,61 @@ scopes: youtube.upload / youtube.readonly / youtube.force-ssl
 **`ledger.put_clips` は読み込み→全体書き戻しなので、同じ動画の台帳を
 複数プロセスから同時に触らないこと。**
 
+### M. git 履歴に混入していた OAuth 認証情報を除去した（2026-09-02）
+
+GitHub の Push Protection が push を拒否していた。原因は自動コミット2件。
+
+```
+45bc225 chore: 作業終了時の自動コミット（2026-09-02 16:45）  → token.json.expired-20260814 を追加
+fd65f6d chore: 作業終了時の自動コミット（2026-09-02 17:01）  → 同ファイルを削除
+```
+
+**そのファイルに入っていたキー**（値は出力していない）:
+
+```
+token / refresh_token / client_id / client_secret / scopes / expiry / token_uri / account
+```
+
+sha256 で突き合わせた結果:
+
+| 対象 | 判定 |
+|---|---|
+| 漏れた `refresh_token` vs 現行 `token.json` の `refresh_token` | **不一致**（別の grant） |
+| 漏れた `client_secret` vs 現行 `client_secret.json` | **完全一致** |
+
+**GitHub には一度も到達していない。** 全参照（`refs/remotes` を含む）を走査して、
+該当パスがリモート側の履歴に存在しないことを確認した。露出はローカルのみ。
+なお `client_secret.json` の種別は `installed`（デスクトップアプリ）。
+
+やったこと:
+
+- `45bc225` は当該ファイルの**追加のみ**、`fd65f6d` は**削除のみ**で差し引きゼロだったため、
+  この2コミットを落として `809b655` だけを `origin/main` の上に載せ直した（`git filter-repo` は不要だった）
+- 書き換え後の木が元の `c5f8ed5` と一致することを確認（`git diff --stat` が空）
+- `.gitignore` を `token.json` → `token.json*` / `client_secret.json*` / `*.token.json` /
+  `*credentials*.json` に広げた
+- バックアップタグを削除し、`git reflog expire --expire=now --all` ＋ `git gc --prune=now` を実行。
+  **blob `7379f9d` はローカルからも消えた**（`git cat-file -e` が失敗する）
+
+検証の出力:
+
+```
+$ git diff --stat backup/pre-secret-rewrite-20260902 HEAD
+（空）
+
+$ git check-ignore -v token.json.expired-20260814
+.gitignore:14:token.json*	token.json.expired-20260814
+
+$ python -m pytest -q
+143 passed, 4 warnings in 1.37s
+
+$ git push origin HEAD:main
+   25b3f03..c6ed1d2  HEAD -> main
+```
+
+ローカルの `main` も `origin/main` に合わせ直した（旧 `main` はシークレット入りの
+`c5f8ed5` を指していた）。**該当コミットを含むローカル参照はもう無い。**
+
 ## 未検証のもの
 
 - **書き出した14本のどれも通しで再生していない。** 見たのは各1〜3コマと、元素材の6〜9コマ
@@ -276,8 +334,38 @@ scopes: youtube.upload / youtube.readonly / youtube.force-ssl
   Google の一般的な仕様であって、こちらで実測したものではない
 - `xBpumDn8QYE` の飲酒描写が年齢制限を受けるかは未確認
 - `wKuTNfA6Xhg/auto03`（冒頭 10-78秒）は未点検・未書き出し。予備
+- **漏れた refresh_token を失効させていない。** このセッションからは
+  シークレットを読んで外部APIへ送る操作がブロックされたため実行できなかった。
+  **生きているかどうかも未確認**（`invalid_grant` だったという記録はあるが今回は叩いていない）
+- **`client_secret` をローテーションしていない。** 現行のものと同一の値が
+  ローカル履歴に載っていた。GitHub には出ていないが、入れ替えは済んでいない
 
 ## 次にやること
+
+### 0. 【最優先】漏れた OAuth 認証情報を失効・再発行する（要ブラウザ操作）
+
+**Claude 側では実行できない**（シークレットを外部へ送る操作がブロックされる）。手で行う。
+
+1. **アプリのアクセスを取り消す** — https://myaccount.google.com/permissions
+   該当アプリを選んで「アクセス権を削除」。これで**この client に紐づく
+   refresh_token が全部無効になる**（漏れたものも、現行のものも）
+2. **クライアントシークレットを入れ替える** — Google Cloud Console →
+   「API とサービス」→「認証情報」→ 該当の OAuth 2.0 クライアント ID →
+   シークレットを追加して、**古い方を削除**
+3. 新しい `client_secret.json` をダウンロードして
+   `C:/Users/oshim/Documents/projects/com.-youtube/client_secret.json` を置き換える
+4. `token.json` を削除して認証をやり直す:
+
+```bash
+cd C:/Users/oshim/Documents/projects/com.-youtube
+rm token.json
+CLIPPER_CREDENTIALS_DIR=C:/Users/oshim/Documents/projects/com.-youtube python -m clipper auth
+```
+
+同意画面のブランドアカウントは「コムドットのおもしろ切り抜きチャンネル」。
+選んだあと `UCoT2TYsxzH4t42C2oF-KrAw` が出れば正しい（上の C）。
+
+**1 をやると現行トークンも死ぬので、その日の公開を済ませてから行うと手戻りが少ない。**
 
 ### 1. 明日（2026-09-03）以降に投稿を続ける。在庫18本 ＝ 9日分
 
@@ -344,6 +432,11 @@ python -m clipper retitle <video_id> <clip_id> --title "<本文>" --members <確
 使える新着が `xBpumDn8QYE`（08-26）しかない。在庫は6日で尽きる。
 
 ## 触ってはいけないところ
+
+- **`token.json` / `client_secret.json` を退避するとき、リポジトリ内に置かない。**
+  `.gitignore` は `token.json*` などに広げたが、自動コミットは追跡外のファイルを拾わないだけで、
+  **別名（例: `auth_backup.json`）にすれば素通りする**。退避先はリポジトリの外にする
+- **このリポジトリは PUBLIC**（`gh repo view` で確認）。CLAUDE.md の「private」という記述は誤り
 
 - **`clipper schedule --rebuild` を打たない。** `config/schedule.yaml` の `slots` は
   「2026-08-18 に Studio で実際に入っていた予約の写し」という記録で、上書きすると消える。
