@@ -4,15 +4,14 @@
 
 ## いま何をしているのか
 
-コムドット切り抜きの制作と投稿。**このセッションで投稿を再開した。**
+コムドット切り抜きの制作と投稿。**投稿を再開し、在庫を9日分にした。**
 
-- 認証を復旧（下の C）
+- 認証を復旧（下の C）／トークンの7日失効は当てはまらないと確認（下の I）
 - 許諾を `granted` にした（下の D。**根拠は運営者の申告のみ**）
-- 新しいショートを7本書き出し、既存と合わせて**14本すべてをアップロード**（下の E）
-- **本日2本を公開した**（下の F）
-- 残り12本が非公開の在庫 ＝ 6日分。順番は [`docs/post-plan.md`](docs/post-plan.md)
-
-**予約（`schedule --arm`）は入れていない。** 毎日 `clipper publish` を打つ形。
+- **2026-09-02 に2本を公開**（下の F）。**本日の上限2本に到達済み**
+- 新素材 `Gsd-7b4Kdx8` から**6本を追加で書き出し・アップロード**（下の J）
+- **在庫18本 ＝ 9日分**が非公開。順番は [`docs/post-plan.md`](docs/post-plan.md)
+- `config/schedule.yaml` に**18枠の計画を書いた。予約はまだ入れていない**（下の K）
 
 ## 今回やったこと（2026-09-02）
 
@@ -201,13 +200,75 @@ scopes: youtube.upload / youtube.readonly / youtube.force-ssl
 
 **Google Cloud の設定は何も変更していない。** すでに望みの状態だった。
 
+### J. 新素材 Gsd-7b4Kdx8 から6本（第三者点検済み・アップロード済み）
+
+`@comdot` の直近10本を screen した結果、**未採掘で使えるのは
+`Gsd-7b4Kdx8`（第4回ペア人気投票、08-21、78分）だけ**だった。
+
+| 除外された動画 | 理由 |
+|---|---|
+| `ARuwTdvqJJA` | 40組コラボ（既に exclusions） |
+| `vIhcQ9IVUuQ` | 概要欄に「シャッフルコラボ」 |
+| `tvpzuKIW71o` / `2Ip54dw8F_M` / `HNAKXt0d31w` | メンバーシップ限定 |
+| `G2gXaVSnOQY`（北海道前編） | screen は通るが未着手。すすきの回なので第三者リスク高 |
+
+書き出した6本。**全部6コマを目視し、白壁の部屋にメンバー5人だけ**を確認した。
+
+| クリップ | 区間 | YouTube ID | 焼き込みテロップで確認した文言 |
+|---|---|---|---|
+| `auto01` | 28:10-29:14 | `9wYgoaYymB8` | 「第1位」「32,961票」「遂に初期メン王朝が幕を下ろす」 |
+| `auto02` | 45:39-46:46 | `Yxu5FfDaQ0c` | 「4位まで終了し未だに点呼されないぎり君」 |
+| `auto03` | 1:01:26-1:02:33 | `RuSV7tWQlp0` | 「下剋上コンビ1万票おめでとう!!」「よく続けてきた」 |
+| `auto04` | 34:39-35:47 | `XJBJenehfrw` | 「ゆうたが1位じゃなくなったぐらいのインパクトだよね」 |
+| `auto05` | 18:15-19:22 | `NoXz0Oa9fpI` | 「ひゅうがのビリ予想」「おじさんの家だろ」 |
+| `auto06` | 49:45-50:53 | `owY3Or_qcJI` | 「第5位」「17,258票」「心の余裕が違いすぎるだろ」 |
+
+**ASR は当てにならないことがまた出た。** auto06 の字幕は「ヤニヤニ」と読めたが、
+画面のテロップは「師弟」で第5位。**見出しはテロップを見てから書いた。**
+
+### K. 予約計画は書いたが、予約は入れていない
+
+`scripts/build_schedule.py` を追加し、`config/schedule.yaml` に18枠
+（2026-09-03〜09-11、07:00 と 18:00）を書いた。
+**`clipper schedule --rebuild` を使っていない。** 理由は2つ:
+
+1. `build_plan()` はショート**1本/日**しか置かない。運用は2本/日
+2. 既存の `slots` は「2026-08-18 に Studio で実際に入っていた予約の写し」という
+   記録なので、`archive` キーへ退避してから新しい `slots` を書いた（10件を保持）
+
+**今日は arm できない。** gate が全スロットを止める:
+
+```
+先頭スロット Gsd-7b4Kdx8/auto05 -> held ['本日の投稿上限 2 本に達している']
+```
+
+`gate.evaluate` の当日上限は**スロットの日付ではなく「今日」の公開本数**を見ている。
+今日すでに2本公開したので、未来日付のスロットまで巻き添えで止まる。
+**設計としては直す価値があるが、公開を増やすために安全弁を緩める変更なので
+勝手に入れていない。** 明日以降に arm すれば通る。
+
+### L. 台帳の同時書き込みで lost update が起きた（対処済み）
+
+レンダリングを2プロセス同時に走らせたところ、後から `ledger.put_clips` した側が
+先の書き込みを上書きし、**auto05 / auto06 の `formats` `hook` `footer`
+`planned_title` が消えた。** アップロード時に `KeyError: 'planned_title'` で停止。
+
+書き出した mp4 は `out/` に残っていたので、台帳だけ復元してアップロードし直した。
+現在は6本とも `formats: ['short']` と `upload.youtube_video_id` が入っている。
+
+**`ledger.put_clips` は読み込み→全体書き戻しなので、同じ動画の台帳を
+複数プロセスから同時に触らないこと。**
+
 ## 未検証のもの
 
-- **8本とも通しで再生していない。** 見たのは各1〜3コマと、元素材の6〜9コマ
+- **書き出した14本のどれも通しで再生していない。** 見たのは各1〜3コマと、元素材の6〜9コマ
 - **許諾の回答文を見ていない。** granted の根拠は運営者の申告だけ
 - **アップロード済み6本のタイトルは旧型式**（メンバー名・`#shorts` なし）。
   直すには誰が映っているかの確認が要る
 - **投稿再開でインプレッションが増えるかは未検証。** これが今回いちばん測りたいこと
+- **`Gsd-7b4Kdx8` の6本は書き出し直後の1コマしか見ていない。** 通しでは未確認
+- **`G2gXaVSnOQY`（北海道前編）は未着手。** screen は通るが、すすきの回なので
+  第三者の映り込みを実際に見るまで使えるか分からない
 - **クォータの実際の上限を確認していない。** 12,800ユニット分が通った理由は不明
 - **今日のトークンが7日後も生きているかは未検証。** 「テスト中ではない」ことは
   確認したが、実際に9日後まで持つかは**2026-09-09 以降に確かめるまで分からない**
@@ -218,20 +279,29 @@ scopes: youtube.upload / youtube.readonly / youtube.force-ssl
 
 ## 次にやること
 
-### 1. 毎日2本ずつ公開する（在庫12本 ＝ 6日分）
+### 1. 明日（2026-09-03）以降に投稿を続ける。在庫18本 ＝ 9日分
 
-順番は [`docs/post-plan.md`](docs/post-plan.md)。次は `bCKjVkvfJIM/auto03` と
-`51tyFgelkmQ/auto03`。
+**計画は `config/schedule.yaml` に書いてある。** 先頭は
+`Gsd-7b4Kdx8/auto05` と `Gsd-7b4Kdx8/auto01`。
+
+自動化する（推奨。1回で18枠ぶん仕掛かる）:
 
 ```bash
 cd C:/Users/oshim/Documents/projects/com.-youtube/.claude/worktrees/video-creation-scheduling-2370b5
 export CLIPPER_CREDENTIALS_DIR=C:/Users/oshim/Documents/projects/com.-youtube
-python -m clipper publish bCKjVkvfJIM auto03
-python -m clipper publish 51tyFgelkmQ auto03
+python -m clipper schedule            # 計画を見るだけ
+python -m clipper schedule --arm      # 実際に予約を入れる（明日以降でないと通らない）
 ```
 
-自動化するなら `clipper schedule --arm`。ただし **`--rebuild` は
-`config/schedule.yaml` の実予約の記録を上書きする**ので、先に退避すること。
+手で出す:
+
+```bash
+python -m clipper publish Gsd-7b4Kdx8 auto05
+python -m clipper publish Gsd-7b4Kdx8 auto01
+```
+
+計画を組み直すときは `python scripts/build_schedule.py [開始日] [1日の本数]`。
+**`clipper schedule --rebuild` は使わない**（記録を消し、1本/日になる）。
 
 ### 2. 1週間後にインプレッションを測り直す（2026-09-09 ごろ）
 
