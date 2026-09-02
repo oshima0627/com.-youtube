@@ -121,6 +121,28 @@ python -m clipper retitle <video_id> <clip_id> --title "<本文>" --members ひ�
 
 **`--members` に渡す名前は映像を見て確かめるしかない。** 字幕から埋めない。
 
+### J. 予約投稿は残っていない（2026-09-02 時点）
+
+`config/schedule.yaml` の `slots` 10件は「YouTube 側の実際の予約を写したもの
+（2026-08-18 実測、clipper の arm ではなく Studio で直接入れたもの）」。
+
+**最後の予約は 2026-08-22 07:00。10件すべて発火済みで、対応する動画は全部公開になっている。**
+`not_scheduled` の8件は `suggested_at_jst`（提案であって予約ではない）で、
+日付も 08-22〜08-26 とすべて過去。
+
+在庫として残っているのは**非公開6本**。yt-dlp で確認した結果:
+
+```
+0gWpS9XyIEs / CCb0ZcuhoZA / MDPhcHIYOL8 / TjovR5KnSu4 / tUyrCoVoPCM / jr9NXY7P8dk
+→ すべて "Private video"
+```
+
+**つまり今後自動で公開されるものは1本も無い。**
+
+**ただし YouTube 側の予約状態そのものは読めていない**（API が死んでいるため）。
+2026-08-18 以降に Studio で新たに予約が入っていれば `schedule.yaml` は知らない。
+**確実に知るには Studio を開く。**
+
 ## 未検証のもの
 
 - **短尺（20〜30秒）が効くかは、こちらでは未検証。** 競合の実測であって自分の実験ではない
