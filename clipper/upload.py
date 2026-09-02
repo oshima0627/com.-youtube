@@ -151,6 +151,31 @@ def is_short(path):
     return path.name.endswith("_short.mp4")
 
 
+def clip_is_short(clip):
+    """台帳の formats からショートかを見る。
+
+    `is_short()` は書き出したファイル名を見るので、out/ を掃除したあとは使えない。
+    公開済みのものを retitle するときはこちらを使う。
+    """
+    return "short" in (clip.get("formats") or [])
+
+
+def build_title(video_id, clip_id, body, members=()):
+    """本文とメンバー名からタイトルを組み立てる。
+
+    ショートは `metadata.short_title()` の型に通す。横型はショートの作法
+    （ハッシュタグ・#shorts）を使わないので本文をそのまま使う。
+    """
+    _, clip = find_clip(video_id, clip_id)
+    if clip_is_short(clip):
+        if "#" in body:
+            raise UploadBlocked(
+                "ショートの --title には本文だけを渡してください。"
+                "ハッシュタグは --members から組み立てます")
+        return metadata.short_title(body, members)
+    return metadata.validate_title(body)
+
+
 def set_thumbnail(service, yt_id, video_id, clip):
     """サムネイルを設定する。失敗しても動画自体は上がっているので止めない。
 
@@ -303,7 +328,7 @@ def retitle(video_id, clip_id, title, service=None):
     up = clip.get("upload")
     if not up:
         raise UploadBlocked(f"{clip_id} はまだアップロードされていません")
-    metadata.validate_title(title)
+    metadata.validate_title(title, is_short=clip_is_short(clip))
 
     service = service or get_service()
     yt_id = up["youtube_video_id"]

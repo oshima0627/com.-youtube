@@ -32,6 +32,26 @@ python -m clipper held                    # 保留されたクリップと理由
 python -m clipper status                  # 全体の状態
 ```
 
+## ショートのタイトル
+
+**本文だけを渡す。ハッシュタグは書かない。** `#コムドット #コムドット切り抜き
+#shorts` と `--members` のメンバー名を `metadata.short_title()` が付ける。
+
+```bash
+python -m clipper upload  <video_id> <clip_id> --title "<本文>" --members ひゅうが,ゆうま
+python -m clipper retitle <video_id> <clip_id> --title "<本文>" --members ひゅうが,ゆうま
+```
+
+`retitle` は公開設定も動画IDも再生数も触らずタイトルだけ差し替える（50ユニット）。
+
+**`--members` には映像で確認できたメンバーだけを書く。** 自動字幕の固有名詞は
+崩れるので（実例:「コニー母」→「スプリンガー母」）、字幕からの推測で書かない。
+名簿（`metadata.MEMBERS`）に無い名前は弾かれる。
+
+メンバー名と `#shorts` が無いショートのタイトルは `validate_title()` が弾く。
+根拠は実測: 競合はメンバー名 22/27・`#shorts` 46/120 に対し、
+こちらの公開13本は 2/13・0/13 だった（[`docs/analytics-2026-09-02.md`](docs/analytics-2026-09-02.md)）。
+
 書き出しは `out/`、中間物は `work/`。どちらも git では追跡しない。
 追跡するのは `data/videos/<video_id>.json` の台帳だけで、何をいつ作り、
 何を保留にしてなぜかがコミット履歴に残る。権利者から問い合わせが来たときに

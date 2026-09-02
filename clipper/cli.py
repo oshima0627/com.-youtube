@@ -146,9 +146,15 @@ def cmd_auth(args):
     return upload.cmd_auth(args)
 
 
+def _members(args):
+    return [m for m in (args.members or "").split(",") if m.strip()]
+
+
 def cmd_upload(args):
     try:
-        info = upload.upload_private(args.video_id, args.clip_id, args.title)
+        title = upload.build_title(args.video_id, args.clip_id,
+                                   args.title, _members(args))
+        info = upload.upload_private(args.video_id, args.clip_id, title)
     except (upload.UploadBlocked, metadata.InvalidTitle) as e:
         print(f"× {e}", file=sys.stderr)
         return 1
@@ -156,6 +162,20 @@ def cmd_upload(args):
     print(f"  チャンネル: {info['channel_title']}（{info['channel_id']}）")
     print("  公開するには許諾の回答を待ち、permission.yaml を granted にしてから")
     print(f"  python -m clipper publish {args.video_id} {args.clip_id}")
+    return 0
+
+
+def cmd_retitle(args):
+    """公開設定も動画IDも再生数も触らずにタイトルだけ直す。50ユニット。"""
+    try:
+        title = upload.build_title(args.video_id, args.clip_id,
+                                   args.title, _members(args))
+        up = upload.retitle(args.video_id, args.clip_id, title)
+    except (upload.UploadBlocked, metadata.InvalidTitle) as e:
+        print(f"× {e}", file=sys.stderr)
+        return 1
+    print(f"✓ タイトルを差し替えました: {up['url']}")
+    print(f"  {up['title']}")
     return 0
 
 
@@ -224,8 +244,20 @@ def main(argv=None):
     p = sub.add_parser("upload", help="非公開でアップロードする")
     p.add_argument("video_id")
     p.add_argument("clip_id")
-    p.add_argument("--title", required=True)
+    p.add_argument("--title", required=True,
+                   help="ショートは本文だけ（ハッシュタグを書かない）")
+    p.add_argument("--members", default="",
+                   help="映像で確認できたメンバーをカンマ区切りで。例 ひゅうが,ゆうま")
     p.set_defaults(func=cmd_upload)
+
+    p = sub.add_parser("retitle", help="アップロード済みのタイトルだけ差し替える")
+    p.add_argument("video_id")
+    p.add_argument("clip_id")
+    p.add_argument("--title", required=True,
+                   help="ショートは本文だけ（ハッシュタグを書かない）")
+    p.add_argument("--members", default="",
+                   help="映像で確認できたメンバーをカンマ区切りで。例 ひゅうが,ゆうま")
+    p.set_defaults(func=cmd_retitle)
 
     p = sub.add_parser("publish", help="非公開の動画を公開に切り替える（ゲート必須）")
     p.add_argument("video_id")

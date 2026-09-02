@@ -62,7 +62,10 @@ class TestDescription:
 
 class TestBuildBody:
     def test_declares_japanese(self, entry, clip):
-        body = metadata.build_body(entry, clip, "テスト切り抜き")
+        # build_body の既定は is_short=True。ショートの型を満たすタイトルを渡す
+        body = metadata.build_body(
+            entry, clip,
+            metadata.short_title("催眠術で喋れなくなるのがヤバすぎる", ["ひゅうが"]))
         assert body["defaultLanguage"] == "ja"
         assert body["defaultAudioLanguage"] == "ja"
 

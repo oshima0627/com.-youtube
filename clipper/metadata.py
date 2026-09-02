@@ -38,16 +38,67 @@ class InvalidTitle(ValueError):
 #
 # 共通するのは3点。ハッシュタグを本文に入れる、メンバー名を入れる、
 # 「〜すぎる」で断定して終わる。【】は長尺の作法でショートでは使われていない。
-SHORT_TAGS = "#コムドット #コムドット切り抜き"
+#
+# **2026-09-02、この型が守られていなかったことが実測で分かった。**
+# 公開済み13本のうちメンバー名を含むのは2本、`#shorts` は0本
+# （競合は 22/27 と 46/120。docs/analytics-2026-09-02.md）。
+# 型は docs に書いてあるだけで、`short_title()` はどこからも呼ばれておらず、
+# タイトルは `--title` で素通しされていた。**以降は validate_title が機械的に弾く。**
+SHORT_TAGS = ("#コムドット", "#コムドット切り抜き", "#shorts")
+
+# タグにしてよい名前の名簿。自動字幕は固有名詞を崩すので
+# （実例:「コニー母」→「スプリンガー母」）、推測した名前をタグにしない。
+MEMBERS = ("やまと", "ゆうた", "ゆうま", "ひゅうが", "あむぎり")
 
 
-def short_title(body, extra_tags=""):
-    """ショートのタイトルを組み立てる。本文＋ハッシュタグ。"""
-    tags = f"{SHORT_TAGS} {extra_tags}".strip()
-    return f"{body} {tags}"[:TITLE_MAX]
+def member_tags(members):
+    """メンバー名をハッシュタグにする。名簿に無い名前は通さない。"""
+    out = []
+    for m in members or ():
+        m = m.strip().lstrip("#")
+        if not m:
+            continue
+        if m not in MEMBERS:
+            raise InvalidTitle(
+                f"メンバー名として認めていない『{m}』です。"
+                f"使えるのは {'/'.join(MEMBERS)}")
+        if f"#{m}" not in out:
+            out.append(f"#{m}")
+    return out
 
 
-def validate_title(title):
+def short_title(body, members=(), extra_tags=""):
+    """ショートのタイトルを組み立てる。本文＋ハッシュタグ。
+
+    `members` は**映像で確認できたメンバーだけ**を渡す。字幕からの推測で
+    渡さない。誰が映っているか分からないなら、確認してから呼ぶ。
+
+    100文字に収まらないときは**末尾のタグから丸ごと落とす。**
+    途中で切ると壊れたタグが残り、`#コムドット切り抜` のような別語になる。
+    """
+    body = (body or "").strip()
+    if not body:
+        raise InvalidTitle("タイトルの本文が空です")
+
+    optional = member_tags(members) + [
+        t if t.startswith("#") else f"#{t}"
+        for t in (extra_tags or "").split() if t.strip()]
+    base = list(SHORT_TAGS)
+
+    fixed = " ".join([body] + base)
+    if len(fixed) > TITLE_MAX:
+        raise InvalidTitle(
+            f"本文が長すぎます。基本タグ（{' '.join(base)}）を付けると "
+            f"{len(fixed)}文字になり {TITLE_MAX} を超えます")
+
+    tags = base + optional
+    while len(" ".join([body] + tags)) > TITLE_MAX:
+        tags.pop()                       # 末尾＝優先度の低いものから落とす
+    # 組み立てたものを自分で検査する。API に投げる直前まで問題が残らないように
+    return validate_title(" ".join([body] + tags), is_short=True)
+
+
+def validate_title(title, is_short=False):
     """投稿前にタイトルを検査する。問題があれば InvalidTitle を投げる。"""
     if not title or not title.strip():
         raise InvalidTitle("タイトルが空です")
@@ -58,6 +109,16 @@ def validate_title(title):
             raise InvalidTitle(f"タイトルに使えない語『{word}』が含まれています")
     if "切り抜き" not in title:
         raise InvalidTitle("タイトルに『切り抜き』が必要です（切り抜きであることの明示）")
+    if is_short:
+        if "#shorts" not in title.lower():
+            raise InvalidTitle(
+                "ショートのタイトルに『#shorts』が必要です。"
+                "short_title() で組み立ててください")
+        if not any(m in title for m in MEMBERS):
+            raise InvalidTitle(
+                "ショートのタイトルにメンバー名が必要です"
+                f"（{'/'.join(MEMBERS)}）。本文で名指しするか #名前 を足してください。"
+                "**映像で確認できたメンバーだけ**を書くこと")
     return title
 
 
@@ -107,7 +168,7 @@ def suggest_title_context(entry, clip, segments):
 
 def build_body(entry, clip, title, is_short=True):
     """videos.insert に渡す snippet/status を作る。privacy は呼び出し側が決める。"""
-    validate_title(title)
+    validate_title(title, is_short=is_short)
     return {
         "title": title,
         "description": build_description(entry, clip, is_short),
