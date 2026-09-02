@@ -10,5 +10,8 @@ work/
 out/
 
 # 認証情報。絶対にコミットしない（このリポジトリは公開）
-client_secret.json
-token.json
+client_secret.json*
+token.json*
+*.token.json
+# 退避・バックアップの派生名も落とす（例: token.json.expired-YYYYMMDD）
+*credentials*.json
