@@ -436,7 +436,8 @@ python -m clipper retitle <video_id> <clip_id> --title "<本文>" --members <確
 - **`token.json` / `client_secret.json` を退避するとき、リポジトリ内に置かない。**
   `.gitignore` は `token.json*` などに広げたが、自動コミットは追跡外のファイルを拾わないだけで、
   **別名（例: `auth_backup.json`）にすれば素通りする**。退避先はリポジトリの外にする
-- **このリポジトリは PUBLIC**（`gh repo view` で確認）。CLAUDE.md の「private」という記述は誤り
+- **このリポジトリは PUBLIC**（`gh repo view --json visibility` で確認）。
+  CLAUDE.md にあった「private」という記述は誤りだったので 2026-09-02 に修正済み
 
 - **`clipper schedule --rebuild` を打たない。** `config/schedule.yaml` の `slots` は
   「2026-08-18 に Studio で実際に入っていた予約の写し」という記録で、上書きすると消える。

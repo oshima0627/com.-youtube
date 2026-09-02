@@ -34,13 +34,20 @@ git commit -m "<何を変えたか>"
 git push
 ```
 
+**このリポジトリは PUBLIC。`git add -A` の前に `git status --short` で追加されるものを見る。**
+`.gitignore` は `token.json*` / `client_secret.json*` / `*credentials*.json` を落とすが、
+**別名にすれば素通りする**。認証情報の退避先はリポジトリの外にすること。
+2026-09-02 に `token.json.expired-20260814` が自動コミットに入り、
+GitHub の Push Protection に止められた（経緯は `HANDOFF.md` の M）。
+
 作業ブランチにいる場合は、既定ブランチ（通常は `main`）へマージするところまで行う:
 
 ```bash
 git checkout main && git pull && git merge --no-ff <作業ブランチ> && git push origin main
 ```
 
-PR は不要（本人のみが使う private リポジトリのため）。明示的に依頼されたときだけ作る。
+PR は不要（本人だけが書き込む単独リポジトリのため）。明示的に依頼されたときだけ作る。
+**public だが private ではない点に注意** — レビュー相手がいないだけで、中身は誰でも読める。
 
 途中で終わるとき・失敗したときも、**そこまでの状態をコミットして残す。**
 何が未完了かは `HANDOFF.md` に書く。
