@@ -1,6 +1,6 @@
 {
   "video_id": "xBpumDn8QYE",
-  "state": "rendered",
+  "state": "gated",
   "meta": {
     "title": "【乾杯バニー再来】2泊3日無限にお酒飲み続ける旅行で最高すぎる男の思い出できたwwwwww",
     "description": "ひゅうが編集\n\nヤニヤニコンビ旅行前編はこちらから\n→ https://youtu.be/G2gXaVSnOQY?si=gNUou2g9fhncuV3O\n\nどうも！ひゅうがです！\n今日はヤニヤニ旅行後編です🔥\n前編からかなり2人ならではの空気感をお届けして沢山の愛溢れるコメントが殺到していてどちらの編集も担当した僕としては大満足です😏\n今回の旅行で改めて色んな大事なことを思い出せてコムドットはこれからもどんどん大きくなって更に仲良くなってくる集団だなと確信しました！\n北海道で出会って友達になったみんなも自分の人生思いっきり楽しんでてリスペクトに値する人達ばかりでこらからも何かあるたび北海道に返り咲こうと思ってます😏\n撮影も全力で楽しんで編集も全力で楽しんで届けてるのでこの時代にこんなにコメントくるんかコムドットは！と世間を圧倒してしまうようなコメ欄に今日はなることを願いながらみんなのコメントを楽しみに待ってます👍\nそれでは後編スタート🔥\n\n◾︎コムドット公式LINEはこちら\n→ https://liff.line.me/1645278921-kWRPP32q/?accountId=comforfan\n\n◾︎コムドットメンバーシップ登録はこちら\n→ https://www.youtube.com/@comdot/join\n\n◾︎コムドット公式グッズBB5の販売はこちら\n→ https://bb5.shop/\n\n◾︎アパレルブランドBIRDOGの販売はこちら\n→ https://birdog.shop/password\n\n\n◾︎コムドット各種SNS\n【Instagram】→ https://instagram.com/p/BoeJWOOhgfk/\n【Twitter】→ https://twitter.com/comyoutuber2\n【TikTok】→ https://www.tiktok.com/@com.youtuber2\n\n◾︎やまと個人アカウント\n【Instagram】→ https://www.instagram.com/com.yamato\n【Twitter】→ http://twitter.com/@comyamato0515\n【TikTok】→https://www.tiktok.com/@com.yamato0515\n【ヤマトノウナイ】→https://www.youtube.com/@ヤマトノウナイ\n【コムドットやまと公式LINE】→https://x.gd/DktIO\n\n◾︎ゆうた個人アカウント\n【Instagram】→ https://www.instagram.com/com.yuta\n【Twitter】→ http://twitter.com/@comyuta0305\n【TikTok】→ https://www.tiktok.com/@com.yuta0305\n\n◾︎ゆうま個人アカウント\n【Instagram】→ https://www.instagram.com/com.yuma\n【Twitter】→ http://twitter.com/@comyuma1214\n【TikTok】→ https://www.tiktok.com/@com.yuma1214\n\n◾︎ひゅうが個人アカウント\n【Instagram】→ https://instagram.com/com.hyuga\n【Twitter】→ http://twitter.com/comhyuga1117\n【TikTok】→ https://www.tiktok.com/@com.hyuga1117\n\n◾︎あむぎり個人アカウント\n【Instagram】→ https://www.instagram.com/com.amugiri\n【Twitter】→ https://twitter.com/comamugiri0123\n【TikTok】→ https://www.tiktok.com/@com.amugiri2",
@@ -11,6 +11,121 @@
     "channel_id": "UCRxPrFmRHsXGWfAyE6oqrPQ"
   },
   "clips": [
+    {
+      "clip_id": "auto11",
+      "start": 183.88,
+      "end": 250.44,
+      "duration": 66.6,
+      "score": 9.853,
+      "position": 0.031,
+      "signals": {
+        "歓声": 0,
+        "驚き": 3,
+        "笑い": 2,
+        "いじり": 0,
+        "コメント": 3
+      },
+      "formats": [],
+      "published": null,
+      "gate": {
+        "result": "held",
+        "reasons": [
+          "許諾ステータスが pending（granted ではない）"
+        ]
+      }
+    },
+    {
+      "clip_id": "auto09",
+      "start": 425.52,
+      "end": 493.44,
+      "duration": 67.9,
+      "score": 10.818,
+      "position": 0.071,
+      "signals": {
+        "歓声": 0,
+        "驚き": 8,
+        "笑い": 6,
+        "いじり": 0,
+        "コメント": 2
+      },
+      "formats": [],
+      "published": null,
+      "gate": {
+        "result": "held",
+        "reasons": [
+          "許諾ステータスが pending（granted ではない）"
+        ]
+      }
+    },
+    {
+      "clip_id": "auto02",
+      "start": 659.76,
+      "end": 723.13,
+      "duration": 63.4,
+      "score": 19.204,
+      "position": 0.11,
+      "signals": {
+        "歓声": 0,
+        "驚き": 4,
+        "笑い": 3,
+        "いじり": 0,
+        "コメント": 6
+      },
+      "formats": [],
+      "published": null,
+      "gate": {
+        "result": "held",
+        "reasons": [
+          "許諾ステータスが pending（granted ではない）"
+        ]
+      }
+    },
+    {
+      "clip_id": "auto10",
+      "start": 869.04,
+      "end": 937.0,
+      "duration": 68.0,
+      "score": 9.912,
+      "position": 0.146,
+      "signals": {
+        "歓声": 0,
+        "驚き": 5,
+        "笑い": 2,
+        "いじり": 6,
+        "コメント": 2
+      },
+      "formats": [],
+      "published": null,
+      "gate": {
+        "result": "held",
+        "reasons": [
+          "許諾ステータスが pending（granted ではない）"
+        ]
+      }
+    },
+    {
+      "clip_id": "auto07",
+      "start": 1020.12,
+      "end": 1087.48,
+      "duration": 67.4,
+      "score": 11.286,
+      "position": 0.171,
+      "signals": {
+        "歓声": 1,
+        "驚き": 3,
+        "笑い": 2,
+        "いじり": 2,
+        "コメント": 3
+      },
+      "formats": [],
+      "published": null,
+      "gate": {
+        "result": "held",
+        "reasons": [
+          "許諾ステータスが pending（granted ではない）"
+        ]
+      }
+    },
     {
       "clip_id": "man01",
       "start": 1044.0,
@@ -49,6 +164,195 @@
         ],
         "result": "区間内にメンバー2人以外の特定できる第三者は映っていない。遠景の通行人のみ"
       }
+    },
+    {
+      "clip_id": "auto01",
+      "start": 1350.56,
+      "end": 1410.72,
+      "duration": 60.2,
+      "score": 24.348,
+      "position": 0.226,
+      "signals": {
+        "歓声": 0,
+        "驚き": 3,
+        "笑い": 1,
+        "いじり": 3,
+        "コメント": 8
+      },
+      "formats": [],
+      "published": null,
+      "gate": {
+        "result": "held",
+        "reasons": [
+          "許諾ステータスが pending（granted ではない）"
+        ]
+      }
+    },
+    {
+      "clip_id": "auto12",
+      "start": 1410.72,
+      "end": 1475.4,
+      "duration": 64.7,
+      "score": 9.51,
+      "position": 0.236,
+      "signals": {
+        "歓声": 0,
+        "驚き": 2,
+        "笑い": 1,
+        "いじり": 5,
+        "コメント": 1
+      },
+      "formats": [],
+      "published": null,
+      "gate": {
+        "result": "held",
+        "reasons": [
+          "許諾ステータスが pending（granted ではない）"
+        ]
+      }
+    },
+    {
+      "clip_id": "auto08",
+      "start": 1510.44,
+      "end": 1572.04,
+      "duration": 61.6,
+      "score": 11.013,
+      "position": 0.253,
+      "signals": {
+        "歓声": 0,
+        "驚き": 3,
+        "笑い": 2,
+        "いじり": 3,
+        "コメント": 3
+      },
+      "formats": [],
+      "published": null,
+      "gate": {
+        "result": "held",
+        "reasons": [
+          "許諾ステータスが pending（granted ではない）"
+        ]
+      }
+    },
+    {
+      "clip_id": "auto04",
+      "start": 1840.32,
+      "end": 1903.6,
+      "duration": 63.3,
+      "score": 14.483,
+      "position": 0.308,
+      "signals": {
+        "歓声": 0,
+        "驚き": 2,
+        "笑い": 0,
+        "いじり": 0,
+        "コメント": 5
+      },
+      "formats": [],
+      "published": null,
+      "gate": {
+        "result": "held",
+        "reasons": [
+          "許諾ステータスが pending（granted ではない）"
+        ]
+      }
+    },
+    {
+      "clip_id": "auto03",
+      "start": 1919.83,
+      "end": 1987.8,
+      "duration": 68.0,
+      "score": 15.397,
+      "position": 0.322,
+      "signals": {
+        "歓声": 0,
+        "驚き": 2,
+        "笑い": 3,
+        "いじり": 0,
+        "コメント": 5
+      },
+      "formats": [],
+      "published": null,
+      "gate": {
+        "result": "held",
+        "reasons": [
+          "許諾ステータスが pending（granted ではない）"
+        ]
+      }
+    },
+    {
+      "clip_id": "auto05",
+      "start": 3662.8,
+      "end": 3729.12,
+      "duration": 66.3,
+      "score": 14.343,
+      "position": 0.613,
+      "signals": {
+        "歓声": 0,
+        "驚き": 7,
+        "笑い": 2,
+        "いじり": 1,
+        "コメント": 4
+      },
+      "formats": [],
+      "published": null,
+      "gate": {
+        "result": "held",
+        "reasons": [
+          "許諾ステータスが pending（granted ではない）"
+        ]
+      }
+    },
+    {
+      "clip_id": "auto06",
+      "start": 5528.92,
+      "end": 5596.16,
+      "duration": 67.2,
+      "score": 11.417,
+      "position": 0.926,
+      "signals": {
+        "歓声": 0,
+        "驚き": 8,
+        "笑い": 0,
+        "いじり": 0,
+        "コメント": 3
+      },
+      "formats": [],
+      "published": null,
+      "gate": {
+        "result": "held",
+        "reasons": [
+          "許諾ステータスが pending（granted ではない）"
+        ]
+      }
+    },
+    {
+      "clip_id": "man02",
+      "start": 5540.9,
+      "end": 5602.5,
+      "duration": 61.6,
+      "score": null,
+      "position": 0.928,
+      "signals": {
+        "歓声": 0,
+        "驚き": 0,
+        "笑い": 0,
+        "いじり": 0,
+        "コメント": 0
+      },
+      "formats": [
+        "short"
+      ],
+      "published": null,
+      "hook": "旅の締めが『成功だけが幸せじゃない』に着地する",
+      "footer": "コムドットのひゅうが（金髪）とゆうまによる2泊3日の北海道旅行の後編。すすきので飲み歩いた旅の締めに、2人だけで人生の話になった場面",
+      "gate": {
+        "result": "held",
+        "reasons": [
+          "許諾ステータスが pending（granted ではない）"
+        ]
+      },
+      "planned_title": "『成功だけが幸せじゃない』で締める北海道旅行が良すぎる #コムドット #コムドット切り抜き #shorts #ひゅうが #ゆうま"
     }
   ],
   "notes": [
