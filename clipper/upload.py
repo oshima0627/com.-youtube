@@ -13,12 +13,19 @@ API キーではアップロードできない。videos.insert は OAuth 2.0 の
 """
 
 import json
+import os
 import sys
+from pathlib import Path
 
 from . import config, gate, ledger, metadata
 
-CLIENT_SECRET = config.ROOT / "client_secret.json"
-TOKEN = config.ROOT / "token.json"
+# 認証情報の置き場所。既定はリポジトリ直下。
+# **git worktree では直下に認証情報が無い。** worktree ごとに秘密情報を
+# 複製したくないので、環境変数で本体側を指せるようにしてある。
+#     CLIPPER_CREDENTIALS_DIR=C:/path/to/main/checkout
+CREDENTIALS_DIR = Path(os.environ.get("CLIPPER_CREDENTIALS_DIR") or config.ROOT)
+CLIENT_SECRET = CREDENTIALS_DIR / "client_secret.json"
+TOKEN = CREDENTIALS_DIR / "token.json"
 
 # videos.insert → youtube.upload
 # channels.list → youtube.readonly（アップロード先チャンネルの事前確認に要る）

@@ -2,10 +2,14 @@
 # publish ステージは status が granted 以外のとき一切動かない。
 # 詳細と依頼文は docs/permission-request.md を参照。
 
-status: pending          # pending | granted | denied
+# 2026-09-02、運営者から「BRDOCK の許諾の回答が来た」との申告を受けて granted にした。
+# **回答文そのものはこのリポジトリに保存されていない。** 条件の有無も未確認で、
+# 下の conditions は unknown のまま。回答文が手元にあれば
+# docs/permission-request.md に貼り、条件をここへ書き写すこと。
+status: granted          # pending | granted | denied
 requested_to: 株式会社BRDOCK
 requested_at: 2026-08-14
-responded_at: null
+responded_at: 2026-09-02
 
 # 回答で条件が付いた場合、ここへ書き写す。gate はこの内容を読んで判定する。
 conditions:

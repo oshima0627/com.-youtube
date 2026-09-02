@@ -27,14 +27,26 @@ def granted(monkeypatch):
 
 
 @pytest.fixture
+def pending(monkeypatch):
+    """許諾の回答待ちの状態にする。
+
+    **実物の config/permission.yaml を読ませない。** 2026-09-02 に status を
+    granted へ変えたところ、それを pending 前提で書いていたテストが落ちた。
+    ゲートの挙動を固定したいのであって、設定ファイルの現在値ではない。
+    """
+    monkeypatch.setattr(gate.config, "permission", lambda: {"status": "pending"})
+
+
+@pytest.fixture
 def no_exclusions(monkeypatch):
     monkeypatch.setattr(gate.config, "exclusions", lambda: {
         "video_ids": [], "title_patterns": [], "description_patterns": [],
         "blocked_terms": []})
 
 
-def test_pending_permission_blocks_everything(entry, clip, runtime, no_exclusions):
-    """既定は pending。回答が来るまで1本も出ないことを固定する。"""
+def test_pending_permission_blocks_everything(entry, clip, runtime, pending,
+                                              no_exclusions):
+    """pending の間は1本も出ないことを固定する。"""
     got = gate.evaluate(entry, clip, runtime=runtime)
     assert got["result"] == "held"
     assert any("許諾ステータス" in r for r in got["reasons"])
@@ -44,12 +56,22 @@ def test_passes_when_everything_is_clear(entry, clip, runtime, granted, no_exclu
     assert gate.evaluate(entry, clip, runtime=runtime) == {"result": "pass", "reasons": []}
 
 
-def test_collects_every_reason_not_just_the_first(entry, clip, runtime, monkeypatch):
+def test_collects_every_reason_not_just_the_first(entry, clip, runtime, pending,
+                                                 monkeypatch):
     monkeypatch.setattr(gate.config, "exclusions", lambda: {
         "video_ids": ["vid1"], "title_patterns": ["ふつう"],
         "description_patterns": [], "blocked_terms": []})
     got = gate.evaluate(entry, clip, runtime=runtime)
     assert len(got["reasons"]) >= 3          # 許諾 + video_ids + タイトル
+
+
+def test_denied_permission_blocks_everything(entry, clip, runtime, no_exclusions,
+                                             monkeypatch):
+    """granted 以外は全部止める。denied も pending と同じ扱い。"""
+    monkeypatch.setattr(gate.config, "permission", lambda: {"status": "denied"})
+    got = gate.evaluate(entry, clip, runtime=runtime)
+    assert got["result"] == "held"
+    assert any("許諾ステータス" in r for r in got["reasons"])
 
 
 def test_excluded_video_id(entry, clip, runtime, granted, monkeypatch):

@@ -32,6 +32,22 @@ python -m clipper held                    # 保留されたクリップと理由
 python -m clipper status                  # 全体の状態
 ```
 
+## worktree から API を使う
+
+`client_secret.json` / `token.json` はリポジトリ直下に置く決まりだが、
+**git worktree の直下にはそれが無い。** 秘密情報を worktree ごとに複製したくないので、
+環境変数で本体側を指す。
+
+```bash
+CLIPPER_CREDENTIALS_DIR=C:/Users/oshim/Documents/projects/com.-youtube python -m clipper upload ...
+```
+
+トークンが `invalid_grant` で失効したら、本体の `token.json` を消して
+`python -m clipper auth` をやり直す。同意画面ではブランドアカウント
+**「コムドットのおもしろ切り抜きチャンネル」** を選ぶ。
+**チャンネル名（コムドット名場面ch【切り抜き】）とブランドアカウント名が違う**ので、
+名前で探すと迷う。選んだあと `UCoT2TYsxzH4t42C2oF-KrAw` が表示されれば正しい。
+
 ## ショートのタイトル
 
 **本文だけを渡す。ハッシュタグは書かない。** `#コムドット #コムドット切り抜き
