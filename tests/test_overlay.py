@@ -176,3 +176,28 @@ class TestBuild:
         p = overlay.build(None, None, tmp_path / "o.png")
         with Image.open(p) as im:
             assert im.getbbox() is None
+
+
+# --- 数値＋単位を割らない -------------------------------------------------
+
+def test_数値と単位は行をまたがない():
+    """「231万」／「5000円」に割れると、行をまたいだ数字が別の額に読める。
+
+    _script() から見ると「万」と「5」は文字種が違うため、この位置は
+    **切れ目として優先されていた**（score 10）。数値の内側を 0 にして塞いだ。
+    """
+    from PIL import Image, ImageDraw
+    from clipper import overlay
+    d = ImageDraw.Draw(Image.new("RGB", (10, 10)))
+    f = overlay.font(66)
+    for text in ["ひとりあたり県民所得231万5000円を、500万円にふやすとしています。",
+                 "観光収入1兆747億円を、2兆円にふやす。"]:
+        for line in overlay.wrap(d, text, f, 900):
+            assert not line.endswith(("231万", "1兆747", "1兆", "2兆", "500")), line
+
+
+def test_数値の内側は改行位置として拒否される():
+    from clipper.overlay import _break_score
+    text = "予算231万5000円です"
+    i = text.index("5000")            # 「231万」と「5000円」の境目
+    assert _break_score(text, i) == 0

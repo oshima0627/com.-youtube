@@ -15,6 +15,8 @@ ffmpeg の drawtext は Windows でフォントパスのエスケープが壊れ
 """
 
 import math
+import re
+from functools import lru_cache
 
 from PIL import Image, ImageDraw, ImageFont
 
@@ -58,6 +60,23 @@ MARGIN = 64
 TEXT_MAX_WIDTH = 1080 - MARGIN * 2      # 本番の折り返し幅。テストもこれを使う
 ORPHAN_MAX = 2             # 最終行がこの文字数以下なら詰め直す
 
+# 数値と単位はひとかたまり。「231万5000円」を「231万」／「5000円」に割ると、
+# 行をまたいだ数字が別の額に読める。しかも _script() から見ると「万」と「5」は
+# 文字種が違うので、**むしろ切れ目として優先されていた**（実測で発生）。
+_NUM = r"[0-9A-Za-z][0-9A-Za-z.,]*"
+_UNIT = (r"パーセント|ポイント|項目|時間|キロ|メートル|トン|ドル|"
+         r"[%％万億兆円年月日人名件回倍割歳個台本社校票席分秒]")
+_NUM_TOKEN_RE = re.compile(rf"(?:{_NUM}(?:{_UNIT})*)+")
+
+
+@lru_cache(maxsize=256)
+def _number_interiors(text):
+    """数値＋単位の途中にあたる位置。そこでは折らない。"""
+    inside = set()
+    for m in _NUM_TOKEN_RE.finditer(text):
+        inside.update(range(m.start() + 1, m.end()))
+    return frozenset(inside)
+
 
 def _break_score(text, i):
     """text[:i] と text[i:] に割るときの良さ。大きいほど良く、0 は禁止。"""
@@ -67,6 +86,8 @@ def _break_score(text, i):
     if nxt in FORBID_LINE_START:
         return 0
     if prev in FORBID_LINE_END:
+        return 0
+    if i in _number_interiors(text):
         return 0
     if prev in SENTENCE_END:
         return 100
