@@ -1,6 +1,6 @@
 # HANDOFF
 
-最終更新: 2026-09-02
+最終更新: 2026-09-03
 
 ## いま何をしているのか
 
@@ -12,8 +12,9 @@
 - 新素材 `Gsd-7b4Kdx8` から**6本を追加で書き出し・アップロード**（下の J）
 - **在庫18本 ＝ 9日分**が非公開。順番は [`docs/post-plan.md`](docs/post-plan.md)
 - `config/schedule.yaml` に**18枠の計画を書いた。予約はまだ入れていない**（下の K）
-- **git 履歴に混入していた OAuth 認証情報を除去し、push を復旧した**（下の M）。
-  **漏れた refresh_token の失効はまだ済んでいない**（下の「次にやること 0」）
+- **git 履歴に混入していた OAuth 認証情報を除去し、push を復旧した**（下の M）
+- **2026-09-03、認証基盤を新プロジェクト `comdot-meibamen` へ移した。**
+  漏れた認証情報は**失効済み**（下の O）。ただし新環境は**テスト中＝7日でトークンが失効する**
 
 ## 今回やったこと（2026-09-02）
 
@@ -26,6 +27,7 @@
 7. 認証復旧・許諾更新・14本アップロード・2本公開（下の C〜F）
 8. **トークンの7日失効を調べ直した。条件に当てはまっていなかった**（下の I）
 9. **`token.json.expired-20260814` を git 履歴から除去し、`.gitignore` を広げた**（下の M）
+10. **新プロジェクト `comdot-meibamen` を作り、トークンを再発行した**（2026-09-03。下の O）
 
 変更したファイル:
 `clipper/metadata.py` / `clipper/upload.py` / `clipper/cli.py` /
@@ -353,6 +355,56 @@ $ git push origin HEAD:main
 **なぜ出てこないのかは分かっていない。** 出ていない以上、この画面からは取り消せない。
 → 失効は Cloud Console 側でクライアントを作り直して行う（「次にやること 0」）。
 
+### O. 認証を新プロジェクトへ移し、漏れた認証情報を失効させた（2026-09-03）
+
+**旧構成の問題**: `client_secret` が git 履歴に載っていた（下の M）。
+しかも旧プロジェクト `comdot-kirinuki` は `oshima6.27@gmail.com` の所有で、
+チャンネルを持つ `orfevre6.27@gmail.com` とズレていた（下の N）。
+
+**やったこと**（すべてブラウザで実操作）:
+
+| 手順 | 結果 |
+|---|---|
+| `orfevre6.27@gmail.com` に新プロジェクト作成 | `comdot-meibamen`（番号 120171737302） |
+| YouTube Data API v3 を有効化 | 有効 |
+| OAuth 同意画面を構成（外部・アプリ名 `comdot-meibamen-uploader`） | 作成済み |
+| OAuth クライアント作成（デスクトップ） | `comdot-meibamen-desktop` |
+| テストユーザー登録 | `orfevre6.27@gmail.com`（1人 / 100） |
+| `client_secret.json` を差し替え、`token.json` を再発行 | 下の出力 |
+| 旧 `comdot-kirinuki-desktop` を削除 | 一覧が空になった |
+
+```
+$ python -m clipper auth
+認証しました: コムドット名場面ch【切り抜き】（UCoT2TYsxzH4t42C2oF-KrAw）
+```
+
+**漏れた認証情報が死んだことを実測した。** 退避しておいた旧 client_secret ＋ 旧 token で
+更新を試みた結果:
+
+```
+google.auth.exceptions.RefreshError:
+  ('deleted_client: The OAuth client was deleted.',
+   {'error': 'deleted_client', 'error_description': 'The OAuth client was deleted.'})
+```
+
+確認後、退避していた旧認証情報のコピーは削除した。
+
+```
+$ python -m pytest -q
+143 passed, 4 warnings in 1.47s
+```
+
+### O-2. ただし新環境は「テスト中」＝7日でトークンが失効する
+
+**「アプリを公開」が押せない。** ボタンが無効で「アプリの OAuth 構成が完了していません」と出る。
+ブランディングの**アプリケーションのホームページ**と**プライバシーポリシーのリンク**が
+空のため。公開するにはその2つに実在の URL を入れ、承認済みドメインに登録する必要がある。
+
+旧 `comdot-kirinuki` は本番環境だったが、**同じ2項目が空のまま公開されていた**
+（画面で確認。おそらく要件が後から厳しくなった）。
+
+→ **旧環境からの後退。当面は7日ごとに再認証が要る。**
+
 ## 未検証のもの
 
 - **書き出した14本のどれも通しで再生していない。** 見たのは各1〜3コマと、元素材の6〜9コマ
@@ -370,31 +422,33 @@ $ git push origin HEAD:main
   Google の一般的な仕様であって、こちらで実測したものではない
 - `xBpumDn8QYE` の飲酒描写が年齢制限を受けるかは未確認
 - `wKuTNfA6Xhg/auto03`（冒頭 10-78秒）は未点検・未書き出し。予備
-- **漏れた refresh_token を失効させていない。** このセッションからは
-  シークレットを読んで外部APIへ送る操作がブロックされたため実行できなかった。
-  **生きているかどうかも未確認**（`invalid_grant` だったという記録はあるが今回は叩いていない）
-- **`client_secret` をローテーションしていない。** 現行のものと同一の値が
-  ローカル履歴に載っていた。GitHub には出ていないが、入れ替えは済んでいない
+- **新しいトークンが7日後も生きているかは未検証。** 公開ステータスが「テスト中」なので
+  **失効する見込み**。2026-09-10 ごろに切れるかどうかで分かる
+- **新プロジェクトのクォータ上限を確認していない。** 既定なら 10,000ユニット/日＝アップロード6本/日。
+  旧プロジェクトで 12,800 分が通った件（引き上げの可能性）は**引き継がれない**
+- **新環境で実際のアップロード・公開を1本も通していない。** `clipper auth` が
+  チャンネルを返すところまでしか確かめていない
 
 ## 次にやること
 
-### 0. 【最優先】漏れた OAuth 認証情報を失効・再発行する（要ブラウザ操作）
+### 0. 新環境で実際に1本公開して通ることを確かめる
 
-**Claude 側では実行できない**（シークレットを外部へ送る操作がブロックされる）。手で行う。
+**認証は通ったが、アップロード・公開はまだ新プロジェクトで一度も試していない。**
+次の公開のときに、いつもどおり打って通るかを見る。
 
-**「リンク済みアプリ」からの取り消しはできない。** 2026-09-03 に実際に見て確認した（下の N）。
-代わりに **Cloud Console で OAuth クライアントを作り直す**。
-トークンの更新には `client_id` と `client_secret` の両方が要るので、
-**旧シークレットを消せば、漏れた refresh_token は使えなくなる**。
+```powershell
+Set-Location C:/Users/oshim/Documents/projects/com.-youtube
+$env:CLIPPER_CREDENTIALS_DIR = "C:/Users/oshim/Documents/projects/com.-youtube"
+python -m clipper publish Gsd-7b4Kdx8 auto05
+```
 
-1. <https://console.cloud.google.com/auth/clients?project=comdot-kirinuki> を開く
-   （ログインは `oshima6.27@gmail.com`。プロジェクトは `comdot-kirinuki`）
-2. 既存の `comdot-kirinuki-desktop`（デスクトップ、2026/08/14 作成）を**削除**し、
-   「クライアントを作成」→ 種類は**デスクトップアプリ**で作り直す
-   （シークレットの差し替えだけでも良いが、作り直しの方が取りこぼしがない）
-3. 新しい `client_secret.json` をダウンロードして
-   `C:/Users/oshim/Documents/projects/com.-youtube/client_secret.json` を置き換える
-4. `token.json` を削除して認証をやり直す:
+`403 quotaExceeded` や `insufficientPermissions` が出たら、新プロジェクトの
+API 有効化かスコープを疑う。
+
+### 0-2. 7日ごとに再認証する（当面）
+
+公開ステータスが「テスト中」なので、リフレッシュトークンが7日で切れる（上の O-2）。
+切れたら:
 
 ```powershell
 Set-Location C:/Users/oshim/Documents/projects/com.-youtube
@@ -403,12 +457,14 @@ $env:CLIPPER_CREDENTIALS_DIR = "C:/Users/oshim/Documents/projects/com.-youtube"
 python -m clipper auth
 ```
 
-同意画面のブランドアカウントは「コムドットのおもしろ切り抜きチャンネル」。
-選んだあと `UCoT2TYsxzH4t42C2oF-KrAw` が出れば正しい（上の C）。
+同意画面では**「コムドット名場面ch【切り抜き】」を選ぶ**。
+`UCoT2TYsxzH4t42C2oF-KrAw` が出れば正しい。
 
-**クライアントを作り直すと現行トークンも死ぬので、その日の公開を済ませてから行うと手戻りが少ない。**
+**恒久的に直すなら**、ホームページとプライバシーポリシーの URL を用意して
+<https://console.cloud.google.com/auth/branding?project=comdot-meibamen> に入れ、
+[オーディエンス] で「アプリを公開」を押す。URL が無い限り公開できない。
 
-### 1. 明日（2026-09-03）以降に投稿を続ける。在庫18本 ＝ 9日分
+### 1. 本日（2026-09-03）以降に投稿を続ける。在庫18本 ＝ 9日分
 
 **計画は `config/schedule.yaml` に書いてある。** 先頭は
 `Gsd-7b4Kdx8/auto05` と `Gsd-7b4Kdx8/auto01`。
