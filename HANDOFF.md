@@ -80,9 +80,15 @@ $ python -m pytest -q
 `client_secret.json` / `token.json` は本体側にしかなく、**worktree への複製は
 環境側でブロックされた。** 環境変数で本体を指せるようにしてある。
 
-```bash
-CLIPPER_CREDENTIALS_DIR=C:/Users/oshim/Documents/projects/com.-youtube python -m clipper ...
+```powershell
+$env:CLIPPER_CREDENTIALS_DIR = "C:/Users/oshim/Documents/projects/com.-youtube"
+python -m clipper ...
 ```
+
+**この機械の端末は Windows PowerShell 5.1。** `VAR=値 コマンド`（環境変数の前置き）と
+`&&` はどちらも使えない。`&&` はパースエラーになり、**行ごと何も実行されない**。
+環境変数は `$env:NAME = "値"` を別行で、逐次実行は `;` でつなぐ。
+（Claude 側の Bash ツールは Git Bash なので bash 記法が通る。**貼り付ける先で書き分けること。**）
 
 古いトークンは `invalid_grant` だったので退避して `clipper auth` をやり直した
 （同意画面はブラウザで通した）。結果:
@@ -356,10 +362,11 @@ $ git push origin HEAD:main
    `C:/Users/oshim/Documents/projects/com.-youtube/client_secret.json` を置き換える
 4. `token.json` を削除して認証をやり直す:
 
-```bash
-cd C:/Users/oshim/Documents/projects/com.-youtube
-rm token.json
-CLIPPER_CREDENTIALS_DIR=C:/Users/oshim/Documents/projects/com.-youtube python -m clipper auth
+```powershell
+Set-Location C:/Users/oshim/Documents/projects/com.-youtube
+Remove-Item token.json
+$env:CLIPPER_CREDENTIALS_DIR = "C:/Users/oshim/Documents/projects/com.-youtube"
+python -m clipper auth
 ```
 
 同意画面のブランドアカウントは「コムドットのおもしろ切り抜きチャンネル」。
@@ -374,16 +381,16 @@ CLIPPER_CREDENTIALS_DIR=C:/Users/oshim/Documents/projects/com.-youtube python -m
 
 自動化する（推奨。1回で18枠ぶん仕掛かる）:
 
-```bash
-cd C:/Users/oshim/Documents/projects/com.-youtube/.claude/worktrees/video-creation-scheduling-2370b5
-export CLIPPER_CREDENTIALS_DIR=C:/Users/oshim/Documents/projects/com.-youtube
+```powershell
+Set-Location C:/Users/oshim/Documents/projects/com.-youtube/.claude/worktrees/video-creation-scheduling-2370b5
+$env:CLIPPER_CREDENTIALS_DIR = "C:/Users/oshim/Documents/projects/com.-youtube"
 python -m clipper schedule            # 計画を見るだけ
 python -m clipper schedule --arm      # 実際に予約を入れる（明日以降でないと通らない）
 ```
 
 手で出す:
 
-```bash
+```powershell
 python -m clipper publish Gsd-7b4Kdx8 auto05
 python -m clipper publish Gsd-7b4Kdx8 auto01
 ```
@@ -398,9 +405,10 @@ Studio → アナリティクス → 右上「詳細モード」。**355回か�
 
 ### 3. トークンが生きているかを時々見る（1ユニット）
 
-```bash
-cd C:/Users/oshim/Documents/projects/com.-youtube/.claude/worktrees/video-creation-scheduling-2370b5
-CLIPPER_CREDENTIALS_DIR=C:/Users/oshim/Documents/projects/com.-youtube python -m clipper auth
+```powershell
+Set-Location C:/Users/oshim/Documents/projects/com.-youtube/.claude/worktrees/video-creation-scheduling-2370b5
+$env:CLIPPER_CREDENTIALS_DIR = "C:/Users/oshim/Documents/projects/com.-youtube"
+python -m clipper auth
 ```
 
 チャンネル名と `UCoT2TYsxzH4t42C2oF-KrAw` が出れば生きている。
