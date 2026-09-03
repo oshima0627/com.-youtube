@@ -323,6 +323,36 @@ $ git push origin HEAD:main
 ローカルの `main` も `origin/main` に合わせ直した（旧 `main` はシークレット入りの
 `c5f8ed5` を指していた）。**該当コミットを含むローカル参照はもう無い。**
 
+### N. 漏れたアプリは「リンク済みアプリ」に出てこない（2026-09-03 に画面で確認）
+
+失効のために https://myaccount.google.com/connections を見たが、**該当アプリが無い。**
+
+このプロジェクトの同意画面の設定（Cloud Console で確認）:
+
+| 項目 | 値 |
+|---|---|
+| プロジェクト | `comdot-kirinuki` |
+| アプリ名（同意画面） | **`comdot-kirinuki-uploader`** |
+| OAuth クライアント | `comdot-kirinuki-desktop`（デスクトップ・2026/08/14 作成） |
+| サポート／連絡先メール | `oshima6.27@gmail.com` |
+
+ブラウザにログイン中の4アカウントを全部見たが、どこにも `comdot-kirinuki-uploader` は無い:
+
+| authuser | アカウント | リンク済みアプリ |
+|---|---|---|
+| 0 | `oshima6.27@gmail.com`（なお） | ログイン52件 / アクセス権13件。**該当なし** |
+| 1 | `orfevre6.27@gmail.com`（日本の法律まるわかり） | YouTube 3件（bgm-youtube / news-youtube / YouTube on TV）。**該当なし** |
+| 2 | `lofilofilofi6.27@gmail.com`（Tokyo Nights Lofi） | 1件（bgm-youtube）。**該当なし** |
+| 3 | `info@nexeed-lab.com`（Nexeed Lab） | 0件 |
+
+チャンネルはブランドアカウント「コムドットのおもしろ切り抜きチャンネル」
+（id `114840712071284858738`、**所有は `oshima6.27@gmail.com`**）。
+`myaccount.google.com/b/<id>/connections` はエラー、`/b/<id>/permissions` は
+所有者側の一覧へリダイレクトされる。**ブランドアカウント専用の一覧は存在しない。**
+
+**なぜ出てこないのかは分かっていない。** 出ていない以上、この画面からは取り消せない。
+→ 失効は Cloud Console 側でクライアントを作り直して行う（「次にやること 0」）。
+
 ## 未検証のもの
 
 - **書き出した14本のどれも通しで再生していない。** 見たのは各1〜3コマと、元素材の6〜9コマ
@@ -352,12 +382,16 @@ $ git push origin HEAD:main
 
 **Claude 側では実行できない**（シークレットを外部へ送る操作がブロックされる）。手で行う。
 
-1. **アプリのアクセスを取り消す** — https://myaccount.google.com/permissions
-   該当アプリを選んで「アクセス権を削除」。これで**この client に紐づく
-   refresh_token が全部無効になる**（漏れたものも、現行のものも）
-2. **クライアントシークレットを入れ替える** — Google Cloud Console →
-   「API とサービス」→「認証情報」→ 該当の OAuth 2.0 クライアント ID →
-   シークレットを追加して、**古い方を削除**
+**「リンク済みアプリ」からの取り消しはできない。** 2026-09-03 に実際に見て確認した（下の N）。
+代わりに **Cloud Console で OAuth クライアントを作り直す**。
+トークンの更新には `client_id` と `client_secret` の両方が要るので、
+**旧シークレットを消せば、漏れた refresh_token は使えなくなる**。
+
+1. <https://console.cloud.google.com/auth/clients?project=comdot-kirinuki> を開く
+   （ログインは `oshima6.27@gmail.com`。プロジェクトは `comdot-kirinuki`）
+2. 既存の `comdot-kirinuki-desktop`（デスクトップ、2026/08/14 作成）を**削除**し、
+   「クライアントを作成」→ 種類は**デスクトップアプリ**で作り直す
+   （シークレットの差し替えだけでも良いが、作り直しの方が取りこぼしがない）
 3. 新しい `client_secret.json` をダウンロードして
    `C:/Users/oshim/Documents/projects/com.-youtube/client_secret.json` を置き換える
 4. `token.json` を削除して認証をやり直す:
@@ -372,7 +406,7 @@ python -m clipper auth
 同意画面のブランドアカウントは「コムドットのおもしろ切り抜きチャンネル」。
 選んだあと `UCoT2TYsxzH4t42C2oF-KrAw` が出れば正しい（上の C）。
 
-**1 をやると現行トークンも死ぬので、その日の公開を済ませてから行うと手戻りが少ない。**
+**クライアントを作り直すと現行トークンも死ぬので、その日の公開を済ませてから行うと手戻りが少ない。**
 
 ### 1. 明日（2026-09-03）以降に投稿を続ける。在庫18本 ＝ 9日分
 
