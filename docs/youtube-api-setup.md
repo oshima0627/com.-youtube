@@ -2,6 +2,22 @@
 
 このチャンネル専用の Google Cloud プロジェクトを作る手順。ブラウザでの操作なので人が行う。
 
+## 現行の構成（2026-09-03 時点・実機で確認済み）
+
+| 項目 | 値 |
+|---|---|
+| Google アカウント | `orfevre6.27@gmail.com` |
+| プロジェクト | `comdot-meibamen`（プロジェクト番号 120171737302） |
+| 同意画面のアプリ名 | `comdot-meibamen-uploader` |
+| OAuth クライアント | `comdot-meibamen-desktop`（デスクトップ・2026-09-03 作成） |
+| 公開ステータス | **テスト中**（テストユーザー: `orfevre6.27@gmail.com`） |
+| チャンネル | `UCoT2TYsxzH4t42C2oF-KrAw`（ブランドアカウント「コムドットのおもしろ切り抜きチャンネル」） |
+
+**旧プロジェクト `comdot-kirinuki`（`oshima6.27@gmail.com`）は使わない。**
+client_secret が git 履歴に混入したため、2026-09-03 に OAuth クライアント
+`comdot-kirinuki-desktop` を削除して失効させた。旧認証情報での更新は
+`deleted_client: The OAuth client was deleted.` で失敗することを確認済み。
+
 ## なぜ専用プロジェクトが要るか
 
 **API のクォータは Google Cloud プロジェクト単位で配られる。** 既定は 10,000ユニット/日で、
@@ -17,7 +33,7 @@
 ## 手順
 
 1. <https://console.cloud.google.com/> で**新しいプロジェクトを作る**
-   （名前は `comdot-kirinuki` など。既存プロジェクトを選ばないこと）
+   （現行は `comdot-meibamen`。既存プロジェクトを選ばないこと）
 2. 「APIとサービス」→「ライブラリ」→ **YouTube Data API v3** を有効化
 3. 「OAuth 同意画面」を設定
    - User Type: **外部**
@@ -28,8 +44,8 @@
 5. JSON をダウンロードし、`client_secret.json` としてリポジトリ直下に置く
 6. 古いトークンを消して認証し直す
 
-```bash
-rm token.json
+```powershell
+Remove-Item token.json
 python -m clipper auth
 ```
 
@@ -63,29 +79,25 @@ API を叩かないようにしてある。画像自体は毎回生成してい�
 ## リフレッシュトークンの寿命
 
 **7日で失効するのは同意画面が「テスト中」のときだけ。**
-2026-09-02 に Google Cloud コンソールで実際に見た結果:
+そして **現行の `comdot-meibamen` は「テスト中」なので、この条件に当てはまる。**
 
 ```
-Google Auth Platform → 対象（オーディエンス）
-  公開ステータス : 本番環境        ← テスト中ではない
+Google Auth Platform → 対象（オーディエンス）   ※2026-09-03 に画面で確認
+  公開ステータス : テスト中        ← 7日失効の条件に該当する
   ユーザーの種類 : 外部
-  OAuth ユーザー数の上限 : 2人 / 100
-
-Google Auth Platform → 検証センター
-  Data access status:
-  「アプリは機密性の高いスコープや制限付きスコープをリクエストしていないため、
-    検証は必要ありません」
+  テストユーザー : orfevre6.27@gmail.com（1人 / 100）
 ```
 
-**つまり審査を通す必要は無く、7日失効の条件にも当てはまらない。**
-「恒久的に直すには Google の審査が要る」と以前ここに書いてあったが、**誤りだった。**
+**「アプリを公開」は押せない。** ボタンが無効で
+「アプリの OAuth 構成が完了していません」と出る。ブランディングの
+**アプリケーションのホームページ**と**プライバシーポリシーのリンク**が空のため。
+公開するにはその2つに実在の URL を入れ、ドメインを承認済みドメインに登録する必要がある。
 
-同意画面の「データアクセス」にスコープが1つも登録されていないため、Google からは
-機微スコープを要求しないアプリに見えている。実際には実行時に
-`youtube.upload` / `youtube.readonly` / `youtube.force-ssl` を要求するので、
-同意時に**「このアプリは Google で確認されていません」の警告が出る。**
-これは想定どおりで、`詳細` → `（安全ではないページ）に移動` で進める。
-検証を通せば警告は消えるが、利用者は本人1人なので通す理由が無い。
+旧 `comdot-kirinuki` は本番環境だったが、同じ2項目が空のまま公開されていた
+（現在の UI では通らない。おそらく要件が後から厳しくなった）。
+
+→ **当面は7日ごとに `clipper auth` をやり直す運用になる。**
+公開したい場合は上の2つの URL を用意すること。
 
 ### それでも失効しうる条件（Google の一般的な仕様。こちらでは未実測）
 
@@ -98,9 +110,12 @@ Google Auth Platform → 検証センター
 
 ### 生きているかの確認（1ユニット）
 
-```bash
-CLIPPER_CREDENTIALS_DIR=C:/Users/oshim/Documents/projects/com.-youtube python -m clipper auth
+```powershell
+$env:CLIPPER_CREDENTIALS_DIR = "C:/Users/oshim/Documents/projects/com.-youtube"
+python -m clipper auth
 ```
+
+（この機械の端末は Windows PowerShell 5.1。`VAR=値 コマンド` と `&&` は使えない）
 
 チャンネル名と `UCoT2TYsxzH4t42C2oF-KrAw` が出れば生きている。
 `invalid_grant` が出たら `token.json` を消して同じコマンドをやり直す。
