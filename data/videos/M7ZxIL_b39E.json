@@ -1,6 +1,6 @@
 {
   "video_id": "M7ZxIL_b39E",
-  "state": "gated",
+  "state": "rendered",
   "meta": {
     "title": "【カロリー爆弾】マクドナルドで過注文人狼したら人狼が暴れすぎてまさかの事態に...",
     "description": "あむぎり編集\n\n過去の人狼企画再生リストはこちらから\n→ https://youtube.com/playlist?list=PLyJqt6BfGzwnXDH_A8UcJFRg70a7MRBsK&si=VaJARsa4OBfOsPzW\n\nこんちゃ！あむぎりです！\n大人気企画過注文人狼のマック編です！\n最近かなりの頻度でやっているのでメンバーの癖がなんとなくわかってきた気がしていて(根拠全くなし)勝率も徐々に上げてきている私あむぎり。今回はマックで戦ってきました！あむぎりの最大の欠点、展開が早い話についていけないということ笑　今回ももし出ていたらごめんな！！そして今回も誰が人狼か最後まで分かんないような編集がされているのでぜひ予想して楽しんで見てねー！\n飯テロすごいから明日マック駆け込んじゃおう！笑\n\n◾︎コムドット公式LINEはこちら\n→ https://liff.line.me/1645278921-kWRPP32q/?accountId=comforfan\n\n◾︎コムドットメンバーシップ登録はこちら\n→ https://www.youtube.com/@comdot/join\n\n◾︎コムドット公式グッズBB5の販売はこちら\n→ https://bb5.shop/\n\n◾︎アパレルブランドBIRDOGの販売はこちら\n→ https://birdog.shop/password\n\n\n◾︎コムドット各種SNS\n【Instagram】→ https://instagram.com/p/BoeJWOOhgfk/\n【Twitter】→ https://twitter.com/comyoutuber2\n【TikTok】→ https://www.tiktok.com/@com.youtuber2\n\n◾︎やまと個人アカウント\n【Instagram】→ https://www.instagram.com/com.yamato\n【Twitter】→ http://twitter.com/@comyamato0515\n【TikTok】→https://www.tiktok.com/@com.yamato0515\n【ヤマトノウナイ】→https://www.youtube.com/@ヤマトノウナイ\n【コムドットやまと公式LINE】→https://x.gd/DktIO\n\n◾︎ゆうた個人アカウント\n【Instagram】→ https://www.instagram.com/com.yuta\n【Twitter】→ http://twitter.com/@comyuta0305\n【TikTok】→ https://www.tiktok.com/@com.yuta0305\n\n◾︎ゆうま個人アカウント\n【Instagram】→ https://www.instagram.com/com.yuma\n【Twitter】→ http://twitter.com/@comyuma1214\n【TikTok】→ https://www.tiktok.com/@com.yuma1214\n\n◾︎ひゅうが個人アカウント\n【Instagram】→ https://instagram.com/com.hyuga\n【Twitter】→ http://twitter.com/comhyuga1117\n【TikTok】→ https://www.tiktok.com/@com.hyuga1117\n\n◾︎あむぎり個人アカウント\n【Instagram】→ https://www.instagram.com/com.amugiri\n【Twitter】→ https://twitter.com/comamugiri0123\n【TikTok】→ https://www.tiktok.com/@com.amugiri2",
@@ -25,7 +25,9 @@
         "いじり": 0,
         "コメント": 10
       },
-      "formats": [],
+      "formats": [
+        "short"
+      ],
       "published": null,
       "gate": {
         "result": "pass",
@@ -46,7 +48,9 @@
         "いじり": 0,
         "コメント": 8
       },
-      "formats": [],
+      "formats": [
+        "short"
+      ],
       "published": null,
       "gate": {
         "result": "pass",
@@ -109,7 +113,9 @@
         "いじり": 2,
         "コメント": 25
       },
-      "formats": [],
+      "formats": [
+        "short"
+      ],
       "published": null,
       "gate": {
         "result": "pass",
@@ -151,7 +157,9 @@
         "いじり": 1,
         "コメント": 19
       },
-      "formats": [],
+      "formats": [
+        "short"
+      ],
       "published": null,
       "gate": {
         "result": "pass",
@@ -172,7 +180,9 @@
         "いじり": 1,
         "コメント": 6
       },
-      "formats": [],
+      "formats": [
+        "short"
+      ],
       "published": null,
       "gate": {
         "result": "pass",
@@ -193,7 +203,9 @@
         "いじり": 5,
         "コメント": 4
       },
-      "formats": [],
+      "formats": [
+        "short"
+      ],
       "published": null,
       "gate": {
         "result": "pass",
@@ -214,7 +226,9 @@
         "いじり": 0,
         "コメント": 27
       },
-      "formats": [],
+      "formats": [
+        "short"
+      ],
       "published": null,
       "gate": {
         "result": "pass",
@@ -235,7 +249,9 @@
         "いじり": 0,
         "コメント": 6
       },
-      "formats": [],
+      "formats": [
+        "short"
+      ],
       "published": null,
       "gate": {
         "result": "pass",
