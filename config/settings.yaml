@@ -13,6 +13,13 @@ channel:
   # 確認できるようになったら true にすれば、生成済みの画像を設定できる。
   custom_thumbnails: false
 
+  # このチャンネルで YouTube パートナープログラム（収益化）が有効かどうか。
+  # **API では取れないので、Studio で見て手で書く。**
+  # true にすると gate が permission.yaml の conditions.monetization を見て、
+  # allowed でない限り公開を全部止める。収益化の許諾が取れていないまま
+  # 収益を得ることを機械的に防ぐための札で、投稿そのものを止める札ではない。
+  monetization_enabled: false
+
 formats:
   short:
     width: 1080

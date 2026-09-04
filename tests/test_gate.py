@@ -129,3 +129,74 @@ def test_kill_switch_stops_everything(entry, clip, runtime, granted, no_exclusio
     got = gate.evaluate(entry, clip, runtime=runtime)
     assert got["result"] == "held"
     assert any("キルスイッチ" in r for r in got["reasons"])
+
+
+# --- 収益化の許諾条件 ---------------------------------------------------
+#
+# permission.yaml は「conditions を gate が読んで判定する」と書いてあったが、
+# 実際には status しか見ておらず conditions は誰も読んでいなかった。
+# 収益化してよいかの回答が取れていないまま収益化すると、許諾の範囲を
+# 超える。人が気づいて止めるのではなく、ここで機械的に止める。
+
+
+@pytest.fixture
+def not_monetized(monkeypatch):
+    monkeypatch.setattr(gate.config, "settings", lambda: {
+        "limits": {"max_publish_per_day": 2},
+        "channel": {"monetization_enabled": False}})
+
+
+def _monetized(monkeypatch):
+    monkeypatch.setattr(gate.config, "settings", lambda: {
+        "limits": {"max_publish_per_day": 2},
+        "channel": {"monetization_enabled": True}})
+
+
+def _perm(monkeypatch, monetization):
+    monkeypatch.setattr(gate.config, "permission", lambda: {
+        "status": "granted", "conditions": {"monetization": monetization}})
+
+
+def test_monetized_channel_is_held_while_monetization_is_unknown(
+        entry, clip, runtime, no_exclusions, monkeypatch):
+    """収益化してよいかの回答が無いまま収益化していたら止める。"""
+    _monetized(monkeypatch)
+    _perm(monkeypatch, "unknown")
+    got = gate.evaluate(entry, clip, runtime=runtime)
+    assert got["result"] == "held"
+    assert any("収益化" in r for r in got["reasons"])
+
+
+def test_monetized_channel_is_held_when_monetization_is_not_allowed(
+        entry, clip, runtime, no_exclusions, monkeypatch):
+    _monetized(monkeypatch)
+    _perm(monkeypatch, "not_allowed")
+    got = gate.evaluate(entry, clip, runtime=runtime)
+    assert got["result"] == "held"
+    assert any("収益化" in r for r in got["reasons"])
+
+
+def test_monetized_channel_passes_when_monetization_is_allowed(
+        entry, clip, runtime, no_exclusions, monkeypatch):
+    _monetized(monkeypatch)
+    _perm(monkeypatch, "allowed")
+    assert gate.evaluate(entry, clip, runtime=runtime)["result"] == "pass"
+
+
+def test_unmonetized_channel_passes_even_when_monetization_is_unknown(
+        entry, clip, runtime, no_exclusions, not_monetized, monkeypatch):
+    """収益化していないうちは、条件が未確認でも投稿は止めない。
+
+    止めるべきは「許諾の範囲を超えて収益を得ること」であって、投稿そのもの
+    ではない。ここで全部止めると在庫が動かなくなるだけで安全にはならない。
+    """
+    _perm(monkeypatch, "unknown")
+    assert gate.evaluate(entry, clip, runtime=runtime)["result"] == "pass"
+
+
+def test_missing_channel_settings_are_treated_as_not_monetized(
+        entry, clip, runtime, granted, no_exclusions, monkeypatch):
+    """settings.yaml に channel が無くても落ちない。"""
+    monkeypatch.setattr(gate.config, "settings",
+                        lambda: {"limits": {"max_publish_per_day": 2}})
+    assert gate.evaluate(entry, clip, runtime=runtime)["result"] == "pass"

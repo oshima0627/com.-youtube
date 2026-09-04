@@ -11,7 +11,12 @@ requested_to: 株式会社BRDOCK
 requested_at: 2026-08-14
 responded_at: 2026-09-02
 
-# 回答で条件が付いた場合、ここへ書き写す。gate はこの内容を読んで判定する。
+# 回答で条件が付いた場合、ここへ書き写す。
+# gate が実際に見ているのは 2026-09-04 時点で monetization だけ。
+# settings.yaml の channel.monetization_enabled が true のとき、
+# ここが allowed でなければ公開を全部止める。
+# credit_required / member_images_allowed / excluded_video_types は
+# **まだ誰も読んでいない記録用の欄**。機械が守ってくれると思わないこと。
 conditions:
   monetization: unknown        # allowed | not_allowed | unknown
   credit_required: unknown     # 概要欄への出典表記の要否

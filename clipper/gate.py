@@ -67,6 +67,17 @@ def evaluate(entry, clip, segments=None, today=None, runtime=None):
     if perm.get("status") != "granted":
         reasons.append(f"許諾ステータスが {perm.get('status')}（granted ではない）")
 
+    # 1-2. 収益化の許諾条件。**収益化しているときだけ**見る。
+    #      止めたいのは「許諾の範囲を超えて収益を得ること」であって投稿そのもの
+    #      ではないので、収益化していないうちは unknown でも通す。収益化した
+    #      日に自動で効き始める安全装置として置く。
+    cond = perm.get("conditions") or {}
+    monetized = (config.settings().get("channel") or {}).get("monetization_enabled")
+    if monetized and cond.get("monetization") != "allowed":
+        reasons.append(
+            f"チャンネルが収益化されているが、許諾の収益化条件が "
+            f"{cond.get('monetization')}（allowed ではない）")
+
     # 2. 除外リストに載っている動画
     ex = config.exclusions()
     if entry["video_id"] in (ex.get("video_ids") or []):

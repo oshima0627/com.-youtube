@@ -1,6 +1,6 @@
 # HANDOFF
 
-最終更新: 2026-09-03
+最終更新: 2026-09-04
 
 ## いま何をしているのか
 
@@ -16,6 +16,10 @@
 - **git 履歴に混入していた OAuth 認証情報を除去し、push を復旧した**（下の M）
 - **2026-09-03、認証基盤を新プロジェクト `comdot-meibamen` へ移し、本番環境へ公開した。**
   漏れた認証情報は**失効済み**（下の O）。**7日失効の条件からも外れた**（下の O-2）
+- **2026-09-04、許諾の回答メールを Gmail 内で探した。1通も見つからなかった**（下の P）。
+  `status: granted` は依然として申告だけが根拠で、**確かめられない**
+- **2026-09-04、収益化の許諾条件を gate が実際に見るようにした**（下の Q）。
+  いまは `monetization_enabled: false` なので**何も止まらない**。収益化した日に効き始める
 
 ## 今回やったこと（2026-09-02）
 
@@ -37,6 +41,21 @@
 `scripts/week_plan.py`・`sync_privacy.py`・`sheet_at.py`（新規）/
 `tests/test_metadata.py`（新規）/ `tests/test_gate.py` / `tests/test_upload.py` /
 `README.md` / `HANDOFF.md`
+
+## 今回やったこと（2026-09-04）
+
+1. **許諾の回答メールを Gmail 内で探した → 0件**（下の P）。
+   結果を `docs/permission-request.md` に追記した
+2. **`permission.yaml` の `conditions` を gate が読んでいなかったので、
+   収益化条件だけ読むようにした**（下の Q）
+3. `settings.yaml` に `channel.monetization_enabled` を足した（既定 false）
+4. `clipper status` に収益化の行を足した
+5. `permission.yaml` の「gate はこの内容を読んで判定する」という**誤った注記を直した**
+
+変更したファイル:
+`clipper/gate.py` / `clipper/cli.py` / `config/settings.yaml` /
+`config/permission.yaml` / `tests/test_gate.py` /
+`docs/permission-request.md` / `HANDOFF.md`
 
 ## 検証済みの事実（実際に画面に出た出力のみ）
 
@@ -439,10 +458,74 @@ $ python -m clipper auth
 認証しました: コムドット名場面ch【切り抜き】（UCoT2TYsxzH4t42C2oF-KrAw）
 ```
 
+### P. 許諾の回答メールは受信箱に無い（2026-09-04 に検索）
+
+`status: granted` の根拠になるはずの回答文を Gmail（oshima6.27@gmail.com）で探した。
+
+| クエリ | 結果 |
+|---|---|
+| `BRDOCK OR brdc OR コムドット newer_than:60d` | **0件** |
+| `{BRDOCK brdc コムドット 切り抜き やまと 名場面} in:anywhere newer_than:120d` | 6件（**BRDOCK 由来は0件**） |
+
+6件は、ひろゆき切り抜きの申請（`getmcn@razil.jp` とフォーム控え、
+2026-08-09 / 08-13）と Adobe の宣伝。`in:anywhere` なので迷惑メール・
+ゴミ箱も見ている。**株式会社BRDOCK からのメールは自動返信も含めて1通も無い。**
+
+**これは「許諾が無い」の証明ではない。**「この受信箱には残っていない」だけ。
+別アドレス・電話・フォーム画面上での回答・削除の可能性は残る。
+だが **`granted` を裏づける文書はこちらからは出せない**。
+`status` を変えるかどうかは運営者の判断なので、**こちらでは触っていない。**
+
+詳細と、参考にした「ひろゆき切り抜きで実際に来た許諾回答」の中身は
+[`docs/permission-request.md`](docs/permission-request.md) に書いた。
+
+### Q. 収益化の許諾条件を gate が見るようにした（2026-09-04）
+
+`permission.yaml` には「conditions を gate が読んで判定する」と書いてあったが、
+**gate は `status` しか見ておらず conditions は誰も読んでいなかった。**
+注記のほうが間違っていた。直したうえで、収益化の条件だけ実装した。
+
+- `config/settings.yaml` に `channel.monetization_enabled`（既定 `false`）を追加。
+  **API では取れないので Studio を見て手で書く欄**
+- `monetization_enabled: true` かつ `conditions.monetization` が `allowed` 以外なら
+  gate が held にする
+- **収益化していないうちは `unknown` でも通す。** 止めたいのは「許諾の範囲を超えて
+  収益を得ること」であって投稿そのものではない。全部止めても安全にはならず
+  在庫が動かなくなるだけ
+
+実際の設定・実際の台帳で `gate.evaluate` を動かした出力:
+
+```
+収益化 ON  : {'result': 'held', 'reasons': ['チャンネルが収益化されているが、許諾の収益化条件が unknown（allowed ではない）']}
+収益化 OFF : {'result': 'pass', 'reasons': []}
+```
+
+`python -m clipper status`（現在の設定 = 収益化 無効）:
+
+```
+許諾ステータス : granted（2026-08-14 に依頼）
+収益化         : チャンネル 無効 / 許諾の条件 unknown
+キルスイッチ   : OFF
+投稿済み       : 2 本
+台帳           : 動画 12 本 / クリップ 67 件（書き出し済み 40）
+```
+
+`monetization_enabled: true` にすると同じ行がこうなる（確認後 false に戻した）:
+
+```
+収益化         : チャンネル 有効 / 許諾の条件 unknown  ← allowed でないので publish は全部止まる
+```
+
+テストは `tests/test_gate.py` に6件足した。**`python -m pytest tests/ -q` → 148 passed。**
+
+**`credit_required` / `member_images_allowed` / `excluded_video_types` は
+まだ誰も読んでいない。** 記録用の欄でしかない。
+
 ## 未検証のもの
 
 - **書き出した14本のどれも通しで再生していない。** 見たのは各1〜3コマと、元素材の6〜9コマ
-- **許諾の回答文を見ていない。** granted の根拠は運営者の申告だけ
+- **許諾の回答文を見ていない。** granted の根拠は運営者の申告だけで、
+  **2026-09-04 に Gmail を探しても裏づけは出てこなかった**（上の P）
 - **アップロード済み6本のタイトルは旧型式**（メンバー名・`#shorts` なし）。
   直すには誰が映っているかの確認が要る
 - **投稿再開でインプレッションが増えるかは未検証。** これが今回いちばん測りたいこと
@@ -539,11 +622,22 @@ python -m clipper auth
 `cTzbNUFi9Iw` と `hbRhnrvPk-k`。素材 `RGm5F2m12as` 由来で外部の催眠術師が映る。
 **現在も公開されている。**
 
-### 5. 許諾の回答文を記録に残す
+### 5. 許諾の回答文を記録に残す（**未解決。優先度が上がった**）
 
-回答文を `docs/permission-request.md` に貼り、条件（収益化・クレジット・
-本人画像）を `permission.yaml` の `conditions` へ書き写す。
-**いまの記録は申告だけが根拠。**
+**2026-09-04 に Gmail を全部探したが、BRDOCK からのメールは1通も無かった**（上の P）。
+`status: granted` を裏づけるものが、いまリポジトリにも受信箱にも無い。
+
+運営者が確かめること:
+
+1. **回答はどこに来たのか。** 別のメールアドレス / 電話 / フォームの画面上の表示 /
+   SNS のいずれか。**来ていないなら `status` を `pending` に戻す**
+2. 回答文が出てきたら `docs/permission-request.md` に貼り、条件を
+   `permission.yaml` の `conditions` へ書き写す
+3. **とくに `monetization`。** ここを `allowed` にしない限り、収益化した時点で
+   gate が公開を全部止める（上の Q）
+
+回答が出てこないなら、**送り直すのが筋**。依頼文は
+[`docs/permission-request.md`](docs/permission-request.md) にそのまま残っている。
 
 ### 6. 旧型式のタイトル6本を直す
 

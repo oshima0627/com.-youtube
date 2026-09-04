@@ -131,6 +131,12 @@ def cmd_status(args):
     rt = gate.load_runtime()
     perm = config.permission()
     print(f"許諾ステータス : {perm.get('status')}（{perm.get('requested_at')} に依頼）")
+    cond = perm.get("conditions") or {}
+    monetized = (config.settings().get("channel") or {}).get("monetization_enabled")
+    print(f"収益化         : チャンネル {'有効' if monetized else '無効'} / "
+          f"許諾の条件 {cond.get('monetization')}"
+          + ("  ← allowed でないので publish は全部止まる"
+             if monetized and cond.get("monetization") != "allowed" else ""))
     print(f"キルスイッチ   : {'ON ' + str(rt.get('kill_reason')) if rt.get('kill_switch') else 'OFF'}")
     published = sum(len(v) for v in rt["published"].values())
     print(f"投稿済み       : {published} 本")
