@@ -100,6 +100,7 @@ def main():
         lines.append(f"- `{v['id']}` {transcript.hms(v['duration'])} {v['title']}")
 
     dest = config.ROOT / "work" / "source_pool.md"
+    dest.parent.mkdir(parents=True, exist_ok=True)   # worktree には work/ が無い
     dest.write_text("\n".join(lines), encoding="utf-8")
     print(f"\n通過 {len(pool)}本 → {dest}")
 
