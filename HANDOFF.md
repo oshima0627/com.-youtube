@@ -4,494 +4,90 @@
 
 ## いま何をしているのか
 
-コムドット切り抜きの制作と投稿。**投稿を再開し、在庫を9日分にした。**
+コムドット切り抜きの制作と投稿。**在庫は18本＝9日分あり、詰まっているのは制作ではなく配信。**
 
-- 認証は新プロジェクト `comdot-meibamen` で稼働中（下の O）。
-  **C と I は旧プロジェクトの記録で、現行には当てはまらない**
-- 許諾を `granted` にした（下の D。**根拠は運営者の申告のみ**）
-- **2026-09-02 に2本を公開**（下の F）。**2026-09-03 分はまだ公開していない**
-- 新素材 `Gsd-7b4Kdx8` から**6本を追加で書き出し・アップロード**（下の J）
-- **在庫18本 ＝ 9日分**が非公開。順番は [`docs/post-plan.md`](docs/post-plan.md)
-- `config/schedule.yaml` に**18枠の計画を書いた。予約はまだ入れていない**（下の K）
-- **git 履歴に混入していた OAuth 認証情報を除去し、push を復旧した**（下の M）
-- **2026-09-03、認証基盤を新プロジェクト `comdot-meibamen` へ移し、本番環境へ公開した。**
-  漏れた認証情報は**失効済み**（下の O）。**7日失効の条件からも外れた**（下の O-2）
-- **2026-09-04、許諾の回答メールを Gmail 内で探した。1通も見つからなかった**（下の P）。
-  `status: granted` は依然として申告だけが根拠で、**確かめられない**
-- **2026-09-04、収益化の許諾条件を gate が実際に見るようにした**（下の Q）。
-  いまは `monetization_enabled: false` なので**何も止まらない**。収益化した日に効き始める
+いま立っている場所:
 
-## 今回やったこと（2026-09-02）
-
-1. 公開済み14本の実績を実測し、競合ショートと突き合わせた → `docs/analytics-2026-09-02.md`
-2. Studio をブラウザで開いてインプレッション数を読んだ（下の H）
-3. ショートのタイトルにメンバー名と `#shorts` を必須にした（下の B）
-4. `ARuwTdvqJJA`（40組コラボ）を除外に追加
-5. 新しいショートを7本書き出した（下の A）
-6. 台帳の `privacy_status` を実測に合わせた
-7. 認証復旧・許諾更新・14本アップロード・2本公開（下の C〜F）
-8. **トークンの7日失効を調べ直した。条件に当てはまっていなかった**（下の I）
-9. **`token.json.expired-20260814` を git 履歴から除去し、`.gitignore` を広げた**（下の M）
-10. **新プロジェクト `comdot-meibamen` を作り、トークンを再発行した**（2026-09-03。下の O）
-
-変更したファイル:
-`clipper/metadata.py` / `clipper/upload.py` / `clipper/cli.py` /
-`config/exclusions.yaml` / `config/permission.yaml` / `data/videos/*.json` /
-`docs/analytics-2026-09-02.md`・`docs/post-plan.md`（新規）/
-`scripts/week_plan.py`・`sync_privacy.py`・`sheet_at.py`（新規）/
-`tests/test_metadata.py`（新規）/ `tests/test_gate.py` / `tests/test_upload.py` /
-`README.md` / `HANDOFF.md`
+- **配信が出ていない**のが最大の問題。インプレッション355回（28日・14本）。
+  投稿を再開した2本だけ数字が違う（下の 2）。**09-09 ごろに測り直すのが次の山**
+- 認証は新プロジェクト `comdot-meibamen` で稼働中。2026-09-04 に `clipper auth` 成功を確認
+- **許諾の回答文はどこにも無い**（下の 1）。`permission.yaml` は `granted` のままだが、
+  裏づけが取れていない。**ここが未解決の最大の risk**
+- **`M7ZxIL_b39E`（マクドナルド過注文人狼）の書き出しが途中**（下の「次にやること 0」）
 
 ## 今回やったこと（2026-09-04）
 
-1. **許諾の回答メールを Gmail 内で探した → 0件**（下の P）。
-   結果を `docs/permission-request.md` に追記した
-2. **`permission.yaml` の `conditions` を gate が読んでいなかったので、
-   収益化条件だけ読むようにした**（下の Q）
-3. `settings.yaml` に `channel.monetization_enabled` を足した（既定 false）
-4. `clipper status` に収益化の行を足した
-5. `permission.yaml` の「gate はこの内容を読んで判定する」という**誤った注記を直した**
+1. **収益化の許諾条件を gate が実際に見るようにした**（下の 3）
+2. **許諾の回答メールを Gmail 内で探した → 0件**（下の 1）
+3. **`scripts/account_audit.py` を新設し、チャンネルを実測した**（下の 2）
+4. **素材候補を洗い直し、自動判定の穴を1つ塞いだ**（下の 4）
+5. `M7ZxIL_b39E` から12候補を抽出、上位8本の書き出しを開始（**未完**）
 
 変更したファイル:
-`clipper/gate.py` / `clipper/cli.py` / `config/settings.yaml` /
-`config/permission.yaml` / `tests/test_gate.py` /
-`docs/permission-request.md` / `HANDOFF.md`
+`clipper/gate.py` / `clipper/cli.py` / `config/settings.yaml` / `config/permission.yaml` /
+`config/exclusions.yaml` / `tests/test_gate.py` / `scripts/account_audit.py`（新規）/
+`scripts/build_source_pool.py` / `docs/permission-request.md` /
+`docs/analytics-2026-09-04.md`（新規）/ `HANDOFF.md`
 
-## 検証済みの事実（実際に画面に出た出力のみ）
+コミット: `00d10e3`（gate の収益化条件）、`1068c69`（実測と素材の洗い直し）。
+どちらも `origin/main` へ push 済み。**本体チェックアウト側の main は古いので `git pull` が要る。**
 
-### A. 新しく書き出した7本は全部、第三者点検を通してある
+## 検証済みの事実（実際に画面に出た出力だけ）
 
-| クリップ | 区間 | 場所と人 |
-|---|---|---|
-| `xBpumDn8QYE/man02` | 1:32:20-1:33:22 | 座敷。**メンバー2人だけ**（8コマ目視） |
-| `8DDHTuwdbyQ/auto03` | 57:44-58:51 | 座敷。**4人だけ**（6コマ目視） |
-| `8DDHTuwdbyQ/auto05` | 1:02:45-1:03:46 | 同上（6コマ目視） |
-| `8DDHTuwdbyQ/man01` | 1:06:11-1:07:19 | 同上（6コマ目視） |
-| `abW8zkEwEW4/auto06` | 1:15-2:22 | ソファ。**5人だけ**（9コマ目視） |
-| `abW8zkEwEW4/auto04` | 37:33-38:40 | 車内。**2人だけ**（6コマ目視） |
-| `abW8zkEwEW4/auto05` | 1:20:27-1:21:30 | 室内。**5人だけ**（6コマ目視） |
+### 1. 許諾の回答メールは受信箱に無い
 
-- `8DDHTuwdbyQ` は「やまとの誕生日をやまと抜きで」の回。
-  **画面に4人しかいない＝やまと以外の4人**がメンバー特定の根拠
-- `abW8zkEwEW4/auto06` の LINE オーバーレイは拡大して確認。**メンバー本人の写真とアイコン**
-- 点検シートは `work/<video_id>/<clip_id>_audit.png`（git 追跡外）
-- **`8DDHTuwdbyQ/auto04` は捨てた。** 冒頭テロップが「知ってるよね？雷獣チャンネル」で
-  見出しと合わず、`man01` に切り直した。台帳に理由を書いて `excluded` にしてある
-- **`abW8zkEwEW4/auto03` は採らない。** 下ネタが続く区間
-
-### B. ショートのタイトルの型を機械の検査にした
-
-型は docs にあったが `short_title()` がどこからも呼ばれておらず、素通しだった。
-
-- `SHORT_TAGS` = `#コムドット #コムドット切り抜き #shorts`
-- `short_title(body, members)` が名簿 `metadata.MEMBERS` 外の名前を弾く
-- 100文字超は**末尾のタグを丸ごと落とす**（途中で切らない）
-- `validate_title(title, is_short=True)` が `#shorts` とメンバー名を必須にする
-- CLI に `--members` と `retitle` サブコマンドを追加
-
-```
-$ python -m pytest -q
-141 passed, 4 warnings in 1.01s
-```
-
-**`--members` は映像で確認できたメンバーだけ。** 字幕からは決められない
-（公開済みショート19本中16本は区間内の字幕に名前が出ない）。
-
-### C. 認証を復旧した（worktree から使えるようにした）
-
-> **【2026-09-03 追記】この節は旧プロジェクト `comdot-kirinuki` の記録。**
-> 現行は `comdot-meibamen`（下の O）。環境変数の指定方法だけが今も有効。
-
-`client_secret.json` / `token.json` は本体側にしかなく、**worktree への複製は
-環境側でブロックされた。** 環境変数で本体を指せるようにしてある。
-
-```powershell
-$env:CLIPPER_CREDENTIALS_DIR = "C:/Users/oshim/Documents/projects/com.-youtube"
-python -m clipper ...
-```
-
-**この機械の端末は Windows PowerShell 5.1。** `VAR=値 コマンド`（環境変数の前置き）と
-`&&` はどちらも使えない。`&&` はパースエラーになり、**行ごと何も実行されない**。
-環境変数は `$env:NAME = "値"` を別行で、逐次実行は `;` でつなぐ。
-（Claude 側の Bash ツールは Git Bash なので bash 記法が通る。**貼り付ける先で書き分けること。**）
-
-古いトークンは `invalid_grant` だったので退避して `clipper auth` をやり直した
-（同意画面はブラウザで通した）。結果:
-
-```
-channel: {'id': 'UCoT2TYsxzH4t42C2oF-KrAw', 'title': 'コムドット名場面ch【切り抜き】'}
-```
-
-**同意画面のブランドアカウント名は「コムドットのおもしろ切り抜きチャンネル」で、
-チャンネル名と違う。** 名前で探すと迷う。選んだあと `UCoT2TYsxzH4t42C2oF-KrAw`
-が出れば正しい。退避した古いトークンは削除済み。
-
-**このトークンが7日で失効するという前提は誤りだった。** 下の I。
-
-### D. 許諾を granted にした（根拠は運営者の申告のみ）
-
-**2026-09-02、運営者から「BRDOCK の許諾の回答が来た」との申告を受けて
-`config/permission.yaml` を `granted` にした。**
-
-- `responded_at: 2026-09-02`
-- **回答文そのものはリポジトリに保存されていない**
-- `conditions`（収益化可否・クレジット要否・本人画像の可否）は **unknown のまま**
-
-この変更で `tests/test_gate.py` の2件が落ちた（実物の permission.yaml を読んで
-pending 前提で書いてあった）。**設定の現在値ではなくゲートの挙動を固定するよう、
-monkeypatch で pending / denied / granted を作って書き直した。**
-
-### E. 14本すべてアップロード済み（新しい8本は今回）
-
-| クリップ | YouTube ID |
-|---|---|
-| `8DDHTuwdbyQ/auto03` | `H5v_FFA73So` ← **公開済** |
-| `abW8zkEwEW4/auto06` | `sR58Xt36Xco` ← **公開済** |
-| `8DDHTuwdbyQ/auto05` | `bjPdC-HDT4E` |
-| `abW8zkEwEW4/auto04` | `tUuz9i0ZfMc` |
-| `xBpumDn8QYE/man01` | `V6BPliNEgUk` |
-| `8DDHTuwdbyQ/man01` | `mrr0vlt-FVQ` |
-| `abW8zkEwEW4/auto05` | `WkzU8t6h1sQ` |
-| `xBpumDn8QYE/man02` | `gvQBGy1kFp4` |
-
-8本 × 1,600ユニット = 12,800。**既定クォータ10,000を超えるはずだが通った。**
-クォータが引き上げられている可能性がある（未確認）。
-
-### F. 本日2本を公開した（2026-09-02）
-
-```
-✓ 公開しました: https://www.youtube.com/watch?v=H5v_FFA73So
-✓ 公開しました: https://www.youtube.com/watch?v=sR58Xt36Xco
-```
-
-yt-dlp で両方 `public` を確認。3本目は gate が止める:
-
-```
-3本目の gate: held ['本日の投稿上限 2 本に達している']
-```
-
-### G. 露出がほぼ出ていない（作る前の問題）
-
-再開前の公開14本は**合計再生45回**、ショート中央値3回。競合の中央値は
-29,500〜159,000で、一番伸びなかった1本でも2,900回。
-
-### H. 止まっているのは配信側（Studio の画面で確認）
-
-期間 2026/08/04〜08/31。
-
-| 指標 | 値 |
-|---|---:|
-| **サムネイルのインプレッション数** | **355**（14本・28日。1本あたり25回） |
-| サムネイルのクリック率 | 1.4% |
-| チャンネル登録者 | 0 |
-
-```
-YouTube 検索        86.4%
-直接入力または不明   6.8%
-ショート フィード    4.6%   ← 45回の4.6% ＝ およそ2回
-ブラウジング機能     2.3%
-
-視聴を継続 60.0%  /  スワイプして消去 40.0%
-```
-
-制限も著作権の申し立ても無し（通知列は全13本が「–」）。
-
-**中身でも設定でもなく、配信が出ていない。** 出た分の6割は見られている。
-**尺・タイトル・切り抜き地点をいじってもこの数字は動かない。**
-今回の再開（11日ぶりの投稿・毎日2本）が効くかは、これから測る。
-
-### I. トークンの7日失効は、この設定には当てはまらない（コンソールで確認）
-
-> **【2026-09-03 追記】これは旧プロジェクト `comdot-kirinuki` の話で、もう当てはまらない。**
-> 現行の `comdot-meibamen` も 2026-09-03 に**本番環境へ公開済み**なので、結論は同じ。
-> ただし根拠となる画面はこの節ではなく O-2 を見ること。
-
-2026-09-02 に Google Cloud コンソールを実際に見た。
-
-```
-Google Auth Platform → 対象
-  公開ステータス : 本番環境        ← 「テスト中」ではない
-  ユーザーの種類 : 外部
-  OAuth ユーザー数の上限 : 2人 / 100
-
-Google Auth Platform → 検証センター
-  「アプリは機密性の高いスコープや制限付きスコープをリクエストしていないため、
-    検証は必要ありません」
-```
-
-**7日で失効するのは「テスト中」のときだけ。** このプロジェクトは本番環境なので
-条件に当てはまらない。`docs/youtube-api-setup.md` に「恒久的に直すには Google の
-審査が要る」と書いてあったが**誤りだったので書き直した。**
-
-同意画面の「データアクセス」にスコープが1つも登録されていないため、Google からは
-機微スコープを要求しないアプリに見えている。実行時には3つのスコープを要求するので
-**同意時に「Google で確認されていません」の警告が出る。想定どおり。**
-
-トークンの中身（`token.json`）:
-
-```
-refresh_token あり: True
-expiry: 2026-09-02T08:42:44Z   ← アクセストークンの期限。リフレッシュとは別物
-scopes: youtube.upload / youtube.readonly / youtube.force-ssl
-生存確認: {'id': 'UCoT2TYsxzH4t42C2oF-KrAw', 'title': 'コムドット名場面ch【切り抜き】'}
-```
-
-**Google Cloud の設定は何も変更していない。** すでに望みの状態だった。
-
-### J. 新素材 Gsd-7b4Kdx8 から6本（第三者点検済み・アップロード済み）
-
-`@comdot` の直近10本を screen した結果、**未採掘で使えるのは
-`Gsd-7b4Kdx8`（第4回ペア人気投票、08-21、78分）だけ**だった。
-
-| 除外された動画 | 理由 |
-|---|---|
-| `ARuwTdvqJJA` | 40組コラボ（既に exclusions） |
-| `vIhcQ9IVUuQ` | 概要欄に「シャッフルコラボ」 |
-| `tvpzuKIW71o` / `2Ip54dw8F_M` / `HNAKXt0d31w` | メンバーシップ限定 |
-| `G2gXaVSnOQY`（北海道前編） | screen は通るが未着手。すすきの回なので第三者リスク高 |
-
-書き出した6本。**全部6コマを目視し、白壁の部屋にメンバー5人だけ**を確認した。
-
-| クリップ | 区間 | YouTube ID | 焼き込みテロップで確認した文言 |
-|---|---|---|---|
-| `auto01` | 28:10-29:14 | `9wYgoaYymB8` | 「第1位」「32,961票」「遂に初期メン王朝が幕を下ろす」 |
-| `auto02` | 45:39-46:46 | `Yxu5FfDaQ0c` | 「4位まで終了し未だに点呼されないぎり君」 |
-| `auto03` | 1:01:26-1:02:33 | `RuSV7tWQlp0` | 「下剋上コンビ1万票おめでとう!!」「よく続けてきた」 |
-| `auto04` | 34:39-35:47 | `XJBJenehfrw` | 「ゆうたが1位じゃなくなったぐらいのインパクトだよね」 |
-| `auto05` | 18:15-19:22 | `NoXz0Oa9fpI` | 「ひゅうがのビリ予想」「おじさんの家だろ」 |
-| `auto06` | 49:45-50:53 | `owY3Or_qcJI` | 「第5位」「17,258票」「心の余裕が違いすぎるだろ」 |
-
-**ASR は当てにならないことがまた出た。** auto06 の字幕は「ヤニヤニ」と読めたが、
-画面のテロップは「師弟」で第5位。**見出しはテロップを見てから書いた。**
-
-### K. 予約計画は書いたが、予約は入れていない
-
-`scripts/build_schedule.py` を追加し、`config/schedule.yaml` に18枠
-（2026-09-03〜09-11、07:00 と 18:00）を書いた。
-**`clipper schedule --rebuild` を使っていない。** 理由は2つ:
-
-1. `build_plan()` はショート**1本/日**しか置かない。運用は2本/日
-2. 既存の `slots` は「2026-08-18 に Studio で実際に入っていた予約の写し」という
-   記録なので、`archive` キーへ退避してから新しい `slots` を書いた（10件を保持）
-
-**今日は arm できない。** gate が全スロットを止める:
-
-```
-先頭スロット Gsd-7b4Kdx8/auto05 -> held ['本日の投稿上限 2 本に達している']
-```
-
-`gate.evaluate` の当日上限は**スロットの日付ではなく「今日」の公開本数**を見ている。
-今日すでに2本公開したので、未来日付のスロットまで巻き添えで止まる。
-**設計としては直す価値があるが、公開を増やすために安全弁を緩める変更なので
-勝手に入れていない。** 明日以降に arm すれば通る。
-
-### L. 台帳の同時書き込みで lost update が起きた（対処済み）
-
-レンダリングを2プロセス同時に走らせたところ、後から `ledger.put_clips` した側が
-先の書き込みを上書きし、**auto05 / auto06 の `formats` `hook` `footer`
-`planned_title` が消えた。** アップロード時に `KeyError: 'planned_title'` で停止。
-
-書き出した mp4 は `out/` に残っていたので、台帳だけ復元してアップロードし直した。
-現在は6本とも `formats: ['short']` と `upload.youtube_video_id` が入っている。
-
-**`ledger.put_clips` は読み込み→全体書き戻しなので、同じ動画の台帳を
-複数プロセスから同時に触らないこと。**
-
-### M. git 履歴に混入していた OAuth 認証情報を除去した（2026-09-02）
-
-GitHub の Push Protection が push を拒否していた。原因は自動コミット2件。
-
-```
-45bc225 chore: 作業終了時の自動コミット（2026-09-02 16:45）  → token.json.expired-20260814 を追加
-fd65f6d chore: 作業終了時の自動コミット（2026-09-02 17:01）  → 同ファイルを削除
-```
-
-**そのファイルに入っていたキー**（値は出力していない）:
-
-```
-token / refresh_token / client_id / client_secret / scopes / expiry / token_uri / account
-```
-
-sha256 で突き合わせた結果:
-
-| 対象 | 判定 |
-|---|---|
-| 漏れた `refresh_token` vs 現行 `token.json` の `refresh_token` | **不一致**（別の grant） |
-| 漏れた `client_secret` vs 現行 `client_secret.json` | **完全一致** |
-
-**GitHub には一度も到達していない。** 全参照（`refs/remotes` を含む）を走査して、
-該当パスがリモート側の履歴に存在しないことを確認した。露出はローカルのみ。
-なお `client_secret.json` の種別は `installed`（デスクトップアプリ）。
-
-やったこと:
-
-- `45bc225` は当該ファイルの**追加のみ**、`fd65f6d` は**削除のみ**で差し引きゼロだったため、
-  この2コミットを落として `809b655` だけを `origin/main` の上に載せ直した（`git filter-repo` は不要だった）
-- 書き換え後の木が元の `c5f8ed5` と一致することを確認（`git diff --stat` が空）
-- `.gitignore` を `token.json` → `token.json*` / `client_secret.json*` / `*.token.json` /
-  `*credentials*.json` に広げた
-- バックアップタグを削除し、`git reflog expire --expire=now --all` ＋ `git gc --prune=now` を実行。
-  **blob `7379f9d` はローカルからも消えた**（`git cat-file -e` が失敗する）
-
-検証の出力:
-
-```
-$ git diff --stat backup/pre-secret-rewrite-20260902 HEAD
-（空）
-
-$ git check-ignore -v token.json.expired-20260814
-.gitignore:14:token.json*	token.json.expired-20260814
-
-$ python -m pytest -q
-143 passed, 4 warnings in 1.37s
-
-$ git push origin HEAD:main
-   25b3f03..c6ed1d2  HEAD -> main
-```
-
-ローカルの `main` も `origin/main` に合わせ直した（旧 `main` はシークレット入りの
-`c5f8ed5` を指していた）。**該当コミットを含むローカル参照はもう無い。**
-
-### N. 漏れたアプリは「リンク済みアプリ」に出てこない（2026-09-03 に画面で確認）
-
-失効のために https://myaccount.google.com/connections を見たが、**該当アプリが無い。**
-
-このプロジェクトの同意画面の設定（Cloud Console で確認）:
-
-| 項目 | 値 |
-|---|---|
-| プロジェクト | `comdot-kirinuki` |
-| アプリ名（同意画面） | **`comdot-kirinuki-uploader`** |
-| OAuth クライアント | `comdot-kirinuki-desktop`（デスクトップ・2026/08/14 作成） |
-| サポート／連絡先メール | `oshima6.27@gmail.com` |
-
-ブラウザにログイン中の4アカウントを全部見たが、どこにも `comdot-kirinuki-uploader` は無い:
-
-| authuser | アカウント | リンク済みアプリ |
-|---|---|---|
-| 0 | `oshima6.27@gmail.com`（なお） | ログイン52件 / アクセス権13件。**該当なし** |
-| 1 | `orfevre6.27@gmail.com`（日本の法律まるわかり） | YouTube 3件（bgm-youtube / news-youtube / YouTube on TV）。**該当なし** |
-| 2 | `lofilofilofi6.27@gmail.com`（Tokyo Nights Lofi） | 1件（bgm-youtube）。**該当なし** |
-| 3 | `info@nexeed-lab.com`（Nexeed Lab） | 0件 |
-
-チャンネルはブランドアカウント「コムドットのおもしろ切り抜きチャンネル」
-（id `114840712071284858738`、**所有は `oshima6.27@gmail.com`**）。
-`myaccount.google.com/b/<id>/connections` はエラー、`/b/<id>/permissions` は
-所有者側の一覧へリダイレクトされる。**ブランドアカウント専用の一覧は存在しない。**
-
-**なぜ出てこないのかは分かっていない。** 出ていない以上、この画面からは取り消せない。
-→ 失効は Cloud Console 側でクライアントを作り直して行う（「次にやること 0」）。
-
-### O. 認証を新プロジェクトへ移し、漏れた認証情報を失効させた（2026-09-03）
-
-**旧構成の問題**: `client_secret` が git 履歴に載っていた（下の M）。
-しかも旧プロジェクト `comdot-kirinuki` は `oshima6.27@gmail.com` の所有で、
-チャンネルを持つ `orfevre6.27@gmail.com` とズレていた（下の N）。
-
-**やったこと**（すべてブラウザで実操作）:
-
-| 手順 | 結果 |
-|---|---|
-| `orfevre6.27@gmail.com` に新プロジェクト作成 | `comdot-meibamen`（番号 120171737302） |
-| YouTube Data API v3 を有効化 | 有効 |
-| OAuth 同意画面を構成（外部・アプリ名 `comdot-meibamen-uploader`） | 作成済み |
-| OAuth クライアント作成（デスクトップ） | `comdot-meibamen-desktop` |
-| テストユーザー登録 | `orfevre6.27@gmail.com`（1人 / 100） |
-| `client_secret.json` を差し替え、`token.json` を再発行 | 下の出力 |
-| 旧 `comdot-kirinuki-desktop` を削除 | 一覧が空になった |
-
-```
-$ python -m clipper auth
-認証しました: コムドット名場面ch【切り抜き】（UCoT2TYsxzH4t42C2oF-KrAw）
-```
-
-**漏れた認証情報が死んだことを実測した。** 退避しておいた旧 client_secret ＋ 旧 token で
-更新を試みた結果:
-
-```
-google.auth.exceptions.RefreshError:
-  ('deleted_client: The OAuth client was deleted.',
-   {'error': 'deleted_client', 'error_description': 'The OAuth client was deleted.'})
-```
-
-確認後、退避していた旧認証情報のコピーは削除した。
-
-```
-$ python -m pytest -q
-143 passed, 4 warnings in 1.47s
-```
-
-### O-2. 本番環境へ公開した。7日失効は解消（2026-09-03）
-
-作成直後は「テスト中」で、「アプリを公開」ボタンが無効だった
-（「アプリの OAuth 構成が完了していません」）。**ブランディングの2項目を埋めたら有効になった。**
-
-| 項目 | 入れた値 |
-|---|---|
-| アプリケーションのホームページ | `https://github.com/oshima0627/com.-youtube` |
-| プライバシーポリシーのリンク | `https://github.com/oshima0627/com.-youtube/blob/main/PRIVACY.md` |
-| 承認済みドメイン | `github.com` |
-
-**Search Console でのドメイン検証は求められなかった。** URL だけ入れると
-「次のドメインが見つかりません: github.com」と出るが、承認済みドメインに
-`github.com` を足して保存すれば通った。利用規約のリンクは不要（必須マーク無し）。
-
-プライバシーポリシーは新規作成した [`PRIVACY.md`](PRIVACY.md)。実態に沿って書いてある
-（運営者1名・自分のチャンネルのみ・トークンはローカル保存・第三者提供なし）。
-**同意画面からリンクされているので、内容を変えるときはこのファイルを直す。**
-
-公開後の画面（実際の表示）:
-
-```
-公開ステータス
-  本番環境
-  [テストに戻る]
-ユーザーの種類
-  外部
-  1 人のユーザー / ユーザー数の上限 100
-```
-
-**「テスト中」に発行したトークンには7日の期限が刻まれているので、公開後に取り直した。**
-
-```
-$ python -m clipper auth
-認証しました: コムドット名場面ch【切り抜き】（UCoT2TYsxzH4t42C2oF-KrAw）
-```
-
-### P. 許諾の回答メールは受信箱に無い（2026-09-04 に検索）
-
-`status: granted` の根拠になるはずの回答文を Gmail（oshima6.27@gmail.com）で探した。
+`status: granted` の根拠になるはずの回答文を Gmail（`oshima6.27@gmail.com`）で探した。
 
 | クエリ | 結果 |
 |---|---|
 | `BRDOCK OR brdc OR コムドット newer_than:60d` | **0件** |
 | `{BRDOCK brdc コムドット 切り抜き やまと 名場面} in:anywhere newer_than:120d` | 6件（**BRDOCK 由来は0件**） |
 
-6件は、ひろゆき切り抜きの申請（`getmcn@razil.jp` とフォーム控え、
-2026-08-09 / 08-13）と Adobe の宣伝。`in:anywhere` なので迷惑メール・
-ゴミ箱も見ている。**株式会社BRDOCK からのメールは自動返信も含めて1通も無い。**
+6件はひろゆき切り抜きの申請（`getmcn@razil.jp`、別プロジェクト）と Adobe の宣伝。
+`in:anywhere` なので迷惑メール・ゴミ箱も見ている。
+**株式会社BRDOCK からのメールは自動返信も含めて1通も無い。**
 
 **これは「許諾が無い」の証明ではない。**「この受信箱には残っていない」だけ。
-別アドレス・電話・フォーム画面上での回答・削除の可能性は残る。
-だが **`granted` を裏づける文書はこちらからは出せない**。
-`status` を変えるかどうかは運営者の判断なので、**こちらでは触っていない。**
+別アドレス・電話・フォーム画面上の回答・削除の可能性は残る。
+**`status` は運営者の判断が要るので変更していない。**
+経緯は [`docs/permission-request.md`](docs/permission-request.md)。
 
-詳細と、参考にした「ひろゆき切り抜きで実際に来た許諾回答」の中身は
-[`docs/permission-request.md`](docs/permission-request.md) に書いた。
+### 2. アカウントの実測（`python scripts/account_audit.py`）
 
-### Q. 収益化の許諾条件を gate が見るようにした（2026-09-04）
+| 項目 | 値 |
+|---|---:|
+| 登録者 | **0** |
+| アップロード済み | **34本**（公開 16 / 非公開 18） |
+| 公開分の再生 | 合計 60 / 中央値 4 / 最大 10 |
+
+**台帳との突き合わせは34本すべて一致。** 紐づかない動画は無い。
+
+| 公開時期 | 本数 | 再生/日 の平均 |
+|---|---:|---:|
+| 2026-08-18〜08-22 | 14 | **0.22** |
+| 2026-09-02（再開後） | 2 | **3.75** |
+
+**17倍という比をそのまま信じないこと。** ショートは公開直後に再生が集中するので、
+2日目の動画が再生/日で有利になるのは当たり前。8月分の「最初の2日」の数字は無く、
+**同じ土俵の比較になっていない。**
+
+比に頼らない事実が1つある。**9月の2本は2日で8回・7回に達しており、
+8月14本のうち13本の「17日かけた合計」を超えている**（8月の最高は10回）。
+
+素材ごとの1本あたり再生は `RGm5F2m12as` 7.5 → `8DDHTuwdbyQ` 6.5 → `abW8zkEwEW4` 4.7 →
+… → `wKuTNfA6Xhg` 0.0。**この順位を制作の根拠にしない。** 母数が60再生で1回の差が順位を動かす。
+**1位の `RGm5F2m12as` は除外済みの素材で、公開中の2本は削除予定**（下の「次にやること 3」）。
+
+詳細は [`docs/analytics-2026-09-04.md`](docs/analytics-2026-09-04.md)。
+
+### 3. 収益化の許諾条件を gate が見るようにした
 
 `permission.yaml` には「conditions を gate が読んで判定する」と書いてあったが、
-**gate は `status` しか見ておらず conditions は誰も読んでいなかった。**
-注記のほうが間違っていた。直したうえで、収益化の条件だけ実装した。
+**gate は `status` しか見ておらず conditions は誰も読んでいなかった。注記が誤りだった。**
 
 - `config/settings.yaml` に `channel.monetization_enabled`（既定 `false`）を追加。
   **API では取れないので Studio を見て手で書く欄**
-- `monetization_enabled: true` かつ `conditions.monetization` が `allowed` 以外なら
-  gate が held にする
-- **収益化していないうちは `unknown` でも通す。** 止めたいのは「許諾の範囲を超えて
-  収益を得ること」であって投稿そのものではない。全部止めても安全にはならず
-  在庫が動かなくなるだけ
+- `monetization_enabled: true` かつ `conditions.monetization` が `allowed` 以外なら held
 
 実際の設定・実際の台帳で `gate.evaluate` を動かした出力:
 
@@ -500,175 +96,182 @@ $ python -m clipper auth
 収益化 OFF : {'result': 'pass', 'reasons': []}
 ```
 
-`python -m clipper status`（現在の設定 = 収益化 無効）:
+**収益化していないうちは `unknown` でも通す。** 止めたいのは「許諾の範囲を超えて
+収益を得ること」であって投稿そのものではない。全部止めても安全にはならず在庫が止まるだけ。
+
+**`credit_required` / `member_images_allowed` / `excluded_video_types` はまだ誰も読んでいない。**
+
+### 4. 素材候補を洗い直し、自動判定の穴を塞いだ
+
+`python scripts/build_source_pool.py 60` で通ったのは4本。中身まで見て判定した:
+
+| id | 尺 | 判定 |
+|---|---|---|
+| `M7ZxIL_b39E` マクドナルド過注文人狼（09-02、100万再生） | 1:21:06 | **候補**。最新・最大再生。**ただし店内撮影で客と店員の映り込みが濃厚** |
+| `fDiW0YbLd-Q` 限界酒ゆうた（07-20、98万再生） | 1:19:31 | 保留。第三者リスクは低いが**全編が飲酒。年齢制限が付くとフィードに出ない** |
+| `lCKD3eRA6nE` 命の燃やし方 密着 | 3:46:51 | **除外**（外部の方「金吾」、書籍・イベント関係者） |
+| `zvM7bkbavDQ` コトダマMV密着 | 2:13:47 | **除外**（概要欄に「出演してくれたファンのみんな」） |
+
+`zvM7bkbavDQ` は**概要欄にファン参加と書いてあるのに素通りした。**
+`description_patterns` が `出演してくれたクリエイター` とクリエイター限定だったのが穴。
+`出演してくれた` に広げた。実行して確認:
 
 ```
-許諾ステータス : granted（2026-08-14 に依頼）
-収益化         : チャンネル 無効 / 許諾の条件 unknown
-キルスイッチ   : OFF
-投稿済み       : 2 本
-台帳           : 動画 12 本 / クリップ 67 件（書き出し済み 40）
+zvM7bkbavDQ  ok=False  ['概要欄に除外語『出演してくれた』を含む']
+lCKD3eRA6nE  ok=False  ['exclusions.yaml の video_ids に登録されている']
+M7ZxIL_b39E  ok=True
+fDiW0YbLd-Q  ok=True
 ```
 
-`monetization_enabled: true` にすると同じ行がこうなる（確認後 false に戻した）:
+`build_source_pool.py` が worktree で落ちていたのも直した（`work/` を作らずに書き込んでいた）。
+
+### 5. テスト
 
 ```
-収益化         : チャンネル 有効 / 許諾の条件 unknown  ← allowed でないので publish は全部止まる
+$ python -m pytest tests/ -q
+148 passed, 4 warnings in 0.94s
 ```
 
-テストは `tests/test_gate.py` に6件足した。**`python -m pytest tests/ -q` → 148 passed。**
-
-**`credit_required` / `member_images_allowed` / `excluded_video_types` は
-まだ誰も読んでいない。** 記録用の欄でしかない。
+`tests/test_gate.py` に収益化条件の6件を追加した。
+**設定ファイルの現在値ではなく、ゲートの挙動を monkeypatch で固定している。**
 
 ## 未検証のもの
 
-- **書き出した14本のどれも通しで再生していない。** 見たのは各1〜3コマと、元素材の6〜9コマ
-- **許諾の回答文を見ていない。** granted の根拠は運営者の申告だけで、
-  **2026-09-04 に Gmail を探しても裏づけは出てこなかった**（上の P）
-- **アップロード済み6本のタイトルは旧型式**（メンバー名・`#shorts` なし）。
-  直すには誰が映っているかの確認が要る
-- **投稿再開でインプレッションが増えるかは未検証。** これが今回いちばん測りたいこと
-- **`Gsd-7b4Kdx8` の6本は書き出し直後の1コマしか見ていない。** 通しでは未確認
-- **`G2gXaVSnOQY`（北海道前編）は未着手。** screen は通るが、すすきの回なので
-  第三者の映り込みを実際に見るまで使えるか分からない
-- **クォータの実際の上限を確認していない。** 12,800ユニット分が通った理由は不明
-- **今日のトークンが7日後も生きているかは未検証。** 「テスト中ではない」ことは
-  確認したが、実際に9日後まで持つかは**2026-09-09 以降に確かめるまで分からない**
-- 失効しうる他の条件（6ヶ月未使用・パスワード変更・アクセス取り消し）は
-  Google の一般的な仕様であって、こちらで実測したものではない
-- `xBpumDn8QYE` の飲酒描写が年齢制限を受けるかは未確認
-- `wKuTNfA6Xhg/auto03`（冒頭 10-78秒）は未点検・未書き出し。予備
+- **許諾の回答文を見ていない。** `granted` の根拠は運営者の申告だけで、
+  Gmail を探しても裏づけは出なかった（上の 1）
+- **`M7ZxIL_b39E` は1コマも見ていない。** 店内撮影なので
+  `fbKne9hTmgA`（体育館の一般の方）と同じ落ち方をしうる。**採否は未定**
+- **投稿再開でインプレッションが増えるかは未検証。** 09-09 に測るまで分からない
+- **書き出した全クリップを通しで再生していない。** 見たのは各1〜3コマ
+- **アップロード済み6本のタイトルは旧型式**（メンバー名・`#shorts` なし）
+- **新環境で実際のアップロード・公開を1本も通していない。**
+  `clipper auth` がチャンネルを返すところまで
 - **新しいトークンが7日後も生きているかは未検証。** 本番環境で取り直したので
-  **失効しない見込み**だが、2026-09-10 を過ぎるまで実証できない
-- **新プロジェクトのクォータ上限を確認していない。** 既定なら 10,000ユニット/日＝アップロード6本/日。
-  旧プロジェクトで 12,800 分が通った件（引き上げの可能性）は**引き継がれない**
-- **新環境で実際のアップロード・公開を1本も通していない。** `clipper auth` が
-  チャンネルを返すところまでしか確かめていない
+  失効しない見込みだが、**2026-09-10 を過ぎるまで実証できない**
+- **クォータの実際の上限を確認していない。** 既定なら 10,000ユニット/日
+- `fDiW0YbLd-Q` の飲酒が年齢制限を受けるかは未確認
+- **`G2gXaVSnOQY`（北海道前編）は未着手。** すすきの回なので第三者リスクが高い
 
 ## 次にやること
 
-### 0. 新環境で実際に1本公開して通ることを確かめる
-
-**認証は通ったが、アップロード・公開はまだ新プロジェクトで一度も試していない。**
-次の公開のときに、いつもどおり打って通るかを見る。
+**すべて `Set-Location` と環境変数を先に打つこと**（PowerShell 5.1。`&&` は使えない）:
 
 ```powershell
 Set-Location C:/Users/oshim/Documents/projects/com.-youtube
 $env:CLIPPER_CREDENTIALS_DIR = "C:/Users/oshim/Documents/projects/com.-youtube"
-python -m clipper publish Gsd-7b4Kdx8 auto05
 ```
 
-`403 quotaExceeded` や `insufficientPermissions` が出たら、新プロジェクトの
-API 有効化かスコープを疑う。
+### 0. `M7ZxIL_b39E` の書き出しを終わらせ、**コマを見てから採否を決める**
 
-### 0-2. 2026-09-10 ごろにトークンが生きているか見る（1ユニット）
-
-本番環境で取り直したので**7日で切れないはず**だが、実証はまだ。
+書き出しが auto01 の1本で止まっている。続きから:
 
 ```powershell
-Set-Location C:/Users/oshim/Documents/projects/com.-youtube
-$env:CLIPPER_CREDENTIALS_DIR = "C:/Users/oshim/Documents/projects/com.-youtube"
+python -m clipper run M7ZxIL_b39E --count 12 --render 8
+python scripts/audit_third_parties.py M7ZxIL_b39E
+```
+
+点検シートは `work/M7ZxIL_b39E/<clip_id>_audit.png`。
+**マクドナルド店内なので、客・店員が特定できる形で映っていたらその区間は捨てる。**
+全部だめなら動画ごと `exclusions.yaml` の `video_ids` へ理由付きで足す。
+
+抽出済みの12候補（スコア上位は `auto01` 67.9 / `auto02` 53.0 / `auto03` 46.4）:
+
+| clip | 区間 | clip | 区間 |
+|---|---|---|---|
+| `auto01` | 1:08:53-1:09:58 | `auto07` | 0:47:45-0:48:46 |
+| `auto02` | 0:25:51-0:26:57 | `auto08` | 1:02:30-1:03:37 |
+| `auto03` | 0:30:39-0:31:46 | `auto09` | 0:24:29-0:25:35 |
+| `auto04` | 0:00:00-0:01:04 | `auto10` | 0:28:16-0:29:24 |
+| `auto05` | 0:01:29-0:02:34 | `auto11` | 1:18:40-1:19:42 |
+| `auto06` | 1:14:39-1:15:44 | `auto12` | 0:10:09-0:11:15 |
+
+### 1. 許諾の回答文を突き止める（**優先度が最も高い**）
+
+Gmail に無かった（上の 1）。運営者が確かめること:
+
+1. **回答はどこに来たのか。** 別アドレス / 電話 / フォームの画面上 / SNS。
+   **来ていないなら `permission.yaml` の `status` を `pending` に戻す**
+2. 出てきたら `docs/permission-request.md` に貼り、条件を `conditions` へ書き写す
+3. **とくに `monetization`。** `allowed` にしない限り、収益化した時点で gate が全部止める
+
+回答が出てこないなら**送り直すのが筋**。依頼文は `docs/permission-request.md` にそのまま残っている。
+
+### 2. インプレッションを測り直す（2026-09-09 ごろ）
+
+Studio → アナリティクス → 右上「詳細モード」。**355回から動いたかを見る。**
+再生数ではなく**配信側の数字**で見ること。動かなければ投稿頻度は原因ではなかったということ。
+
+### 3. 除外2本を削除する（Studio で手動。**取り消せない**）
+
+`cTzbNUFi9Iw` と `hbRhnrvPk-k`。素材 `RGm5F2m12as` 由来で外部の催眠術師が映る。
+**現在も公開されていて、しかもチャンネルで最も見られている2本**（10回・5回）。
+
+### 4. 在庫18本の投稿を続ける
+
+計画は `config/schedule.yaml`（18枠）。先頭は `Gsd-7b4Kdx8/auto05` と `Gsd-7b4Kdx8/auto01`。
+
+```powershell
+python -m clipper schedule            # 計画を見るだけ
+python -m clipper schedule --arm      # 実際に予約を入れる
+python -m clipper publish Gsd-7b4Kdx8 auto05   # 手で出す
+```
+
+計画を組み直すときは `python scripts/build_schedule.py [開始日] [1日の本数]`。
+
+### 5. トークンが生きているかを時々見る（1ユニット）
+
+```powershell
 python -m clipper auth
 ```
 
 チャンネル名と `UCoT2TYsxzH4t42C2oF-KrAw` が出れば生きている。
 切れていたら `token.json` を消して同じコマンド（同意画面では
-**「コムドット名場面ch【切り抜き】」を選ぶ**）。
-
-### 1. 本日（2026-09-03）以降に投稿を続ける。在庫18本 ＝ 9日分
-
-**計画は `config/schedule.yaml` に書いてある。** 先頭は
-`Gsd-7b4Kdx8/auto05` と `Gsd-7b4Kdx8/auto01`。
-
-自動化する（推奨。1回で18枠ぶん仕掛かる）:
-
-```powershell
-Set-Location C:/Users/oshim/Documents/projects/com.-youtube/.claude/worktrees/video-creation-scheduling-2370b5
-$env:CLIPPER_CREDENTIALS_DIR = "C:/Users/oshim/Documents/projects/com.-youtube"
-python -m clipper schedule            # 計画を見るだけ
-python -m clipper schedule --arm      # 実際に予約を入れる（明日以降でないと通らない）
-```
-
-手で出す:
-
-```powershell
-python -m clipper publish Gsd-7b4Kdx8 auto05
-python -m clipper publish Gsd-7b4Kdx8 auto01
-```
-
-計画を組み直すときは `python scripts/build_schedule.py [開始日] [1日の本数]`。
-**`clipper schedule --rebuild` は使わない**（記録を消し、1本/日になる）。
-
-### 2. 1週間後にインプレッションを測り直す（2026-09-09 ごろ）
-
-Studio → アナリティクス → 右上「詳細モード」。**355回から動いたかを見る。**
-動かなければ、投稿頻度は原因ではなかったということ。
-
-### 3. トークンが生きているかを時々見る（1ユニット）
-
-```powershell
-Set-Location C:/Users/oshim/Documents/projects/com.-youtube/.claude/worktrees/video-creation-scheduling-2370b5
-$env:CLIPPER_CREDENTIALS_DIR = "C:/Users/oshim/Documents/projects/com.-youtube"
-python -m clipper auth
-```
-
-チャンネル名と `UCoT2TYsxzH4t42C2oF-KrAw` が出れば生きている。
-**7日で切れる設定ではない**（上の I）が、切れたら `token.json` を消して同じコマンド。
-**2026-09-09 を過ぎても生きていれば、7日失効が無いことの実証になる。**
-
-### 4. 除外2本を削除する（Studio で手動）
-
-`cTzbNUFi9Iw` と `hbRhnrvPk-k`。素材 `RGm5F2m12as` 由来で外部の催眠術師が映る。
-**現在も公開されている。**
-
-### 5. 許諾の回答文を記録に残す（**未解決。優先度が上がった**）
-
-**2026-09-04 に Gmail を全部探したが、BRDOCK からのメールは1通も無かった**（上の P）。
-`status: granted` を裏づけるものが、いまリポジトリにも受信箱にも無い。
-
-運営者が確かめること:
-
-1. **回答はどこに来たのか。** 別のメールアドレス / 電話 / フォームの画面上の表示 /
-   SNS のいずれか。**来ていないなら `status` を `pending` に戻す**
-2. 回答文が出てきたら `docs/permission-request.md` に貼り、条件を
-   `permission.yaml` の `conditions` へ書き写す
-3. **とくに `monetization`。** ここを `allowed` にしない限り、収益化した時点で
-   gate が公開を全部止める（上の Q）
-
-回答が出てこないなら、**送り直すのが筋**。依頼文は
-[`docs/permission-request.md`](docs/permission-request.md) にそのまま残っている。
+**「コムドット名場面ch【切り抜き】」を選ぶ**。ブランドアカウント名は
+「コムドットのおもしろ切り抜きチャンネル」で**チャンネル名と違う**ので名前で探すと迷う）。
+**2026-09-10 を過ぎても生きていれば、7日失効が無いことの実証になる。**
 
 ### 6. 旧型式のタイトル6本を直す
 
-```bash
+```powershell
 python -m clipper retitle <video_id> <clip_id> --title "<本文>" --members <確認した名前>
 ```
 
 50ユニット／本。**動画IDも再生数も維持される。**
 `cTzbNUFi9Iw` / `hbRhnrvPk-k` は削除予定なので直さない。
 
-### 7. 素材を足す
-
-使える新着が `xBpumDn8QYE`（08-26）しかない。在庫は6日で尽きる。
-
 ## 触ってはいけないところ
 
-- **`token.json` / `client_secret.json` を退避するとき、リポジトリ内に置かない。**
-  `.gitignore` は `token.json*` などに広げたが、自動コミットは追跡外のファイルを拾わないだけで、
-  **別名（例: `auth_backup.json`）にすれば素通りする**。退避先はリポジトリの外にする
-- **このリポジトリは PUBLIC**（`gh repo view --json visibility` で確認）。
-  CLAUDE.md にあった「private」という記述は誤りだったので 2026-09-02 に修正済み
+### 権利
+
+- **コラボ回・ファン参加回・イベント回は第三者の肖像の問題で使えない。**
+  許諾を依頼したのは BRDOCK だけで、第三者はその射程外
+- **`--members` に推測を渡さない。** 映像で確認したものだけ。名簿外は弾かれるが、
+  **名簿内の別人の名前は弾けない**
+- **自動判定を通っても使えるとは限らない。** 画面に誰が映っているかはタイトルにも
+  概要欄にも出ない。**実測で4回外している**（`fbKne9hTmgA` 体育館の一般の方 /
+  `MgO0lCUtlx4 auto01` 高校対中学の試合 / `RGm5F2m12as` 外部の催眠術師 /
+  `zvM7bkbavDQ` ファン参加）。**書き出したら必ず `audit_third_parties.py` でコマを見る**
+- 動画ごと除外: `RGm5F2m12as` / `fbKne9hTmgA` / `ARuwTdvqJJA` / `lCKD3eRA6nE`
+- `Fb9bO8V9oNA`（目隠しかくれんぼ）は CDF シャッフルコラボ回。素材にしない
+- `abW8zkEwEW4/auto03` は下ネタのため素材にしない
+
+### 運用
 
 - **`clipper schedule --rebuild` を打たない。** `config/schedule.yaml` の `slots` は
   「2026-08-18 に Studio で実際に入っていた予約の写し」という記録で、上書きすると消える。
   投稿順は `scripts/week_plan.py`（`docs/post-plan.md`）で出す
-- **`--members` に推測を渡さない。** 映像で確認したものだけ。名簿外は弾かれるが、
-  **名簿内の別人の名前は弾けない**
-- **1日の公開は2本まで**（`settings.yaml` の `max_publish_per_day`）。gate が数えている
-- `RGm5F2m12as` / `fbKne9hTmgA` / `ARuwTdvqJJA` は動画ごと除外
-- `Fb9bO8V9oNA`（目隠しかくれんぼ）は CDF シャッフルコラボ回。素材にしない
-- `abW8zkEwEW4/auto03` は下ネタのため素材にしない
-- カスタムサムネイル不可・15分超不可（電話番号確認ができないため）。再依頼しない
-- **コラボ回・ファン参加回は第三者の肖像の問題で使えない。**
-  `xBpumDn8QYE` の自動候補の上位はファン・通行人とのやり取り。そのまま書き出さない
+- **1日の公開は2本まで**（`settings.yaml` の `max_publish_per_day`）。gate が数えている。
+  なお gate の当日上限は**スロットの日付ではなく「今日」の公開本数**を見るので、
+  今日2本出したあとは未来日付のスロットまで巻き添えで止まる。
+  **公開を増やすために安全弁を緩める変更は勝手に入れない**
+- カスタムサムネイル不可・15分超不可（電話番号確認ができないため）。**再依頼しない**
+
+### 認証とリポジトリ
+
+- **`token.json` / `client_secret.json` を退避するとき、リポジトリ内に置かない。**
+  `.gitignore` は `token.json*` などに広げたが、**別名（例: `auth_backup.json`）にすれば
+  素通りする**。退避先はリポジトリの外にすること
+- **このリポジトリは PUBLIC。** `git add -A` の前に `git status --short` で中身を見る
+- 端末は **Windows PowerShell 5.1**。`VAR=値 コマンド` と `&&` はどちらも使えない
+  （`&&` はパースエラーで**行ごと何も実行されない**）。環境変数は `$env:NAME = "値"` を
+  別行で、逐次実行は `;` でつなぐ。**Claude 側の Bash ツールは Git Bash なので書き分けること**
