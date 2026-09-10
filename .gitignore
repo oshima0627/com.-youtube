@@ -15,3 +15,6 @@ token.json*
 *.token.json
 # 退避・バックアップの派生名も落とす（例: token.json.expired-YYYYMMDD）
 *credentials*.json
+
+# アナリティクス用の別トークン（token.json* に一致するが、名前で迷わないよう明示する）
+token.json.analytics

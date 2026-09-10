@@ -239,7 +239,10 @@ def main(argv=None):
 
     sub.add_parser("held").set_defaults(func=cmd_held)
     sub.add_parser("status").set_defaults(func=cmd_status)
-    sub.add_parser("auth").set_defaults(func=cmd_auth)
+    p = sub.add_parser("auth", help="認証の確認")
+    p.add_argument("--analytics", action="store_true",
+                   help="アナリティクス用の別トークンを作る（token.json は触らない）")
+    p.set_defaults(func=cmd_auth)
 
     p = sub.add_parser("schedule", help="予約投稿の計画と発動")
     p.add_argument("--days", type=int, default=7)

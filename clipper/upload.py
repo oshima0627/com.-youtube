@@ -36,12 +36,24 @@ SCOPES = [
     "https://www.googleapis.com/auth/youtube.force-ssl",
 ]
 
+# YouTube Analytics API は上のスコープでは通らない（別スコープが要る）。
+# **投稿に使っている token.json は絶対に触らない。**
+# 取り直しに失敗すると投稿が止まるので、読み取り専用の別トークンに分ける。
+# ファイル名は .gitignore の `token.json*` に一致する形にしてある（このリポジトリは公開）。
+ANALYTICS_SCOPES = ["https://www.googleapis.com/auth/yt-analytics.readonly"]
+ANALYTICS_TOKEN = CREDENTIALS_DIR / "token.json.analytics"
+
 
 class UploadBlocked(RuntimeError):
     """上げてはいけない状態。握りつぶさずに止める。"""
 
 
-def get_service():
+def _credentials(token_path, scopes, interactive=True):
+    """token_path のトークンを読み、無ければ同意画面を出して作る。
+
+    get_service() と get_analytics_service() の共通部分。
+    **token_path ごとに独立している。**一方の取り直しが他方を壊さない。
+    """
     try:
         from google.auth.transport.requests import Request
         from google.oauth2.credentials import Credentials
@@ -53,8 +65,8 @@ def get_service():
             "pip install google-api-python-client google-auth-oauthlib")
 
     creds = None
-    if TOKEN.exists():
-        creds = Credentials.from_authorized_user_file(str(TOKEN), SCOPES)
+    if token_path.exists():
+        creds = Credentials.from_authorized_user_file(str(token_path), scopes)
     if creds and creds.expired and creds.refresh_token:
         try:
             creds.refresh(Request())
@@ -65,7 +77,7 @@ def get_service():
                 raise UploadBlocked(
                     "リフレッシュトークンが失効しています（invalid_grant）。\n"
                     "  OAuth 同意画面が「テスト中」だと7日で失効します。\n"
-                    f"  {TOKEN.name} を削除し、python -m clipper auth をやり直してください。\n"
+                    f"  {token_path.name} を削除し、python -m clipper auth をやり直してください。\n"
                     "  詳細は docs/youtube-api-setup.md。")
             raise
     if not creds or not creds.valid:
@@ -75,12 +87,34 @@ def get_service():
                 "  Google Cloud で YouTube Data API v3 を有効化し、\n"
                 "  OAuth クライアント（デスクトップアプリ）を作って直下に置いてください。")
         # 初回だけブラウザの同意画面が開く。以降は refresh_token で無人化される
+        if not interactive:
+            raise UploadBlocked(
+                f"{token_path.name} がありません。\n"
+                "  python -m clipper auth --analytics で一度だけ同意してください。")
         creds = InstalledAppFlow.from_client_secrets_file(
-            str(CLIENT_SECRET), SCOPES).run_local_server(port=0)
-        TOKEN.write_text(creds.to_json(), encoding="utf-8")
-        print(f"認証情報を保存しました: {TOKEN.name}（.gitignore 済み）")
+            str(CLIENT_SECRET), scopes).run_local_server(port=0)
+        token_path.write_text(creds.to_json(), encoding="utf-8")
+        print(f"認証情報を保存しました: {token_path.name}（.gitignore 済み）")
 
-    return build("youtube", "v3", credentials=creds)
+    return creds
+
+
+def get_service():
+    """投稿・読み取り用の Data API v3。従来どおり token.json を使う。"""
+    from googleapiclient.discovery import build
+    return build("youtube", "v3", credentials=_credentials(TOKEN, SCOPES))
+
+
+def get_analytics_service(interactive=False):
+    """アナリティクス用。**token.json.analytics（別トークン）を使う。**
+
+    既定では同意画面を出さない。無ければ UploadBlocked で
+    `python -m clipper auth --analytics` を案内して止まる。
+    """
+    from googleapiclient.discovery import build
+    creds = _credentials(ANALYTICS_TOKEN, ANALYTICS_SCOPES,
+                         interactive=interactive)
+    return build("youtubeAnalytics", "v2", credentials=creds)
 
 
 def _raise_if_quota(e):
@@ -403,6 +437,8 @@ def publish(video_id, clip_id, service=None, segments=None):
 
 
 def cmd_auth(args=None):
+    if getattr(args, "analytics", False):
+        return _auth_analytics()
     try:
         service = get_service()
     except UploadBlocked as e:
@@ -419,4 +455,30 @@ def cmd_auth(args=None):
     print(f"    expected_channel_id: {ch['id']}")
     print()
     print(f"違っていれば {TOKEN.name} を消し、同意画面で選び直してください。")
+    return 0
+
+
+def _auth_analytics():
+    """アナリティクス用の別トークンを作る。**token.json には触らない。**
+
+    一度だけブラウザの同意画面が開く。以降は refresh_token で無人化される。
+    ここで失敗しても投稿側の認証は無傷なので、安全にやり直せる。
+    """
+    try:
+        service = get_analytics_service(interactive=True)
+    except UploadBlocked as e:
+        print(f"× {e}", file=sys.stderr)
+        return 1
+    ch = config.settings()["channel"]["expected_channel_id"]
+    try:
+        r = service.reports().query(
+            ids=f"channel=={ch}", startDate="2020-01-01", endDate="2020-01-02",
+            metrics="views").execute()
+    except Exception as e:                                     # noqa: BLE001
+        print(f"× トークンはできましたが、問い合わせに失敗しました: {e}",
+              file=sys.stderr)
+        return 1
+    print(f"{ANALYTICS_TOKEN.name} を保存し、{ch} への問い合わせが通りました。")
+    print(f"  応答: {r.get('rows')}")
+    print("  python scripts/distribution_check.py で測れます。")
     return 0

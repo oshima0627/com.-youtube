@@ -40,7 +40,18 @@ def main():
         }
         print(f"既存の slots {len(plan['slots'])}件を archive へ退避しました")
 
-    items = interleave(stock())
+    # **アップロード済みのものだけ枠に入れる。**
+    # 書き出しただけ（youtube_video_id が無い）のものは --arm できない。
+    # 在庫としては数えるが、予約の対象にはならない。
+    all_items = stock()
+    items = interleave([i for i in all_items if i["youtube_video_id"]])
+    skipped = [i for i in all_items if not i["youtube_video_id"]]
+    if skipped:
+        print(f"未アップロードの{len(skipped)}本は枠に入れません "
+              f"（先に clipper upload が要る）:")
+        for i in skipped:
+            print(f"    {i['video_id']}/{i['clip_id']}")
+
     slots = []
     for i, it in enumerate(items):
         day = start + timedelta(days=i // per_day)

@@ -28,7 +28,7 @@
       "formats": [
         "short"
       ],
-      "published": true,
+      "published": false,
       "gate": {
         "result": "held",
         "reasons": [
@@ -38,11 +38,13 @@
       "upload": {
         "youtube_video_id": "cTzbNUFi9Iw",
         "url": "https://www.youtube.com/watch?v=cTzbNUFi9Iw",
-        "privacy_status": "public",
+        "privacy_status": "deleted",
         "title": "催眠術でひゅうがが本当に喋れなくなった瞬間がヤバすぎる #コムドット #コムドット切り抜き",
         "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
         "channel_title": "コムドット名場面ch【切り抜き】",
-        "thumbnail_set": false
+        "thumbnail_set": false,
+        "deleted_at": "2026-09-10",
+        "deleted_reason": "docs/third-party-audit-2026-08-17.md で除外と判定した素材 RGm5F2m12as 由来。外部の催眠術師が画面の主役で、許諾の射程外。2026-09-10 に運営者の判断で削除"
       },
       "hook": "「喋れない」と言われて本当に声が出なくなる",
       "footer": "プロの催眠術師を事務所に招いた企画。術者いわく、かかるかどうかは本人が楽しめているかで決まる",
@@ -186,7 +188,7 @@
       "formats": [
         "short"
       ],
-      "published": true,
+      "published": false,
       "gate": {
         "result": "held",
         "reasons": [
@@ -197,10 +199,12 @@
         "thumbnail_set": false,
         "youtube_video_id": "hbRhnrvPk-k",
         "url": "https://www.youtube.com/watch?v=hbRhnrvPk-k",
-        "privacy_status": "public",
+        "privacy_status": "deleted",
         "title": "催眠術で「めっちゃ楽しい」状態にされた顔が面白すぎる #コムドット #コムドット切り抜き",
         "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
-        "channel_title": "コムドット名場面ch【切り抜き】"
+        "channel_title": "コムドット名場面ch【切り抜き】",
+        "deleted_at": "2026-09-10",
+        "deleted_reason": "docs/third-party-audit-2026-08-17.md で除外と判定した素材 RGm5F2m12as 由来。外部の催眠術師が画面の主役で、許諾の射程外。2026-09-10 に運営者の判断で削除"
       },
       "hook": "暗示で「めっちゃ楽しい」状態にされる",
       "footer": "同じ企画の後半。術者が「普段できない自分を楽しむ」暗示をかけた場面",
@@ -220,6 +224,7 @@
     }
   ],
   "notes": [
-    "第三者（外部の催眠術師）の映り込みにより動画ごと対象外にした（2026-08-17）"
+    "第三者（外部の催眠術師）の映り込みにより動画ごと対象外にした（2026-08-17）",
+    "2026-09-10 公開中だった2本を削除した。docs/third-party-audit-2026-08-17.md で除外と判定した素材 RGm5F2m12as 由来。外部の催眠術師が画面の主役で、許諾の射程外。2026-09-10 に運営者の判断で削除"
   ]
 }
