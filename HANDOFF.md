@@ -181,9 +181,22 @@ $env:CLIPPER_CREDENTIALS_DIR = "C:/Users/oshim/Documents/projects/com.-youtube"
 
 **API の有効化は済んでいる**（`comdot-meibamen` / `120171737302`）。残っているのは同意のやり直し。
 
+**環境変数を先に打つこと。** worktree には `client_secret.json` を置いていないので、
+忘れると「client_secret.json がありません」で落ちる（2026-09-10 に踏んだ）。
+
 ```powershell
+Set-Location C:/Users/oshim/Documents/projects/com.-youtube
+$env:CLIPPER_CREDENTIALS_DIR = "C:/Users/oshim/Documents/projects/com.-youtube"
 Remove-Item token.json.analytics -ErrorAction SilentlyContinue
 python -m clipper auth --analytics
+```
+
+**チャンネル選択が本命。** 2026-09-10 に2回とも外した。外したときの症状は
+`channel==MINE` が **rows=[] を返す**（＝動画が1本も無いチャンネルのトークン）:
+
+```
+channel==MINE                     OK  rows=[]      ← 空のチャンネルを掴んでいる
+channel==UCoT2TYsxzH4t42C2oF-KrAw NG  403 Forbidden
 ```
 
 同意画面で**2段階とも間違えないこと**:

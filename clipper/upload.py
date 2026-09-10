@@ -83,9 +83,15 @@ def _credentials(token_path, scopes, interactive=True):
     if not creds or not creds.valid:
         if not CLIENT_SECRET.exists():
             raise UploadBlocked(
-                f"{CLIENT_SECRET.name} がありません。\n"
-                "  Google Cloud で YouTube Data API v3 を有効化し、\n"
-                "  OAuth クライアント（デスクトップアプリ）を作って直下に置いてください。")
+                f"""{CLIENT_SECRET.name} が {CREDENTIALS_DIR} にありません。
+
+  worktree から実行していないか。**worktree には認証情報を置いていない。**
+  本体チェックアウトを指すように環境変数を先に打つこと（PowerShell）:
+
+      $env:CLIPPER_CREDENTIALS_DIR = "C:/Users/oshim/Documents/projects/com.-youtube"
+
+  本当に無いなら、Google Cloud で YouTube Data API v3 を有効化し、
+  OAuth クライアント（デスクトップアプリ）を作って上のディレクトリに置く。""")
         # 初回だけブラウザの同意画面が開く。以降は refresh_token で無人化される
         if not interactive:
             raise UploadBlocked(
