@@ -123,7 +123,12 @@ def main():
 
     print(f"期間: {start:%Y-%m-%d} 〜 {end:%Y-%m-%d}（{args.days}日・集計遅れを2日見込む）")
 
-    sources = traffic_sources(service, channel_id, start, end)
+    try:
+        sources = traffic_sources(service, channel_id, start, end)
+    except Exception as e:                                     # noqa: BLE001
+        print(f"× アナリティクスに問い合わせできません: {e}", file=sys.stderr)
+        print(upload.analytics_hint(e, channel_id), file=sys.stderr)
+        return 1
     total = sum(sources.values())
     feed = sum(v for k, v in sources.items() if k in SHORTS_FEED_KEYS)
     ratio = (feed / total) if total else None

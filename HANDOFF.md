@@ -13,8 +13,9 @@
 - **判定日は 2026-09-29。** 合格線は `config/settings.yaml` の `distribution_target` に
   **結果を見る前に**書いてある（下の 4）。**あとから下げないこと**
 - **除外2本を削除した**（下の 2）。09-02 から3回持ち越していた案件が片づいた
-- **残作業が1つ。** Google Cloud で **YouTube Analytics API が未有効**なので
-  `distribution_check.py` の API 取得部分がまだ動かない（下の「次にやること 1」）
+- **残作業が1つ。** `distribution_check.py` の API 取得部分がまだ通っていない。
+  **403 を2回踏んだ。1つ目（プロジェクト違い）は解消済み、2つ目（アカウント違い）を
+  やり直している最中**（下の 7 と「次にやること 1」）
 - 許諾は運営者の再確認で `granted` を維持。**根拠はいまも申告だけ**（下の 5）
 
 ## 今回やったこと（2026-09-10・2回目）
@@ -25,6 +26,7 @@
 4. **配信の判定基準を `settings.yaml` に固定し、判定器を作った**（下の 4）
 5. **アナリティクス用の別トークンを足した**（下の 6）
 6. 切り抜きの型と「時間を使わないもの」を [`docs/clip-policy.md`](docs/clip-policy.md) に書いた
+7. **アナリティクスの 403 を2種類に切り分けて、次にやることを出すようにした**（下の 7）
 
 変更したファイル:
 `clipper/distribution.py`・`scripts/distribution_check.py`・`tests/test_distribution.py`・
@@ -114,13 +116,46 @@ $ python -m pytest tests/ -q
 ```
 
 `python -m clipper auth --analytics` で `token.json.analytics`（`yt-analytics.readonly` のみ）を
-別に作る。**同意は通り、トークンは保存された。** `.gitignore` に明示行も足した。
+別に作る。`.gitignore` に明示行も足した。
+**最初に作ったトークンは別アカウントのものだったので消した**（下の 7）。取り直しは途中。
+
+### 7. アナリティクスの 403 は2種類ある（**両方とも実際に踏んだ**）
+
+`clipper/upload.py` の `analytics_hint()` が、403 を次にやることへ翻訳する。
+
+| 症状 | 意味 | 直しかた |
+|---|---|---|
+| `accessNotConfigured` | Cloud プロジェクトで API が未有効 | **プロジェクト違いに注意**（下） |
+| ただの `Forbidden` | **同意したアカウントがこのチャンネルの持ち主でない** | トークンを消してやり直す |
+
+**プロジェクト違い（2026-09-10 に踏んだ）**
+`client_secret.json` の `project_id` は **`comdot-meibamen`**（番号 `120171737302`）。
+最初に有効化したのは別プロジェクトの `comdot-kirinuki` で、403 は消えなかった。
+`comdot-meibamen` 側の API ページを開くと「有効にする」ボタンが出ていることを画面で確認した。
+**Cloud コンソールも Studio と同じで、`orfevre6.27` ではアクセス権が無い。`authuser=1` が要る。**
+
+**アカウント違い（2026-09-10 に踏んだ）**
+プロジェクトを直したら `accessNotConfigured` は消え、ただの `Forbidden` になった。切り分け:
+
+```
+channel==MINE                            OK  rows=[]
+channel==UCoT2TYsxzH4t42C2oF-KrAw        NG  HttpError 403 Forbidden
+```
+
+**`MINE` が通って ID 指定が通らない ＝ トークンが別チャンネルのもの。**
+Chrome の既定ログインが `orfevre6.27@gmail.com` なので、同意画面でそのまま進むと
+こうなる。`token.json.analytics` を消してやり直した。**投稿用の `token.json` は無傷。**
+
+```
+$ python -m pytest tests/ -q
+169 passed, 4 warnings in 1.21s
+```
 
 ## 未検証のもの
 
-- **`scripts/distribution_check.py` の API 取得部分は一度も通っていない。**
-  Google Cloud プロジェクト `120171737302` で **YouTube Analytics API が未有効**のため
-  403（`accessNotConfigured`）。判定ロジックは単体テスト済みだが、
+- **`scripts/distribution_check.py` の API 取得部分はまだ一度も通っていない。**
+  API の有効化（プロジェクト違い）は解消したが、**アナリティクス用トークンの
+  取り直しが途中**（上の 7）。判定ロジックは単体テスト済みだが、
   **実データで動いたところは見ていない**（下の「次にやること 1」）
 - **サムネイルのインプレッションが Analytics API で取れるかは未確認。**
   取れなければ Studio から `--impressions` で手渡しする作りにしてある
@@ -142,13 +177,22 @@ Set-Location C:/Users/oshim/Documents/projects/com.-youtube
 $env:CLIPPER_CREDENTIALS_DIR = "C:/Users/oshim/Documents/projects/com.-youtube"
 ```
 
-### 1. YouTube Analytics API を有効化する（**運営者。1クリック**）
+### 1. アナリティクス用トークンを正しいアカウントで取り直す
 
-```
-https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=120171737302
+**API の有効化は済んでいる**（`comdot-meibamen` / `120171737302`）。残っているのは同意のやり直し。
+
+```powershell
+Remove-Item token.json.analytics -ErrorAction SilentlyContinue
+python -m clipper auth --analytics
 ```
 
-有効化したら数分待って:
+同意画面で**2段階とも間違えないこと**:
+
+1. アカウント … **`oshima6.27@gmail.com`**（Chrome の既定は `orfevre6.27` で、これは別人）
+2. チャンネル … **「コムドットのおもしろ切り抜きチャンネル」**
+   （ブランドアカウント名。**チャンネル名「コムドット名場面ch【切り抜き】」とは表示が違う**）
+
+通ったら:
 
 ```powershell
 python scripts/distribution_check.py
@@ -160,6 +204,9 @@ python scripts/distribution_check.py
 ```powershell
 python scripts/distribution_check.py --impressions <Studio の値>
 ```
+
+失敗したら **エラーの下に出る `→` の行を読むこと。**
+`analytics_hint()` が 403 の種類を切り分けて、次にやることを出す（上の 7）。
 
 ### 2. 予約が発火したか見る（2026-09-11 の朝）
 

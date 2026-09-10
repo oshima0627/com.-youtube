@@ -145,3 +145,8 @@ https://studio.youtube.com/channel/UCoT2TYsxzH4t42C2oF-KrAw/analytics/tab-conten
 
 **`?authuser=1` を付ける。** 詳細モードは画面右上のボタンから開く
 （`/explore` に直接 URL で入ると中身が描画されなかった）。
+
+**同じことが Google Cloud コンソールにも当てはまる。** OAuth クライアントが属する
+プロジェクトは `comdot-meibamen`（番号 `120171737302`）で、`orfevre6.27` では
+「追加のアクセス権が必要です」になる。ここでも `authuser=1` が要る。
+**別プロジェクト（`comdot-kirinuki`）で API を有効化しても効かない**（2026-09-10 に踏んだ）。

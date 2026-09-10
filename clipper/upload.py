@@ -458,6 +458,36 @@ def cmd_auth(args=None):
     return 0
 
 
+def analytics_hint(error, channel_id):
+    """アナリティクスの 403 を、次にやることに翻訳する。
+
+    紛らわしい 403 が2つあるので分ける。
+
+    - `accessNotConfigured` … Google Cloud プロジェクトで API が未有効
+    - それ以外の `forbidden`  … **同意したアカウントがこのチャンネルの持ち主でない**
+
+    後者を踏みやすいのは Chrome の既定ログインが別アカウントだから
+    （2026-09-10 に実際に両方とも踏んだ）。
+    """
+    text = str(error)
+    if "accessNotConfigured" in text:
+        return (
+            """  → Google Cloud プロジェクト comdot-meibamen（120171737302）で
+    YouTube Analytics API が有効になっていない。**プロジェクト違いに注意。**
+    client_secret.json の project_id と一致していないと意味がない。
+    https://console.cloud.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=120171737302&authuser=1""")
+    if "orbidden" in text or "403" in text:
+        return (
+            f"""  → {channel_id} を読む権限がトークンに無い。
+    **別のアカウントで同意した可能性が高い。**
+    {ANALYTICS_TOKEN.name} を消して python -m clipper auth --analytics をやり直し、
+    同意画面で oshima6.27@gmail.com を選び、さらにチャンネルの選択で
+    「コムドットのおもしろ切り抜きチャンネル」を選ぶこと。
+    **これはブランドアカウント名で、チャンネル名『コムドット名場面ch【切り抜き】』
+    とは違う。**名前で探すと迷う。""")
+    return "  → 原因不明。上のエラー本文を読むこと。"
+
+
 def _auth_analytics():
     """アナリティクス用の別トークンを作る。**token.json には触らない。**
 
@@ -477,6 +507,7 @@ def _auth_analytics():
     except Exception as e:                                     # noqa: BLE001
         print(f"× トークンはできましたが、問い合わせに失敗しました: {e}",
               file=sys.stderr)
+        print(analytics_hint(e, ch), file=sys.stderr)
         return 1
     print(f"{ANALYTICS_TOKEN.name} を保存し、{ch} への問い合わせが通りました。")
     print(f"  応答: {r.get('rows')}")
