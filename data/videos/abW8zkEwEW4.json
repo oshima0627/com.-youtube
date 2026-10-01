@@ -28,7 +28,7 @@
       "formats": [
         "short"
       ],
-      "published": "https://www.youtube.com/watch?v=sR58Xt36Xco",
+      "published": true,
       "gate": {
         "result": "held",
         "reasons": [
@@ -103,7 +103,7 @@
       "formats": [
         "short"
       ],
-      "published": null,
+      "published": true,
       "gate": {
         "result": "held",
         "reasons": [
@@ -117,7 +117,7 @@
         "thumbnail_set": false,
         "youtube_video_id": "tUuz9i0ZfMc",
         "url": "https://www.youtube.com/watch?v=tUuz9i0ZfMc",
-        "privacy_status": "private",
+        "privacy_status": "public",
         "title": "自信作を出す直前にじゃんけんで順番を決めだすのが面白すぎる #コムドット #コムドット切り抜き #shorts #ゆうた",
         "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
         "channel_title": "コムドット名場面ch【切り抜き】"
@@ -201,7 +201,7 @@
       "formats": [
         "short"
       ],
-      "published": null,
+      "published": true,
       "gate": {
         "result": "held",
         "reasons": [
@@ -215,7 +215,7 @@
         "thumbnail_set": false,
         "youtube_video_id": "WkzU8t6h1sQ",
         "url": "https://www.youtube.com/watch?v=WkzU8t6h1sQ",
-        "privacy_status": "private",
+        "privacy_status": "public",
         "title": "食べた瞬間『何これ美味い』しか言えなくなるのが面白すぎる #コムドット #コムドット切り抜き #shorts #ゆうま #ひゅうが",
         "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
         "channel_title": "コムドット名場面ch【切り抜き】"

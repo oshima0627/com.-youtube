@@ -144,7 +144,7 @@
       "formats": [
         "short"
       ],
-      "published": null,
+      "published": true,
       "gate": {
         "result": "held",
         "reasons": [
@@ -168,7 +168,7 @@
         "thumbnail_set": false,
         "youtube_video_id": "V6BPliNEgUk",
         "url": "https://www.youtube.com/watch?v=V6BPliNEgUk",
-        "privacy_status": "private",
+        "privacy_status": "public",
         "title": "酔い潰れた相方を抱え上げたら完成した画が面白すぎる #コムドット #コムドット切り抜き #shorts #ひゅうが #ゆうま",
         "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
         "channel_title": "コムドット名場面ch【切り抜き】"
@@ -352,7 +352,7 @@
       "formats": [
         "short"
       ],
-      "published": null,
+      "published": true,
       "hook": "旅の締めが『成功だけが幸せじゃない』に着地する",
       "footer": "コムドットのひゅうが（金髪）とゆうまによる2泊3日の北海道旅行の後編。すすきので飲み歩いた旅の締めに、2人だけで人生の話になった場面",
       "gate": {
@@ -366,7 +366,7 @@
         "thumbnail_set": false,
         "youtube_video_id": "gvQBGy1kFp4",
         "url": "https://www.youtube.com/watch?v=gvQBGy1kFp4",
-        "privacy_status": "private",
+        "privacy_status": "public",
         "title": "『成功だけが幸せじゃない』で締める北海道旅行が良すぎる #コムドット #コムドット切り抜き #shorts #ひゅうが #ゆうま",
         "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
         "channel_title": "コムドット名場面ch【切り抜き】"

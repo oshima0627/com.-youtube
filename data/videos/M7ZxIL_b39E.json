@@ -32,7 +32,17 @@
       "gate": {
         "result": "pass",
         "reasons": []
-      }
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "lZn6NLC_q9E",
+        "url": "https://www.youtube.com/watch?v=lZn6NLC_q9E",
+        "privacy_status": "private",
+        "title": "マクドナルドで過注文人狼が始まる瞬間が熱すぎる #コムドット #コムドット切り抜き #shorts #ひゅうが #ゆうま #やまと #あむぎり #ゆうた",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-10-02 07:00"
     },
     {
       "clip_id": "auto05",
@@ -55,7 +65,17 @@
       "gate": {
         "result": "pass",
         "reasons": []
-      }
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "fqTtlYSNSZY",
+        "url": "https://www.youtube.com/watch?v=fqTtlYSNSZY",
+        "privacy_status": "private",
+        "title": "自己認知できてない奴が1人いると言い出すのが面白すぎる #コムドット #コムドット切り抜き #shorts #ひゅうが",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-10-02 18:00"
     },
     {
       "clip_id": "auto12",
@@ -120,7 +140,9 @@
       "gate": {
         "result": "pass",
         "reasons": []
-      }
+      },
+      "excluded": true,
+      "exclude_reason": "short_title requires member tag but audit forbids --members (あっちゃん nickname only); hold until verified member name"
     },
     {
       "clip_id": "auto10",
@@ -164,7 +186,17 @@
       "gate": {
         "result": "pass",
         "reasons": []
-      }
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "f9W1ZGQtQUQ",
+        "url": "https://www.youtube.com/watch?v=f9W1ZGQtQUQ",
+        "privacy_status": "private",
+        "title": "ゆうたから見てどっちの可能性高いか聞かれるのが面白すぎる #コムドット #コムドット切り抜き #shorts #ゆうた",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-10-03 07:00"
     },
     {
       "clip_id": "auto07",
@@ -187,7 +219,17 @@
       "gate": {
         "result": "pass",
         "reasons": []
-      }
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "qH82BdvVkTk",
+        "url": "https://www.youtube.com/watch?v=qH82BdvVkTk",
+        "privacy_status": "private",
+        "title": "ゆうまの考察が完全に当たってたと言われるのが面白すぎる #コムドット #コムドット切り抜き #shorts #ゆうま #あむぎり",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-10-03 18:00"
     },
     {
       "clip_id": "auto08",
@@ -210,7 +252,17 @@
       "gate": {
         "result": "pass",
         "reasons": []
-      }
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "nV_hSM_oz4c",
+        "url": "https://www.youtube.com/watch?v=nV_hSM_oz4c",
+        "privacy_status": "private",
+        "title": "大丈夫だよゆうま勝てるよと煽るのが面白すぎる #コムドット #コムドット切り抜き #shorts #ゆうま",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-10-04 07:00"
     },
     {
       "clip_id": "auto01",
@@ -233,7 +285,17 @@
       "gate": {
         "result": "pass",
         "reasons": []
-      }
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "BzgGxZZDv1U",
+        "url": "https://www.youtube.com/watch?v=BzgGxZZDv1U",
+        "privacy_status": "private",
+        "title": "処刑されるのはひゅうがで決定された瞬間がヤバすぎる #コムドット #コムドット切り抜き #shorts #ひゅうが #あむぎり",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-10-04 18:00"
     },
     {
       "clip_id": "auto06",
@@ -256,7 +318,17 @@
       "gate": {
         "result": "pass",
         "reasons": []
-      }
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "tCJVcokd4c8",
+        "url": "https://www.youtube.com/watch?v=tCJVcokd4c8",
+        "privacy_status": "private",
+        "title": "ゆうが確定市民だから楽だったと言うのが面白すぎる #コムドット #コムドット切り抜き #shorts #ゆうま",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-10-05 07:00"
     },
     {
       "clip_id": "auto11",
