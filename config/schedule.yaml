@@ -1,21 +1,5 @@
 slots:
 - video_id: M7ZxIL_b39E
-  clip_id: auto04
-  youtube_video_id: lZn6NLC_q9E
-  title: 'マクドナルドで過注文人狼が始まる瞬間が熱すぎる #コムドット #コムドット切り抜き #shorts #ひゅうが #ゆうま #やまと #あむぎり
-    #ゆうた'
-  publish_at_jst: 2026-10-02 07:00
-- video_id: M7ZxIL_b39E
-  clip_id: auto05
-  youtube_video_id: fqTtlYSNSZY
-  title: '自己認知できてない奴が1人いると言い出すのが面白すぎる #コムドット #コムドット切り抜き #shorts #ひゅうが'
-  publish_at_jst: 2026-10-02 18:00
-- video_id: M7ZxIL_b39E
-  clip_id: auto03
-  youtube_video_id: f9W1ZGQtQUQ
-  title: 'ゆうたから見てどっちの可能性高いか聞かれるのが面白すぎる #コムドット #コムドット切り抜き #shorts #ゆうた'
-  publish_at_jst: 2026-10-03 07:00
-- video_id: M7ZxIL_b39E
   clip_id: auto07
   youtube_video_id: qH82BdvVkTk
   title: 'ゆうまの考察が完全に当たってたと言われるのが面白すぎる #コムドット #コムドット切り抜き #shorts #ゆうま #あむぎり'
@@ -139,3 +123,19 @@ archive:
     youtube_video_id: BWnDVQJdgWs
     title: '制限時間3分のお題を1分残して食べ切るのが余裕すぎる #コムドット #コムドット切り抜き'
     publish_at_jst: 2026-08-22 07:00
+  - video_id: M7ZxIL_b39E
+    clip_id: auto04
+    youtube_video_id: lZn6NLC_q9E
+    title: 'マクドナルドで過注文人狼が始まる瞬間が熱すぎる #コムドット #コムドット切り抜き #shorts #ひゅうが #ゆうま #やまと #あむぎり
+      #ゆうた'
+    publish_at_jst: 2026-10-02 07:00
+  - video_id: M7ZxIL_b39E
+    clip_id: auto05
+    youtube_video_id: fqTtlYSNSZY
+    title: '自己認知できてない奴が1人いると言い出すのが面白すぎる #コムドット #コムドット切り抜き #shorts #ひゅうが'
+    publish_at_jst: 2026-10-02 18:00
+  - video_id: M7ZxIL_b39E
+    clip_id: auto03
+    youtube_video_id: f9W1ZGQtQUQ
+    title: 'ゆうたから見てどっちの可能性高いか聞かれるのが面白すぎる #コムドット #コムドット切り抜き #shorts #ゆうた'
+    publish_at_jst: 2026-10-03 07:00
