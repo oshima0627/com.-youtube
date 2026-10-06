@@ -91,12 +91,52 @@
         "いじり": 3,
         "コメント": 3
       },
-      "formats": [],
+      "formats": [
+        "short"
+      ],
       "published": null,
       "gate": {
         "result": "pass",
         "reasons": []
-      }
+      },
+      "hook": "ゆうたが注文で暴走して周りが止めきれない",
+      "footer": "マクドナルド過注文人狼より。ゆうたの注文が次第にエスカレートしていく場面",
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "hQtxBt3N49I",
+        "url": "https://www.youtube.com/watch?v=hQtxBt3N49I",
+        "privacy_status": "private",
+        "title": "ゆうたが注文で暴走して周りが止めきれない #コムドット #コムドット切り抜き #shorts #ゆうた",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-10-06 19:00"
+    },
+    {
+      "clip_id": "wide01",
+      "start": 1000.0,
+      "end": 1780.0,
+      "duration": 780.0,
+      "formats": [
+        "wide"
+      ],
+      "published": null,
+      "hook": "久々にやまととひゅうがが敵同士になって考察が噛み合わない",
+      "footer": "マクドナルド過注文人狼より。ヒートマップの山を含む連続1区間。メンバー5人だけの店内テーブル撮影",
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "eaEBlNAyjp4",
+        "url": "https://www.youtube.com/watch?v=eaEBlNAyjp4",
+        "privacy_status": "private",
+        "title": "久々にやまととひゅうがが敵同士で考察が噛み合わない【コムドット切り抜き】",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-10-06 18:30"
     },
     {
       "clip_id": "auto09",
@@ -232,6 +272,32 @@
       "scheduled_at": "2026-10-03 18:00"
     },
     {
+      "clip_id": "wide02",
+      "start": 3742.36,
+      "end": 4499.6,
+      "duration": 757.2,
+      "formats": [
+        "wide"
+      ],
+      "published": null,
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "hook": "決選投票の行方があむぎりの1票に託される",
+      "footer": "マクドナルド過注文人狼より。最終の決選投票から役職公開までの連続1区間。メンバー5人だけの店内テーブル撮影",
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "ZDG0NYw1DaM",
+        "url": "https://www.youtube.com/watch?v=ZDG0NYw1DaM",
+        "privacy_status": "private",
+        "title": "決選投票の行方があむぎりの1票に託される【コムドット切り抜き】",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-10-07 18:30"
+    },
+    {
       "clip_id": "auto08",
       "start": 3750.04,
       "end": 3817.8,
@@ -296,6 +362,32 @@
         "channel_title": "コムドット名場面ch【切り抜き】"
       },
       "scheduled_at": "2026-10-04 18:00"
+    },
+    {
+      "clip_id": "auto13",
+      "start": 4195.0,
+      "end": 4261.68,
+      "duration": 66.7,
+      "formats": [
+        "short"
+      ],
+      "published": null,
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "hook": "決着後の答え合わせでサイコキラーの読みが明かされる",
+      "footer": "マクドナルド過注文人狼より。勝敗が決まったあと全員で役職を明かす場面",
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "403WiragjVQ",
+        "url": "https://www.youtube.com/watch?v=403WiragjVQ",
+        "privacy_status": "private",
+        "title": "決着後の答え合わせでサイコキラーの読みが明かされるのが面白すぎる #コムドット #コムドット切り抜き #shorts #ひゅうが #ゆうま",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-10-07 19:00"
     },
     {
       "clip_id": "auto06",

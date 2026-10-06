@@ -1,25 +1,25 @@
 slots:
 - video_id: M7ZxIL_b39E
-  clip_id: auto07
-  youtube_video_id: qH82BdvVkTk
-  title: 'ゆうまの考察が完全に当たってたと言われるのが面白すぎる #コムドット #コムドット切り抜き #shorts #ゆうま #あむぎり'
-  publish_at_jst: 2026-10-03 18:00
+  clip_id: wide01
+  youtube_video_id: eaEBlNAyjp4
+  title: 久々にやまととひゅうがが敵同士で考察が噛み合わない【コムドット切り抜き】
+  publish_at_jst: 2026-10-06 18:30
 - video_id: M7ZxIL_b39E
-  clip_id: auto08
-  youtube_video_id: nV_hSM_oz4c
-  title: '大丈夫だよゆうま勝てるよと煽るのが面白すぎる #コムドット #コムドット切り抜き #shorts #ゆうま'
-  publish_at_jst: 2026-10-04 07:00
+  clip_id: auto12
+  youtube_video_id: hQtxBt3N49I
+  title: 'ゆうたが注文で暴走して周りが止めきれない #コムドット #コムドット切り抜き #shorts #ゆうた'
+  publish_at_jst: 2026-10-06 19:00
 - video_id: M7ZxIL_b39E
-  clip_id: auto01
-  youtube_video_id: BzgGxZZDv1U
-  title: '処刑されるのはひゅうがで決定された瞬間がヤバすぎる #コムドット #コムドット切り抜き #shorts #ひゅうが #あむぎり'
-  publish_at_jst: 2026-10-04 18:00
+  clip_id: wide02
+  youtube_video_id: ZDG0NYw1DaM
+  title: 決選投票の行方があむぎりの1票に託される【コムドット切り抜き】
+  publish_at_jst: 2026-10-07 18:30
 - video_id: M7ZxIL_b39E
-  clip_id: auto06
-  youtube_video_id: tCJVcokd4c8
-  title: 'ゆうが確定市民だから楽だったと言うのが面白すぎる #コムドット #コムドット切り抜き #shorts #ゆうま'
-  publish_at_jst: 2026-10-05 07:00
-note: publish_at_jst は日本時間。arm するまで YouTube 側には何も入らない。scripts/build_schedule.py が組んだもの
+  clip_id: auto13
+  youtube_video_id: 403WiragjVQ
+  title: '決着後の答え合わせでサイコキラーの読みが明かされるのが面白すぎる #コムドット #コムドット切り抜き #shorts #ひゅうが #ゆうま'
+  publish_at_jst: 2026-10-07 19:00
+note: publish_at_jst は日本時間。arm するまで YouTube 側には何も起きない。2026-10-06 ひろゆき型（長尺18:30→ショート19:00）
 orphans:
 - video_id: RGm5F2m12as
   clip_id: auto01
@@ -139,3 +139,23 @@ archive:
     youtube_video_id: f9W1ZGQtQUQ
     title: 'ゆうたから見てどっちの可能性高いか聞かれるのが面白すぎる #コムドット #コムドット切り抜き #shorts #ゆうた'
     publish_at_jst: 2026-10-03 07:00
+  - video_id: M7ZxIL_b39E
+    clip_id: auto07
+    youtube_video_id: qH82BdvVkTk
+    title: 'ゆうまの考察が完全に当たってたと言われるのが面白すぎる #コムドット #コムドット切り抜き #shorts #ゆうま #あむぎり'
+    publish_at_jst: 2026-10-03 18:00
+  - video_id: M7ZxIL_b39E
+    clip_id: auto08
+    youtube_video_id: nV_hSM_oz4c
+    title: '大丈夫だよゆうま勝てるよと煽るのが面白すぎる #コムドット #コムドット切り抜き #shorts #ゆうま'
+    publish_at_jst: 2026-10-04 07:00
+  - video_id: M7ZxIL_b39E
+    clip_id: auto01
+    youtube_video_id: BzgGxZZDv1U
+    title: '処刑されるのはひゅうがで決定された瞬間がヤバすぎる #コムドット #コムドット切り抜き #shorts #ひゅうが #あむぎり'
+    publish_at_jst: 2026-10-04 18:00
+  - video_id: M7ZxIL_b39E
+    clip_id: auto06
+    youtube_video_id: tCJVcokd4c8
+    title: 'ゆうが確定市民だから楽だったと言うのが面白すぎる #コムドット #コムドット切り抜き #shorts #ゆうま'
+    publish_at_jst: 2026-10-05 07:00
