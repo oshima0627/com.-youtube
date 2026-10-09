@@ -29,7 +29,9 @@ YTDLP = [sys.executable, "-m", "yt_dlp", "--js-runtimes", "node"]
 #
 # 加えて、JS チャレンジの解決に yt-dlp-ejs が必要（`pip install yt-dlp-ejs`）。
 # 入っていないとフォーマット一覧そのものが空になる。
-SECTION_CLIENT = ["--extractor-args", "youtube:player_client=web_embedded"]
+SECTION_CLIENT = ["--extractor-args", "youtube:player_client=default"]
+# 2026-10-10 追記: web_embedded は SABR で画像しか返さなくなった（Linux box で実測）。
+# default で 1920x1080 が取れることを Windows・Linux 両方で確認済み。
 
 # 公開動画以外は扱わない。特に subscriber_only（メンバーシップ限定）は
 # 有料コンテンツであり、切り抜きの対象にしてはならない。

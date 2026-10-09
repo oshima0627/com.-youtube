@@ -15,14 +15,30 @@ ffmpeg の drawtext は Windows でフォントパスのエスケープが壊れ
 """
 
 import math
+import os
 import re
 from functools import lru_cache
+from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
 
 from . import config
 
-FONT_PATH = "C:/Windows/Fonts/YuGothB.ttc"
+WINDOWS_FONT = "C:/Windows/Fonts/YuGothB.ttc"
+LINUX_FONT = "/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc"
+
+
+def _font_path():
+    """CLIPPER_FONT_PATH > Windows の游ゴシック > Linux の Noto Sans CJK。"""
+    env = os.environ.get("CLIPPER_FONT_PATH")
+    if env:
+        return env
+    if Path(WINDOWS_FONT).exists():
+        return WINDOWS_FONT
+    return LINUX_FONT
+
+
+FONT_PATH = _font_path()
 
 INK = (18, 18, 20)
 PAPER = (255, 255, 255)
