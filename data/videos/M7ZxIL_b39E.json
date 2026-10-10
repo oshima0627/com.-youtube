@@ -78,6 +78,35 @@
       "scheduled_at": "2026-10-02 18:00"
     },
     {
+      "clip_id": "wide05",
+      "start": 380.0,
+      "end": 1000.0,
+      "duration": 620.0,
+      "score": 0,
+      "position": 0.078,
+      "signals": {},
+      "formats": [
+        "wide"
+      ],
+      "published": null,
+      "hook": "マクドナルドの店舗で過注文人狼が開幕する",
+      "footer": "マクドナルド過注文人狼より。ルール説明から1回目の注文、最初の人狼予想までの連続1区間。メンバー5人だけの店内撮影",
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "iZRjY4qv7HY",
+        "url": "https://www.youtube.com/watch?v=iZRjY4qv7HY",
+        "privacy_status": "private",
+        "title": "マクドナルドで過注文人狼が開幕してゆうたの注文が止まらない【コムドット切り抜き】",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-10-11 18:30"
+    },
+    {
       "clip_id": "auto12",
       "start": 609.6,
       "end": 675.56,
@@ -111,6 +140,35 @@
         "channel_title": "コムドット名場面ch【切り抜き】"
       },
       "scheduled_at": "2026-10-06 19:00"
+    },
+    {
+      "clip_id": "man02",
+      "start": 825.0,
+      "end": 891.0,
+      "duration": 66.0,
+      "score": 0,
+      "position": 0.17,
+      "signals": {},
+      "formats": [
+        "short"
+      ],
+      "published": null,
+      "hook": "最初の人狼予想でゆうたがひゅうがを名指し",
+      "footer": "マクドナルド過注文人狼より。注文後のファーストインプレッションで人狼を予想する場面",
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "UBJIJmF2iWA",
+        "url": "https://www.youtube.com/watch?v=UBJIJmF2iWA",
+        "privacy_status": "private",
+        "title": "最初の人狼予想でゆうたがいきなりひゅうがを名指しするのが面白すぎる #コムドット #コムドット切り抜き #shorts #ゆうた #ひゅうが",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-10-11 19:00"
     },
     {
       "clip_id": "wide01",
