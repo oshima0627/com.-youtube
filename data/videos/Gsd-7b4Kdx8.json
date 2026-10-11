@@ -73,6 +73,35 @@
       "scheduled_at": "2026-09-11 07:00"
     },
     {
+      "clip_id": "wide01",
+      "start": 1492.0,
+      "end": 2302.0,
+      "formats": [
+        "wide"
+      ],
+      "hook": "第4回ペア人気投票の開票で初期メン王朝が揺らぐ",
+      "footer": "第4回ペア人気投票より。総投票数の発表から1位・2位の発表と反応までの連続1区間",
+      "duration": 810.0,
+      "score": 0,
+      "position": 0.315,
+      "signals": {},
+      "published": null,
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "pR2JRTgo1zo",
+        "url": "https://www.youtube.com/watch?v=pR2JRTgo1zo",
+        "privacy_status": "private",
+        "title": "ペア人気投票の開票で初期メン王朝が終わりMVコンビが1位になる【コムドット切り抜き】",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-10-12 18:30"
+    },
+    {
       "clip_id": "auto01",
       "start": 1690.4,
       "end": 1754.68,
@@ -132,6 +161,35 @@
           "本日の投稿上限 2 本に達している"
         ]
       }
+    },
+    {
+      "clip_id": "man01",
+      "start": 1998.5,
+      "end": 2065.0,
+      "formats": [
+        "short"
+      ],
+      "hook": "2位発表で初期メンがまさかの150票差",
+      "footer": "第4回ペア人気投票より。1位を逃した初期メンの票数が読み上げられる場面",
+      "duration": 66.5,
+      "score": 0,
+      "position": 0.423,
+      "signals": {},
+      "published": null,
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "WYg7H5XfnW4",
+        "url": "https://www.youtube.com/watch?v=WYg7H5XfnW4",
+        "privacy_status": "private",
+        "title": "2位発表で初期メンが1位にまさかの150票差で届かないのが惜しすぎる #コムドット #コムドット切り抜き #shorts #ゆうた #やまと",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-10-12 19:00"
     },
     {
       "clip_id": "auto04",
