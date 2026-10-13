@@ -253,6 +253,64 @@
       }
     },
     {
+      "clip_id": "wide02",
+      "start": 2368.5,
+      "end": 3180.0,
+      "formats": [
+        "wide"
+      ],
+      "hook": "ペア人気投票の3位〜5位発表でヤニヤニの強さと伝説の安定感が光る",
+      "footer": "第4回ペア人気投票より。3位ヤニヤニ・4位伝説・5位チビーズの発表と、ファンのコメント紹介までの連続1区間",
+      "duration": 811.5,
+      "score": 0,
+      "position": 0.501,
+      "signals": {},
+      "published": null,
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "gsNPDIeiyUA",
+        "url": "https://www.youtube.com/watch?v=gsNPDIeiyUA",
+        "privacy_status": "private",
+        "title": "ペア人気投票の3位発表でヤニヤニが衰えない人気を見せ伝説も上位をキープする【コムドット切り抜き】",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-10-13 18:30"
+    },
+    {
+      "clip_id": "man02",
+      "start": 2399.0,
+      "end": 2457.5,
+      "formats": [
+        "short"
+      ],
+      "hook": "来ないと思われたヤニヤニが3位で呼ばれる",
+      "footer": "第4回ペア人気投票より。ヤニヤニは来ないと言った直後に、第3位でヤニヤニコンビの名前が呼ばれる場面",
+      "duration": 58.5,
+      "score": 0,
+      "position": 0.507,
+      "signals": {},
+      "published": null,
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "1WKt8WoEKAw",
+        "url": "https://www.youtube.com/watch?v=1WKt8WoEKAw",
+        "privacy_status": "private",
+        "title": "来ないと思われたヤニヤニが3位で呼ばれるのが強すぎる #コムドット #コムドット切り抜き #shorts #ひゅうが #ゆうま",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-10-13 19:00"
+    },
+    {
       "clip_id": "auto07",
       "start": 2399.2,
       "end": 2466.2,
