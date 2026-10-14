@@ -410,6 +410,64 @@
       "scheduled_at": "2026-09-15 18:00"
     },
     {
+      "clip_id": "wide03",
+      "start": 3180.0,
+      "end": 3998.0,
+      "formats": [
+        "wide"
+      ],
+      "hook": "ペア人気投票の6位〜9位発表で極悪コンビと下剋上コンビが順位を上げる",
+      "footer": "第4回ペア人気投票より。6位極悪・7位師弟・8位下剋上の発表とファンのコメント紹介、9位発表までの連続1区間",
+      "duration": 818.0,
+      "score": 0,
+      "position": 0.672,
+      "signals": {},
+      "published": null,
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "iNAjqxNmtrw",
+        "url": "https://www.youtube.com/watch?v=iNAjqxNmtrw",
+        "privacy_status": "private",
+        "title": "ペア人気投票の6位から9位発表で極悪コンビと下剋上コンビが順位を上げていく【コムドット切り抜き】",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-10-14 18:30"
+    },
+    {
+      "clip_id": "man03",
+      "start": 3194.7,
+      "end": 3252.0,
+      "formats": [
+        "short"
+      ],
+      "hook": "第6位で極悪コンビが呼ばれ前回から1個順位を上げる",
+      "footer": "第4回ペア人気投票より。第6位で極悪コンビの名前が呼ばれ、前回7位から1つ上がったことを喜ぶ場面",
+      "duration": 57.3,
+      "score": 0,
+      "position": 0.675,
+      "signals": {},
+      "published": null,
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "86JeRlHbU10",
+        "url": "https://www.youtube.com/watch?v=86JeRlHbU10",
+        "privacy_status": "private",
+        "title": "6位で極悪コンビが呼ばれて前回より1個上げてくるのが熱すぎる #コムドット #コムドット切り抜き #shorts #やまと #ひゅうが",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-10-14 19:00"
+    },
+    {
       "clip_id": "auto03",
       "start": 3686.38,
       "end": 3753.92,
