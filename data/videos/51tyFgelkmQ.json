@@ -50,7 +50,7 @@
       "formats": [
         "short"
       ],
-      "published": null,
+      "published": true,
       "gate": {
         "result": "held",
         "reasons": [
@@ -63,7 +63,7 @@
         "thumbnail_set": false,
         "youtube_video_id": "CCb0ZcuhoZA",
         "url": "https://www.youtube.com/watch?v=CCb0ZcuhoZA",
-        "privacy_status": "private",
+        "privacy_status": "public",
         "title": "罰ゲーム級の企画中にまさかの神お菓子を発見して盛り上がりすぎる #コムドット #コムドット切り抜き",
         "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
         "channel_title": "コムドット名場面ch【切り抜き】"
@@ -87,7 +87,7 @@
       "formats": [
         "short"
       ],
-      "published": null,
+      "published": true,
       "gate": {
         "result": "held",
         "reasons": [
@@ -100,7 +100,7 @@
         "thumbnail_set": false,
         "youtube_video_id": "tUyrCoVoPCM",
         "url": "https://www.youtube.com/watch?v=tUyrCoVoPCM",
-        "privacy_status": "private",
+        "privacy_status": "public",
         "title": "企画用に分厚くカットされたお菓子が無理ゲーすぎる #コムドット #コムドット切り抜き",
         "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
         "channel_title": "コムドット名場面ch【切り抜き】"

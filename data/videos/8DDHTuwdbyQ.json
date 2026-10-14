@@ -65,7 +65,7 @@
       "formats": [
         "short"
       ],
-      "published": "https://www.youtube.com/watch?v=H5v_FFA73So",
+      "published": true,
       "gate": {
         "result": "held",
         "reasons": [
@@ -102,7 +102,7 @@
       "formats": [
         "short"
       ],
-      "published": null,
+      "published": true,
       "gate": {
         "result": "held",
         "reasons": [
@@ -116,7 +116,7 @@
         "thumbnail_set": false,
         "youtube_video_id": "bjPdC-HDT4E",
         "url": "https://www.youtube.com/watch?v=bjPdC-HDT4E",
-        "privacy_status": "private",
+        "privacy_status": "public",
         "title": "売れても戻ってきたら前のままなやまとの話が良すぎる #コムドット #コムドット切り抜き #shorts #ゆうた #あむぎり",
         "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
         "channel_title": "コムドット名場面ch【切り抜き】"
@@ -164,7 +164,7 @@
       "formats": [
         "short"
       ],
-      "published": null,
+      "published": true,
       "hook": "最後のお題は「28歳のやまとに期待すること」",
       "footer": "やまとの誕生日に本人抜きで飲む企画。最後のトークテーマが発表され、「遊ぶこと・休むことの楽しさを覚えてほしい」という話になる場面",
       "gate": {
@@ -178,7 +178,7 @@
         "thumbnail_set": false,
         "youtube_video_id": "mrr0vlt-FVQ",
         "url": "https://www.youtube.com/watch?v=mrr0vlt-FVQ",
-        "privacy_status": "private",
+        "privacy_status": "public",
         "title": "最後のトークテーマが『28歳のやまとに期待すること』なのが良すぎる #コムドット #コムドット切り抜き #shorts #ゆうた #あむぎり",
         "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
         "channel_title": "コムドット名場面ch【切り抜き】"

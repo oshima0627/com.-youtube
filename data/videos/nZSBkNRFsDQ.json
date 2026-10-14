@@ -28,7 +28,7 @@
       "formats": [
         "short"
       ],
-      "published": null,
+      "published": true,
       "gate": {
         "result": "held",
         "reasons": [
@@ -41,7 +41,7 @@
         "thumbnail_set": false,
         "youtube_video_id": "MDPhcHIYOL8",
         "url": "https://www.youtube.com/watch?v=MDPhcHIYOL8",
-        "privacy_status": "private",
+        "privacy_status": "public",
         "title": "お題の食べ物をフライングで食べちゃうのが自由すぎる #コムドット #コムドット切り抜き",
         "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
         "channel_title": "コムドット名場面ch【切り抜き】"
