@@ -70,8 +70,18 @@ def _ffmpeg(args, cwd):
         raise RuntimeError(f"ffmpeg が失敗しました:\n{r.stderr.strip()[-2500:]}")
 
 
+def _add_prompts(inputs, vf, last, prompts, first_index):
+    """(png, 開始秒, 終了秒) の呼びかけを順に重ねる。"""
+    for k, (png, t0, t1) in enumerate(prompts or ()):
+        idx = first_index + k
+        inputs += ["-i", Path(png).name]
+        vf += f";{last}[{idx}:v]overlay=0:0:enable='between(t,{t0:.2f},{t1:.2f})'[p{k}]"
+        last = f"[p{k}]"
+    return inputs, vf, last
+
+
 def render_short(src: Path, dest: Path, srt: Path = None, overlay: Path = None,
-                 duration=None):
+                 duration=None, prompts=None):
     """9:16。背景はぼかした全体像、前景に原寸を中央配置する。
 
     srt は既定で焼き込まない。コムドットの本編は字幕が既に焼き込まれており、
@@ -92,6 +102,7 @@ def render_short(src: Path, dest: Path, srt: Path = None, overlay: Path = None,
         inputs += ["-i", overlay.name]
         vf += f";{last}[1:v]overlay=0:0[out]"
         last = "[out]"
+    inputs, vf, last = _add_prompts(inputs, vf, last, prompts, len(inputs) // 2)
 
     trim = ["-t", str(duration)] if duration else []
     _ffmpeg([*inputs, "-filter_complex", vf, "-map", last, "-map", "0:a",
@@ -167,7 +178,7 @@ WIDE_BANNER_SECONDS = 7
 
 
 def render_wide(src: Path, dest: Path, srt: Path = None, overlay: Path = None,
-                banner_seconds=WIDE_BANNER_SECONDS):
+                banner_seconds=WIDE_BANNER_SECONDS, prompts=None):
     """16:9。素材のまま出し、冒頭だけ上部に帯を重ねる。
 
     帯を出しっぱなしにしない。16:9 は全面が映像で死角が無いため、
@@ -186,6 +197,7 @@ def render_wide(src: Path, dest: Path, srt: Path = None, overlay: Path = None,
         inputs += ["-i", overlay.name]
         vf += (f";{last}[1:v]overlay=0:0:enable='between(t,0,{banner_seconds})'[out]")
         last = "[out]"
+    inputs, vf, last = _add_prompts(inputs, vf, last, prompts, len(inputs) // 2)
 
     _ffmpeg([*inputs, "-filter_complex", vf, "-map", last, "-map", "0:a",
              "-c:v", "libx264", "-preset", "medium", "-crf", "20",

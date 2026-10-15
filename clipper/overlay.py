@@ -352,3 +352,50 @@ def build_wide(hook, footer, dest, width=1920, height=1080,
 def build_wide_for_clip(video_id, clip, dest=None):
     dest = dest or (config.work_dir(video_id) / f"{clip['clip_id']}_wide_overlay.png")
     return build_wide(clip.get("hook"), clip.get("footer"), dest)
+
+
+# ── 視聴者への呼びかけ（2026-10-15〜） ───────────────────────────────
+#
+# コメント・高評価・登録を促す短い一言を、決まった秒数だけ重ねる。
+# ファン同士の口調で控えめに出す。**報酬を約束する文言は入れない**（YouTube の
+# 偽エンゲージメント規約）。メンバーと元動画の焼き込み字幕を隠さないよう、
+# 横型は右上の小さな札、ショートは映像の下の死角に置く。
+
+def build_prompt_wide(text, dest, width=1920, height=1080):
+    """横型の右上に置く小さな呼びかけ札。冒頭の帯（上部）とは時間をずらして使う。"""
+    img = Image.new("RGBA", (width, height), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    f = font(38)
+    tw = d.textlength(text, font=f)
+    pad_x, pad_y = 28, 18
+    x1 = width - 56
+    x0 = x1 - tw - pad_x * 2
+    y0 = 56
+    y1 = y0 + f.size + pad_y * 2
+    d.rounded_rectangle([x0, y0, x1, y1], radius=22, fill=(0, 0, 0, 190))
+    d.rectangle([x0, y0 + 14, x0 + 8, y1 - 14], fill=ACCENT)
+    d.text((x0 + pad_x, y0 + pad_y - 4), text, font=f, fill=PAPER,
+           stroke_width=3, stroke_fill=INK)
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    img.save(dest)
+    return dest
+
+
+def build_prompt_short(text, dest, width=1080, height=1920):
+    """ショートの最後に出す一言。映像の下の死角（footer の位置）を覆って置く。"""
+    img = Image.new("RGBA", (width, height), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    video_h = int(width * 9 / 16)
+    bottom_zone = (height - video_h) // 2 + video_h
+    # 下の footer が透けると読めなくなるので、ほぼ不透明で覆う
+    d.rectangle([0, bottom_zone + 20, width, height - 260], fill=(12, 12, 14, 250))
+    f = font(58)
+    lines = []
+    for part in text.split("\n"):   # 改行位置を指定できるようにする
+        lines.extend(wrap(d, part, f, width - MARGIN * 2))
+    block_h = len(lines) * f.size + (len(lines) - 1) * 16
+    y = bottom_zone + 20 + ((height - 260 - bottom_zone - 20) - block_h) // 2
+    _draw_block(d, lines, f, width / 2, y, PAPER, 16)
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    img.save(dest)
+    return dest

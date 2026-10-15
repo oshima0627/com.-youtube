@@ -504,6 +504,71 @@
         "channel_title": "コムドット名場面ch【切り抜き】"
       },
       "scheduled_at": "2026-09-18 18:00"
+    },
+    {
+      "clip_id": "wide04",
+      "start": 3984.5,
+      "end": 4589.2,
+      "formats": [
+        "wide"
+      ],
+      "hook": "ペア人気投票の第10位発表でベンチコンビが2回連続の10位になる",
+      "footer": "第4回ペア人気投票より。ベンチが1万票に届くかの話からファンのコメント紹介、第10位発表、次回への目標宣言までの連続1区間",
+      "duration": 604.7,
+      "score": 0,
+      "position": 0.842,
+      "signals": {},
+      "published": null,
+      "engagement": {
+        "start": "推しペアの名場面はコメントで教えて！",
+        "end": "面白かったら高評価とチャンネル登録で次の名場面も見逃さないで"
+      },
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "o5hqYij15-Q",
+        "url": "https://www.youtube.com/watch?v=o5hqYij15-Q",
+        "privacy_status": "private",
+        "title": "ペア人気投票の第10位発表でベンチコンビが2回連続の10位になる【コムドット切り抜き】",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-10-15 18:30"
+    },
+    {
+      "clip_id": "man04",
+      "start": 4129.0,
+      "end": 4185.8,
+      "formats": [
+        "short"
+      ],
+      "hook": "第10位でベンチコンビが呼ばれ2回連続の10位に",
+      "footer": "第4回ペア人気投票より。第10位の発表で3,794票のベンチコンビが呼ばれる場面",
+      "duration": 56.8,
+      "score": 0,
+      "position": 0.873,
+      "signals": {},
+      "published": null,
+      "engagement": {
+        "end": "この中で一番好きなメンバーは？\nコメントで！"
+      },
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "5URnTN36FvY",
+        "url": "https://www.youtube.com/watch?v=5URnTN36FvY",
+        "privacy_status": "private",
+        "title": "10位でベンチコンビが呼ばれて2回連続の10位になるのが面白すぎる #コムドット #コムドット切り抜き #shorts #やまと #あむぎり",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-10-15 19:00"
     }
   ],
   "notes": []
