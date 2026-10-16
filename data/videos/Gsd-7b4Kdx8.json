@@ -12,6 +12,39 @@
   },
   "clips": [
     {
+      "clip_id": "wide05",
+      "start": 469.0,
+      "end": 1305.6,
+      "formats": [
+        "wide"
+      ],
+      "hook": "開票前の順位予想でビリ予想がまさかの押し付け合いになる",
+      "footer": "第4回ペア人気投票より。1〜3位の予想から塾・ベンチの話、ファン票と視聴者票の違い、ビリ予想の押し付け合いまでの連続1区間",
+      "duration": 836.6,
+      "score": 0,
+      "position": 0.099,
+      "signals": {},
+      "published": null,
+      "engagement": {
+        "start": "あなたの順位予想もコメントで教えて！",
+        "end": "面白かったら高評価とチャンネル登録で次の名場面も見逃さないで"
+      },
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "huRjnbqfKuE",
+        "url": "https://www.youtube.com/watch?v=huRjnbqfKuE",
+        "privacy_status": "private",
+        "title": "ペア人気投票の開票前に順位予想をしたらビリ予想がまさかの押し付け合いになる【コムドット切り抜き】",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-10-16 18:30"
+    },
+    {
       "clip_id": "auto09",
       "start": 675.72,
       "end": 742.32,
@@ -71,6 +104,38 @@
         "channel_title": "コムドット名場面ch【切り抜き】"
       },
       "scheduled_at": "2026-09-11 07:00"
+    },
+    {
+      "clip_id": "man05",
+      "start": 1242.3,
+      "end": 1299.6,
+      "formats": [
+        "short"
+      ],
+      "hook": "ビリ予想をせーので答えたら押し付け合いに",
+      "footer": "第4回ペア人気投票より。開票前のビリ予想で、ゆうまとあむぎりがせーので答える場面",
+      "duration": 57.3,
+      "score": 0,
+      "position": 0.263,
+      "signals": {},
+      "published": null,
+      "engagement": {
+        "end": "この中で一番好きなメンバーは？\nコメントで！"
+      },
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "1Nh4fahyGmU",
+        "url": "https://www.youtube.com/watch?v=1Nh4fahyGmU",
+        "privacy_status": "private",
+        "title": "ゆうまとあむぎりがせーので答えたビリ予想が押し付け合いになるのが面白すぎる #コムドット #コムドット切り抜き #shorts #ゆうま #あむぎり",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-10-16 19:00"
     },
     {
       "clip_id": "wide01",
