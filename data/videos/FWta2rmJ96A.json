@@ -33,6 +33,71 @@
       }
     },
     {
+      "clip_id": "wide02",
+      "start": 2982.0,
+      "end": 3619.5,
+      "formats": [
+        "wide"
+      ],
+      "hook": "負けた人が好きなところを言って指名するじゃんけんが始まる",
+      "footer": "8周年記念旅行の後編より。ゆうまの穏やかさ、あむぎりの懐の深さなど、指名のたびにメンバーの好きなところを伝え合う連続1区間",
+      "duration": 637.5,
+      "score": 0,
+      "position": 0.371,
+      "signals": {},
+      "published": null,
+      "engagement": {
+        "start": "あなたが思う推しの好きなところ、コメントで教えて！",
+        "end": "面白かったら高評価とチャンネル登録で次の名場面も見逃さないで"
+      },
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "dZv60Vrv8fI",
+        "url": "https://www.youtube.com/watch?v=dZv60Vrv8fI",
+        "privacy_status": "private",
+        "title": "8周年の飲み会で好きなところを言って指名するじゃんけんが始まりメンバー同士が褒め合う【コムドット切り抜き】",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-10-18 18:30"
+    },
+    {
+      "clip_id": "man02",
+      "start": 3023.0,
+      "end": 3081.0,
+      "formats": [
+        "short"
+      ],
+      "hook": "ゆうまの好きなところは「穏やかで眉毛が濃い」",
+      "footer": "8周年記念旅行の後編より。負けた人が好きなところを言って指名するじゃんけんで、ゆうまとあむぎりが呼ばれる場面",
+      "duration": 58.0,
+      "score": 0,
+      "position": 0.376,
+      "signals": {},
+      "published": null,
+      "engagement": {
+        "end": "この中で一番好きなメンバーは？\nコメントで！"
+      },
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "5Uc5phAAhmA",
+        "url": "https://www.youtube.com/watch?v=5Uc5phAAhmA",
+        "privacy_status": "private",
+        "title": "ゆうまの好きなところを聞かれて穏やかで眉毛が濃いとこと答えるのが面白すぎる #コムドット #コムドット切り抜き #shorts #ゆうま #あむぎり",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-10-18 19:00"
+    },
+    {
       "clip_id": "wide01",
       "start": 3620.0,
       "end": 4305.0,

@@ -47,11 +47,33 @@ class NotClippable(Exception):
 MEMBERS_ONLY_MARKERS = ("available to this channel's members", "members-only")
 
 
-def _run(args):
+# 2026-10-18 追記: box で default / android_vr が「Sign in to confirm you're not a bot」
+# で落ち、web_embedded だけがメタ・字幕・1920x1080 を返した。bot 判定で落ちたときだけ
+# web_embedded で取り直す（default が通る日はそのまま default を使う）。
+FALLBACK_CLIENT = ["--extractor-args", "youtube:player_client=web_embedded"]
+BOT_MARKERS = ("Sign in to confirm you", "not a bot")
+
+
+def _with_fallback_client(args):
+    out, skip = [], False
+    for i, a in enumerate(args):
+        if skip:
+            skip = False
+            continue
+        if a == "--extractor-args" and i + 1 < len(args) and "player_client" in args[i + 1]:
+            skip = True
+            continue
+        out.append(a)
+    return FALLBACK_CLIENT + out
+
+
+def _run(args, _retry=True):
     r = subprocess.run(YTDLP + args, capture_output=True,
                        encoding="utf-8", errors="replace")
     if r.returncode != 0:
         err = r.stderr.strip()
+        if _retry and any(m in err for m in BOT_MARKERS):
+            return _run(_with_fallback_client(args), _retry=False)
         if any(m in err for m in MEMBERS_ONLY_MARKERS):
             raise NotClippable("メンバーシップ限定動画のため対象外です")
         raise RuntimeError(f"yt-dlp が失敗しました:\n{err[-2000:]}")

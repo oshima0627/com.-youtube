@@ -109,6 +109,16 @@ slots:
   youtube_video_id: plJwI-CmNf8
   title: 'やまとの好きなところを聞かれて背中でかいとこと答えるのが熱すぎる #コムドット #コムドット切り抜き #shorts #やまと'
   publish_at_jst: 2026-10-17 19:00
+- video_id: FWta2rmJ96A
+  clip_id: wide02
+  youtube_video_id: dZv60Vrv8fI
+  title: 8周年の飲み会で好きなところを言って指名するじゃんけんが始まりメンバー同士が褒め合う【コムドット切り抜き】
+  publish_at_jst: 2026-10-18 18:30
+- video_id: FWta2rmJ96A
+  clip_id: man02
+  youtube_video_id: 5Uc5phAAhmA
+  title: 'ゆうまの好きなところを聞かれて穏やかで眉毛が濃いとこと答えるのが面白すぎる #コムドット #コムドット切り抜き #shorts #ゆうま #あむぎり'
+  publish_at_jst: 2026-10-18 19:00
 note: publish_at_jst は日本時間。arm するまで YouTube 側には何も起きない。2026-10-06 ひろゆき型（長尺18:30→ショート19:00）
 orphans:
 - video_id: RGm5F2m12as
