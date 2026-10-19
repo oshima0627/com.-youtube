@@ -205,6 +205,71 @@
       }
     },
     {
+      "clip_id": "wide03",
+      "start": 4444.5,
+      "end": 5258.0,
+      "formats": [
+        "wide"
+      ],
+      "hook": "視聴者への感謝タイム、指名されたメンバーの好きなところを伝え合う",
+      "footer": "8周年記念旅行の後編より。ひゅうがの発信力、ゆうまの見えない努力、ゆうたの覚悟、そしてファンへの感謝まで続く連続1区間",
+      "duration": 813.5,
+      "score": 0,
+      "position": 0.553,
+      "signals": {},
+      "published": null,
+      "engagement": {
+        "start": "一番グッときた言葉はどれ？コメントで教えて！",
+        "end": "面白かったら高評価とチャンネル登録で次の名場面も見逃さないで"
+      },
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "6YUTZmM4Qwo",
+        "url": "https://www.youtube.com/watch?v=6YUTZmM4Qwo",
+        "privacy_status": "private",
+        "title": "8周年の飲み会で視聴者への感謝タイムが始まりメンバーの好きなところとファンへの想いを伝え合う【コムドット切り抜き】",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-10-19 18:30"
+    },
+    {
+      "clip_id": "man03",
+      "start": 4643.5,
+      "end": 4702.5,
+      "formats": [
+        "short"
+      ],
+      "hook": "ゆうまの好きなところは「お父さん」",
+      "footer": "8周年記念旅行の後編より。人知れず遅くまで働くゆうまを「会社のお父さん」と例えて尊敬を伝える場面",
+      "duration": 59.0,
+      "score": 0,
+      "position": 0.578,
+      "signals": {},
+      "published": null,
+      "engagement": {
+        "end": "この中で一番好きなメンバーは？\nコメントで！"
+      },
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "HvxPeXm0TY8",
+        "url": "https://www.youtube.com/watch?v=HvxPeXm0TY8",
+        "privacy_status": "private",
+        "title": "ゆうまの好きなところを会社のお父さんと例えて陰の努力を尊敬するのが熱すぎる #コムドット #コムドット切り抜き #shorts #ゆうま",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-10-19 19:00"
+    },
+    {
       "clip_id": "auto02",
       "start": 5820.2,
       "end": 5887.36,
