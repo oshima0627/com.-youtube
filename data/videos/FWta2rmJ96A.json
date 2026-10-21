@@ -375,6 +375,71 @@
         "result": "pass",
         "reasons": []
       }
+    },
+    {
+      "clip_id": "wide05",
+      "start": 6688.0,
+      "end": 7426.0,
+      "formats": [
+        "wide"
+      ],
+      "hook": "プレゼントのお返しに、メンバーがひゅうがの好きなところを伝える",
+      "footer": "8周年記念旅行の後編より。ひゅうがへの感謝を1人ずつ伝え、最後はファンのみんなへのメッセージへ続く連続1区間",
+      "duration": 738.0,
+      "score": 0,
+      "position": 0.832,
+      "signals": {},
+      "published": null,
+      "engagement": {
+        "start": "ひゅうがの好きなところ、あなたならどこ？コメントで教えて！",
+        "end": "面白かったら高評価とチャンネル登録で次の名場面も見逃さないで"
+      },
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "i0RFfloptBQ",
+        "url": "https://www.youtube.com/watch?v=i0RFfloptBQ",
+        "privacy_status": "private",
+        "title": "8周年の飲み会でプレゼントのお返しにメンバーがひゅうがの好きなところを伝えファンへの想いを語る【コムドット切り抜き】",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-10-21 18:30"
+    },
+    {
+      "clip_id": "man05",
+      "start": 6826.0,
+      "end": 6886.0,
+      "formats": [
+        "short"
+      ],
+      "hook": "ゆうたから見たひゅうがは「漢」",
+      "footer": "8周年記念旅行の後編より。中学から一番遊んできたゆうたが、ひゅうがへの尊敬をまっすぐ伝える場面",
+      "duration": 60.0,
+      "score": 0,
+      "position": 0.849,
+      "signals": {},
+      "published": null,
+      "engagement": {
+        "end": "この中で一番好きなメンバーは？\nコメントで！"
+      },
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "1kXOII2iiJQ",
+        "url": "https://www.youtube.com/watch?v=1kXOII2iiJQ",
+        "privacy_status": "private",
+        "title": "ゆうたがひゅうがをWikipediaで漢と調べたら出てくる男だと尊敬するのが熱すぎる #コムドット #コムドット切り抜き #shorts #ゆうた #ひゅうが",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-10-21 19:00"
     }
   ],
   "notes": []
