@@ -33,6 +33,63 @@
       }
     },
     {
+      "clip_id": "wide06",
+      "start": 1643.0,
+      "end": 2252.0,
+      "formats": [
+        "wide"
+      ],
+      "hook": "負けたら半分飲む！メンバー指名じゃんけんで飲み会が一気に加速",
+      "footer": "8周年記念旅行の後編より。乾杯のあと始まった指名じゃんけんから、ゆうたの熱々たこ焼きまで続く連続1区間",
+      "score": 0,
+      "signals": {},
+      "published": null,
+      "engagement": {
+        "start": "推しの名場面はコメントで教えて！",
+        "end": "面白かったら高評価とチャンネル登録で次の名場面も見逃さないで"
+      },
+      "duration": 609.0,
+      "position": 0.204,
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "UrC5eKWsYUM",
+        "url": "https://www.youtube.com/watch?v=UrC5eKWsYUM",
+        "privacy_status": "private",
+        "title": "8周年の飲み会で負けたら半分飲む指名じゃんけんが始まり乾杯から一気に盛り上がる【コムドット切り抜き】",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-10-22 18:30"
+    },
+    {
+      "clip_id": "man06",
+      "start": 2178.2,
+      "end": 2241.5,
+      "formats": [
+        "short"
+      ],
+      "hook": "熱々のたこ焼きに\n「噛むなよ」コール",
+      "footer": "8周年記念旅行の後編より。届いたたこ焼きを前に、メンバー総出でゆうたを止める場面",
+      "score": 0,
+      "signals": {},
+      "published": null,
+      "engagement": {
+        "end": "この中で一番好きなメンバーは？\nコメントで！"
+      },
+      "duration": 63.3,
+      "position": 0.271,
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "3hPnwzJtrKY",
+        "url": "https://www.youtube.com/watch?v=3hPnwzJtrKY",
+        "privacy_status": "private",
+        "title": "熱々のたこ焼きを噛むなよと言われて丸ごといくゆうたが面白すぎる #コムドット #コムドット切り抜き #shorts #ゆうた",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-10-22 19:00"
+    },
+    {
       "clip_id": "wide02",
       "start": 2982.0,
       "end": 3619.5,
