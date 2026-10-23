@@ -90,6 +90,71 @@
       "scheduled_at": "2026-10-22 19:00"
     },
     {
+      "clip_id": "wide07",
+      "start": 2359.0,
+      "end": 2981.5,
+      "formats": [
+        "wide"
+      ],
+      "hook": "負けたら飲む指名じゃんけんが白熱！連敗とズル疑惑まで飛び出す",
+      "footer": "8周年記念旅行の後編より。指名じゃんけんの続きから、まさかの連敗と遅出し疑惑の判定まで続く連続1区間",
+      "score": 0,
+      "signals": {},
+      "published": null,
+      "engagement": {
+        "start": "推しの名場面はコメントで教えて！",
+        "end": "面白かったら高評価とチャンネル登録で次の名場面も見逃さないで"
+      },
+      "duration": 622.5,
+      "position": 0.293,
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "pVN-IVibxvI",
+        "url": "https://www.youtube.com/watch?v=pVN-IVibxvI",
+        "privacy_status": "private",
+        "title": "8周年の飲み会で負けたら飲む指名じゃんけんが白熱し連敗とズル疑惑まで飛び出す【コムドット切り抜き】",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-10-23 18:30"
+    },
+    {
+      "clip_id": "man07",
+      "start": 2808.0,
+      "end": 2872.0,
+      "formats": [
+        "short"
+      ],
+      "hook": "じゃんけん遅出し疑惑\n判定は「先生たち」に",
+      "footer": "8周年記念旅行の後編より。じゃんけんの遅出しを疑われ、周りのメンバーに判定を求める場面",
+      "score": 0,
+      "signals": {},
+      "published": null,
+      "engagement": {
+        "end": "この中で一番好きなメンバーは？\nコメントで！"
+      },
+      "duration": 64.0,
+      "position": 0.349,
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "BS-nkx6OrEc",
+        "url": "https://www.youtube.com/watch?v=BS-nkx6OrEc",
+        "privacy_status": "private",
+        "title": "やまととのじゃんけんで遅出し疑惑が出て周りに判定を求めたら誰も見えてなかったのが面白すぎる #コムドット #コムドット切り抜き #shorts #やまと",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-10-23 19:00"
+    },
+    {
       "clip_id": "wide02",
       "start": 2982.0,
       "end": 3619.5,
