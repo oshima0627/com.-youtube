@@ -33,6 +33,71 @@
       }
     },
     {
+      "clip_id": "wide02",
+      "start": 427.0,
+      "end": 1207.0,
+      "formats": [
+        "wide"
+      ],
+      "hook": "限界酒ゆうた編の1軒目、下北沢でまだほろ酔いの3人が飲み会トークで盛り上がる",
+      "footer": "限界酒ゆうた編より。下北沢1軒目の乾杯から2杯目までの連続1区間",
+      "score": 0,
+      "signals": {},
+      "published": null,
+      "engagement": {
+        "start": "推しの名場面はコメントで教えて！",
+        "end": "面白かったら高評価とチャンネル登録で次の名場面も見逃さないで"
+      },
+      "duration": 780.0,
+      "position": 0.09,
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "zjOyxsbBNXU",
+        "url": "https://www.youtube.com/watch?v=zjOyxsbBNXU",
+        "privacy_status": "private",
+        "title": "限界酒ゆうた編の1軒目は下北沢で乾杯しあむぎりは飲み会だと主役顔と暴露されるほろ酔いトーク【コムドット切り抜き】",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-10-27 18:30"
+    },
+    {
+      "clip_id": "man02",
+      "start": 610.0,
+      "end": 673.8,
+      "formats": [
+        "short"
+      ],
+      "hook": "あむぎりの飲み会は\n声がでかくて主役顔？",
+      "footer": "限界酒ゆうた編の1軒目トークより",
+      "score": 0,
+      "signals": {},
+      "published": null,
+      "engagement": {
+        "end": "この中で一番好きなメンバーは？\nコメントで！"
+      },
+      "duration": 63.8,
+      "position": 0.128,
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "b8dnP1LmgXM",
+        "url": "https://www.youtube.com/watch?v=b8dnP1LmgXM",
+        "privacy_status": "private",
+        "title": "あむぎりは飲み会だと主役顔で声もでかいと暴露されてその姿を見たいと盛り上がる #コムドット #コムドット切り抜き #shorts #ゆうま #あむぎり #ゆうた",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-10-27 19:00"
+    },
+    {
       "clip_id": "auto10",
       "start": 974.92,
       "end": 1040.15,
