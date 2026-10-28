@@ -182,6 +182,39 @@
       }
     },
     {
+      "clip_id": "wide03",
+      "start": 1637.0,
+      "end": 2424.0,
+      "formats": [
+        "wide"
+      ],
+      "hook": "限界酒ゆうた編の1軒目後半、梅干しサワーで杯を重ねる3人のトークが加速",
+      "footer": "限界酒ゆうた編より。下北沢1軒目の2杯目から6杯目までの連続1区間",
+      "score": 0,
+      "signals": {},
+      "published": null,
+      "engagement": {
+        "start": "推しの名場面はコメントで教えて！",
+        "end": "面白かったら高評価とチャンネル登録で次の名場面も見逃さないで"
+      },
+      "duration": 787.0,
+      "position": 0.343,
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "nU4_9aKjqaA",
+        "url": "https://www.youtube.com/watch?v=nU4_9aKjqaA",
+        "privacy_status": "private",
+        "title": "限界酒ゆうた編の1軒目後半は梅干しサワーで6杯目まで飲み進め飲み会のJJ論争やまさかのすれ違いで爆笑する【コムドット切り抜き】",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-10-28 18:30"
+    },
+    {
       "clip_id": "auto12",
       "start": 2012.24,
       "end": 2076.37,
@@ -201,6 +234,38 @@
         "result": "pass",
         "reasons": []
       }
+    },
+    {
+      "clip_id": "man03",
+      "start": 2061.0,
+      "end": 2126.0,
+      "formats": [
+        "short"
+      ],
+      "hook": "ゆうまだけ\n話がぶっ飛んでた？",
+      "footer": "限界酒ゆうた編の1軒目トークより",
+      "score": 0,
+      "signals": {},
+      "published": null,
+      "engagement": {
+        "end": "この中で一番好きなメンバーは？\nコメントで！"
+      },
+      "duration": 65.0,
+      "position": 0.432,
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "16K3ztOW1oo",
+        "url": "https://www.youtube.com/watch?v=16K3ztOW1oo",
+        "privacy_status": "private",
+        "title": "氷にキスしたあむぎりに笑っていただけなのに自分のスベりに笑われたと思い込むゆうまがヤバすぎる #コムドット #コムドット切り抜き #shorts #ゆうま #あむぎり #ゆうた",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-10-28 19:00"
     },
     {
       "clip_id": "auto04",
