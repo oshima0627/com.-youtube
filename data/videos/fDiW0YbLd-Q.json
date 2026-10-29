@@ -268,6 +268,42 @@
       "scheduled_at": "2026-10-28 19:00"
     },
     {
+      "clip_id": "man05",
+      "start": 2692.5,
+      "end": 2752.0,
+      "formats": [
+        "short"
+      ],
+      "hook": "濃いめの酒で\nゆうまが語り出した",
+      "footer": "限界酒ゆうた編・2軒目。「うわ濃っ」と言うのはまだガキ、と大人の飲み方を語るゆうま",
+      "score": 0,
+      "signals": {},
+      "published": null,
+      "engagement": {
+        "end": "眠いだけ？話に興味ない？\nコメントで！"
+      },
+      "duration": 59.5,
+      "position": 0.564,
+      "experiment": {
+        "name": "2026-10-29",
+        "variant": "B"
+      },
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "ePtwH4T8GYM",
+        "url": "https://www.youtube.com/watch?v=ePtwH4T8GYM",
+        "privacy_status": "private",
+        "title": "ゆうま「まだガキですよ」急に始まった大人の酒トーク #コムドット #コムドット切り抜き #shorts #ゆうた #ゆうま #あむぎり",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-10-29 20:00"
+    },
+    {
       "clip_id": "auto04",
       "start": 2735.2,
       "end": 2802.48,
@@ -350,6 +386,42 @@
         "result": "pass",
         "reasons": []
       }
+    },
+    {
+      "clip_id": "man04",
+      "start": 3781.0,
+      "end": 3812.5,
+      "formats": [
+        "short"
+      ],
+      "hook": "15杯目のゆうた\n本人だけ記憶がない？",
+      "footer": "限界酒ゆうた編・2軒目。杯数はアプリで記録中なのに本人は「飲んでない」と言い張る",
+      "score": 0,
+      "signals": {},
+      "published": null,
+      "engagement": {
+        "end": "ゆうたの記憶、信じる？信じない？\nコメントで！"
+      },
+      "duration": 31.5,
+      "position": 0.793,
+      "experiment": {
+        "name": "2026-10-29",
+        "variant": "A"
+      },
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "c1tRI6adeTM",
+        "url": "https://www.youtube.com/watch?v=c1tRI6adeTM",
+        "privacy_status": "private",
+        "title": "ゆうた「俺マジで15杯も飲んだ？」本人だけ記憶なし #コムドット #コムドット切り抜き #shorts #ゆうた #ゆうま #あむぎり",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-10-29 19:00"
     },
     {
       "clip_id": "wide01",
@@ -452,6 +524,7 @@
     }
   ],
   "notes": [
-    "2026-10-26: wide01 3960.5-4680.6s（深夜1時〜17杯完走、YouTube開始時の葛藤と今の本音トーク。3人のみ・第三者なしを6秒間隔で確認）を18:30、man01 4379.0-4442.0s（感謝しすぎなくていい）を19:00。避ける: 21-26m 王様ゲーム/R18話、45-49m ひゅうが・マネージャー乱入、51-53m メンシプ導入、58m キャバ発言。ロング候補残り: 7:30-20:30 下北1軒目トーク（店員の映り込み要確認）"
+    "2026-10-26: wide01 3960.5-4680.6s（深夜1時〜17杯完走、YouTube開始時の葛藤と今の本音トーク。3人のみ・第三者なしを6秒間隔で確認）を18:30、man01 4379.0-4442.0s（感謝しすぎなくていい）を19:00。避ける: 21-26m 王様ゲーム/R18話、45-49m ひゅうが・マネージャー乱入、51-53m メンシプ導入、58m キャバ発言。ロング候補残り: 7:30-20:30 下北1軒目トーク（店員の映り込み要確認）",
+    "2026-10-29 実験1日目: man04 3781.0-3812.5s (A, 19:00, c1tRI6adeTM) / man05 2692.5-2752.0s (B, 20:00, ePtwH4T8GYM)。3人のみ映り込み確認。未使用の残り: 2424-2640(屋外含む要確認)・3140-3400 酔い度90%/5人で飲みたい話・3830-3960 ゆうま脱落・0-427 オープニング"
   ]
 }
