@@ -562,7 +562,45 @@
         "channel_title": "コムドット名場面ch【切り抜き】"
       },
       "scheduled_at": "2026-10-21 19:00"
+    },
+    {
+      "clip_id": "man08",
+      "start": 7814.8,
+      "end": 7876.9,
+      "formats": [
+        "short"
+      ],
+      "hook": "8周年の締めに\nひゅうがの決め台詞",
+      "footer": "8周年記念旅行の後編より。ファンへの思いを1人ずつ伝える流れで、ひゅうがが20周年、40周年の先まで一緒にと語る場面",
+      "score": 0,
+      "signals": {},
+      "published": null,
+      "engagement": {
+        "end": "目指すは20周年？40周年？\nコメントで！"
+      },
+      "duration": 62.1,
+      "experiment": {
+        "name": "2026-10-29",
+        "variant": "B"
+      },
+      "position": 0.972,
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "gKejXvgAA10",
+        "url": "https://www.youtube.com/watch?v=gKejXvgAA10",
+        "privacy_status": "private",
+        "title": "ひゅうが「8周年なんてまだまだ赤ちゃん」ファンへの一生宣言 #コムドット #コムドット切り抜き #shorts #ひゅうが #やまと",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-10-30 19:00"
     }
   ],
-  "notes": []
+  "notes": [
+    "2026-10-30 実験2日目: man08 7814.8-7876.9s (B, 19:00, gKejXvgAA10) ひゅうが8周年まだまだ赤ちゃん。字幕色: 赤=やまと 紫=ひゅうが 緑=ゆうた 青=ゆうま 橙=あむぎり（推定、文脈で照合）。未使用の残り: 7427-7814 ゆうま/あむぎりのファンへの言葉（武道館話含む）・7877-8038 締め・4305-4444・5258-5834（5618 嘔吐/5686-5760 酒かけ・スタッフ映り込みの可能性→避ける）・0-1643 未確認"
+  ]
 }
