@@ -564,6 +564,42 @@
       "scheduled_at": "2026-10-21 19:00"
     },
     {
+      "clip_id": "man10",
+      "start": 7650.0,
+      "end": 7711.0,
+      "formats": [
+        "short"
+      ],
+      "hook": "あむぎりの感謝スピーチ中に\n酔ったやまとが乱入",
+      "footer": "8周年旅行後編・ファンへのメッセージ。あむぎりが話し始めた直後、酔ったやまとが扉に顔をぶつけながら乱入",
+      "score": 0,
+      "signals": {},
+      "published": null,
+      "engagement": {
+        "end": "今のやまと、丸くなった？なってない？\nコメントで！"
+      },
+      "duration": 61.0,
+      "experiment": {
+        "name": "2026-10-29",
+        "variant": "B"
+      },
+      "position": 0.952,
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "BOAumw30KOM",
+        "url": "https://www.youtube.com/watch?v=BOAumw30KOM",
+        "privacy_status": "private",
+        "title": "やまと「丸くなったみたいなの意味わかんない」あむぎりのスピーチに乱入 #コムドット #コムドット切り抜き #shorts #やまと #あむぎり",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-11-01 19:00"
+    },
+    {
       "clip_id": "man09",
       "start": 7779.5,
       "end": 7807.5,

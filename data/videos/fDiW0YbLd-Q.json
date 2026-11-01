@@ -33,6 +33,42 @@
       }
     },
     {
+      "clip_id": "man08",
+      "start": 316.8,
+      "end": 342.1,
+      "formats": [
+        "short"
+      ],
+      "hook": "ダル絡みの俺と\nまともな俺\nどっちがいい？",
+      "footer": "限界酒ゆうた編・オープニング。一緒に飲むメンバーを決める話から、ゆうまが自分の酔い方をゆうたに選ばせる",
+      "score": 0,
+      "signals": {},
+      "published": null,
+      "engagement": {
+        "end": "ダル絡みゆうま派？まともゆうま派？\nコメントで！"
+      },
+      "duration": 25.3,
+      "experiment": {
+        "name": "2026-10-29",
+        "variant": "A"
+      },
+      "position": 0.066,
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "PgxjVZPqo1s",
+        "url": "https://www.youtube.com/watch?v=PgxjVZPqo1s",
+        "privacy_status": "private",
+        "title": "ゆうま「ダルく絡んでくる俺」かまともな俺か、ゆうたの即答 #コムドット #コムドット切り抜き #shorts #ゆうま #ゆうた",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-11-01 20:00"
+    },
+    {
       "clip_id": "wide02",
       "start": 427.0,
       "end": 1207.0,
