@@ -564,6 +564,92 @@
       "scheduled_at": "2026-10-21 19:00"
     },
     {
+      "clip_id": "man12",
+      "start": 7502.5,
+      "end": 7555.6,
+      "formats": [
+        "short"
+      ],
+      "hook": "何者でもない俺らが\n伝えていくことっていうのは\nすごい大事",
+      "footer": "8周年旅行後編・ファンへのメッセージ。個人で音楽もやるゆうまが、この1年で感じたことを語る",
+      "score": 0,
+      "signals": {},
+      "published": null,
+      "engagement": {
+        "end": "ゆうまの言葉、刺さった？意外だった？\nコメントで！"
+      },
+      "duration": 58.8,
+      "experiment": {
+        "name": "2026-10-29",
+        "variant": "B"
+      },
+      "hook_rule": {
+        "applied": true,
+        "cold_open": [
+          7544.1,
+          7549.8
+        ]
+      },
+      "position": 0.933,
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "sHyzfH6X0p8",
+        "url": "https://www.youtube.com/watch?v=sHyzfH6X0p8",
+        "privacy_status": "private",
+        "title": "ゆうま「何者でもない俺らが」8周年に語った本音 #コムドット #コムドット切り抜き #shorts #ゆうま #やまと",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-11-02 20:00"
+    },
+    {
+      "clip_id": "man11",
+      "start": 7586.25,
+      "end": 7614.9,
+      "formats": [
+        "short"
+      ],
+      "hook": "初っ端お前が\n武道館で\n花咲かせろや",
+      "footer": "8周年旅行後編・ファンへのメッセージ。武道館に立つゆうまに、酔ったやまとが絡みながらエール",
+      "score": 0,
+      "signals": {},
+      "published": null,
+      "engagement": {
+        "end": "今のやまと、激励？ダル絡み？\nコメントで！"
+      },
+      "duration": 28.6,
+      "experiment": {
+        "name": "2026-10-29",
+        "variant": "A"
+      },
+      "hook_rule": {
+        "applied": true,
+        "cold_open": [
+          7586.25,
+          7590.25
+        ]
+      },
+      "position": 0.944,
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "7737HcO7h2k",
+        "url": "https://www.youtube.com/watch?v=7737HcO7h2k",
+        "privacy_status": "private",
+        "title": "やまと「武道館で花咲かせろや」酔っても熱いエール #コムドット #コムドット切り抜き #shorts #やまと #ゆうま",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-11-02 19:00"
+    },
+    {
       "clip_id": "man10",
       "start": 7650.0,
       "end": 7711.0,
