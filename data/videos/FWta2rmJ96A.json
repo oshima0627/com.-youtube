@@ -607,6 +607,49 @@
       "scheduled_at": "2026-11-02 20:00"
     },
     {
+      "clip_id": "man14",
+      "start": 7560.8,
+      "end": 7586.0,
+      "formats": [
+        "short"
+      ],
+      "hook": "ほとんどのやつなんてさ\n天賦の才なんて\nないんだから",
+      "footer": "8周年旅行後編・ファンへのメッセージ。ゆうまの話を受けたやまとの持論と、ゆうまの答え",
+      "score": 0,
+      "signals": {},
+      "published": null,
+      "engagement": {
+        "end": "やまとの持論、共感？反対？\nコメントで！"
+      },
+      "duration": 25.2,
+      "experiment": {
+        "name": "2026-10-29",
+        "variant": "A"
+      },
+      "hook_rule": {
+        "applied": true,
+        "cold_open": [
+          7560.8,
+          7564.8
+        ]
+      },
+      "position": 0.941,
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "Q8veGQibQpk",
+        "url": "https://www.youtube.com/watch?v=Q8veGQibQpk",
+        "privacy_status": "private",
+        "title": "やまと「天賦の才なんてないんだから」8周年の持論 #コムドット #コムドット切り抜き #shorts #やまと #ゆうま #あむぎり #ゆうた #ひゅうが",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-11-03 20:00"
+    },
+    {
       "clip_id": "man11",
       "start": 7586.25,
       "end": 7614.9,
@@ -684,6 +727,49 @@
         "channel_title": "コムドット名場面ch【切り抜き】"
       },
       "scheduled_at": "2026-11-01 19:00"
+    },
+    {
+      "clip_id": "man13",
+      "start": 7713.0,
+      "end": 7773.4,
+      "formats": [
+        "short"
+      ],
+      "hook": "俺の居場所をね\n作ってくれて\nマジでありがとうございます",
+      "footer": "8周年旅行後編・ファンへのメッセージ。恥ずかしがり屋のあむぎりが、ファンへの感謝を自分の言葉で伝える",
+      "score": 0,
+      "signals": {},
+      "published": null,
+      "engagement": {
+        "end": "あむぎりの言葉、泣けた？意外だった？\nコメントで！"
+      },
+      "duration": 64.0,
+      "experiment": {
+        "name": "2026-10-29",
+        "variant": "B"
+      },
+      "hook_rule": {
+        "applied": true,
+        "cold_open": [
+          7755.3,
+          7758.9
+        ]
+      },
+      "position": 0.96,
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "SW_UKQOBvuE",
+        "url": "https://www.youtube.com/watch?v=SW_UKQOBvuE",
+        "privacy_status": "private",
+        "title": "あむぎり「俺の居場所を作ってくれて」照れ屋の本気の感謝 #コムドット #コムドット切り抜き #shorts #あむぎり #やまと #ゆうま #ゆうた #ひゅうが",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-11-03 19:00"
     },
     {
       "clip_id": "man09",
