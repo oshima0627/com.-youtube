@@ -564,6 +564,92 @@
       "scheduled_at": "2026-10-21 19:00"
     },
     {
+      "clip_id": "man15",
+      "start": 7429.4,
+      "end": 7457.8,
+      "formats": [
+        "short"
+      ],
+      "hook": "コムレンジャー聞いてるか？\nここまで見てねえ奴は\nコムレンジャーじゃねえから",
+      "footer": "8周年旅行後編・ファンへのメッセージ直前。酔ったやまとが、ここまで見てくれたファンに呼びかける",
+      "score": 0,
+      "signals": {},
+      "published": null,
+      "engagement": {
+        "end": "やまとの呼びかけ、笑った？刺さった？\nコメントで！"
+      },
+      "duration": 28.4,
+      "experiment": {
+        "name": "2026-10-29",
+        "variant": "A"
+      },
+      "hook_rule": {
+        "applied": true,
+        "cold_open": [
+          7429.4,
+          7433.4
+        ]
+      },
+      "position": 0.924,
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "VG6Qw-eR0GU",
+        "url": "https://www.youtube.com/watch?v=VG6Qw-eR0GU",
+        "privacy_status": "private",
+        "title": "やまと「ショート動画だけ見ときゃいい」酔って本音の呼びかけ #コムドット #コムドット切り抜き #shorts #やまと #ゆうま #あむぎり #ゆうた #ひゅうが",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-11-04 19:00"
+    },
+    {
+      "clip_id": "man16",
+      "start": 7458.4,
+      "end": 7502.4,
+      "formats": [
+        "short"
+      ],
+      "hook": "本当に特別な存在では\nないというか",
+      "footer": "8周年旅行後編・ファンへのメッセージ。ゆうまが3年間の武道館修行計画で気づいたこと",
+      "score": 0,
+      "signals": {},
+      "published": null,
+      "engagement": {
+        "end": "ゆうまの本音、意外？共感？\nコメントで！"
+      },
+      "duration": 53.6,
+      "experiment": {
+        "name": "2026-10-29",
+        "variant": "B"
+      },
+      "hook_rule": {
+        "applied": true,
+        "cold_open": [
+          7492.2,
+          7501.8
+        ]
+      },
+      "position": 0.928,
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "0vmNlGmUsn8",
+        "url": "https://www.youtube.com/watch?v=0vmNlGmUsn8",
+        "privacy_status": "private",
+        "title": "ゆうま「特別な存在ではない」武道館修行で気づいたこと #コムドット #コムドット切り抜き #shorts #ゆうま #やまと #あむぎり #ゆうた #ひゅうが",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-11-04 20:00"
+    },
+    {
       "clip_id": "man12",
       "start": 7502.5,
       "end": 7555.6,
