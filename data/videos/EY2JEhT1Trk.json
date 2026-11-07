@@ -272,6 +272,49 @@
       "scheduled_at": "2026-11-06 20:00"
     },
     {
+      "clip_id": "man05",
+      "start": 6693.0,
+      "end": 6726.0,
+      "formats": [
+        "short"
+      ],
+      "hook": "「YouTubeが1番楽しいんで」って",
+      "footer": "夜遊び企画の締めの焼肉。個人で活動すると「独立しようとしてる」と言われる話に、やまとが本音で反論",
+      "score": 0,
+      "signals": {},
+      "published": null,
+      "engagement": {
+        "end": "今のやまと、本気？酔ってる？\nコメントで！"
+      },
+      "duration": 33.0,
+      "experiment": {
+        "name": "2026-10-29",
+        "variant": "A"
+      },
+      "hook_rule": {
+        "applied": true,
+        "cold_open": [
+          6693.0,
+          6696.5
+        ]
+      },
+      "position": 0.929,
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "YpwcrvSNKwQ",
+        "url": "https://www.youtube.com/watch?v=YpwcrvSNKwQ",
+        "privacy_status": "private",
+        "title": "やまと「YouTubeが1番楽しいんで」独立疑惑に本音で反論 #コムドット #コムドット切り抜き #shorts #やまと #ひゅうが #ゆうま",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-11-07 20:00"
+    },
+    {
       "clip_id": "auto04",
       "start": 6725.72,
       "end": 6789.12,
@@ -291,6 +334,49 @@
         "result": "pass",
         "reasons": []
       }
+    },
+    {
+      "clip_id": "man06",
+      "start": 6733.6,
+      "end": 6794.0,
+      "formats": [
+        "short"
+      ],
+      "hook": "またゆうた人気になっちゃう俺ら喋りすぎて",
+      "footer": "ヤニヤニコンビの夜遊び企画の締め。東京ドーム3回にドラマ・曲・本…コムドットのすごさを語っていたら、話はその場にいないゆうたへ",
+      "score": 0,
+      "signals": {},
+      "published": null,
+      "engagement": {
+        "end": "ゆうたの人気、喋らないから？すごいから？\nコメントで！"
+      },
+      "duration": 64.0,
+      "experiment": {
+        "name": "2026-10-29",
+        "variant": "B"
+      },
+      "hook_rule": {
+        "applied": true,
+        "cold_open": [
+          6784.2,
+          6787.8
+        ]
+      },
+      "position": 0.934,
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "F6SAZ9R9L2c",
+        "url": "https://www.youtube.com/watch?v=F6SAZ9R9L2c",
+        "privacy_status": "private",
+        "title": "ゆうま「またゆうた人気になっちゃう」コムドット自慢の思わぬ結末 #コムドット #コムドット切り抜き #shorts #ゆうま #やまと #ひゅうが",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-11-07 19:00"
     }
   ],
   "notes": []
