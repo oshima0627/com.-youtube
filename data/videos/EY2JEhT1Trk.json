@@ -142,6 +142,49 @@
       "scheduled_at": "2026-11-06 19:00"
     },
     {
+      "clip_id": "man08",
+      "start": 6224.0,
+      "end": 6284.0,
+      "formats": [
+        "short"
+      ],
+      "hook": "誰だよ",
+      "footer": "ヤニヤニコンビの夜遊び企画の締め。丁寧に電話を切った直後、ゆうまが相手を忘れる",
+      "score": 0,
+      "signals": {},
+      "published": null,
+      "engagement": {
+        "end": "今のゆうま、失礼？正直？\nコメントで！"
+      },
+      "duration": 62.8,
+      "experiment": {
+        "name": "2026-10-29",
+        "variant": "B"
+      },
+      "hook_rule": {
+        "applied": true,
+        "cold_open": [
+          6246.0,
+          6248.8
+        ]
+      },
+      "position": 0.863,
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "SCaAWe9__fI",
+        "url": "https://www.youtube.com/watch?v=SCaAWe9__fI",
+        "privacy_status": "private",
+        "title": "ゆうま「誰だよ」電話の相手が分からない #コムドット #コムドット切り抜き #shorts #ゆうま #やまと #ひゅうが",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-11-08 20:00"
+    },
+    {
       "clip_id": "man01",
       "start": 6455.2,
       "end": 6509.2,
@@ -377,6 +420,49 @@
         "channel_title": "コムドット名場面ch【切り抜き】"
       },
       "scheduled_at": "2026-11-07 19:00"
+    },
+    {
+      "clip_id": "man07",
+      "start": 6842.2,
+      "end": 6875.0,
+      "formats": [
+        "short"
+      ],
+      "hook": "ほぼ18年です",
+      "footer": "ヤニヤニコンビの夜遊び企画の締め。8年目なのに密度が濃くて「ほぼ18年」と言い出す",
+      "score": 0,
+      "signals": {},
+      "published": null,
+      "engagement": {
+        "end": "コムドットの8年、18年分？ちょうど8年？\nコメントで！"
+      },
+      "duration": 32.8,
+      "experiment": {
+        "name": "2026-10-29",
+        "variant": "A"
+      },
+      "hook_rule": {
+        "applied": true,
+        "cold_open": [
+          6842.2,
+          6845.7
+        ]
+      },
+      "position": 0.949,
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "iXFQnlCbc4I",
+        "url": "https://www.youtube.com/watch?v=iXFQnlCbc4I",
+        "privacy_status": "private",
+        "title": "ひゅうが「ほぼ18年です」8年目なのに密度が違う #コムドット #コムドット切り抜き #shorts #ひゅうが #やまと #ゆうま",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-11-08 19:00"
     }
   ],
   "notes": []
