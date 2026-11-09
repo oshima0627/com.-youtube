@@ -251,6 +251,49 @@
       }
     },
     {
+      "clip_id": "man09",
+      "start": 6567.0,
+      "end": 6627.0,
+      "formats": [
+        "short"
+      ],
+      "hook": "使ってねぇよこんなとこ",
+      "footer": "ヤニヤニコンビの夜遊び企画の焼肉屋。六本木の夜に行きたいゆうまが、このトークは使わないと言い出す",
+      "score": 0,
+      "signals": {},
+      "published": null,
+      "engagement": {
+        "end": "この焼肉トーク、いる？いらない？\nコメントで！"
+      },
+      "duration": 61.4,
+      "experiment": {
+        "name": "2026-10-29",
+        "variant": "B"
+      },
+      "hook_rule": {
+        "applied": true,
+        "cold_open": [
+          6603.9,
+          6605.3
+        ]
+      },
+      "position": 0.911,
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "0OzsAdqntrM",
+        "url": "https://www.youtube.com/watch?v=0OzsAdqntrM",
+        "privacy_status": "private",
+        "title": "ゆうま「使ってねぇよこんなとこ」焼肉トークの行方 #コムドット #コムドット切り抜き #shorts #ゆうま #やまと #ひゅうが",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-11-09 19:00"
+    },
+    {
       "clip_id": "auto05",
       "start": 6611.65,
       "end": 6677.2,
@@ -463,6 +506,49 @@
         "channel_title": "コムドット名場面ch【切り抜き】"
       },
       "scheduled_at": "2026-11-08 19:00"
+    },
+    {
+      "clip_id": "man10",
+      "start": 7023.7,
+      "end": 7051.6,
+      "formats": [
+        "short"
+      ],
+      "hook": "命が燃えなかった、それだけです",
+      "footer": "ヤニヤニコンビの夜遊び企画の締め。腕組みが似合うか試して即やめたひゅうがの一言",
+      "score": 0,
+      "signals": {},
+      "published": null,
+      "engagement": {
+        "end": "今のひゅうが、スベった？ウケた？\nコメントで！"
+      },
+      "duration": 27.9,
+      "experiment": {
+        "name": "2026-10-29",
+        "variant": "A"
+      },
+      "hook_rule": {
+        "applied": true,
+        "cold_open": [
+          7023.7,
+          7027.2
+        ]
+      },
+      "position": 0.974,
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "7ak0eG5A4RQ",
+        "url": "https://www.youtube.com/watch?v=7ak0eG5A4RQ",
+        "privacy_status": "private",
+        "title": "ひゅうが「命が燃えなかった」試した結論 #コムドット #コムドット切り抜き #shorts #ひゅうが #やまと #ゆうま",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-11-09 20:00"
     }
   ],
   "notes": []
