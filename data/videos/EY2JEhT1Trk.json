@@ -508,6 +508,92 @@
       "scheduled_at": "2026-11-08 19:00"
     },
     {
+      "clip_id": "man12",
+      "start": 6880.9,
+      "end": 6934.4,
+      "formats": [
+        "short"
+      ],
+      "hook": "僕なんて企画考えてるなんてことないですから",
+      "footer": "夜遊び企画の焼肉屋。企画を考えてくれてありがとうと言われたやまとの返し",
+      "score": 0,
+      "signals": {},
+      "published": null,
+      "engagement": {
+        "end": "企画の主役はやまと？ひゅうが？\nコメントで！"
+      },
+      "duration": 57.1,
+      "experiment": {
+        "name": "2026-10-29",
+        "variant": "B"
+      },
+      "hook_rule": {
+        "applied": true,
+        "cold_open": [
+          6887.8,
+          6891.4
+        ]
+      },
+      "position": 0.955,
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "cfqwc0GaG_8",
+        "url": "https://www.youtube.com/watch?v=cfqwc0GaG_8",
+        "privacy_status": "private",
+        "title": "やまと「企画考えてるなんてことない」ネタ元はひゅうがの一服 #コムドット #コムドット切り抜き #shorts #やまと #ひゅうが #ゆうま",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-11-10 20:00"
+    },
+    {
+      "clip_id": "man11",
+      "start": 6936.6,
+      "end": 6966.0,
+      "formats": [
+        "short"
+      ],
+      "hook": "コムドットって人生だからね",
+      "footer": "夜遊び企画の焼肉屋。YouTubeをまだまだ楽しめる理由を語る3人",
+      "score": 0,
+      "signals": {},
+      "published": null,
+      "engagement": {
+        "end": "今の一言、名言？いつもの熱弁？\nコメントで！"
+      },
+      "duration": 31.2,
+      "experiment": {
+        "name": "2026-10-29",
+        "variant": "A"
+      },
+      "hook_rule": {
+        "applied": true,
+        "cold_open": [
+          6964.2,
+          6966.0
+        ]
+      },
+      "position": 0.962,
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "UL824BfSLrc",
+        "url": "https://www.youtube.com/watch?v=UL824BfSLrc",
+        "privacy_status": "private",
+        "title": "やまと「コムドットって人生だから」まだ楽しめる理由 #コムドット #コムドット切り抜き #shorts #やまと #ひゅうが #ゆうま",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-11-10 19:00"
+    },
+    {
       "clip_id": "man10",
       "start": 7023.7,
       "end": 7051.6,
