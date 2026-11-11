@@ -33,6 +33,49 @@
       }
     },
     {
+      "clip_id": "man09",
+      "start": 100.0,
+      "end": 158.5,
+      "formats": [
+        "short"
+      ],
+      "hook": "初めて戦いに行く感じ",
+      "footer": "限界酒ゆうた編・オープニング。挑戦前に緊張するゆうたと、メンバーから見たゆうたの酒の強さ",
+      "score": 0,
+      "signals": {},
+      "published": null,
+      "engagement": {
+        "end": "ゆうたは酒強い派？弱い派？\nコメントで！"
+      },
+      "duration": 61.4,
+      "experiment": {
+        "name": "2026-10-29",
+        "variant": "B"
+      },
+      "hook_rule": {
+        "applied": true,
+        "cold_open": [
+          114.6,
+          117.5
+        ]
+      },
+      "position": 0.021,
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "iItNZz_etm0",
+        "url": "https://www.youtube.com/watch?v=iItNZz_etm0",
+        "privacy_status": "private",
+        "title": "ゆうた「初めて戦いに行く感じ」酒企画前の緊張 #コムドット #コムドット切り抜き #shorts #ゆうた #やまと #ひゅうが #ゆうま #あむぎり",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-11-11 19:00"
+    },
+    {
       "clip_id": "man08",
       "start": 316.8,
       "end": 342.1,
@@ -530,6 +573,49 @@
         "channel_title": "コムドット名場面ch【切り抜き】"
       },
       "scheduled_at": "2026-10-30 20:00"
+    },
+    {
+      "clip_id": "man10",
+      "start": 3932.0,
+      "end": 3960.4,
+      "formats": [
+        "short"
+      ],
+      "hook": "「20杯余裕だぜ」ってゆうた言ってたけど\n無理だね20杯は",
+      "footer": "限界酒ゆうた編・終盤。15杯目で中間地点、あむぎりを超えたところで目標の重さを実感",
+      "score": 0,
+      "signals": {},
+      "published": null,
+      "engagement": {
+        "end": "ゆうた20杯いける？いけない？\nコメントで！"
+      },
+      "duration": 33.3,
+      "experiment": {
+        "name": "2026-10-29",
+        "variant": "A"
+      },
+      "hook_rule": {
+        "applied": true,
+        "cold_open": [
+          3955.5,
+          3960.4
+        ]
+      },
+      "position": 0.824,
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "9h8YkEDzi-M",
+        "url": "https://www.youtube.com/watch?v=9h8YkEDzi-M",
+        "privacy_status": "private",
+        "title": "ゆうた「無理だね20杯は」中間地点の本音 #コムドット #コムドット切り抜き #shorts #ゆうた #あむぎり #ゆうま",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-11-11 20:00"
     },
     {
       "clip_id": "wide01",
