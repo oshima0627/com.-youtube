@@ -440,6 +440,49 @@
       "scheduled_at": "2026-10-31 20:00"
     },
     {
+      "clip_id": "man12",
+      "start": 3299.0,
+      "end": 3354.0,
+      "formats": [
+        "short"
+      ],
+      "hook": "ちょっとセーブしてるやん\n俺がメインだから回さないとって思ってるわけでしょ",
+      "footer": "限界酒ゆうた編・9杯目。今回の編集担当はあむぎり。撮影中に編集を気にするかどうかを3人で話す",
+      "score": 0,
+      "signals": {},
+      "published": null,
+      "engagement": {
+        "end": "あむぎり、セーブしてた？してない？\nコメントで！"
+      },
+      "duration": 59.0,
+      "experiment": {
+        "name": "2026-10-29",
+        "variant": "B"
+      },
+      "hook_rule": {
+        "applied": true,
+        "cold_open": [
+          3323.4,
+          3327.4
+        ]
+      },
+      "position": 0.692,
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "EB6BOxusBZs",
+        "url": "https://www.youtube.com/watch?v=EB6BOxusBZs",
+        "privacy_status": "private",
+        "title": "ゆうた「ちょっとセーブしてるやん」編集担当へのツッコミ #コムドット #コムドット切り抜き #shorts #ゆうた #あむぎり #ゆうま",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-11-12 20:00"
+    },
+    {
       "clip_id": "auto06",
       "start": 3391.36,
       "end": 3458.8,
@@ -715,6 +758,49 @@
         "result": "pass",
         "reasons": []
       }
+    },
+    {
+      "clip_id": "man11",
+      "start": 4686.3,
+      "end": 4717.9,
+      "formats": [
+        "short"
+      ],
+      "hook": "あのペースで飲むなら19杯はいけんわ",
+      "footer": "限界酒ゆうた編・結果発表。6時間かけて17杯のゆうたが、3時間で19杯のマネージャーの記録を振り返る",
+      "score": 0,
+      "signals": {},
+      "published": null,
+      "engagement": {
+        "end": "ゆうたの17杯、すごい？まだいけた？\nコメントで！"
+      },
+      "duration": 34.7,
+      "experiment": {
+        "name": "2026-10-29",
+        "variant": "A"
+      },
+      "hook_rule": {
+        "applied": true,
+        "cold_open": [
+          4692.9,
+          4696.0
+        ]
+      },
+      "position": 0.982,
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "N9PrBn4P3H4",
+        "url": "https://www.youtube.com/watch?v=N9PrBn4P3H4",
+        "privacy_status": "private",
+        "title": "ゆうた「19杯はいけんわ」6時間で17杯の結末 #コムドット #コムドット切り抜き #shorts #ゆうた #あむぎり #ゆうま",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-11-12 19:00"
     }
   ],
   "notes": [
