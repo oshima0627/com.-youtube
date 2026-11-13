@@ -483,6 +483,49 @@
       "scheduled_at": "2026-11-12 20:00"
     },
     {
+      "clip_id": "man13",
+      "start": 3354.0,
+      "end": 3397.3,
+      "formats": [
+        "short"
+      ],
+      "hook": "誰も何も気にしてないみたいな動画\n撮ってみたいなと思う",
+      "footer": "限界酒ゆうた編・編集の話の続き。撮影中に編集点やトークの流れを気にしているか、3人が本音で話す",
+      "score": 0,
+      "signals": {},
+      "published": null,
+      "engagement": {
+        "end": "企画の動画とただの旅行動画\n見たいのはどっち？コメントで！"
+      },
+      "duration": 46.9,
+      "experiment": {
+        "name": "2026-10-29",
+        "variant": "B"
+      },
+      "hook_rule": {
+        "applied": true,
+        "cold_open": [
+          3388.4,
+          3392.0
+        ]
+      },
+      "position": 0.703,
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "TZxXXbcA3zw",
+        "url": "https://www.youtube.com/watch?v=TZxXXbcA3zw",
+        "privacy_status": "private",
+        "title": "ゆうま「誰も何も気にしてない動画撮ってみたい」撮影中の本音 #コムドット #コムドット切り抜き #shorts #ゆうた #あむぎり #ゆうま",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-11-13 19:00"
+    },
+    {
       "clip_id": "auto06",
       "start": 3391.36,
       "end": 3458.8,
@@ -502,6 +545,49 @@
         "result": "pass",
         "reasons": []
       }
+    },
+    {
+      "clip_id": "man14",
+      "start": 3406.9,
+      "end": 3429.5,
+      "formats": [
+        "short"
+      ],
+      "hook": "まだ足りない\nもっとアツくなろう",
+      "footer": "限界酒ゆうた編の途中。主役が熱くなるとき脇役も熱くなるべきか、3人で話す",
+      "score": 0,
+      "signals": {},
+      "published": null,
+      "engagement": {
+        "end": "脇役もアツくなるべき？主役だけでいい？\nコメントで！"
+      },
+      "duration": 25.2,
+      "experiment": {
+        "name": "2026-10-29",
+        "variant": "A"
+      },
+      "hook_rule": {
+        "applied": true,
+        "cold_open": [
+          3419.8,
+          3422.4
+        ]
+      },
+      "position": 0.714,
+      "gate": {
+        "result": "pass",
+        "reasons": []
+      },
+      "upload": {
+        "thumbnail_set": false,
+        "youtube_video_id": "Jo6v6t4GK6A",
+        "url": "https://www.youtube.com/watch?v=Jo6v6t4GK6A",
+        "privacy_status": "private",
+        "title": "ゆうま「まだ足りない、もっとアツくなろう」脇役も熱くなる話 #コムドット #コムドット切り抜き #shorts #ゆうた #あむぎり #ゆうま",
+        "channel_id": "UCoT2TYsxzH4t42C2oF-KrAw",
+        "channel_title": "コムドット名場面ch【切り抜き】"
+      },
+      "scheduled_at": "2026-11-13 20:00"
     },
     {
       "clip_id": "auto01",
